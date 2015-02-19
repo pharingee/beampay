@@ -1,0 +1,19 @@
+body {
+  font-family: 'sinkin-sans';
+}
+
+@mixin black-button() {
+  background-color: $black;
+  color: $white;
+  font-size: 1.5em;
+
+  padding: 7px 20px;
+
+  border: none;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: $white;
+    color: $green;
+  }
+}

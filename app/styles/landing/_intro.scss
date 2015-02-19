@@ -1,0 +1,36 @@
+.intro {
+  background-color: $green;
+  color: $white;
+  padding-top: 40px;
+  font-family: 'bariol';
+
+  img {
+
+    &#logo {
+      height: 30px;
+      margin: 30px 0px;
+    }
+
+    &#hero {
+      max-width: 450px;
+    }
+
+  }
+
+  h1 {
+    font-size: 50px;
+    padding-top: 25px;
+  }
+
+  h3 {
+    max-width: 300px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    line-height: 30px;
+  }
+
+  button {
+    @include black-button();
+    margin-bottom: 25px;
+  }
+}

@@ -20,14 +20,16 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        templateUrl: 'views/landing/landing.html'
       })
       .otherwise({
         redirectTo: '/'
       });
+  });
+
+angular
+  .module('valueApp').run(function ($rootScope, $anchorScroll) {
+    $rootScope.$on('$routeChangeSuccess', function() {
+      $anchorScroll();
+    });
   });

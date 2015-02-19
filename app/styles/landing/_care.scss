@@ -1,0 +1,82 @@
+.care {
+  background: $white;
+  font-family: 'bariol';
+  text-align: center;
+
+  .lead {
+    position: absolute;
+    width: 100%;
+    padding-top: 40px;
+    z-index: 1;
+
+    h1 {
+      color: $blue;
+    }
+
+    h3 {
+      color: $gray-light;
+    }
+  }
+
+  .carousel {
+    padding-top: 150px;
+    padding-bottom: 30px;
+    background-image: url('/images/care/daughter-back.png');
+    background-size: cover;
+
+    a {
+      cursor: pointer;
+    }
+
+    .carousel-control {
+      padding-top: 40px;
+      text-shadow: none;
+      color: $green;
+      opacity: 1;
+
+      &.left, &.right {
+        background-image: none;
+        background-repeat: none;
+      }
+    }
+
+    .carousel-indicators {
+      display: none;
+    }
+
+    .carousel-inner {
+      .item {
+        text-align: center;
+        padding: 50px 0;
+
+        .img {
+          text-align: right;
+
+          img {
+            width: 200px;
+          }
+
+          @media screen and (max-width: $screen-sm-max) {
+            text-align: center;
+          }
+        }
+
+        .text {
+          padding-left: 30px;
+          padding-top: 50px;
+
+          p {
+            color: $gray-light;
+            font-size: 3em;
+            max-width: 400px;
+            margin: 0 auto;
+
+            span {
+              color: $green;
+            }
+          }
+        }
+      }
+    }
+  }
+}
