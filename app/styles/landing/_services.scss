@@ -129,9 +129,11 @@
         color: $white;
       }
 
-      button {
+      input[type=submit] {
         @include black-button();
-        margin-top: 10px;
+        width: initial;
+        margin: 10px 0 0 auto;
+        padding: 0 20px;
       }
     }
   }

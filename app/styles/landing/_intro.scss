@@ -29,8 +29,10 @@
     line-height: 30px;
   }
 
-  button {
+  a {
     @include black-button();
+    text-decoration: none;
+    display: inline-block;
     margin-bottom: 25px;
   }
 }
