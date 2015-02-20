@@ -1,0 +1,71 @@
+.about-people {
+  .container {
+    padding: 50px 10px;
+  }
+
+  .team {
+
+    @media screen and (max-width: $screen-xs-max) {
+      text-align: center;
+    }
+
+    img {
+      @extend .img-rounded;
+      padding-top: 35px;
+      width: 150px;
+    }
+
+    h2 {
+      color: $green;
+      padding: 10px 0px;
+    }
+
+    .member {
+
+      padding-top: 20px;
+
+      .name {
+        font-size: 1.5em;
+        font-weight: 300;
+
+        @media screen and (max-width: $screen-xs-max) {
+          font-weight: 400;
+          padding-top: 15px;
+        }
+      }
+
+      .title {
+        font-size: 1.2em;
+        font-weight: 200;
+
+        @media screen and (max-width: $screen-xs-max) {
+          font-weight: 300;
+        }
+      }
+
+      .links {
+        font-size: 1.5em;
+
+        a {
+          padding-right: 10px;
+          color: $green;
+
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+
+      .desc {
+        font-size: 0.9em;
+        text-align: justify;
+        text-justify: inter-word;
+
+        @media screen and (max-width: $screen-xs-max) {
+          text-align: center;
+        }
+      }
+
+    }
+  }
+}

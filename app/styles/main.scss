@@ -13,10 +13,17 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 @import "util/browsehappy";
 @import "util/general";
 
+// General
+@import "general/footer";
+
 // Landing Page
 @import "landing/intro";
 @import "landing/services";
 @import "landing/message";
 @import "landing/care";
 @import "landing/notify";
-@import "landing/footer";
+
+// About Page
+@import "about/intro";
+@import "about/contact";
+@import "about/people";
