@@ -107,12 +107,12 @@
   .more {
     padding-top: 35px;
 
-    h3 {
-      color: $green;
-    }
-
     h4 {
       color: $gray-light;
+
+      &.emphasis {
+        color: $green;
+      }
     }
 
     .box {
