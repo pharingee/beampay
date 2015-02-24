@@ -7,9 +7,9 @@
   text-align: center;
 
   h1 {
-    max-width: 450px;
     margin: 0 auto;
   }
+
 
   a {
     @include black-button();

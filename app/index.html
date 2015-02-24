@@ -3,9 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>Beam - Care for loved ones in Ghana quickly and affordably</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <meta name="description" content="Beam - Care for loved ones in Ghana quickly and affordably">
+
+    <!-- Mobile Web App Compatibility -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Facebook -->
+    <meta property="fb:app_id" content="1616896835221884" />
+    <!-- This is what shows as the main text to the link in facebook -->
+    <meta property="og:title" content="Beam - Care for loved ones in Ghana quickly and affordably"/>
+    <meta property="og:url" content="http://beampay.co"/>
+    <meta property="og:site_name" content="Beam"/>
+    <meta property="og:type" content="website"/>
+    <!-- This is what shows as the sub text to the link in facebook -->
+    <meta property="og:description" content="Pay school fees, hospital bills, TV bills, internet bills and top-up airtime for loved ones in Ghana." />
+    <meta property="og:image" content="http://beampay.co/images/facebook/share.png"/>
+
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" sizes="192x192" href="icon-192.png">
+    <link rel="icon" sizes="128x128" href="icon-128.png">
+    <link rel="apple-touch-icon" href="icon-152.png">
+    <link rel="apple-touch-icon-precomposed" href="icon-152.png">
+
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
@@ -13,6 +35,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
   </head>
   <body ng-app="valueApp">
     <!--[if lt IE 7]>
@@ -29,8 +52,10 @@
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-43061338-9');
        ga('send', 'pageview');
+       ga('require', 'linkid', 'linkid.js');
+       ga('require', 'displayfeatures');
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
