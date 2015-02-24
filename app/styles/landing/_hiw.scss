@@ -1,0 +1,66 @@
+.hiw {
+  background-color: $white;
+  padding: 30px 0px;
+  font-family: 'bariol';
+
+  .heading {
+    text-align: center;
+
+    h1 {
+      color: $green;
+    }
+  }
+
+  .step {
+    padding-top: 50px;
+
+    .circle {
+      @include circle($green);
+
+      img {
+
+        &#pointer {
+          padding-top: 60px;
+          width: 65px;
+        }
+
+        &#cc {
+          padding-top: 70px;
+          width: 90px;
+        }
+
+        &#receipt {
+          padding-top: 55px;
+          width: 70px;
+        }
+
+      }
+
+    }
+
+    .text {
+      text-align: center;
+
+      h3 {
+        color: $green;
+        padding-top: 5px;
+      }
+
+      h4 {
+        color: $gray-light;
+        max-width: 190px;
+
+        margin: 0 auto;
+        padding-top: 5px;
+
+        line-height: 30px;
+      }
+    }
+  }
+
+  hr {
+    margin-top: 70px;
+    margin-bottom: 0px;
+    max-width: 750px;
+  }
+}

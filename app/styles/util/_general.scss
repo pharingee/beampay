@@ -17,3 +17,16 @@ body {
     color: $green;
   }
 }
+
+@mixin circle($color) {
+  border: 2px solid $color;
+  border-radius: 50%;
+
+  width: 200px;
+  height: 200px;
+
+  margin: 0 auto;
+
+  // center image in circle
+  text-align: center;
+}
