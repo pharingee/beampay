@@ -19,11 +19,12 @@
     text-decoration: none;
     display: inline-block;
     margin-top: 25px;
+    margin-bottom: 15px;
+    cursor: pointer;
   }
 
   hr {
     max-width: 750px;
     border-color: $green - 10;
-    padding: 25px 0px;
   }
 }
