@@ -1,0 +1,16 @@
+.emailModal {
+  background: $white;
+  color: $green;
+  font-family: 'bariol';
+
+  .modal-header {
+    border-bottom: none;
+    text-align: center;
+  }
+
+  .modal-body {
+    label {
+      font-size: 1.4em;
+    }
+  }
+}
