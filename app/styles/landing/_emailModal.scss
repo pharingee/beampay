@@ -6,11 +6,39 @@
   .modal-header {
     border-bottom: none;
     text-align: center;
+
+    .modal-title {
+      color: $black;
+    }
+
+    .close {
+      margin-top: -35px;
+
+      span {
+        font-size: 1.5em;
+      }
+    }
+
   }
 
   .modal-body {
     label {
-      font-size: 1.4em;
+      font-size: 1.5em;
+    }
+
+    .well {
+      color: $black;
+    }
+  }
+
+  .modal-footer {
+    .err {
+      color: red;  
+    }
+
+    .btn {
+      font-size: 1.2em;
+      color: $white;
     }
   }
 }

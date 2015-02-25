@@ -210,3 +210,10 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'bariol';
+    src: url('/styles/fonts/bariol/bariol_regular-webfont.svg') format('svg'),
+  }
+}
