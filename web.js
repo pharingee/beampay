@@ -25,12 +25,12 @@ app.use(function(req, res, next) {
 // Static Files Route for Angular App
 app.use(gzippo.staticGzip('' + __dirname + '/dist'));
 
-// Other routes
+// Share Email route
 app.post('/email', function (req, res) {
 
   var emailBody = 'Hi '+ req.body.toname + ',\n\n' +
-    'I thought you\'d like to know about Beam  - a way for Ghanaians in the ' +
-    'diaspora to care for loved ones back home by paying directly for school ' +
+    'I thought you\'d like to know about Beam  - a way for Ghanaians abroad ' +
+    'to care for loved ones back home by paying directly for school ' +
     'fees, hospital bills, phone airtime credit, and much more.\n\nFind out ' +
     'how: http://beampay.co';
 
@@ -56,14 +56,6 @@ app.post('/email', function (req, res) {
       }
     }
   );
-});
-
-app.get('/good', function (req, res) {
-  res.status(200).end();
-});
-
-app.get('/bad', function (req, res) {
-  res.status(404).end();
 });
 
 app.listen(process.env.PORT || 9000);

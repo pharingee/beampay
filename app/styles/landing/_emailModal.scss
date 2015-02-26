@@ -33,12 +33,21 @@
 
   .modal-footer {
     .err {
-      color: red;  
+      color: red;
     }
 
     .btn {
       font-size: 1.2em;
       color: $white;
+
+      &#cancel {
+        color: $gray-dark;
+        display: none;
+
+        @media screen and (max-width: $screen-xs-max) {
+          display: inline-block !important;
+        }
+      }
     }
   }
 }
