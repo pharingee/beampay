@@ -22,8 +22,21 @@ app.use(function(req, res, next) {
 });
 */
 
+// Dont cache
+app.use(function (req, res, next) {
+  res.set({
+    'Cache-Control': 'private, no-cache, no-store, must-revalidate',
+    'Expires': '-1',
+    'Pragma': 'no-cache'
+  })
+  next();
+});
+
 // Static Files Route for Angular App
-app.use(gzippo.staticGzip('' + __dirname + '/dist'));
+app.use(gzippo.staticGzip('' + __dirname + '/dist', {
+  maxAge: 1000,
+  clientMaxAge: 1000
+}));
 
 // Share Email route
 app.post('/email', function (req, res) {
