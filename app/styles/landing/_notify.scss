@@ -14,13 +14,30 @@
     }
   }
 
-  a {
+  input[type=email] {
+    display: inline-block;
+    margin-top: 25px;
+    margin-right: 10px;
+    max-width: 250px;
+    font-size: 1.5em;
+    height: 43px;
+
+    @media screen and (max-width: $screen-xs-max) {
+      margin-right: 0px;
+    }
+  }
+
+  a, input[type=submit] {
     @include black-button();
     text-decoration: none;
     display: inline-block;
     margin-top: 25px;
     margin-bottom: 15px;
     cursor: pointer;
+
+    @media screen and (max-width: $screen-xs-max) {
+      margin-top: 10px;
+    }
   }
 
   hr {
