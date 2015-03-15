@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
     'Cache-Control': 'private, no-cache, no-store, must-revalidate',
     'Expires': '-1',
     'Pragma': 'no-cache'
-  })
+  });
   next();
 });
 
