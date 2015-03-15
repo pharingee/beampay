@@ -202,18 +202,40 @@
 
 @font-face {
     font-family: 'bariol';
-    src: url('/styles/fonts/bariol/bariol_regular-webfont.eot');
-    src: url('/styles/fonts/bariol/bariol_regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/styles/fonts/bariol/bariol_regular-webfont.svg') format('svg'),
-         url('/styles/fonts/bariol/bariol_regular-webfont.woff') format('woff'),
-         url('/styles/fonts/bariol/bariol_regular-webfont.ttf') format('truetype');
+    src: url('/styles/fonts/bariol/bariol_regular.eot');
+    src: url('/styles/fonts/bariol/bariol_regular.eot?#iefix') format('embedded-opentype'),
+         url('/styles/fonts/bariol/bariol_regular.svg') format('svg'),
+         url('/styles/fonts/bariol/bariol_regular.woff') format('woff'),
+         url('/styles/fonts/bariol/bariol_regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'bariol';
+    src: url('/styles/fonts/bariol/bariol_regular_italic.eot');
+    src: url('/styles/fonts/bariol/bariol_regular_italic.eot?#iefix') format('embedded-opentype'),
+         url('/styles/fonts/bariol/bariol_regular_italic.svg') format('svg'),
+         url('/styles/fonts/bariol/bariol_regular_italic.woff') format('woff'),
+         url('/styles/fonts/bariol/bariol_regular_italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'bariol';
-    src: url('/styles/fonts/bariol/bariol_regular-webfont.svg') format('svg'),
+    font-weight: normal;
+    font-style: normal;
+    src: url('/styles/fonts/bariol/bariol_regular.svg') format('svg'),
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'bariol';
+    font-weight: normal;
+    font-style: italic;
+    src: url('/styles/fonts/bariol/bariol_regular_italic.svg') format('svg'),
   }
 }
