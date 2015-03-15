@@ -1,0 +1,82 @@
+.how {
+  font-family: 'bariol';
+  padding: 40px 0;
+
+  .heading {
+    padding-bottom: 40px;
+
+    h1 {
+      font-size: 3em;
+      color: $green;
+
+      @media screen and (max-width: $screen-xs-max) {
+        padding: 10px;
+        text-align: center;
+      }
+    }
+  }
+
+  .steps {
+    .step {
+      padding: 30px 0;
+
+      .circle {
+        @include circle($green);
+
+        img {
+          &#pointer {
+            padding-top: 50px;
+            width: 75px;
+          }
+
+          &#cc {
+            padding-top: 65px;
+            width: 100px;
+          }
+
+          &#deliver {
+            padding-top: 50px;
+            width: 100px;
+          }
+
+          &#receipt {
+            padding-top: 55px;
+            padding-right: 10px;
+            width: 85px;
+          }
+        }
+      }
+
+      .text {
+        font-size: 1.5em;
+
+        h2 {
+          color: $green;
+        }
+
+        p {
+          color: $gray-light;
+          padding-top: 15px;
+
+          span.impt {
+            color: $green;
+          }
+        }
+
+        .list {
+          padding-top: 15px;
+
+          p {
+            padding-top: 0;
+          }
+
+          img {
+            height: 15px;
+            padding-right: 20px;
+          }
+        }
+      }
+
+    }
+  }
+}

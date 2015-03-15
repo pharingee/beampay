@@ -1,0 +1,38 @@
+.contact {
+  background-color: $green;
+  color: $white;
+  padding: 40px 0px;
+  font-family: 'bariol';
+  text-align: center;
+
+  input[type=email] {
+    display: inline-block;
+    margin-top: 25px;
+    margin-right: 10px;
+    max-width: 250px;
+    font-size: 1.5em;
+    height: 43px;
+
+    @media screen and (max-width: $screen-xs-max) {
+      margin-right: 0px;
+    }
+  }
+
+  a, input[type=submit] {
+    @include black-button();
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+    @media screen and (max-width: $screen-xs-max) {
+      margin-top: 10px;
+    }
+  }
+
+  hr {
+    max-width: 750px;
+    border-color: $green - 10;
+  }
+}
