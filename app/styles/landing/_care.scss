@@ -65,6 +65,10 @@
           padding-left: 30px;
           padding-top: 50px;
 
+          @media screen and (max-width: $screen-xs-max) {
+            padding: 5px;
+          }
+
           p {
             color: $gray-light;
             font-size: 3em;

@@ -35,7 +35,11 @@ angular
 
 angular
   .module('valueApp').run(function ($rootScope, $anchorScroll) {
+    // Scroll to top
     $rootScope.$on('$routeChangeSuccess', function() {
       $anchorScroll();
     });
+
+    // Initialise Wow.js
+    new WOW().init();
   });
