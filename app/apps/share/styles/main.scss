@@ -1,0 +1,43 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+
+/*
+* Imports
+*/
+
+/*
+* Shared
+*/
+
+// Util
+@import "util/fonts";
+@import "util/colors";
+@import "util/browsehappy";
+@import "util/general";
+
+// Others
+@import "header";
+@import "footer";
+
+
+/*
+* General App
+*/
+
+// Landing
+@import "app/apps/general/styles/landing/intro";
+@import "app/apps/general/styles/landing/why";
+@import "app/apps/general/styles/landing/services";
+@import "app/apps/general/styles/landing/message";
+@import "app/apps/general/styles/landing/care";
+@import "app/apps/general/styles/landing/notify";
+@import "app/apps/general/styles/landing/emailModal";
+
+// How It Works
+@import "app/apps/general/styles/hiw/how";
+@import "app/apps/general/styles/hiw/contact";
+
+// About
+@import "app/apps/general/styles/about/intro";
+@import "app/apps/general/styles/about/contact";
+@import "app/apps/general/styles/about/people";
