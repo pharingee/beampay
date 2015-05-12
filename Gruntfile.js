@@ -237,7 +237,7 @@ module.exports = function (grunt) {
           '<%= yeoman.dist %>/apps/*/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/apps/*/styles/fonts/{,*/}*.{eot,ttf,woff,svg}',
           // Except images/facebook folder
-          '!<%= yeoman.dist %>/apps/share/images/facebook/*.{png,jpg,jpeg,gif,webp,svg}'
+          '!<%= yeoman.dist %>/apps/common/images/facebook/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
