@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('beampayApp', [
+    .module('app', [
       'ngCookies',
       'ngResource',
       'ngRoute',
@@ -11,7 +11,7 @@
       'ui.bootstrap',
 
       // User apps
-      'beampayApp.general'
+      'app.general'
     ])
     .config(function ($routeProvider) {
       $routeProvider
@@ -22,7 +22,7 @@
     });
 
   angular
-    .module('beampayApp').run(function ($rootScope, $anchorScroll) {
+    .module('app').run(function ($rootScope, $anchorScroll) {
       // Scroll to top on all new pages
       $rootScope.$on('$routeChangeSuccess', function() {
         $anchorScroll();

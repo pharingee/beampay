@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('beampayApp.general')
+  angular.module('app.general')
     .controller('EmailModalCtrl', function ($scope, $modal) {
 
       $scope.open = function () {

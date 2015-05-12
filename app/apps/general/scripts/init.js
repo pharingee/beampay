@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('beampayApp.general', [])
+    .module('app.general', [])
     .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
