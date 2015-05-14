@@ -1,0 +1,12 @@
+<div class="container" ng-controller="HomeCtrl">
+  <p>User ID: {{ currentUser.userid }}</p>
+  <p>Token: {{ currentUser.token }}</p>
+
+  <p>
+    <a href="#/auth/settings">Settings</a>
+  </p>
+  <p ng-controller="SignoutCtrl">
+    <a ng-click="signout()" href="">Signout</a>
+  </p>
+
+</div>

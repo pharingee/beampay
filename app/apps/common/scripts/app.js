@@ -8,14 +8,16 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'app.general'
+    'app.general',
+    'app.auth',
+    'app.transaction'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
-      // Default Route
       .otherwise({
         redirectTo: '/'
       });
+    $httpProvider.interceptors.push('AuthInterceptor');
   })
   .run(function ($rootScope, $anchorScroll) {
     // Scroll to top on all new pages
@@ -25,4 +27,6 @@ angular
 
     // Initialise Wow.js
     new WOW().init();
-  });
+  })
+  .constant('API_SERVER', 'http://localhost:5000/api/v1/');
+  // .constant('API_SERVER', 'https://beampay-dev.herokuapp.com/api/v1/');

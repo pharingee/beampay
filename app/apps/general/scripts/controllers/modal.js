@@ -2,7 +2,7 @@
 
 angular
   .module('app.general')
-  .controller('ModalCtrl', function ($scope, $modalInstance, $http, Modal) {
+  .controller('ModalCtrl', function ($scope, $modalInstance, Modal) {
 
     $scope.ok = function () {
       if ($scope.fromName && $scope.fromEmail && $scope.toName && $scope.toEmail) {

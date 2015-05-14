@@ -1,0 +1,31 @@
+<div class="container" ng-controller="SignupCtrl">
+  <h1>Signup</h1>
+  <div class="alert alert-warning" role="alert" ng-show="signup.errors.length">
+    <p>Error(s):</p>
+    <ul>
+      <li ng-repeat="error in signup.errors">
+        {{ error }}
+      </li>
+    </ul>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input ng-model="signup.email" type="email" class="form-control" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pass1">Password</label>
+      <input ng-model="signup.pass1" type="password" class="form-control" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label for="pass2">Confirm Password</label>
+      <input ng-model="signup.pass2" type="password" class="form-control" placeholder="Password">
+    </div>
+    <div class="checkbox">
+      <label>
+        <input ng-model="signup.privacy" type="checkbox"> I accept the Terms and Conditions
+      </label>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="signup.submit()">Signup</button>
+  </form>
+</div>

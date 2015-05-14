@@ -1,0 +1,21 @@
+<div class="container" ng-controller="ChangeEmailCtrl">
+  <h1>Change Email</h1>
+  <div class="alert alert-warning" role="alert" ng-show="changeEmail.errors.length">
+    <p>Error(s):</p>
+    <ul>
+      <li ng-repeat="error in changeEmail.errors">
+        {{ error }}
+      </li>
+    </ul>
+  </div>
+  <form ng-hide="changeEmail.success">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input ng-model="changeEmail.email" type="email" class="form-control" placeholder="New email">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="changeEmail.submit()">Submit</button>
+  </form>
+  <div ng-show="changeEmail.success">
+    Check your email!
+  </div>
+</div>

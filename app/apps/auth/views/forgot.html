@@ -1,0 +1,21 @@
+<div class="container" ng-controller="ForgotCtrl">
+  <h1>Reset Password</h1>
+  <div class="alert alert-warning" role="alert" ng-show="forgot.errors.length">
+    <p>Error(s):</p>
+    <ul>
+      <li ng-repeat="error in forgot.errors">
+        {{ error }}
+      </li>
+    </ul>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input ng-model="forgot.email" type="email" class="form-control" placeholder="Enter email">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="forgot.submit()">Reset</button>
+  </form>
+  <p ng-show="forgot.success">
+    Check your email!
+  </p>
+</div>
