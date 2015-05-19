@@ -54,6 +54,12 @@ angular
       return errors;
     };
 
+    var signInFb = function () {
+      var errors = [];
+      errors.push('Facebook Authentication Failed');
+      return errors;
+    };
+
     var activate = function (data) {
       var errors = [];
 
@@ -184,6 +190,9 @@ angular
       },
       signIn: function (data) {
         return signIn(data);
+      },
+      signInFb: function (data) {
+        return signInFb(data);
       },
       activate: function (data) {
         return activate(data);

@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('SignInCtrl', function ($scope, $location, $window, Auth, Error) {
+  .controller('SignInCtrl', function ($scope, $location, $window, $auth, Auth, Error) {
 
     $scope.signIn = {};
     $scope.signIn.submit = function () {
@@ -29,6 +29,17 @@ angular
         }, function (data) {
           $scope.signIn.errors = Error.signIn(data);
         });
+    };
+
+
+    $scope.signIn.fb = function() {
+      $auth.authenticate('facebook', {
+        'acceptedPrivacyPolicy': true
+      }).then(function (req) {
+        Auth.persist(req.data.id, req.data.token);
+      }, function (req) {
+        $scope.signIn.errors = Error.signInFb(req.data);
+      });
     };
 
   });

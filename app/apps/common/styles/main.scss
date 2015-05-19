@@ -41,3 +41,10 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 @import "app/apps/general/styles/about/intro";
 @import "app/apps/general/styles/about/contact";
 @import "app/apps/general/styles/about/people";
+
+/*
+* Auth App
+*/
+
+// Landing
+@import "app/apps/auth/styles/social";

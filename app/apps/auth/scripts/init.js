@@ -1,8 +1,8 @@
 'use strict';
 
 angular
-  .module('app.auth', [])
-  .config(function ($routeProvider) {
+  .module('app.auth', ['satellizer'])
+  .config(function ($routeProvider, $httpProvider, $authProvider, API_SERVER, FACEBOOK_CLIENT_ID) {
     var urlPrefix = '/auth/';
     var tempPrefix = 'apps/auth/views/';
 
@@ -37,4 +37,12 @@ angular
       .when(urlPrefix + 'forgot/:key', {
         templateUrl: tempPrefix + 'resetPassword.html'
       });
+
+    $httpProvider.interceptors.push('AuthInterceptor');
+
+    $authProvider.baseUrl = API_SERVER;
+    $authProvider.facebook({
+      clientId: FACEBOOK_CLIENT_ID,
+      url: 'account/signin/facebook/'
+    });
   });

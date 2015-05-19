@@ -20,10 +20,16 @@ angular
     };
 
     var getUser = function () {
-      return {
-        userid: $cookieStore.get(USERID_KEY),
-        token: $cookieStore.get(TOKEN_KEY)
-      };
+      try {
+        return {
+          userid: $cookieStore.get(USERID_KEY),
+          token: $cookieStore.get(TOKEN_KEY)
+        };
+      } catch (e) {
+        $cookieStore.remove(USERID_KEY);
+        $cookieStore.remove(TOKEN_KEY);
+        return null;
+      }
     };
 
     // EMAIL

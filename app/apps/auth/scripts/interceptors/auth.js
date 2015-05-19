@@ -8,9 +8,9 @@ angular
       var re = new RegExp('^' + API_SERVER);
       if (config.url.match(re)) {
         config.headers = config.headers || {};
-        var token = Persist.getUser().token;
-        if (token) {
-          config.headers.Authorization = 'Token ' + token;
+        var currentUser = Persist.getUser();
+        if (currentUser && currentUser.token) {
+          config.headers.Authorization = 'Token ' + currentUser.token;
         }
       }
       return config;

@@ -5,6 +5,10 @@ angular
   .service('Auth', function ($http, $q, Persist, API_SERVER) {
     API_SERVER += 'account/';
 
+    var persist = function (id, token) {
+      Persist.saveUser(id, token);
+    };
+
     var signup = function (email, pass1, pass2, privacy) {
       var url = API_SERVER + 'signup/';
       var deferred = $q.defer();
@@ -34,7 +38,7 @@ angular
         'email': email,
         'password': pass
       }).success(function (data) {
-        Persist.saveUser(data.id, data.token);
+        persist(data.id, data.token);
         deferred.resolve();
       }).error(function (data) {
         deferred.reject(data);
@@ -62,7 +66,7 @@ angular
       var deferred = $q.defer();
 
       $http.get(url).success(function (data) {
-        Persist.saveUser(data.id, data.token);
+        persist(data.id, data.token);
         deferred.resolve();
       }).error(function (data) {
         deferred.reject(data);
@@ -87,6 +91,9 @@ angular
     };
 
     return {
+      persist: function (id, token) {
+        return persist(id, token);
+      },
       signup: function (email, pass1, pass2, privacy) {
         return signup(email, pass1, pass2, privacy);
       },
