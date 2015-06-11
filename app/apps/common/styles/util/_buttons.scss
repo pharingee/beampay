@@ -1,0 +1,20 @@
+@mixin capsule-button($background-color, $color, $hover-color) {
+  padding: 10px 25px;
+  background-color: $background-color;
+  color: $color;
+
+  &:hover {
+    color: $color;
+    background-color: $hover-color;
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    margin-top: 10px;
+  }
+}
+
+@mixin small-capsule-button($background-color, $color, $hover-color) {
+  @include capsule-button($background-color, $color, $hover-color);
+  padding: 6px 30px;
+  font-size: 1em;
+}

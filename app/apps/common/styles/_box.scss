@@ -1,0 +1,64 @@
+.box {
+
+  background-color: $neutral_color;
+  min-height: 100%;
+  padding-bottom: 50px;
+
+  .form {
+    border: 1px solid $light_border_color;
+    background-color: $white;
+    margin-top: 50px;
+    padding: 50px;
+
+    h3 {
+      color: $body_color;
+      font-size: 1.5em;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    h5 {
+      color: $light_body_color;
+      text-align: center;
+    }
+
+    .form-group {
+      margin: 10px 0px;
+
+      label {
+        text-align: left;
+        margin-top: 15px;
+        font-weight: normal;
+      }
+
+      label:not(:first-of-type) {
+        margin-top: 30px;
+      }
+
+      input[type=email], input[type=password], input[type=text] {
+        border-radius: 2px;
+        height: 42px;
+      }
+
+      input[type=checkbox] {
+        margin-right: 10px;
+      }
+    }
+
+    .errors {
+      padding-top: 15px;
+      p, ul {
+        color: $error_color;
+      }
+    }
+
+    .submit {
+      text-align: center;
+
+      button {
+        @include capsule-button($black, $neutral-color, $green);
+        margin-top: 10px;
+      }
+    }
+  }
+}

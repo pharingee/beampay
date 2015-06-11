@@ -1,24 +1,33 @@
+/*
+* Variables
+*/
+
+$fa-font-path: "/bower_components/fontawesome/fonts";
 $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-@import "bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 
 /*
 * Imports
 */
+
+@import "bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "bower_components/components-font-awesome/scss/font-awesome.scss";
 
 /*
 * Common App
 */
 
 // Util
-@import "util/fonts";
-@import "util/colors";
 @import "util/browsehappy";
+@import "util/colors";
+@import "util/fonts";
 @import "util/general";
+@import "util/buttons";
+
 
 // Others
 @import "header";
 @import "footer";
-
+@import "box";
 
 /*
 * General App
