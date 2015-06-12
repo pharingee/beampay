@@ -2,9 +2,10 @@
 
 angular
   .module('app.auth')
-  .controller('SignupCtrl', function ($scope, $location, Auth, Error) {
+  .controller('SignupCtrl', function ($scope, $location, $auth, Auth, Error) {
 
     $scope.signup = {};
+
     $scope.signup.submit = function () {
       // Reset
       $scope.signup.errors = [];
@@ -31,6 +32,17 @@ angular
         }, function (data) {
           $scope.signup.errors = Error.signup(data);
         });
+    };
+
+
+    $scope.signup.fb = function() {
+      $auth.authenticate('facebook', {
+        'acceptedPrivacyPolicy': true
+      }).then(function (req) {
+        Auth.persist(req.data.id, req.data.token);
+      }, function (req) {
+        $scope.signup.errors = Error.signInFb(req.data);
+      });
     };
 
   });
