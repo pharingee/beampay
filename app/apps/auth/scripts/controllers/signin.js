@@ -42,4 +42,12 @@ angular
       });
     };
 
+    $scope.signup = function () {
+      $location.path('/auth/signup/');
+    };
+
+    $scope.forgot = function () {
+      $location.path('/auth/forgot/');
+    };
+
   });

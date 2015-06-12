@@ -28,6 +28,19 @@ body {
   }
 }
 
+@mixin facebook-button(){
+
+  background-color: #36528f;
+  color: $white;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  border: none;
+  border-radius: 3px;
+
+}
+
 @mixin circle($color) {
   border: 2px solid $color;
   border-radius: 50%;
@@ -40,3 +53,4 @@ body {
   // center image in circle
   text-align: center;
 }
+

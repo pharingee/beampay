@@ -60,5 +60,20 @@
         margin-top: 10px;
       }
     }
+
+    .facebook {
+      text-align: center;
+
+      button {
+        @include facebook-button();
+        margin-top: 10px;
+        width: 100%;
+      } 
+    }
+
+    .bottom-desc {
+      margin-top: 50px;
+      text-align: center;
+    }
   }
 }
