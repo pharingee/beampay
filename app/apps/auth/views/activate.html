@@ -1,3 +1,5 @@
+<div ng-include="'apps/common/views/_header.html'"></div>
+
 <div class="container" ng-controller="ActivateCtrl">
   <div class="alert alert-warning" role="alert" ng-show="activate.errors.length">
     <p>Error(s):</p>
@@ -6,5 +8,6 @@
         {{ error }}
       </li>
     </ul>
+    Yeah
   </div>
 </div>

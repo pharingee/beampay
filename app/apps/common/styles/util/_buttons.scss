@@ -13,8 +13,44 @@
   }
 }
 
-@mixin small-capsule-button($background-color, $color, $hover-color) {
-  @include capsule-button($background-color, $color, $hover-color);
-  padding: 6px 30px;
-  font-size: 1em;
+@mixin black-button() {
+  background-color: $black;
+  color: $white;
+  font-size: 1.5em;
+
+  padding: 7px 20px;
+
+  border: none;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: $white;
+    color: $green;
+  }
+}
+
+@mixin black-button-invert() {
+  @include black-button();
+
+  &:hover {
+    background-color: $green;
+    color: $white;
+  }
+}
+
+@mixin small-black-button-invert(){
+  @include capsule-button($black, $neutral-color, $green);
+}
+
+@mixin facebook-button(){
+
+  background-color: #36528f;
+  color: $white;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  border: none;
+  border-radius: 3px;
+
 }

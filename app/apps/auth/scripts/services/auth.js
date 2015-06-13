@@ -2,8 +2,19 @@
 
 angular
   .module('app.auth')
-  .service('Auth', function ($http, $q, Persist, API_SERVER) {
+  .service('Auth', function ($cookieStore, $http, $q, Persist, API_SERVER) {
     API_SERVER += 'account/';
+
+    var TOKEN_KEY = 'token';
+    var USER_KEY = 'id';
+
+    var removeToken = function () {
+      $cookieStore.remove(TOKEN_KEY);
+    };
+
+    var removeUserId = function () {
+      $cookieStore.remove(USER_KEY);
+    };
 
     var persist = function (id, token) {
       Persist.saveUser(id, token);
@@ -90,6 +101,28 @@ angular
       return deferred.promise;
     };
 
+    var isLoggedIn = function () {
+      if ($cookieStore.get(TOKEN_KEY)) {
+        return true;
+      }
+      return false;
+    };
+
+    var logout = function () {
+
+      var url = API_SERVER + 'signout/';
+      var deferred = $q.defer();
+
+      $http.post(url).then(function () {
+        removeToken();
+        removeUserId();
+
+        return deferred.resolve();
+      });
+
+      return deferred.promise;
+    };
+
     return {
       persist: function (id, token) {
         return persist(id, token);
@@ -108,6 +141,12 @@ angular
       },
       activateResend: function (email) {
         return activateResend(email);
-      }
+      },
+      isLoggedIn: function () {
+        return isLoggedIn();
+      },
+      logout: function () {
+        return logout();
+      },
     };
   });
