@@ -5,7 +5,6 @@ angular
   .controller('ActivateCtrl', function ($scope, $location, $routeParams, Auth, Error) {
     $scope.activate = {};
     var key = $routeParams.key;
-    console.log('here');
     if (key) {
       Auth.activate(key)
         .then(function () {

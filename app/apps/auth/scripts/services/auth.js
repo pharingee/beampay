@@ -5,17 +5,6 @@ angular
   .service('Auth', function ($cookieStore, $http, $q, Persist, API_SERVER) {
     API_SERVER += 'account/';
 
-    var TOKEN_KEY = 'token';
-    var USER_KEY = 'id';
-
-    var removeToken = function () {
-      $cookieStore.remove(TOKEN_KEY);
-    };
-
-    var removeUserId = function () {
-      $cookieStore.remove(USER_KEY);
-    };
-
     var persist = function (id, token) {
       Persist.saveUser(id, token);
     };
@@ -102,7 +91,7 @@ angular
     };
 
     var isLoggedIn = function () {
-      if ($cookieStore.get(TOKEN_KEY)) {
+      if (Persist.getUser().userid) {
         return true;
       }
       return false;
@@ -114,8 +103,7 @@ angular
       var deferred = $q.defer();
 
       $http.post(url).then(function () {
-        removeToken();
-        removeUserId();
+        Persist.deleteUser();
 
         return deferred.resolve();
       });

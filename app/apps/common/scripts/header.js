@@ -1,8 +1,8 @@
 'use strict';
 
 angular
-.module('app')
-.controller('HeaderCtrl', function ($scope, $location, Auth) {
+  .module('app')
+  .controller('HeaderCtrl', function ($scope, $location, Auth) {
 
     if (Auth.isLoggedIn()) {
       $scope.loggedin = true;
