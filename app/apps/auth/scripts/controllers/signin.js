@@ -37,6 +37,7 @@ angular
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
         Auth.persist(req.data.id, req.data.token);
+        $location.path('/home');
       }, function (req) {
         $scope.signIn.errors = Error.signInFb(req.data);
       });

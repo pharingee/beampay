@@ -1,13 +1,20 @@
 <div ng-include="'apps/common/views/_header.html'"></div>
 
 <div class="container" ng-controller="ActivateCtrl">
-  <div class="alert alert-warning" role="alert" ng-show="activate.errors.length">
-    <p>Error(s):</p>
-    <ul>
-      <li ng-repeat="error in activate.errors">
-        {{ error }}
-      </li>
-    </ul>
-    Yeah
+  <div class="row box">
+    <div class="col-sm-offset-3 col-sm-6 form">
+      <h3> Oops, something went wrong </h3>
+      <div class="errors" role="alert" ng-show="activate.errors.length">
+        <p>Error(s):</p>
+        <ul>
+          <li ng-repeat="error in activate.errors">
+            {{ error }}
+          </li>
+        </ul>
+      </div>
+      <p> Please reach out to <a href="mailto:hello@beampay.co">hello@beampay.co</a> for help.</p>
+    </div>
   </div>
 </div>
+
+

@@ -22,8 +22,8 @@
           <button type="submit" class="btn btn-default" ng-click="forgot.submit()">Reset Password</button>
         </div>
       </form>
-      <p ng-show="forgot.success">
-        Check your email!
+      <p class="success" ng-show="forgot.success">
+        A password reset link has been sent to <strong>{{ forgot.email }}</strong>. Click on that link to continue with the process.
       </p>
     </div>
   </div>

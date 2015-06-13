@@ -15,7 +15,7 @@ angular
     $scope.logout = function () {
       $scope.logoutInProgress = true;
       
-      Auth.logout().then(function () {
+      Auth.signout().then(function () {
         $scope.logoutInProgress = false;
         $scope.loggedin = false;
         $location.path('/');

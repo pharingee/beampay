@@ -97,20 +97,6 @@ angular
       return false;
     };
 
-    var logout = function () {
-
-      var url = API_SERVER + 'signout/';
-      var deferred = $q.defer();
-
-      $http.post(url).then(function () {
-        Persist.deleteUser();
-
-        return deferred.resolve();
-      });
-
-      return deferred.promise;
-    };
-
     return {
       persist: function (id, token) {
         return persist(id, token);
@@ -132,9 +118,6 @@ angular
       },
       isLoggedIn: function () {
         return isLoggedIn();
-      },
-      logout: function () {
-        return logout();
-      },
+      }
     };
   });

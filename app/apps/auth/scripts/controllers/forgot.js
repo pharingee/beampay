@@ -19,6 +19,7 @@ angular
       // Server Request
       Settings.requestResetPassword(email)
         .then(function () {
+          $scope.forgot.email = email;
           $scope.forgot.success = true;
         }, function (data) {
           $scope.forgot.errors = Error.forgot(data);
