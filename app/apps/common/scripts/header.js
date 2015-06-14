@@ -29,4 +29,9 @@ angular
     $scope.signin = function () {
       $location.path('/auth/signin/');
     };
+
+    $scope.dashboard = function () {
+      $location.path('/home');
+    };
+
   });
