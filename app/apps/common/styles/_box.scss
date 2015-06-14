@@ -20,6 +20,7 @@
     h5 {
       color: $light_body_color;
       text-align: center;
+      margin-top: 25px;
     }
 
     p {
@@ -39,7 +40,7 @@
         margin-top: 30px;
       }
 
-      input[type=email], input[type=password], input[type=text] {
+      input[type=email], input[type=password], input[type=text], select {
         border-radius: 2px;
         height: 42px;
       }
@@ -47,6 +48,21 @@
       input[type=checkbox] {
         margin-right: 10px;
       }
+
+      .date {
+        width: initial;
+        display: inline;
+      }
+
+      .date:not(:first-of-type) {
+        margin-left: 15px;
+      }
+    }
+
+    i {
+      margin-left: 10px;
+      font-size: 1.5em;
+      color: $green;
     }
 
     .errors {

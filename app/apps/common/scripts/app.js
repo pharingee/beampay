@@ -11,7 +11,8 @@ angular
     'app.config',
     'app.general',
     'app.auth',
-    'app.transaction'
+    'app.transaction',
+    'app.settings'
   ])
   .config(function ($routeProvider) {
     $routeProvider
