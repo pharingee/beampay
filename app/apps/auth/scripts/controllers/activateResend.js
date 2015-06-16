@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('ActivateResendCtrl', function ($scope, $location, Auth, Error) {
+  .controller('ActivateResendCtrl', function ($scope, Auth, Error) {
 
     $scope.activateResend = {};
     $scope.activateResend.submit = function () {

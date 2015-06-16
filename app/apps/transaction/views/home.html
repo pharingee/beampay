@@ -4,7 +4,7 @@
   <p>Token: {{ currentUser.token }}</p>
 
   <p>
-    <a href="#/auth/settings">Settings</a>
+    <a ui-sref="settings">Settings</a>
   </p>
   <p ng-controller="SignoutCtrl">
     <a ng-click="signout()" href="">Signout</a>

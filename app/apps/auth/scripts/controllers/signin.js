@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('SignInCtrl', function ($scope, $location, $window, $auth, Auth, Error) {
+  .controller('SignInCtrl', function ($scope, $state, $stateParams, $window, $auth, Auth, Error) {
 
     $scope.signIn = {};
     $scope.signIn.submit = function () {
@@ -20,11 +20,11 @@ angular
       // Server Request
       Auth.signIn(email, pass)
         .then(function () {
-          var next = $location.search().next;
+          var next = $stateParams.next;
           if (next) {
-            $location.path(decodeURIComponent(next)).search('next', null);
+            $state.transitionTo(next);
           } else {
-            $location.path('/home');
+            $state.transitionTo('home');
           }
         }, function (data) {
           $scope.signIn.errors = Error.signIn(data);
@@ -37,18 +37,14 @@ angular
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
         Auth.persist(req.data.id, req.data.token);
-        $location.path('/home');
+        $state.transitionTo('home');
       }, function (req) {
         $scope.signIn.errors = Error.signInFb(req.data);
       });
     };
 
-    $scope.signup = function () {
-      $location.path('/auth/signup/');
-    };
-
     $scope.forgot = function () {
-      $location.path('/auth/forgot/');
+      $state.transitionTo('forgot');
     };
 
   });

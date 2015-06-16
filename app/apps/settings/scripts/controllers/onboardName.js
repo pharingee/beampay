@@ -2,7 +2,7 @@
 
 angular
   .module('app.settings')
-  .controller('OnboardNameCtrl', function ($scope, $location) {
+  .controller('OnboardNameCtrl', function ($scope, $state) {
 
     $scope.settings = {};
 
@@ -17,7 +17,7 @@ angular
         return;
       }
 
-      $location.path('/settings/onboard/address');
+      $state.transitionTo('settings.onboard.address');
     };
 
   });

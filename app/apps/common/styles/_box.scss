@@ -59,12 +59,6 @@
       }
     }
 
-    i {
-      margin-left: 10px;
-      font-size: 1.5em;
-      color: $green;
-    }
-
     .errors {
       padding-top: 15px;
       p, ul {
@@ -89,7 +83,7 @@
         @include facebook-button();
         margin-top: 10px;
         width: 100%;
-      } 
+      }
     }
 
     .bottom-desc {

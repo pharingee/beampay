@@ -2,7 +2,7 @@
 
 angular
   .module('app.settings')
-  .controller('OnboardAddressCtrl', function ($scope, $location) {
+  .controller('OnboardAddressCtrl', function ($scope) {
 
     $scope.settings = {};
     $scope.settings.country = 'US';

@@ -2,8 +2,8 @@
 
 angular
   .module('app.auth')
-  .controller('ResetPasswordCtrl', function ($scope, $location, $routeParams, Settings, Error) {
-    var key = $routeParams.key;
+  .controller('ResetPasswordCtrl', function ($scope, $state, $stateParams, Settings, Error) {
+    var key = $stateParams.key;
 
     if (key) {
       $scope.resetPassword = {};
@@ -40,7 +40,7 @@ angular
           });
         };
     } else {
-      $location.path('/');
+      $state.transitionTo('landing');
     }
 
   });

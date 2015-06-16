@@ -2,11 +2,15 @@
 
 angular
   .module('app.transaction', [])
-  .config(function ($routeProvider) {
+  .config(function ($stateProvider) {
     var tempPrefix = 'apps/transaction/views/';
 
-    $routeProvider
-      .when('/home', {
-        templateUrl: tempPrefix + 'home.html'
+    $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: tempPrefix + 'home.html',
+        data: {
+          pageTitle: 'Welcome'
+        }
       });
   });

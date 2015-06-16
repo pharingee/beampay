@@ -2,14 +2,27 @@
 
 angular
   .module('app.settings', [])
-  .config(function ($routeProvider) {
+  .config(function ($stateProvider) {
     var tempPrefix ='apps/settings/views/';
 
-    $routeProvider
-      .when('/settings/onboard/name', {
-        templateUrl: tempPrefix + 'onboardName.html'
+    $stateProvider
+      .state('settings.onboard', {
+        url: '/settings/onboard',
+        abstract: 'true',
+        template: '<ui-view/>'
       })
-      .when('/settings/onboard/address', {
-        templateUrl: tempPrefix + 'onboardAddress.html'
+      .state('settings.onboard.name', {
+        url: '/settings/onboard/name',
+        templateUrl: tempPrefix + 'onboardName.html',
+        data: {
+          pageTitle: 'Onboarding - Name'
+        }
+      })
+      .state('settings.onboard.address', {
+        url: '/settings/onboard/address',
+        templateUrl: tempPrefix + 'onboardAddress.html',
+        data: {
+          pageTitle: 'Onboarding - Address'
+        }
       });
   });

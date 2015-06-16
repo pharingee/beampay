@@ -2,15 +2,15 @@
 
 angular
   .module('app.auth')
-  .controller('SignoutCtrl', function ($scope, $location, Auth) {
+  .controller('SignoutCtrl', function ($scope, $state, Auth) {
 
     $scope.signout = function () {
       Auth.signout().then(
         function () {
-          $location.path('/');
+          $state.transitionTo('landing');
         }, function () {
           // Fail silently
-          $location.path('/').search('next', null);
+          $state.transitionTo('landing');
         }
       );
     };

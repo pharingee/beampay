@@ -2,18 +2,18 @@
 
 angular
   .module('app.auth')
-  .controller('ActivateCtrl', function ($scope, $location, $routeParams, Auth, Error) {
+  .controller('ActivateCtrl', function ($scope, $state, $routeParams, Auth, Error) {
     $scope.activate = {};
     var key = $routeParams.key;
     if (key) {
       Auth.activate(key)
         .then(function () {
-          $location.path('/home');
+          $state.transitionTo('home');
         }, function (data) {
           $scope.activate.errors = Error.activate(data);
         });
     } else {
-      $location.path('/');
+      $state.transitionTo('landing');
     }
 
   });

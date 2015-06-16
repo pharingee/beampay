@@ -19,7 +19,7 @@ angular
     var responseError = function (response) {
       if (response.status === 401) {
         Persist.deleteUser();
-        $location.path('/auth/signin').search('next', encodeURIComponent($location.path()));
+        $location.path($location.path());
       }
       return $q.reject(response);
     };

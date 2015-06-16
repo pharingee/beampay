@@ -2,7 +2,8 @@
   <div class="container" ng-controller="HeaderCtrl">
     <div class="row">
       <div class="col-md-6">
-        <a href="/#/"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
+        <a ui-sref="landing" ng-if="!loggedin"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
+        <a ui-sref="home" ng-if="loggedin"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
       </div>
       <div class="col-md-5 col-offset-md-1 hidden-sm hidden-xs section">
         <ul>

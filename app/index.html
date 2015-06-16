@@ -1,8 +1,8 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="app" >
   <head>
     <meta charset="utf-8">
-    <title>Beam - Care for loved ones in Ghana quickly and affordably</title>
+    <title ng-bind="pageTitle">Beam - Care for loved ones in Ghana quickly and affordably</title>
     <meta name="description" content="Care for loved ones in Ghana by paying directly for school fees, hospital bills, phone airtime credit, and much more.">
 
     <!-- Mobile Web App Compatibility -->
@@ -39,13 +39,13 @@
     <!-- endbuild -->
 
   </head>
-  <body ng-app="app">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-view=""></div>
+    <div ui-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

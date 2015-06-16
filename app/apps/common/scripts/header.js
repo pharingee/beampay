@@ -2,36 +2,36 @@
 
 angular
   .module('app')
-  .controller('HeaderCtrl', function ($scope, $location, Auth) {
+  .controller('HeaderCtrl', function ($scope, $state, Auth) {
 
     if (Auth.isLoggedIn()) {
       $scope.loggedin = true;
     } else {
       $scope.loggedin = false;
     }
-    
+
     $scope.logoutInProgress = false;
 
     $scope.logout = function () {
       $scope.logoutInProgress = true;
-      
+
       Auth.signout().then(function () {
         $scope.logoutInProgress = false;
         $scope.loggedin = false;
-        $location.path('/');
+        $state.transitionTo('landing');
       });
     };
 
     $scope.signup= function () {
-      $location.path('/auth/signup/');
+      $state.transitionTo('signup');
     };
 
     $scope.signin = function () {
-      $location.path('/auth/signin/');
+      $state.transitionTo('signin');
     };
 
     $scope.dashboard = function () {
-      $location.path('/home');
+      $state.transitionTo('home');
     };
 
   });

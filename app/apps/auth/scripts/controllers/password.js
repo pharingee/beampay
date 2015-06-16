@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('PasswordCtrl', function ($scope, $location, $routeParams, Settings, Error) {
+  .controller('PasswordCtrl', function ($scope, Settings, Error) {
 
     $scope.password = {};
     Settings.isPassword()

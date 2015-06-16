@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('SignupCtrl', function ($scope, $location, $auth, Auth, Error) {
+  .controller('SignupCtrl', function ($scope, $state, $auth, Auth, Error) {
 
     $scope.signup = {};
 
@@ -28,7 +28,7 @@ angular
       // Server Request
       Auth.signup(email, pass1, pass2, privacy)
         .then(function () {
-          $location.path('/auth/signup/complete');
+          $state.transitionTo('signupComplete');
         }, function (data) {
           $scope.signup.errors = Error.signup(data);
         });

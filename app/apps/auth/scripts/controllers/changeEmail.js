@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('ChangeEmailCtrl', function ($scope, $location, $window, Settings, Error) {
+  .controller('ChangeEmailCtrl', function ($scope, Settings, Error) {
 
     $scope.changeEmail = {};
     $scope.changeEmail.submit = function () {

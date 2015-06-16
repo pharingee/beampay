@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('ForgotCtrl', function ($scope, $location, $window, Settings, Error) {
+  .controller('ForgotCtrl', function ($scope, Settings, Error) {
 
     $scope.forgot = {};
     $scope.forgot.submit = function () {

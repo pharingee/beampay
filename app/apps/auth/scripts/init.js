@@ -2,40 +2,73 @@
 
 angular
   .module('app.auth', ['satellizer'])
-  .config(function ($routeProvider, $httpProvider, $authProvider, API_SERVER, FACEBOOK_CLIENT_ID) {
+  .config(function ($stateProvider, $httpProvider, $authProvider, API_SERVER, FACEBOOK_CLIENT_ID) {
     var urlPrefix = '/auth/';
     var tempPrefix = 'apps/auth/views/';
 
-    $routeProvider
-      .when(urlPrefix + 'signup', {
-        templateUrl: tempPrefix + 'signup.html'
+    $stateProvider
+      .state('signup', {
+        url: urlPrefix + 'signup',
+        templateUrl: tempPrefix + 'signup.html',
+        data: {
+          pageTitle: 'Signup'
+        }
       })
-      .when(urlPrefix + 'signup/complete', {
-        templateUrl: tempPrefix + 'signupComplete.html'
+      .state('signupComplete', {
+        url: urlPrefix + 'signup/complete',
+        templateUrl: tempPrefix + 'signupComplete.html',
+        data: {
+          pageTitle: 'Signup Complete'
+        }
       })
-      .when(urlPrefix + 'signin', {
-        templateUrl: tempPrefix + 'signin.html'
+      .state('signin', {
+        url: urlPrefix + 'signin/?next',
+        templateUrl: tempPrefix + 'signin.html',
+        data: {
+          pageTitle: 'Signin'
+        }
       })
-      .when(urlPrefix + 'activate/:key', {
-        templateUrl: tempPrefix + 'activate.html'
+      .state('activate', {
+        url: urlPrefix + 'activate/:key',
+        templateUrl: tempPrefix + 'activate.html',
+        data: {
+          pageTitle: 'Activate'
+        }
       })
-      .when(urlPrefix + 'settings', {
-        templateUrl: tempPrefix + 'settings.html'
+      .state('settings', {
+        url: urlPrefix + 'settings',
+        templateUrl: tempPrefix + 'settings.html',
+        data: {
+          pageTitle: 'Settings'
+        }
       })
-      .when(urlPrefix + 'settings/email', {
-        templateUrl: tempPrefix + 'changeEmail.html'
+      .state('settings.email', {
+        url: urlPrefix + 'settings/email',
+        templateUrl: tempPrefix + 'changeEmail.html',
+        data: {
+          pageTitle: 'Email Settings'
+        }
       })
-      .when(urlPrefix + 'settings/email/:key', {
-        templateUrl: tempPrefix + 'confirmEmail.html'
+      .state('settings.password', {
+        url: urlPrefix + 'settings/password',
+        templateUrl: tempPrefix + 'password.html',
+        data: {
+          pageTitle: 'Password Settings'
+        }
       })
-      .when(urlPrefix + 'settings/password', {
-        templateUrl: tempPrefix + 'password.html'
+      .state('forgot', {
+        url: urlPrefix + 'forgot',
+        templateUrl: tempPrefix + 'forgot.html',
+        data: {
+          pageTitle: 'Forgot Password'
+        }
       })
-      .when(urlPrefix + 'forgot', {
-        templateUrl: tempPrefix + 'forgot.html'
-      })
-      .when(urlPrefix + 'forgot/:key', {
-        templateUrl: tempPrefix + 'resetPassword.html'
+      .state('resetPassword', {
+        url: urlPrefix + 'forgot/:key',
+        templateUrl: tempPrefix + 'resetPassword.html',
+        data: {
+          pageTitle: 'Reset Password'
+        }
       });
 
     $httpProvider.interceptors.push('AuthInterceptor');

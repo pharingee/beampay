@@ -2,9 +2,9 @@
 
 angular
   .module('app.auth')
-  .controller('ConfirmEmailCtrl', function ($scope, $location, $routeParams, Settings, Error) {
+  .controller('ConfirmEmailCtrl', function ($scope, $state, $stateParams, Settings, Error) {
     $scope.confirmEmail = {};
-    var key = $routeParams.key;
+    var key = $stateParams.key;
 
     if (key) {
       Settings.confirmEmail(key)
@@ -14,7 +14,7 @@ angular
           $scope.confirmEmail.errors = Error.confirmEmail(data);
         });
     } else {
-      $location.path('/');
+      $state.transitionTo('landing');
     }
 
   });
