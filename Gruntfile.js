@@ -408,7 +408,42 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
+
+    //Environment constants
+    ngconstant: {
+      // Options for all targets
+      options: {
+        space: '  ',
+        wrap: '"use strict";\n\n {%= __ngModule %}',
+        name: 'app.config',
+        dest: 'app/apps/common/scripts/config.js'
+      },
+    // Environment targets
+      development: {
+        constants: {
+          name: 'development',
+          API_SERVER: 'http://localhost:8000/api/v1/',
+          FACEBOOK_CLIENT_ID: 1562773807273610
+        }
+      },
+
+      production: {
+        constants: {
+          name: 'production',
+          API_SERVER: 'http://localhost:8000/api/v1/',
+          FACEBOOK_CLIENT_ID: 1562773807273610
+        }
+      },
+
+      staging: {
+        constants: {
+          name: 'staging',
+          API_SERVER: 'http://localhost:8000/api/v1/',
+          FACEBOOK_CLIENT_ID: 1562773807273610
+        }
+      }
+    },
   });
 
 
@@ -418,6 +453,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
+      'ngconstant:development',
       'clean:server',
       'wiredep',
       'concurrent:server',
