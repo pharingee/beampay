@@ -21,8 +21,7 @@ angular
     $urlRouterProvider.otherwise('/');
   })
 
-  .run(function ($rootScope, $anchorScroll, Auth, $state) {
-
+  .run(function ($rootScope, $anchorScroll, Auth, $state, $auth) {
     $rootScope.$on('$stateChangeSuccess', function(event, toState) {
       //Set page title
       if (angular.isDefined(toState.data.pageTitle)) {

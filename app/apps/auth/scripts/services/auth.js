@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .service('Auth', function ($cookieStore, $http, $q, Persist, API_SERVER) {
+  .service('Auth', function ($cookieStore, $http, $q, $auth, Persist, API_SERVER) {
     API_SERVER += 'account/';
 
     var persist = function (id, token) {
@@ -94,6 +94,11 @@ angular
       if (Persist.getUser().userid) {
         return true;
       }
+
+      if ($auth.isAuthenticated()) {
+        return true;
+      }
+
       return false;
     };
 
