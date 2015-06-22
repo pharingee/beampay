@@ -50,10 +50,10 @@ angular
 
     return {
       saveUser: function (userId, token) {
-        return saveUser(userId, token, email);
+        return saveUser(userId, token);
       },
       saveUserName: function (firstName, lastName) {
-        return saveUser(userId, token, email);
+        return saveUser(firstName, lastName);
       },
       getUser: function () {
         return getUser();
