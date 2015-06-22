@@ -2,11 +2,15 @@
 
 angular
   .module('app.auth')
-  .service('Auth', function ($cookieStore, $http, $q, $auth, Persist, API_SERVER) {
+  .service('Auth', function ($cookieStore, $http, $q, Persist, API_SERVER) {
     API_SERVER += 'account/';
 
     var persist = function (id, token) {
       Persist.saveUser(id, token);
+    };
+
+    var saveName = function (firstName, lastName) {
+      Persist.saveUserName(firstName, lastName);
     };
 
     var signup = function (email, pass1, pass2, privacy) {
@@ -66,6 +70,7 @@ angular
       var deferred = $q.defer();
 
       $http.get(url).success(function (data) {
+        console.log(data);
         persist(data.id, data.token);
         deferred.resolve();
       }).error(function (data) {
@@ -94,17 +99,15 @@ angular
       if (Persist.getUser().userid) {
         return true;
       }
-
-      if ($auth.isAuthenticated()) {
-        return true;
-      }
-
       return false;
     };
 
     return {
       persist: function (id, token) {
         return persist(id, token);
+      },
+      saveName: function (firstName, lastName) {
+        return saveName(firstName, lastName);
       },
       signup: function (email, pass1, pass2, privacy) {
         return signup(email, pass1, pass2, privacy);

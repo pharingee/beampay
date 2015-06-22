@@ -2,13 +2,13 @@
 
 angular
   .module('app.auth')
-  .controller('ActivateCtrl', function ($scope, $state, $routeParams, Auth, Error) {
+  .controller('ActivateCtrl', function ($scope, $state, $stateParams, Auth, Error) {
     $scope.activate = {};
-    var key = $routeParams.key;
+    var key = $stateParams.key;
     if (key) {
       Auth.activate(key)
         .then(function () {
-          $state.transitionTo('home');
+          $state.transitionTo('settings.onboard.name');
         }, function (data) {
           $scope.activate.errors = Error.activate(data);
         });

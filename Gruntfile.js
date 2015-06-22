@@ -415,7 +415,7 @@ module.exports = function (grunt) {
       // Options for all targets
       options: {
         space: '  ',
-        wrap: '"use strict";\n\n {%= __ngModule %}',
+        wrap: '\'use strict\';\n\n {%= __ngModule %}',
         name: 'app.config',
         dest: 'app/apps/common/scripts/config.js'
       },
@@ -478,6 +478,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'ngconstant:staging',
     'clean:dist',
     'wiredep',
     'useminPrepare',

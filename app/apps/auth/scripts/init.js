@@ -29,7 +29,7 @@ angular
         }
       })
       .state('activate', {
-        url: urlPrefix + 'activate/:key',
+        url: urlPrefix + 'activate/:key/',
         templateUrl: tempPrefix + 'activate.html',
         data: {
           pageTitle: 'Activate'
@@ -74,6 +74,8 @@ angular
     $httpProvider.interceptors.push('AuthInterceptor');
 
     $authProvider.baseUrl = API_SERVER;
+    $authProvider.signupRedirect = '/settings/onboard/name';
+    $authProvider.loginRedirect = '/settings/onboard/name';
     $authProvider.facebook({
       clientId: FACEBOOK_CLIENT_ID,
       url: 'account/signin/facebook/'

@@ -2,34 +2,41 @@
 
 angular
   .module('app.auth')
-  .service('Persist', function ($cookieStore) {
+  .service('Persist', function ($window, $cookieStore) {
     var USERID_KEY = 'userid';
     var TOKEN_KEY = 'token';
     var EMAIL_KEY = 'email';
+    var FIRST_NAME_KEY = 'firstName';
+    var LAST_NAME_KEY = 'lastName';
+    // var AVATAR_URL_KEY = 'avatar_url';
 
     // USER
     var saveUser = function (userId, token) {
-      $cookieStore.remove(EMAIL_KEY);
       $cookieStore.put(USERID_KEY, userId);
       $cookieStore.put(TOKEN_KEY, token);
+    };
+
+    // USER
+    var saveUserName = function (firstName, lastName) {
+      $cookieStore.put(FIRST_NAME_KEY, firstName);
+      $cookieStore.put(LAST_NAME_KEY, lastName);
     };
 
     var deleteUser = function () {
       $cookieStore.remove(USERID_KEY);
       $cookieStore.remove(TOKEN_KEY);
+      $cookieStore.remove(EMAIL_KEY);
+      $cookieStore.remove(FIRST_NAME_KEY);
+      $cookieStore.remove(LAST_NAME_KEY);
     };
 
     var getUser = function () {
-      try {
-        return {
-          userid: $cookieStore.get(USERID_KEY),
-          token: $cookieStore.get(TOKEN_KEY)
-        };
-      } catch (e) {
-        $cookieStore.remove(USERID_KEY);
-        $cookieStore.remove(TOKEN_KEY);
-        return null;
-      }
+      return {
+        userid: $cookieStore.get(USERID_KEY),
+        token: $cookieStore.get(TOKEN_KEY),
+        firstName: $cookieStore.get(FIRST_NAME_KEY),
+        lastName: $cookieStore.get(LAST_NAME_KEY)
+      };
     };
 
     // EMAIL
@@ -42,7 +49,10 @@ angular
     };
 
     return {
-      saveUser: function (userId, token, email) {
+      saveUser: function (userId, token) {
+        return saveUser(userId, token, email);
+      },
+      saveUserName: function (firstName, lastName) {
         return saveUser(userId, token, email);
       },
       getUser: function () {

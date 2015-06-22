@@ -27,14 +27,4 @@ angular
           pageTitle: 'About BeamPay'
         }
       });
-    // $routeProvider
-    //   .when('/', {
-    //     templateUrl: tempPrefix + 'landing/landing.html'
-    //   })
-    //   .when('/how', {
-    //     templateUrl: tempPrefix + 'hiw/hiw.html'
-    //   })
-    //   .when('/about', {
-    //     templateUrl: tempPrefix + 'about/about.html'
-    //   });
   });

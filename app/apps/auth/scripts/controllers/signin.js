@@ -36,6 +36,7 @@ angular
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
+        console.log(req.data);
         Auth.persist(req.data.id, req.data.token);
         $state.transitionTo('home');
       }, function (req) {
