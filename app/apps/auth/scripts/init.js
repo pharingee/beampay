@@ -74,8 +74,6 @@ angular
     $httpProvider.interceptors.push('AuthInterceptor');
 
     $authProvider.baseUrl = API_SERVER;
-    $authProvider.signupRedirect = '/settings/onboard/name';
-    $authProvider.loginRedirect = '/settings/onboard/name';
     $authProvider.facebook({
       clientId: FACEBOOK_CLIENT_ID,
       url: 'account/signin/facebook/'
