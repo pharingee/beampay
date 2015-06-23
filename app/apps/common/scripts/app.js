@@ -21,7 +21,7 @@ angular
     $urlRouterProvider.otherwise('/');
   })
 
-  .run(function ($rootScope, $anchorScroll) {
+  .run(function ($rootScope, $anchorScroll, Auth, $state) {
     $rootScope.$on('$stateChangeSuccess', function(event, toState) {
       //Set page title
       if (angular.isDefined(toState.data.pageTitle)) {
@@ -30,6 +30,22 @@ angular
         } else {
           $rootScope.pageTitle = toState.data.pageTitle + ' | BeamPay' ;
         }
+      }
+
+      //Transition to login on protected pages without authentication
+      var nonProtectedStates = [
+        'signin', 'signup', 'activate', 'confirmEmail', 'forgot',
+        'signupComplete', 'landing', 'hiw', 'about'];
+
+      var isProtectedState = true;
+      for (var i = 0; i < nonProtectedStates.length; i++) {
+        if (toState.name === nonProtectedStates[i]) {
+          isProtectedState = false;
+        }
+      }
+
+      if (isProtectedState && !Auth.isLoggedIn()) {
+        $state.transitionTo('signin', {next: $state.current.name});
       }
 
       // Scroll to top on all new pages

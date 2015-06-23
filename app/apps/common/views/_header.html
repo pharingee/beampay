@@ -1,18 +1,33 @@
-<div class="header">
-  <div class="container" ng-controller="HeaderCtrl">
-    <div class="row">
-      <div class="col-md-6">
-        <a ui-sref="landing" ng-if="!loggedin"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
-        <a ui-sref="home" ng-if="loggedin"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
-      </div>
-      <div class="col-md-5 col-offset-md-1 hidden-sm hidden-xs section">
-        <ul>
-          <li ng-if="!loggedin"><a href="" ng-click="signin()">Login</a></li>
-          <li ng-if="!loggedin"><a href="" ng-click="signup()">Signup</a></li>
-          <li ng-if="loggedin && !logoutInProgress"><a href="" ng-click="logout();">Logout</a></li>
-          <li ng-if="loggedin && logoutInProgress"><a>Logging out...</a></li>
-        </ul>
-      </div>
+<nav class="navbar navbar-default" ng-controller="HeaderCtrl">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
     </div>
-  </div>
-</div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" ng-if="loggedin && !logoutInProgress">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kwale Odoi <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" ng-click="logout();">Sign out</a></li>
+          </ul>
+        </li>
+        <li ng-if="!loggedin"><a href="" ng-click="signin()">Login</a></li>
+        <li ng-if="!loggedin"><a href="" ng-click="signup()">Signup</a></li>
+        <li ng-if="loggedin && logoutInProgress"><a>Signing out...</a></li>
+        <li><a href="#" >Support</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -8,7 +8,7 @@ angular
     if (key) {
       Auth.activate(key)
         .then(function () {
-          $state.transitionTo('settings.onboard.name');
+          $state.transitionTo('onboard.name');
         }, function (data) {
           $scope.activate.errors = Error.activate(data);
         });
