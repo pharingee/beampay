@@ -1,59 +1,63 @@
-.header {
+.navbar{
+  height: 5em;
+  background-color: #7DC242;
+  margin: 0;
+  padding: 0;
+}
 
-  background-color: $green;
-  color: $white;
-  font-family: 'bariol';
+.navbar-brand {
+  background-color: #6EAB3A;
+  height: 3.8em;
+}
 
-  .call-us {
-    background-color: $dark-green;
-    text-align: center;
-    max-width: 350px;
-    padding: 10px 25px;
-    font-size: 1.5em;
-    margin-left: 75px;
+.navbar-brand img{
+  height: 1.3em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-top: .2em;
+}
+
+.navbar-default .navbar-nav > li > a{
+  color: white;
+  padding-top: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .navbar-default .navbar-nav > li > a{
+    color: #777777;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-default .navbar-nav > li > a{
+    color: white;
+    padding-top: 1.5em;
+    padding-bottom: 1.9em;
   }
 
-  img {
-    &#logo {
-      height: 30px;
-      margin: 20px 0;
 
-      @media screen and (max-width: $screen-xs-max) {
-        margin: 30px 0;
-      }
-    }
-
-    &#hero {
-      margin-top: 25px;
-      max-width: 450px;
-    }
+  .navbar-default .navbar-nav > li > a:hover{
+    color: #6EAB3A;
+    background-color: white;
   }
 
-  .section {
-
-    padding: 10px;
-    font-size: 1.5em;
-    padding-top: 20px;
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-
-      a {
-        color: $white;
-
-        &:hover {
-          text-decoration: none;
-          color: $gray-dark;
-        }
-      }
-
-      li {
-        float: right;
-        margin-left: 20px;
-      }
-    }
+  .navbar-default .navbar-nav > li > a:focus{
+    color: #777777;
+    background-color: white;
   }
 
+  .navbar-default .navbar-nav > li.separator {
+    color: #777777;
+    padding-top: 1.5em;
+    padding-bottom: 1.9em;
+  }
+
+  .navbar-default .navbar-nav > .open > a,
+  .navbar-default .navbar-nav > .open > a:visited,
+  .navbar-default .navbar-nav > .open > a:hover,
+  .navbar-default .navbar-nav > .open > a:focus,
+  .navbar-default .navbar-nav > .open > a:focus {
+    color: #6EAB3A;
+    background-color: white;
+  }
 }
