@@ -1,0 +1,32 @@
+<div class="hiw-how">
+<div class="container" ng-controller="HomeCtrl">
+<div id="content-wrapper">
+      <div class="page-content">
+
+
+	Yike
+  <p>User ID: {{ currentUser.userid }}</p>
+  <p>Token: {{ currentUser.token }}</p>
+
+  <p>
+    <a ui-sref="settings">Settings</a>
+  </p>
+  <p ng-controller="SignoutCtrl">
+    <a ng-click="signout()" href="">Signout</a>
+  </p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
+</div>
+
+<!-- Main Content -->
+        <!-- <div ui-view></div> -->
+
+      </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+  </div><!-- End Page Wrapper -->

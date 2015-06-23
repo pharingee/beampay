@@ -1,0 +1,73 @@
+#sidebar-wrapper {
+  font-size: .9rem;
+  line-height: 1;
+  /*padding: 0;*/
+  color: #EEEEEE;
+  /*z-index: 50;*/
+  position: absolute;
+  background-color: #fff
+}
+@media (max-width: 480px) {
+  #sidebar-wrapper--toggle {
+    padding-left: 2rem;
+  }
+  .sidebar {
+    border-top: 1px solid #333;
+  }
+  .sidebar li {
+    backface-visibility: hidden;
+    max-height: 0;
+    transition: max-height 200ms;
+    overflow: hidden;
+  }
+  .sidebar li a {
+    padding-left: 1.125rem;
+  }
+}
+@media (min-width: 480px) {
+  #sidebar-wrapper {
+    display: block;
+    position: absolute;
+    width: 100%;
+   /* top: 0;
+    left: 0;*/
+  }
+  .sidebar {
+    display: block;
+  }
+}
+#sidebar-wrapper ul, #sidebar-wrapper li {
+ /* padding: 0;
+  margin: 0;*/
+  text-indent: 0;
+  list-style-type: none;
+}
+#sidebar-wrapper a, #sidebar-wrapper button {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: left;
+  padding: .75em  1.5em .75em 0;
+  white-space: nowrap;
+  border-width: 0;
+  background: transparent;
+  color: #aaa;
+  margin: 0;
+  outline: 0;
+}
+#sidebar-wrapper a:link, #sidebar-wrapper a:visited, #sidebar-wrapper button:link, #sidebar-wrapper button:visited {
+  color: #aaa;
+}
+/*#sidebar-wrapper a:hover, #sidebar-wrapper button:hover {
+  color: #000;
+  background: #EEEEEE;
+}*/
+#sidebar-wrapper i {
+  display: inline-block;
+  width: 2.2rem;
+  font-size: 1.25em;
+  text-align: center;
+  vertical-align: middle;
+}

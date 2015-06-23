@@ -1,13 +1,8 @@
-<div class="container" ng-controller="HomeCtrl">
-	Yike
-  <p>User ID: {{ currentUser.userid }}</p>
-  <p>Token: {{ currentUser.token }}</p>
+<div ng-include="'apps/transaction/views/partials/_dashboardheader.html'"></div>
+<div class="container row">
+<div ng-include="'apps/transaction/views/partials/_sidebar.html'" class="col-md-2"></div>
 
-  <p>
-    <a ui-sref="settings">Settings</a>
-  </p>
-  <p ng-controller="SignoutCtrl">
-    <a ng-click="signout()" href="">Signout</a>
-  </p>
-
+<div ng-include="'apps/transaction/views/partials/_services.html'" class="col-md-10" ></div>
 </div>
+<div ng-include="'apps/common/views/_footer.html'"></div>
+
