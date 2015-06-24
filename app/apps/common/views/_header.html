@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" ng-if="loggedin && !logoutInProgress">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kwale Odoi <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentUser.firstName}} {{currentUser.lastName}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">My Profile</a></li>
             <li><a href="#">Settings</a></li>

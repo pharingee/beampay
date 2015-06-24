@@ -2,7 +2,7 @@
 
 angular
   .module('app')
-  .controller('HeaderCtrl', function ($scope, $state, Auth) {
+  .controller('HeaderCtrl', function ($scope, $state, Auth, Persist) {
 
     if (Auth.isLoggedIn()) {
       $scope.loggedin = true;
@@ -33,5 +33,7 @@ angular
     $scope.dashboard = function () {
       $state.transitionTo('home');
     };
+
+    $scope.currentUser = Persist.getUser();
 
   });

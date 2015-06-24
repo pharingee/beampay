@@ -8,7 +8,7 @@ angular.module('app.settings')
       var deferred = $q.defer();
 
       $http.put(url, {firstName:firstName, lastName: lastName}).
-      success(function(response){
+      success(function(){
         Persist.saveUserName(firstName, lastName);
         deferred.resolve();
       }).
@@ -40,10 +40,10 @@ angular.module('app.settings')
 
     return {
       saveName: function (firstName, lastName){
-        return saveName(firstName, lastName)
+        return saveName(firstName, lastName);
       },
       saveAddress: function(dateOfBirth, country, phoneNumber, address){
-        return saveAddress(dateOfBirth, country, phoneNumber, address)
+        return saveAddress(dateOfBirth, country, phoneNumber, address);
       }
     };
 

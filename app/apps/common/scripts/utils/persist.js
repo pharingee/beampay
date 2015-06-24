@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('app.auth')
+  .module('app.utils', [])
   .service('Persist', function ($window, $cookieStore) {
     var USERID_KEY = 'userid';
     var TOKEN_KEY = 'token';
@@ -9,6 +9,8 @@ angular
     var FIRST_NAME_KEY = 'firstName';
     var LAST_NAME_KEY = 'lastName';
     // var AVATAR_URL_KEY = 'avatar_url';
+
+    var PRICING_KEY = 'pricing';
 
     // USER
     var saveUser = function (userId, token) {
@@ -48,6 +50,15 @@ angular
       return $cookieStore.get(EMAIL_KEY);
     };
 
+    //Pricing
+    var savePricing = function (pricing) {
+      $cookieStore.put(PRICING_KEY, JSON.stringify(pricing));
+    };
+
+    var getPricing = function () {
+      return JSON.parse($cookieStore.get(PRICING_KEY));
+    };
+
     return {
       saveUser: function (userId, token) {
         return saveUser(userId, token);
@@ -67,6 +78,13 @@ angular
       },
       getEmail: function () {
         return getEmail();
+      },
+
+      savePricing: function (pricing) {
+        return savePricing(pricing);
+      },
+      getPricing: function () {
+        return getPricing();
       }
     };
   });

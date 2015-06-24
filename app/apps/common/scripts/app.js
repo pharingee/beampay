@@ -10,10 +10,12 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'app.config',
+    'app.utils',
     'app.general',
     'app.auth',
     'app.transaction',
-    'app.settings'
+    'app.settings',
+    'app.television'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
