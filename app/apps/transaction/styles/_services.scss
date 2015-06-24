@@ -1,6 +1,6 @@
 .services {
   position: relative;
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 1rem;
   z-index: 10;
   margin-left: 200px;
   transition: margin 200ms;
@@ -12,6 +12,12 @@
     /*margin-left: 2rem;*/
     z-index: 10;
   }
+}
+
+.service-wrapper{
+  padding: 40px;
+  background-color: #fff;
+
 }
 
 .services h4 {
@@ -37,6 +43,8 @@
   position: relative;
   border-radius: 2px;
   height: 60%;
+  border: 1px solid #eee;
+  /*box-shadow:;*/
 
 }
 
@@ -60,17 +68,13 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  font-size: 24px;
+  z-index: 100px;
   color: #FFF;
-  margin: 0;
   position: absolute;
   left: 0;
-  right: 0;
-  padding: 0 16px;
-  font-weight: 400;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  word-wrap: break-word;
+  /*white-space: nowrap;*/
+  /*text-overflow: ellipsis;*/
   -webkit-transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
           transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -154,8 +158,23 @@
   max-height: 220px;
 }
 .service-card .card__title {
-  top: 135px;
+  top: 170px;
 }
+.service-card h6 {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 20px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.service-card .lnr{
+  padding-left: 20px;
+  padding-right: 5px;
+  font-size: 20px;
+  font-weight: 500px;
+}
+
 .service-card .card__text {
   top: 176px;
 }
