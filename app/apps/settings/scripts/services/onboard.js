@@ -22,7 +22,13 @@ angular.module('app.settings')
       var url = API_SERVER + 'account/profile/';
       var deferred = $q.defer();
 
-      $http.put(url, {dateOfBirth: dateOfBirth, country: country, phoneNumber: phoneNumber, address: address}).
+      $http.put(url, {
+        profile: {
+          dateOfBirth: dateOfBirth,
+          country: country,
+          phoneNumber: phoneNumber,
+          address: address}
+        }).
       success(function(){
         deferred.resolve();
       }).
