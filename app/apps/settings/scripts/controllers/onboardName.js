@@ -2,7 +2,7 @@
 
 angular
   .module('app.settings')
-  .controller('OnboardNameCtrl', function ($scope, $state) {
+  .controller('OnboardNameCtrl', function ($scope, $state, Onboard) {
 
     $scope.settings = {};
 
@@ -17,7 +17,13 @@ angular
         return;
       }
 
-      $state.transitionTo('settings.onboard.address');
+      Onboard.saveName(firstName, lastName).then(function(){
+        $state.transitionTo('onboard.address'); 
+      }, function(){
+        $scope.settings.errors.push('This page has errors.');
+
+      });
+
     };
 
   });

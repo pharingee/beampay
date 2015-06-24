@@ -3,7 +3,7 @@
   <div class="row box">
     <div class="col-sm-offset-3 col-sm-6 form">
 
-      <h3>Hey there, Falk !</h3>
+      <h3>Hey there, {{settings.firstName}} !</h3>
       <h5>We'll need the following information to get you set up</h5>
 
       <div class="errors" role="alert" ng-show="settings.errors.length">
@@ -18,7 +18,7 @@
         <div class="form-group">
           <label for="dateOfBirth">Date of birth</label>
           <div>
-            <select class="date form-control">
+            <select class="date form-control" ng-model="settings.date.day">
               <option value="">Day</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -52,7 +52,7 @@
               <option value="30">30</option>
               <option value="31">31</option>
           </select>
-          <select class="date form-control">
+          <select class="date form-control" ng-model="settings.date.month">
               <option value="">Month</option>
               <option value="1">January</option>
               <option value="2">February</option>
@@ -67,7 +67,7 @@
               <option value="11">November</option>
               <option value="12">December</option>
           </select>
-          <select class="date form-control">
+          <select class="date form-control" ng-model="settings.date.year">
               <option value="">Year</option>
               <option value="1996">1996</option>
               <option value="1995">1995</option>
@@ -350,7 +350,7 @@
         </div>
         <div class="form-group">
           <label for="phoneNumber">Phone number</label>
-          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Enter last name">
+          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Enter phone number">
         </div>
         <div class="form-group">
           <label for="address">Physical address</label>

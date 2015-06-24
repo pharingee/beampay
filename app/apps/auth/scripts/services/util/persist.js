@@ -53,7 +53,7 @@ angular
         return saveUser(userId, token);
       },
       saveUserName: function (firstName, lastName) {
-        return saveUser(firstName, lastName);
+        return saveUserName(firstName, lastName);
       },
       getUser: function () {
         return getUser();
