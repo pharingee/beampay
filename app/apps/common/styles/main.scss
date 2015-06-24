@@ -58,3 +58,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 @import "app/apps/auth/styles/facebook";
 
 // Landing
+
+// Services Dashboard
+@import "app/apps/transaction/styles/sidebar";
+@import "app/apps/transaction/styles/services";
