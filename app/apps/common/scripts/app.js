@@ -15,6 +15,7 @@ angular
     'app.auth',
     'app.transaction',
     'app.settings',
+    'app.airtime',
     'app.television'
   ])
 
