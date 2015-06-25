@@ -8,6 +8,7 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
+    'ngAnimate',
     'ui.bootstrap',
     'app.config',
     'app.utils',
