@@ -13,7 +13,8 @@ angular
     'app.general',
     'app.auth',
     'app.transaction',
-    'app.settings'
+    'app.settings',
+    'app.utility'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
