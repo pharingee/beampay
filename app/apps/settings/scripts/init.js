@@ -7,19 +7,19 @@ angular
 
     $stateProvider
       .state('onboard', {
-        url: '^/settings/onboard',
+        url: '/settings/onboard',
         abstract: 'true',
         template: '<ui-view/>'
       })
       .state('onboard.name', {
-        url: '^/settings/onboard/name',
+        url: '/name',
         templateUrl: tempPrefix + 'onboardName.html',
         data: {
           pageTitle: 'Onboarding - Name'
         }
       })
       .state('onboard.address', {
-        url: '^/settings/onboard/address',
+        url: '/address',
         templateUrl: tempPrefix + 'onboardAddress.html',
         data: {
           pageTitle: 'Onboarding - Address'

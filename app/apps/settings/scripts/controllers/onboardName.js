@@ -21,7 +21,6 @@ angular
         $state.transitionTo('onboard.address'); 
       }, function(){
         $scope.settings.errors.push('This page has errors.');
-
       });
 
     };
