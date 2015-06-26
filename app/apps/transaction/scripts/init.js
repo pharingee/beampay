@@ -7,7 +7,7 @@ angular
 
     $stateProvider
       .state('home', {
-        url: '/home',
+        url: '/transaction',
         templateUrl: tempPrefix + 'home.html',
         data: {
           pageTitle: 'Welcome'

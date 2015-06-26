@@ -1,46 +1,46 @@
 #sidebar-wrapper {
   padding: 0;
+  padding-right: 30px;
   margin: 0;
+  margin-left: -30px;
   color: #000000;
   z-index: 50;
-  position: absolute;
   background-color: #fff;
+
+  ul{
+    /*text-indent: 0;*/
+    list-style-type: none;
+    // -webkit-margin-before: 0em !important;
+    // -webkit-margin-after: 0em !important;
+    // -webkit-margin-start: 0px !important;
+    // -webkit-margin-end: 0px !important;
+    // -webkit-padding-start: 0px !important;
+  }
+
+  li {
+    font-size: 12px;
+    line-height: 40px;
+    font-weight: 600;
+
+    a {
+      box-sizing: border-box;
+      display: block;
+      text-decoration: none;
+      white-space: nowrap;
+      background: transparent;
+      margin: auto;
+      color: #aaa;
+    }
+
+  }
+
+    a:hover{
+    color: #6EAB3A;
+    background: #EEEEEE;
+  }
+
 }
 
-#sidebar-wrapper ul{
-  /*text-indent: 0;*/
-  list-style-type: none;
-  -webkit-margin-before: 0em !important;
-  -webkit-margin-after: 0em !important;
-  -webkit-margin-start: 0px !important;
-  -webkit-margin-end: 0px !important;
-  -webkit-padding-start: 0px !important;
-}
-
-#sidebar-wrapper li {
-  font-size: 12px;
-  line-height: 40px;
-  font-weight: 600;
-}
-
-#sidebar-wrapper li a {
-  box-sizing: border-box;
-  display: block;
-  text-decoration: none;
-  text-align: left;
-  padding: .75em  1.5em .75em 0;
-  white-space: nowrap;
-  background: transparent;
-  margin: 0;
-  outline: 0;
-  color: #aaa;
-
-}
-
-#sidebar-wrapper a:hover, li:hover{
-  color: #6EAB3A;
-  background: #EEEEEE;
-}
 .sidebar-icon {
   display: inline-block;
   font-size: 1.25em;

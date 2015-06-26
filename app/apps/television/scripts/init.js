@@ -8,7 +8,6 @@ angular
     $stateProvider
       .state('television', {
         url: '/television',
-        abstract: 'true',
         template: '<ui-view/>'
       })
       .state('television.service', {
