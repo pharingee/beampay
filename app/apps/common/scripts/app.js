@@ -17,12 +17,24 @@ angular
     'app.transaction',
     'app.settings',
     'app.airtime',
-    'app.television'
+    'app.television',
+    'app.utility'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
-    $urlRouterProvider.otherwise('/');
+    var tempPrefix = 'apps/transaction/views/';
+
+    $stateProvider
+      .state('app', {
+        url: '/',
+        templateUrl: tempPrefix + 'app.html',
+        data: {
+          pageTitle: 'Welcome'
+        }
+      });
+
+    $urlRouterProvider.otherwise('/home');
   })
 
   .run(function ($rootScope, $anchorScroll, Auth, $state) {

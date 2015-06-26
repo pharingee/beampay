@@ -31,7 +31,7 @@ angular
     };
 
     $scope.dashboard = function () {
-      $state.transitionTo('home');
+      $state.transitionTo('app');
     };
 
     $scope.currentUser = Persist.getUser();

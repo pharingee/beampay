@@ -7,7 +7,7 @@ angular
 
     $stateProvider
       .state('landing', {
-        url: '/',
+        url: '/home',
         templateUrl: tempPrefix + 'landing/landing.html',
         data: {
           pageTitle: 'Beam - Care for loved ones in Ghana quickly and affordably'
