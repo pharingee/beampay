@@ -8,6 +8,7 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
+    'ngAnimate',
     'ui.bootstrap',
     'app.config',
     'app.utils',
@@ -15,6 +16,7 @@ angular
     'app.auth',
     'app.transaction',
     'app.settings',
+    'app.airtime',
     'app.television'
   ])
 

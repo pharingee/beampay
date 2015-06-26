@@ -1,0 +1,138 @@
+
+/* =================== */
+/* service-progress BAR STYLES */
+/* =================== */
+
+/*.service-progress ul li {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 20px;
+	border: 3px solid #7DC242;
+	background-color: #7DC242
+	
+}*/
+
+.service-progress-bar {
+  padding: 1em 0;
+  width: 100%;
+}
+.service-progress-bar ol {
+  overflow: hidden;
+  margin: 0;
+  padding: 1em 0;
+  list-style: none;
+  /*line-height: 1.2;*/
+  font-size: 1em;
+  /*counter-reset: li;*/
+  /*animation: chase 1s 1 forwards;*/
+}
+.service-progress-bar li {
+  float: left;
+  display: inline;
+  position: relative;
+  counter-increment: li;
+  width: 30%;
+  text-align: center;
+  color: #aaa;
+  transition: all 0.5s ease;
+}
+
+.service-progress-bar li a {
+  color: #aaa;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.service-progress-bar li a:hover {
+  text-decoration: none;
+}
+.service-progress-bar li:before {
+  content: ' ';
+  position: relative;
+  background-color: #aaa;
+  color: #aaa;
+  width: 1.5em;
+  /*height: 10px;*/
+  padding: .5em;
+  margin: 0 auto .5em;
+  border-radius: 100%;
+  font-size: 0.9em;
+  text-align: center;
+  display: block;
+  z-index: 2;
+  border: 4px solid #aaa;
+  box-shadow: 0 0 2px 2px #aaa;
+  /*background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);*/
+  /*background-repeat: repeat;*/
+  /*background-size: 5px 5px;*/
+}
+.service-progress-bar li:after {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  display: block;
+  background: #aaa;
+  background-color: #aaa;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  margin-top: -1.2em;
+  /*background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);*/
+  /*background-repeat: repeat-x;*/
+  /*background-size: 5px 5px;*/
+}
+.service-progress-bar li:first-child.active:after {
+  left: 50%;
+}
+.service-progress-bar li:last-child:after {
+  display: none;
+}
+/*.service-progress-bar li.done {
+  color: #8bc53f;
+}
+.service-progress-bar li.done:after {
+  width: 120%;
+  background-color: #57aed1;
+  animation: progress 0.3s linear 10;
+}
+.service-progress-bar li.done:before {
+  background-color: #8bc53f;
+  border-color: #70a130;
+  color: white;
+}*/
+.service-progress-bar li.active {
+  width: 30%;
+  font-weight: bold;
+  color: #6EAB3A;
+}
+.service-progress-bar li.active a{
+  color: #6EAB3A;
+}
+.service-progress-bar li.active:after {
+  width: 100%;
+}
+.service-progress-bar li.active:before {
+  background-color: #6EAB3A;
+  border: 4px solid #6EAB3A;
+  color: #6EAB3A;
+  box-shadow: 0 0 0 2px #6EAB3A;
+  animation: progress .5s linear infinite;
+  animation-delay: 3s;
+}
+
+@keyframes chase {
+  from {
+    width: 80%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes progress {
+  to {
+    background-position: 20px 0;
+  }
+}

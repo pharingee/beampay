@@ -1,8 +1,6 @@
 #sidebar-wrapper {
-  padding: 0;
-  padding-right: 30px;
-  margin: 0;
-  margin-left: -30px;
+  /*padding-right: 1.5rem;*/
+  /*margin: 1.5rem;*/
   color: #000000;
   z-index: 50;
   background-color: #fff;
@@ -18,23 +16,25 @@
   }
 
   li {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 40px;
-    font-weight: 600;
-
-    a {
-      box-sizing: border-box;
-      display: block;
-      text-decoration: none;
-      white-space: nowrap;
-      background: transparent;
-      margin: auto;
-      color: #aaa;
-    }
-
+    font-weight: 400;
   }
 
-    a:hover{
+  li a {
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    padding: .75em  1.5em .75em 0;
+    white-space: nowrap;
+    background: transparent;
+    /*margin: 0;*/
+    outline: 0;
+    color: #aaa;
+  }
+
+  a:hover{
     color: #6EAB3A;
     background: #EEEEEE;
   }
@@ -49,4 +49,8 @@
   padding-right: 10px;
   padding-left: 20px;
   margin-left: 20px;
+}
+
+.lnr {
+  font-size: 20px;
 }

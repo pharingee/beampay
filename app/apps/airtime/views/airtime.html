@@ -1,0 +1,51 @@
+<div ng-include="'apps/common/views/_header.html'"></div>
+<div ng-include="'apps/transaction/views/partials/_sidebar.html'"></div>
+<!-- <div ng-include="'apps/airtime/views/partials/_airtime-dashboard.html'" ></div> -->
+
+<section class="services">
+<div class="container-fluid service-wrapper">
+	<h4>Buy airtime</h4>
+	<h5>Purchase credit on MTN, Airtel, Vodafone and Tigo</h5>
+
+<!-- form.html -->
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+
+    <div id="form-container">
+
+        <div class="page-header text-center">            
+            <!-- the links to our nested states using relative paths -->
+            <!-- add the active class if the state matches our ui-sref -->
+            <div id="status-buttons" class="text-center">
+                <a ui-sref-active="active" ui-sref=".choose"><span></span> Choose Service</a>
+                <a ui-sref-active="active" ui-sref=".recipient"><span></span> Recipient Details</a>
+                <a ui-sref-active="active" ui-sref=".payment"><span></span> Payment</a>
+            </div>
+        </div>
+        
+        <!-- use ng-submit to catch the form submission and use our Angular function -->
+        <form id="signup-form" ng-submit="processAirtimeForm()">
+
+            <!-- our nested state views will be injected here -->
+            <div id="form-view" ui-view></div>
+        </form>
+
+    </div>
+
+    <!-- show our formData as it is being typed -->
+    <pre>
+        {{ airtimeFormData }}
+    </pre>
+
+
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
+<div ng-include="'apps/common/views/_footer.html'"></div>
+
