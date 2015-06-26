@@ -24,7 +24,7 @@ angular
           if (next) {
             $state.transitionTo(next);
           } else {
-            $state.transitionTo('home');
+            $state.transitionTo('app');
           }
         }, function (data) {
           $scope.signIn.errors = Error.signIn(data);
@@ -40,7 +40,7 @@ angular
         if (!req.data.exists){
           $state.transitionTo('onboard.name');
         }else{
-          $state.transitionTo('home');
+          $state.transitionTo('app');
         }
       }, function (req) {
         $scope.signIn.errors = Error.signInFb(req.data);

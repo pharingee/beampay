@@ -1,7 +1,5 @@
-<div ng-include="'apps/common/views/_header.html'"></div>
-<div ng-include="'apps/transaction/views/partials/_sidebar.html'"></div>
 <div class="container" ng-controller="UtilityChooseCtrl">
-  <div class="row box">
+  <div class="row">
     <div class="col-sm-offset-3 col-sm-6 form">
 
       <h4>Pay for utility bills</h4>
@@ -15,7 +13,7 @@
       <br>
       <br>
       <br>
-      <br> 
+      <br>
 
       <div class="errors" role="alert" ng-show="utility.errors.length">
         <ul>
@@ -27,7 +25,7 @@
 
       <form>
         <div class="form-group">
-          
+
           <label for="accountNumber">Account number and district code</label>
           <input ng-model="utility.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123">
         </div>
@@ -45,21 +43,20 @@
             </select>
           </div>
         </div>
-        
-          
-          
+
+
+
         <span>BASE COST &emsp;&emsp;&emsp; SERVICE FEE &emsp;&emsp; TOTAL COST</span>
-    
+
         <h3>{{ utility.creditAmount}} &ensp;+&ensp; {{serviceCharge}} &emsp;=&emsp; {{serviceCharge*1 + utility.creditAmount*1 || serviceCharge}}</h3>
-      
-        
+
+
 
         <div class="submit">
           <button type="submit" class="btn btn-default" ng-click="utility.submit()">NEXT</button>
         </div>
-      </form>     
+      </form>
 
     </div>
   </div>
 </div>
-<div ng-include="'apps/common/views/_footer.html'"></div>

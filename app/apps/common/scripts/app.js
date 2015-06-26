@@ -23,7 +23,18 @@ angular
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
-    $urlRouterProvider.otherwise('/');
+    var tempPrefix = 'apps/transaction/views/';
+
+    $stateProvider
+      .state('app', {
+        url: '/',
+        templateUrl: tempPrefix + 'app.html',
+        data: {
+          pageTitle: 'Welcome'
+        }
+      });
+
+    $urlRouterProvider.otherwise('/home');
   })
 
   .run(function ($rootScope, $anchorScroll, Auth, $state) {

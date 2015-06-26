@@ -45,7 +45,7 @@ angular
         if (!req.data.newUser){
           $state.transitionTo('onboard.name');
         }else{
-          $state.transitionTo('home');
+          $state.transitionTo('app');
         }
       }, function (req) {
         $scope.signup.errors = Error.signInFb(req.data);

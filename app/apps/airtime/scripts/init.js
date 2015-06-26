@@ -7,8 +7,8 @@ angular
 
   	$stateProvider
     // route to show basic form
-  	  .state('airtime', {
-  	  	url: '/airtime',
+  	  .state('app.airtime', {
+  	  	url: '^/airtime',
   	  	templateUrl: tempPrefix + 'airtime.html',
         controller: 'airtimeCtrl',
   	  	data: {
@@ -19,19 +19,19 @@ angular
       //nested states
       // each section would have their own view
       //url will be nested (airtime/choose)
-      .state('airtime.choose', {
+      .state('app.airtime.choose', {
         url: '/choose',
         templateUrl: tempPrefix + 'airtimeChooseServices.html'
       })
 
       // url will be /airtime/recipient
-      .state('airtime.recipient', {
+      .state('app.airtime.recipient', {
         url: '/recipient',
         templateUrl: tempPrefix + 'airtimeRecipientDetails.html'
       })
 
       //url will be airtime/payment
-      .state('airtime.payment', {
+      .state('app.airtime.payment', {
         url: '/payment',
         templateUrl: tempPrefix + 'airtimePayment.html'
       });
