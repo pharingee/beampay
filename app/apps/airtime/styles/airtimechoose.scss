@@ -1,0 +1,31 @@
+.airtime {
+  font-size: 14px;
+  font-weight: 300;
+}
+.airtime .radio {
+  display: inline-block !important;
+}
+.airtime label > input{ /* HIDE RADIO */
+  display:none;
+}
+.airtime label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.airtime label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+  border:2px solid #aaa;
+}
+
+.airtime h5 {
+  font-weight: 300;
+  margin: 0 auto;
+  padding-bottom: 0px;
+}
+
+.airtime-label{
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}

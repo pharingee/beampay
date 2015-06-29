@@ -1,6 +1,6 @@
 <div ng-include="'apps/common/views/_header.html'"></div>
 
-<div class="container-fluid">
+<div class="row">
   <div class="col-sm-3 col-lg-2">
     <div ng-include="'apps/transaction/views/partials/_sidebar.html'"></div>
   </div>
@@ -9,7 +9,7 @@
       <div class="col-xs-12">
         <div ui-view="">
           <section class="services" ng-controller="HomeCtrl">
-            <div class="container-fluid service-wrapper">
+            <div class="service-wrapper">
               <h4>Hello {{currentUser.firstName}}!</h4>
               <h5>Support a loved one by paying for one of the following options</h5>
 
@@ -44,7 +44,7 @@
               </div>
 
               <div class="service-card col-md-3">
-                <a ui-sref="airtime.choose">
+                <a ui-sref="app.airtime.choose">
                   <div style="background-image: url(apps/transaction/images/blank.jpg)" class="card__image"></div>
                   <h6 class="card__title"><span class="lnr lnr-smartphone"></span>Airtime Topups</h6>
                   <div class="card__action-bar">

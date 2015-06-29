@@ -10,8 +10,8 @@
     <div id="form-container">
 
         <div class="page-header text-center">
-            <!-- the links to our nested states using relative paths -->
-            <!-- add the active class if the state matches our ui-sref -->
+            <!-- the links to nested states using relative paths -->
+            <!-- add the active class if the state matches ui-sref -->
             <div id="status-buttons" class="text-center">
                 <a ui-sref-active="active" ui-sref=".choose"><span></span> Choose Service</a>
                 <a ui-sref-active="active" ui-sref=".recipient"><span></span> Recipient Details</a>
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <!-- use ng-submit to catch the form submission and use our Angular function -->
+        <!-- use ng-submit to catch the form submission and use processAirtimeForm function -->
         <form id="signup-form" ng-submit="processAirtimeForm()">
 
             <!-- our nested state views will be injected here -->
