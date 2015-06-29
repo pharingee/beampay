@@ -353,13 +353,30 @@
           <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Enter phone number">
         </div>
         <div class="form-group">
-          <label for="address">Physical address</label>
-          <textarea rows="3" cols="50" ng-model="settings.address" class="form-control" placeholder="Enter physical address"></textarea>
+          <label for="street">Street</label>
+          <input ng-model="settings.street" type="text" class="form-control" placeholder="Street">
+        </div>
+        <div class="form-group">
+          <label for="address">City</label>
+          <input ng-model="settings.city" type="text" class="form-control" placeholder="City">
+        </div>
+        <div class="form-group">
+          <label for="address">Post code</label>
+          <input ng-model="settings.postCode" type="text" class="form-control" placeholder="Post code">
+        </div>
+        <div class="form-group">
+          <label for="contactMethod">Preferred Contact Method</label>
+          <select name="preferredContactMethod" class="form-control">
+            <option value="PHON">Phone</option>
+            <option value="MAIL">Email</option>
+            <option value="SMS">SMS</option>
+            <option value="WAP">WhatsApp</option>
+          </select>
         </div>
         <div class="submit">
           <button type="submit" class="btn btn-default" ng-click="settings.submit()">Done</button>
         </div>
-      </form>     
+      </form>
 
     </div>
   </div>

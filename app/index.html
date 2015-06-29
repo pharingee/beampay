@@ -40,7 +40,6 @@
 
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
-
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -62,6 +61,9 @@
        ga('require', 'linkid', 'linkid.js');
        ga('require', 'displayfeatures');
     </script>
+
+    <!-- stripe -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -127,9 +129,10 @@
 
         <!-- Television Bill SCripts -->
         <script src="apps/television/scripts/init.js"></script>
-        <script src="apps/television/scripts/controllers/confirm.js"></script>
+        <!-- <script src="apps/television/scripts/controllers/confirm.js"></script>
         <script src="apps/television/scripts/controllers/recipient.js"></script>
-        <script src="apps/television/scripts/controllers/service.js"></script>
+        <script src="apps/television/scripts/controllers/service.js"></script> -->
+        <script src="apps/television/scripts/controllers/television.js"></script>
 
         <!-- Airtime Scripts -->
         <script src="apps/airtime/scripts/init.js"></script>

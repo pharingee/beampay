@@ -6,25 +6,25 @@ angular
     var tempPrefix = 'apps/television/views/';
 
     $stateProvider
-      .state('television', {
-        url: '/television',
-        template: '<ui-view/>'
+      .state('app.television', {
+        url: '^/television',
+        templateUrl: tempPrefix + 'layouts/television.html'
       })
-      .state('television.service', {
+      .state('app.television.service', {
         url: '/service',
         templateUrl: tempPrefix + 'televisionDetails.html',
         data: {
           pageTitle: 'Choose Service'
         }
       })
-      .state('television.recipient', {
+      .state('app.television.recipient', {
         url: '/recipient',
         templateUrl: tempPrefix + 'televisionRecipient.html',
         data: {
           pageTitle: 'Recipient Details'
         }
       })
-      .state('television.confirm', {
+      .state('app.television.confirm', {
         url: '/confirm',
         templateUrl: tempPrefix + 'televisionConfirm.html',
         data: {
