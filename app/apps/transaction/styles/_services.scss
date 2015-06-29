@@ -180,6 +180,11 @@
 .service-card .card__action-bar {
   left: 0;
 }
+.service-card .card__action-bar p {
+  color: black;
+  font-size: 12px;
+  padding-top: 5px;
+}
 .widget-icon{
   background: #30426a;
   width: 65px;
