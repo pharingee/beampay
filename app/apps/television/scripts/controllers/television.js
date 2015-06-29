@@ -12,7 +12,7 @@ angular
         return true;
       }
 
-      if ($scope.details.accountNumber.toString().length < 8 || isNan($scope.details.accountNumber)) {
+      if ($scope.details.accountNumber.toString().length < 8 || isNaN($scope.details.accountNumber)) {
         return true;
       }
 

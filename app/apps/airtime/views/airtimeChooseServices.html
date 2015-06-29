@@ -1,6 +1,6 @@
 <section class="airtime">
 <div class="form-group">
-<h5>Select recipient's phone network </h5>
+<strong>Select recipient's phone network </strong><br>
     <div class="radio">
         <label>
            <input type="radio" ng-model="airtimeFormData.network" value="airtel" checked>
@@ -29,33 +29,36 @@
 
 <div class="form-group">
     <label for="airtimeAmount">How much airtime do you want to buy?</label>
-    <input type="number" min="5" step="1" placeholder="20 GHS" class="form-control" name="airtimeAmount" ng-model="airtimeFormData.airtimeAmount">
+    <input type="number" min="5" step="1" placeholder="20 GHS" class="form-control" name="airtimeAmount" ng-model="airtimeFormData.airtimeAmountGhs" ng-change="calculatePricing()">
 </div>
 
-<div class="form-group">
-    <table>
-    	<thead>
-    		<th>Base Cost</th>
-    		<th></th>
-    		<th>Service Fee</th>
-    		<th></th>
-    		<th>Total Cost</th>
-    	</thead>
-    	<tbody>
-    		<tr>
-    			<td>{{airtimeFormData.airtimeAmount}}</td>
-    			<td>+</td>
-    			<td>z</td>
-    			<td>=</td>
-    			<td>z</td>
-    		</tr>
-    	</tbody>
-    </table>
+<div class="row text-center" ng-show="airtimeFormData.serviceFee > 0">
+	<div class="col-xs-2">
+	<strong class="fee-title">Base Fee</strong><br>
+	{{ airtimeFormData.amountUsd }}
+	</div>
+	<div class="col-xs-1">
+	<strong>&nbsp;</strong><br>
+	+
+	</div>
+	<div class="col-xs-4">
+	<strong class="fee-title">Service Charge</strong><br>
+	{{ airtimeFormData.serviceFee }}
+	</div>
+	<div class="col-xs-1">
+	<strong>&nbsp;</strong><br>
+	=
+	</div>
+	<div class="col-xs-2">
+	<strong class="fee-title">Total Bill</strong><br>
+	{{ airtimeFormData.chargeUsd }}
+	</div>
 </div>
+<br><br><br>
 
 <div class="form-group row">
 <div class="col-xs-6 col-xs-offset-3">
-    <a ui-sref="app.airtime.recipient" class="btn btn-block btn-default">Next</a>
+    <a ui-sref="app.airtime.recipient" class="btn btn-block btn-success">Next</a>
 </div>
 </div>
 </section>

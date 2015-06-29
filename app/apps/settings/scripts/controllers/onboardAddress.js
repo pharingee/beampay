@@ -15,6 +15,7 @@ angular
       var year = $scope.settings.date.year;
 
       var dateOfBirth = year+'-'+month+'-'+day;
+      $scope.settings.dateOfBirth = dateOfBirth;
 
       var country = $scope.settings.country;
       var phoneNumber = $scope.settings.phoneNumber;

@@ -2,37 +2,34 @@
 
 angular
   .module('app.airtime')
-  .controller('airtimeCtrl', function ($scope) {
+  .controller('airtimeCtrl', function ($scope, Transaction) {
+
+    var toCurr = function (amount) {
+      return Math.ceil(amount * 100) / 100;
+    };
 
     //store all form data in this object
-    $scope.airtimeFormData = {};
+    $scope.airtimeFormData = {
+      recipient: {}
+    };
+
+    $scope.airtimeFormData.serviceFee = 0;
+
+    Transaction.getPricing().then( function (response) {
+      $scope.pricing = response;
+    }, function () {});
+
+    $scope.calculatePricing = function () {
+      $scope.airtimeFormData.amountUsd = toCurr($scope.airtimeFormData.airtimeAmountGhs / $scope.pricing.usdGhs);
+      $scope.airtimeFormData.serviceFee = toCurr(($scope.pricing.percentualFee * $scope.airtimeFormData.amountUsd) + $scope.pricing.fixedFee);
+      $scope.airtimeFormData.chargeUsd = toCurr($scope.airtimeFormData.amountUsd + $scope.airtimeFormData.serviceFee);
+
+    };
+
+
 
     // function to process the form
     $scope.processAirtimeForm = function() {
       alert('awesome!');
     };
   });
-
-// $(document).ready(function() {
-
-//   // use jQuery to update progress bar
-//   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    
-//     //update progress
-//     var step = $(e.target).data('step');
-//     var percent = (parseInt(step) / 5) * 100;
-    
-//     $('.progress-bar').css({width: percent + '%'});
-//     $('.progress-bar').text("Step " + step + " of 5");
-    
-//   });
-
-// });
-
-// .controller('ProgressBarCtrl', function ($scope, $http) {
-//     $scope.goNext = function(i){    
-//     $('[href=#step'+(i+1)+']').tab('show');
-//     return false;
-    
-//   }
-//   })
