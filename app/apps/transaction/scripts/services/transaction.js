@@ -7,7 +7,7 @@ angular.module('app.transaction')
       var url = API_SERVER + endPoint;
       var deferred = $q.defer();
 
-      $http.put(url, parameters).
+      $http.post(url, parameters).
         success(function(response){
           deferred.resolve(response);
         }).
@@ -19,12 +19,12 @@ angular.module('app.transaction')
     };
 
     var getPricing = function () {
-      var url = API_SERVER + '/pricing/';
+      var url = API_SERVER + 'pricing/';
       var deferred = $q.defer();
 
       $http.get(url).
         success(function(response){
-          Persist.savePricing(response.data);
+          Persist.savePricing(response);
           deferred.resolve(response);
         }).
         error(function (data){
@@ -39,27 +39,31 @@ angular.module('app.transaction')
       parameters.exchangeRateId = pricing.exchangeRateId;
       parameters.serviceFeeId = pricing.serviceFeeId;
 
-      return serverCall('/add/airtime/', parameters);
+      return serverCall('transaction/add/airtime/', parameters);
     };
 
     var addBill = function (parameters) {
       var pricing = Persist.getPricing();
       parameters.exchangeRateId = pricing.exchangeRateId;
       parameters.serviceFeeId = pricing.serviceFeeId;
-
-      return serverCall('/add/bill/', parameters);
+      console.log(parameters);
+      return serverCall('transaction/add/bill/', parameters);
     };
 
     var addValet = function (parameters) {
-      return serverCall('/add/valet/', parameters);
+      return serverCall('transaction/add/valet/', parameters);
     };
 
     var addGift = function (parameters) {
-      return serverCall('/add/gift/', parameters);
+      return serverCall('transaction/add/gift/', parameters);
     };
 
     var addSchool = function (parameters) {
-      return serverCall('/add/school/', parameters);
+      return serverCall('transaction/add/school/', parameters);
+    };
+
+    var savePayment = function (parameters) {
+      return serverCall('payment/stripe/', parameters);
     };
 
     return {
@@ -80,6 +84,9 @@ angular.module('app.transaction')
       },
       getPricing: function () {
         return getPricing();
+      },
+      savePayment: function (parameters) {
+        return savePayment(parameters);
       }
     };
 

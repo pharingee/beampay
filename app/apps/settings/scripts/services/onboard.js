@@ -18,17 +18,11 @@ angular.module('app.settings')
       return deferred.promise;
     };
 
-    var saveAddress = function(dateOfBirth, country, phoneNumber, address){
+    var saveAddress = function(address){
       var url = API_SERVER + 'account/profile/';
       var deferred = $q.defer();
 
-      $http.put(url, {
-        profile: {
-          dateOfBirth: dateOfBirth,
-          country: country,
-          phoneNumber: phoneNumber,
-          address: address}
-        }).
+      $http.put(url, {profile: address}).
       success(function(){
         deferred.resolve();
       }).
@@ -42,8 +36,8 @@ angular.module('app.settings')
       saveName: function (firstName, lastName){
         return saveName(firstName, lastName);
       },
-      saveAddress: function(dateOfBirth, country, phoneNumber, address){
-        return saveAddress(dateOfBirth, country, phoneNumber, address);
+      saveAddress: function(address){
+        return saveAddress(address);
       }
     };
 
