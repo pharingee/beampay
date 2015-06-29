@@ -29,13 +29,28 @@
 
 <div class="form-group">
     <label for="airtimeAmount">How much airtime do you want to buy?</label>
-    <input type="text" class="form-control" name="airtimeAmount" ng-model="airtimeFormData.airtimeAmount">
+    <input type="number" min="5" step="1" placeholder="20 GHS" class="form-control" name="airtimeAmount" ng-model="airtimeFormData.airtimeAmount">
 </div>
 
 <div class="form-group">
-    <!-- <label for="email">How much airtime do you want to buy?</label>
-    <input type="text" class="form-control" name="airtimeAmount" ng-model="airtimeFormData.airtimeAmount"> -->
-    Base Cost + Service Fee = Total Cost
+    <table>
+    	<thead>
+    		<th>Base Cost</th>
+    		<th></th>
+    		<th>Service Fee</th>
+    		<th></th>
+    		<th>Total Cost</th>
+    	</thead>
+    	<tbody>
+    		<tr>
+    			<td>{{airtimeFormData.airtimeAmount}}</td>
+    			<td>+</td>
+    			<td>z</td>
+    			<td>=</td>
+    			<td>z</td>
+    		</tr>
+    	</tbody>
+    </table>
 </div>
 
 <div class="form-group row">
