@@ -4,7 +4,7 @@
 
 .constant('name', 'staging')
 
-.constant('API_SERVER', 'http://api-dev.beampay.co/api/v1/')
+.constant('API_SERVER', 'https://api-dev.beampay.co/api/v1/')
 
 .constant('FACEBOOK_CLIENT_ID', 1562773807273610)
 
