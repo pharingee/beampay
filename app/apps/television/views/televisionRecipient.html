@@ -5,17 +5,17 @@
         <label for="name">Name of recipient</label>
         <div class="row">
           <div class="col-xs-6">
-            <input type="text" class="form-control" placeholder="First Name" ng-model="details.recipient.firstName">
+            <input type="text" class="form-control" placeholder="First Name" ng-model="details.recipient.firstName" required>
           </div>
           <div class="col-xs-6">
-            <input type="text" class="form-control" placeholder="Last Name" ng-model="details.recipient.lastName">
+            <input type="text" class="form-control" placeholder="Last Name" ng-model="details.recipient.lastName" required>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <label for="contact">Recipient Contact Number </label>
-        <input type="text" class="form-control" placeholder="Eg. +23327615596" ng-model="details.recipient.phoneNumber">
+        <input type="text" class="form-control" placeholder="Eg. +23327615596" ng-model="details.recipient.phoneNumber" required>
       </div>
 
       <div class="form-group">
@@ -24,7 +24,11 @@
       </div>
 
       <div class="form-group">
-        <input type="submit" class="btn btn-success">
+        <div class="row">
+          <div class="col-xs-6">
+            <input type="submit" class="btn btn-success form-control">
+          </div>
+        </div>
       </div>
     </form>
   </div>

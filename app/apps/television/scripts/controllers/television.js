@@ -2,51 +2,84 @@
 
 angular
   .module('app.television')
-  .controller('TelevisionCtrl', function ($scope, $state, Transaction) {
+  .controller('TelevisionCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
+    if ($state.current.name !== 'app.television.choose') {
+      $state.transitionTo('app.television.choose');
+    }
+
+    $scope.details = {
+      recipient: {},
+      accountNumber: '',
+      preferredContactMethod: 'MAIL',
+      reference: 'Payment June'
+    };
+    $scope.details.serviceFee = 0;
+    $scope.chooseState = true;
+    $scope.errors = [];
+    $scope.paymentSaveSuccess = true;
+
     var toCurr = function (amount) {
       return Math.ceil(amount * 100) / 100;
     };
 
     var validateDetails = function () {
+      $scope.errors = [];
+
       if ($scope.details.billType !== 'DST' && $scope.details.billType !== 'GOT') {
-        return true;
+        $scope.errors.push('Please select a TV service provider');
+        return false;
       }
 
-      if ($scope.details.accountNumber.toString().length < 8 || isNan($scope.details.accountNumber)) {
-        return true;
+      if ($scope.details.accountNumber.toString().length < 8 || isNaN($scope.details.accountNumber)) {
+        $scope.errors.push('The reference number has to be 8 digits long');
+        return false;
       }
 
       if(isNaN($scope.details.amountGhs) || parseInt($scope.details.amountGhs) < 50 || parseInt($scope.details.amountGhs > 5000)) {
-        return true;
-      }
-    }
-
-    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-      if (toState.name === 'app.television.recipient') {
-        if ((fromState.name !== 'app.television.service') || (validateDetails())) {
-          $state.transitionTo('app.television.service');
-        }
+        $scope.errors.push('Amount can only be more than GHS 50 and less than GHS 5000');
+        return false;
       }
 
-      if (toState.name === 'app.television.confirm') {
-        if ((fromState.name !== 'app.television.recipient') || !($scope.details.txnId)) {
-          $state.transitionTo('app.television.service');
-        }
-      }
-    });
-
-    $scope.details = {
-      recipient: {},
-      preferredContactMethod: 'MAIL',
-      reference: 'Payment June'
+      return true;
     };
-    $scope.details.serviceFee = 0;
+
+    var validateRecipient = function () {
+      $scope.errors = [];
+
+      if (!$scope.details.recipient.phoneNumber || $scope.details.recipient.phoneNumber.length < 10) {
+        $scope.errors.push('Please enter a valid phone number');
+        return false;
+      }
+
+      return true;
+    };
+
+    $scope.reSavePayment = function () {
+      if (!$scope.paymentSaveSuccess) {
+        var payment = {
+          stripeToken: $scope.stripeToken.id,
+          transactionId: $scope.details.transactionId,
+          type: 'BILL'
+        };
+        Transaction.savePayment(payment).then(
+          function() {
+            $scope.paymentSaveSuccess = true;
+            $state.transitionTo('app.television.success');
+          }, function () {
+            $scope.paymentSaveSuccess = false;
+          });
+      }
+    };
 
     Transaction.getPricing().then(function (response){
       $scope.pricing = response;
     }, function(){
 
     });
+
+    Transaction.getReferral().then(function (response){
+      $scope.referral = response;
+    }, function(){});
 
     $scope.calculatePricing = function () {
       $scope.details.amountUsd = toCurr($scope.details.amountGhs / $scope.pricing.usdGhs);
@@ -55,16 +88,23 @@ angular
     };
 
     $scope.setDetails = function () {
-      $state.transitionTo('app.television.recipient');
+      if (validateDetails()) {
+        $scope.recipientState = true;
+        $state.transitionTo('app.television.recipient');
+      }
     };
 
     $scope.addRecipient = function () {
-      Transaction.addBill($scope.details).then(function (response) {
-          $scope.details.txnId = response.txnId;
-          $state.transitionTo('app.television.confirm');
-      }, function () {
+      if (validateRecipient()){
 
-      });
+        $scope.paymentState = true;
+        Transaction.addBill($scope.details).then(function (response) {
+          $scope.details.transactionId = response.transactionId;
+          $state.transitionTo('app.television.payment');
+        }, function () {
+
+        });
+      }
     };
 
     $scope.getProvider = function () {
@@ -77,25 +117,29 @@ angular
     $scope.confirm = function () {
       if ($scope.pricing) {
         var handler = StripeCheckout.configure({
-          key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+          key: STRIPE_KEY,
           image: '/icon-128.png',
           token: function(token) {
+            $scope.stripeToken = token;
             var payment = {
               stripeToken: token.id,
-              transactionId: $scope.details.txnId,
+              transactionId: $scope.details.transactionId,
               type: 'BILL'
-            }
+            };
             Transaction.savePayment(payment).then(
-              function(response) {
-                console.log(response);
-              }, function () {});
+              function() {
+                $scope.paymentSaveSuccess = true;
+                $state.transitionTo('app.television.success');
+              }, function () {
+                $scope.paymentSaveSuccess = false;
+              });
           }
         });
 
         handler.open({
           name: 'BeamPay',
           description: 'GHS ' + $scope.details.amountGhs + ' on ' + $scope.getProvider(),
-          amount: $scope.details.amountGhs
+          amount: $scope.details.chargeUsd * 100
         });
       }
 

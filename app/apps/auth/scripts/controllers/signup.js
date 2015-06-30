@@ -39,7 +39,6 @@ angular
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
-        console.log(req);
         Auth.persist(req.data.id, req.data.token);
         $state.transitionTo('onboard.name');
         if (!req.data.newUser){

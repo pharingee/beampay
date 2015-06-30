@@ -10,6 +10,7 @@ angular
     'ngTouch',
     'ngAnimate',
     'ui.bootstrap',
+    'angular-loading-bar',
     'app.config',
     'app.utils',
     'app.general',

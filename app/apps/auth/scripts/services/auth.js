@@ -43,7 +43,10 @@ angular
         'password': pass
       }).success(function (data) {
         persist(data.id, data.token);
-        deferred.resolve();
+        if (data.complete) {
+          saveName(data.firstName, data.lastName);
+        }
+        deferred.resolve(data.complete);
       }).error(function (data) {
         deferred.reject(data);
       });

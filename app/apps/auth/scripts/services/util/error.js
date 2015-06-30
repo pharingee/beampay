@@ -184,6 +184,36 @@ angular
       return errors;
     };
 
+    var transaction = function (data, status) {
+      var errors = [];
+
+      if (status == 451) {
+        errors.push('Your country is not supported. We\'ll let you know when we support it');
+      } else if (data.detail == 0) {
+        errors.push('Some of the information you provided is incorrect. Please check and try again.');
+      } else if (data.detail == 1) {
+        errors.push('The international exchange rate has changed. Please choose your service again.');
+      } else if (data.detail == 2) {
+        errors.push('Your profile is incomplete please update your details in your settings');
+      } else {
+        errors.push('Unknown error');
+      }
+
+      return errors;
+    };
+
+    var setReferral = function (data) {
+      var errors = [];
+
+      if (data.detail == 0) {
+        errors.push('Some of the information you provided is incorrect. Please check and try again.');
+      }else if (data.detail == 2) {
+        errors.push('You have entered an invalid referral code. Please try again');
+      }
+
+      return errors;
+    };
+
     return {
       signup: function (data) {
         return signup(data);
@@ -217,6 +247,12 @@ angular
       },
       forgot: function (data) {
         return forgot(data);
+      },
+      transaction: function (data, status) {
+        return transaction(data);
+      },
+      setReferral: function (data) {
+        return setReferral(data);
       }
     };
   });

@@ -34,6 +34,21 @@ angular.module('app.transaction')
       return deferred.promise;
     };
 
+    var getReferral = function () {
+      var url = API_SERVER + 'referral/';
+      var deferred = $q.defer();
+
+      $http.get(url).
+        success(function(response){
+          deferred.resolve(response);
+        }).
+        error(function (data) {
+          deferred.reject(data);
+        });
+
+      return deferred.promise;
+    };
+
     var addAirtime = function (parameters) {
       var pricing = Persist.getPricing();
       parameters.exchangeRateId = pricing.exchangeRateId;
@@ -63,6 +78,7 @@ angular.module('app.transaction')
     };
 
     var savePayment = function (parameters) {
+      console.log(parameters);
       return serverCall('payment/stripe/', parameters);
     };
 
@@ -84,6 +100,9 @@ angular.module('app.transaction')
       },
       getPricing: function () {
         return getPricing();
+      },
+      getReferral: function () {
+        return getReferral();
       },
       savePayment: function (parameters) {
         return savePayment(parameters);
