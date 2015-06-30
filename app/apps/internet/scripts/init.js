@@ -33,7 +33,7 @@ angular
       })
       .state('app.internet.success', {
         url: '/success',
-        templateUrl: tempPrefix + 'internetSuccess.html',
+        templateUrl: tempPrefix + 'success.html',
         data: {
           pageTitle: 'Payment Successful'
         }

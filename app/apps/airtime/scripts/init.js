@@ -33,7 +33,7 @@ angular
       })
       .state('app.airtime.success', {
         url: '/success',
-        templateUrl: tempPrefix + 'airtimeSuccess.html',
+        templateUrl: tempPrefix + 'success.html',
         data: {
           pageTitle: 'Payment Successful'
         }
