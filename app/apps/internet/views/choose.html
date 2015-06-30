@@ -4,8 +4,8 @@
       <form class="form" ng-submit="setDetails()">
         <div class="text-center" ng-show="details.billType">
           <div>
-            <img ng-show="details.billType == 'ECG'" src="apps/utility/images/ecg-logo.png" alt="" class="service-image">
-            <img ng-show="details.billType == 'GWC'" src="apps/utility/images/gwc-logo.jpg" alt="" class="service-image">
+            <img ng-show="details.billType == 'SRF'" src="apps/internet/images/surfline-logo.png" alt="" class="service-image">
+            <img ng-show="details.billType == 'VOB'" src="apps/internet/images/vodafone-logo.png" alt="" class="service-image">
             <br><br>
           </div>
         </div>
@@ -14,13 +14,13 @@
           <label for="provider">Which service provider would you like to pay?</label>
           <select ng-model="details.billType" name="provider" class="form-control">
             <option value="">-- Select a provider --</option>
-            <option value="ECG">Electricity</option>
-            <option value="GWC">Water</option>
+            <option value="SRF">Surfline</option>
+            <option value="VOB">Vodafone</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="accountNumber">Account number and district code</label>
+          <label for="accountNumber">Enter {{getProvider()}} number</label>
           <input ng-model="details.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123">
         </div>
 

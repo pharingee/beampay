@@ -2,41 +2,41 @@
 
 angular
   .module('app.airtime', [])
-  .config(function ($stateProvider, $urlRouterProvider) {
-  	var tempPrefix = 'apps/airtime/views/';
+  .config(function ($stateProvider) {
+    var tempPrefix = 'apps/airtime/views/';
 
-  	$stateProvider
-    // route to show basic form
-  	  .state('app.airtime', {
-  	  	url: '^/airtime',
-  	  	templateUrl: tempPrefix + 'airtime.html',
-        controller: 'airtimeCtrl',
-  	  	data: {
-  	  	  pageTitle: 'Welcome | Airtime Top ups'
-  	  	}
-  	  })
-
-      //nested states
-      // each section would have their own view
-      //url will be nested (airtime/choose)
+    $stateProvider
+      .state('app.airtime', {
+        url: '^/airtime',
+        templateUrl: tempPrefix + 'layouts/airtime.html'
+      })
       .state('app.airtime.choose', {
         url: '/choose',
-        templateUrl: tempPrefix + 'airtimeChooseServices.html'
+        templateUrl: tempPrefix + 'choose.html',
+        data: {
+          pageTitle: 'Choose Service'
+        }
       })
-
-      // url will be /airtime/recipient
       .state('app.airtime.recipient', {
         url: '/recipient',
-        templateUrl: tempPrefix + 'airtimeRecipientDetails.html'
+        templateUrl: tempPrefix + 'recipient.html',
+        data: {
+          pageTitle: 'Recipient Details'
+        }
       })
-
-      //url will be airtime/payment
       .state('app.airtime.payment', {
         url: '/payment',
-        templateUrl: tempPrefix + 'airtimePayment.html'
-      });
-
-      // catch all route
-      // send users to the form page
-      $urlRouterProvider.otherwise('/airtime/choose');
+        templateUrl: tempPrefix + 'payment.html',
+        data: {
+          pageTitle: 'Confirm Payment'
+        }
+      })
+      .state('app.airtime.success', {
+        url: '/success',
+        templateUrl: tempPrefix + 'airtimeSuccess.html',
+        data: {
+          pageTitle: 'Payment Successful'
+        }
+      })
+      ;
   });

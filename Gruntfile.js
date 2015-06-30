@@ -441,7 +441,7 @@ module.exports = function (grunt) {
       staging: {
         constants: {
           name: 'staging',
-          API_SERVER: 'http://beampay-dev.herokuapp.com/api/v1/',
+          API_SERVER: 'http://api-dev.beampay.co/api/v1/',
           FACEBOOK_CLIENT_ID: 1562773807273610,
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }

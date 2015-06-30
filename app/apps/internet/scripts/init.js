@@ -1,39 +1,39 @@
 'use strict';
 
 angular
-  .module('app.utility', [])
+  .module('app.internet', [])
   .config(function ($stateProvider) {
-    var tempPrefix = 'apps/utility/views/';
+    var tempPrefix = 'apps/internet/views/';
 
     $stateProvider
-      .state('app.utility', {
-        url: '^/utility',
-        templateUrl: tempPrefix + 'layouts/utility.html'
+      .state('app.internet', {
+        url: '^/internet',
+        templateUrl: tempPrefix + 'layouts/internet.html'
       })
-      .state('app.utility.choose', {
+      .state('app.internet.choose', {
         url: '/choose',
         templateUrl: tempPrefix + 'choose.html',
         data: {
           pageTitle: 'Choose Service'
         }
       })
-      .state('app.utility.recipient', {
+      .state('app.internet.recipient', {
         url: '/recipient',
         templateUrl: tempPrefix + 'recipient.html',
         data: {
           pageTitle: 'Recipient Details'
         }
       })
-      .state('app.utility.payment', {
+      .state('app.internet.payment', {
         url: '/payment',
         templateUrl: tempPrefix + 'payment.html',
         data: {
           pageTitle: 'Confirm Payment'
         }
       })
-      .state('app.utility.success', {
+      .state('app.internet.success', {
         url: '/success',
-        templateUrl: tempPrefix + 'utilitySuccess.html',
+        templateUrl: tempPrefix + 'internetSuccess.html',
         data: {
           pageTitle: 'Payment Successful'
         }

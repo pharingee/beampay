@@ -19,7 +19,8 @@ angular
     'app.settings',
     'app.airtime',
     'app.television',
-    'app.utility'
+    'app.utility',
+    'app.internet'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
