@@ -2,6 +2,6 @@
 
 angular
   .module('app.transaction', [])
-  .config(function ($stateProvider) {
+  .config(function () {
 
   });

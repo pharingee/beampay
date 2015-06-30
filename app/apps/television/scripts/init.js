@@ -10,8 +10,8 @@ angular
         url: '^/television',
         templateUrl: tempPrefix + 'layouts/television.html'
       })
-      .state('app.television.service', {
-        url: '/service',
+      .state('app.television.choose', {
+        url: '/choose',
         templateUrl: tempPrefix + 'televisionDetails.html',
         data: {
           pageTitle: 'Choose Service'
@@ -24,11 +24,18 @@ angular
           pageTitle: 'Recipient Details'
         }
       })
-      .state('app.television.confirm', {
-        url: '/confirm',
+      .state('app.television.payment', {
+        url: '/payment',
         templateUrl: tempPrefix + 'televisionConfirm.html',
         data: {
           pageTitle: 'Confirm Payment'
+        }
+      })
+      .state('app.television.success', {
+        url: '/success',
+        templateUrl: tempPrefix + 'televisionSuccess.html',
+        data: {
+          pageTitle: 'Payment Successful'
         }
       })
       ;

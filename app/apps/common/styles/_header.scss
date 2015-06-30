@@ -1,3 +1,20 @@
+#loading-bar .bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 4px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 20px;
+  height: 20px;
+
+  border:  solid 4px transparent;
+  border-top-color:  #fff;
+  border-left-color: #fff;
+  border-top-color:  rgba(255, 255, 255, 0.8);;
+  border-left-color: rgba(255, 255, 255, 0.8);;
+}
+
 .navbar{
   background-color: #7DC242;
   margin: 0;
@@ -11,8 +28,8 @@
 
 .navbar-brand img{
   height: 1.3em;
-  margin-left: 2.65em;
-  margin-right: 2.5em;
+  margin-left: 2.5em;
+  margin-right: 2.65em;
   margin-top: .2em;
 }
 

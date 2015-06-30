@@ -1,15 +1,19 @@
 <div ng-include="'apps/common/views/_header.html'"></div>
 
-<div class="row">
-  <div class="col-sm-3 col-lg-2">
-    <div ng-include="'apps/transaction/views/partials/_sidebar.html'"></div>
-  </div>
-  <div class="col-sm-9 col-lg-10 transaction-area">
-        <div ui-view="">
-          <section class="services" ng-controller="HomeCtrl">
-            <div class="service-wrapper">
-              <h4>Hello {{currentUser.firstName}}!</h4>
-              <h5>Support a loved one by paying for one of the following options</h5>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-lg-2 sidebar input-block-level">
+      <div ng-include="'apps/transaction/views/partials/_sidebar.html'"></div>
+    </div>
+
+    <div class="col-sm-9 col-lg-10 ">
+      <div class="row">
+        <div class="col-xs-12">
+          <div ui-view="">
+            <section class="services" ng-controller="HomeCtrl">
+              <div class="container-fluid service-wrapper">
+                <h4>Hello {{currentUser.firstName}}!</h4>
+                <h5>Support a loved one by paying for one of the following options</h5>
 
               <div class="thumbnails service-card col-md-3">
                 <a ui-sref="#">
@@ -59,7 +63,6 @@
                 </a>
               </div>
 
-
               <div class="service-card col-md-3">
                 <a ui-sref="#">
                   <div style="background-image: url(apps/transaction/images/blank.jpg)" class="card__image"></div>
@@ -73,7 +76,7 @@
               </div>
 
               <div class="service-card col-md-3">
-                <a ui-sref="app.television.service">
+                <a ui-sref="app.television.choose">
                   <div style="background-image: url(apps/transaction/images/blank.jpg)" class="card__image"></div>
                   <h6 class="card__title"><span class="lnr lnr-screen"></span>Cable TV</h6>
                   <div class="card__action-bar">
@@ -84,12 +87,14 @@
                 </a>
               </div>
 
-            </div>
+              </div>
 
-          </section>
+            </section>
+          </div>
         </div>
     </div>
+
   </div>
 </div>
-
+</div>
 <div ng-include="'apps/common/views/_footer.html'"></div>

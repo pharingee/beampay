@@ -1,7 +1,15 @@
 <div class="container-fluid">
-  <div class="row" >
+
+  <div class="row" ng-show="pricing">
     <div class="col-sm-6">
-       <form class="form" ng-submit="setDetails()">
+      <form class="form" ng-submit="setDetails()">
+        <div class="text-center" ng-show="details.billType">
+          <div>
+            <img ng-show="details.billType == 'DST'" src="apps/television/images/dstv-logo.png" alt="" class="service-image">
+            <img ng-show="details.billType == 'GOT'" src="apps/television/images/gotv-logo.jpg" alt="" class="service-image">
+            <br><br>
+          </div>
+        </div>
         <div class="form-group">
           <label for="provider">Which service provider would you like to pay?</label>
           <select ng-model="details.billType" name="provider" class="form-control">
@@ -17,33 +25,33 @@
         </div>
 
         <div class="form-group">
-          <label for="amount">How much would you like to pay?</label>
+          <label for="amount">How much in GHS would you like to pay?</label>
           <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()">
         </div>
 
         <div class="row text-center" ng-show="details.serviceFee > 0">
-          <div class="col-xs-2">
-            <strong>Base Fee</strong><br>
-            {{ details.amountUsd }}
+          <div class="col-xs-3">
+            <strong>Base Cost</strong><br>
+            $ {{ details.amountUsd }}
           </div>
           <div class="col-xs-1">
             <strong>&nbsp;</strong><br>
             +
           </div>
-          <div class="col-xs-4">
-            <strong>Service Charge</strong><br>
-            {{ details.serviceFee }}
+          <div class="col-xs-3">
+            <strong>Service Fee</strong><br>
+            $ {{ details.serviceFee }}
           </div>
           <div class="col-xs-1">
             <strong>&nbsp;</strong><br>
             =
           </div>
-          <div class="col-xs-2">
-            <strong>Total Bill</strong><br>
-            {{ details.chargeUsd }}
+          <div class="col-xs-3">
+            <strong>Total Cost</strong><br>
+            $ {{ details.chargeUsd }}
           </div>
         </div>
-        <br><br><br>
+        <br><br>
 
         <div class="form-group">
           <div class="row">

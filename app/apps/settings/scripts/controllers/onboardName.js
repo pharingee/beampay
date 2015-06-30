@@ -2,7 +2,7 @@
 
 angular
   .module('app.settings')
-  .controller('OnboardNameCtrl', function ($scope, $state, Onboard) {
+  .controller('OnboardNameCtrl', function ($scope, $state, Onboard, Error) {
 
     $scope.settings = {};
 
@@ -17,11 +17,27 @@ angular
         return;
       }
 
-      Onboard.saveName(firstName, lastName).then(function(){
-        $state.transitionTo('onboard.address'); 
-      }, function(){
-        $scope.settings.errors.push('This page has errors.');
-      });
+      var saveName = function () {
+        Onboard.saveName(firstName, lastName).then(function(){
+            $state.transitionTo('onboard.address');
+          }, function (){
+            $scope.settings.errors.push('Some of the information you provided is invalid. Please check and try again.');
+          });
+      };
+
+      if ($scope.settings.referralCode) {
+        Onboard.setReferral($scope.settings.referralCode).then(function (){
+          saveName();
+        }, function (data) {
+          if (data.details && data.details == 1) {
+            saveName();
+          }else{
+            $scope.settings.errors = Error.setReferral(data);
+          }
+        });
+      }else {
+        saveName();
+      }
 
     };
 

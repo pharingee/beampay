@@ -16,3 +16,9 @@ body {
   text-align: center;
 }
 
+.errors {
+  padding-top: 15px;
+  p, ul {
+    color: $error_color;
+  }
+}

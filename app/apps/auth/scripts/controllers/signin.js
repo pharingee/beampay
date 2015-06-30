@@ -19,12 +19,17 @@ angular
 
       // Server Request
       Auth.signIn(email, pass)
-        .then(function () {
-          var next = $stateParams.next;
-          if (next) {
-            $state.transitionTo(next);
+        .then(function (isComplete) {
+          if (isComplete){
+            var next = $stateParams.next;
+
+            if (next) {
+              $state.transitionTo(next);
+            } else {
+              $state.transitionTo('app');
+            }
           } else {
-            $state.transitionTo('app');
+            $state.transitionTo('onboard.name');
           }
         }, function (data) {
           $scope.signIn.errors = Error.signIn(data);
@@ -37,7 +42,7 @@ angular
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
         Auth.persist(req.data.id, req.data.token);
-        if (!req.data.exists){
+        if (!req.data.newUser){
           $state.transitionTo('onboard.name');
         }else{
           $state.transitionTo('app');

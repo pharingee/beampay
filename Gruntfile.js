@@ -424,7 +424,8 @@ module.exports = function (grunt) {
         constants: {
           name: 'development',
           API_SERVER: 'http://localhost:8000/api/v1/',
-          FACEBOOK_CLIENT_ID: 1562773807273610
+          FACEBOOK_CLIENT_ID: 1562773807273610,
+          STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
       },
 
@@ -432,7 +433,8 @@ module.exports = function (grunt) {
         constants: {
           name: 'production',
           API_SERVER: 'http://localhost:8000/api/v1/',
-          FACEBOOK_CLIENT_ID: 1562773807273610
+          FACEBOOK_CLIENT_ID: 1562773807273610,
+          STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
       },
 
@@ -440,7 +442,8 @@ module.exports = function (grunt) {
         constants: {
           name: 'staging',
           API_SERVER: 'http://beampay-dev.herokuapp.com/api/v1/',
-          FACEBOOK_CLIENT_ID: 1562773807273610
+          FACEBOOK_CLIENT_ID: 1562773807273610,
+          STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
       }
     },

@@ -8,4 +8,6 @@
 
 .constant('FACEBOOK_CLIENT_ID', 1562773807273610)
 
+.constant('STRIPE_KEY', 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI')
+
 ;

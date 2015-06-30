@@ -10,9 +10,6 @@ angular
 
     $scope.settings.submit = function () {
       $scope.settings.errors = [];
-      var day = $scope.settings.date.day;
-      var month = $scope.settings.date.month;
-      var year = $scope.settings.date.year;
 
       var dateOfBirth = year+'-'+month+'-'+day;
       $scope.settings.dateOfBirth = dateOfBirth;
@@ -24,9 +21,10 @@ angular
       var postCode = $scope.settings.postCode;
       var preferredContactMethod = $scope.settings.preferredContactMethod;
       console.log(dateOfBirth, country, phoneNumber);
+      $scope.settings.dateOfBirth = $scope.settings.date.year + '-' + $scope.settings.date.month + '-' + $scope.settings.date.day;
 
       // Details Checks
-      if (!dateOfBirth || !country || !phoneNumber) {
+      if (!$scope.settings.dateOfBirth || !$scope.settings.country || !$scope.settings.phoneNumber) {
         $scope.settings.errors.push('We need you to fill all the fields.');
         return;
       }
