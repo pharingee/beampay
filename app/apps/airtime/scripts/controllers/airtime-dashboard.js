@@ -26,10 +26,54 @@ angular
 
     };
 
+    $scope.getProvider = function () {
+      if ($scope.airtimeFormData.network === 'MTN') {
+        // $scope.airtimeFormData.networkImgUrl = "apps/airtime/images/mtn.png";
+        return 'MTN';
+      }
+      else if ($scope.airtimeFormData.network === 'TIGO') {
+        return 'TIGO';
+      } 
+      else if ($scope.airtimeFormData.network === 'AIRTEL'){
+        return 'AIRTEL';
+      } 
+      else{
+      return 'VODAFONE';
+    }
+    };
+
 
 
     // function to process the form
-    $scope.processAirtimeForm = function() {
-      alert('awesome!');
+    // $scope.processAirtimeForm = function() {
+    //   alert('awesome!');
+    // };
+
+    $scope.processAirtimeForm = function () {
+      if ($scope.pricing) {
+        var handler = StripeCheckout.configure({
+          key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+          image: '/icon-128.png',
+          token: function(token) {
+            var payment = {
+              stripeToken: token.id,
+              transactionId: $scope.details.txnId,
+              type: 'AIRTIME'
+            }
+            Transaction.savePayment(payment).then(
+              function(response) {
+                console.log(response);
+              }, function () {});
+          }
+        });
+
+        handler.open({
+          name: 'BeamPay',
+          description: 'GHS' + $scope.airtimeFormData.airtimeAmountGhs + 'airtime credit on ' + $scope.getProvider(),
+          amount: $scope.airtimeFormData.airtimeAmountGhs
+        });
+      }
+
+      return false;
     };
   });

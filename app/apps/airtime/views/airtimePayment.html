@@ -6,11 +6,11 @@
         <img src="" alt="" style="height: 100px">
       </div>
       <div class="col-md-8">
-        <h5>DESCRIPTION</h5>
-        <p>GHS {{details.amountGhs}} billing on {{details.billType}}v for {{details.recipient.firstName}} {{details.recipient.lastName}}</p>
+        <h5><strong>DESCRIPTION</strong></h5>
+        <p><strong>GHS{{airtimeFormData.airtimeAmountGhs}}</strong> worth of <strong>{{airtimeFormData.network}}</strong> airtime to <strong>{{airtimeFormData.recipient.phoneNumber}}</strong> </p>
         <br>
-        <h5>FINAL BILL</h5>
-        <p>$ {{amountGhs}}</p>
+        <h5><strong>FINAL BILL</strong></h5>
+        <p><strong>${{airtimeFormData.chargeUsd}}</strong></p>
         <br>
         <button class="btn btn-success" ng-click="confirm()">Pay</button>
       <!-- </div> -->
