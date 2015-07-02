@@ -1,0 +1,32 @@
+.modal-backdrop{
+  opacity: 0.8 !important;
+  background-color: #fff !important;
+}
+
+.modal-dialog{
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  padding: 0;
+  background-color: transparent !important;
+}
+
+.modal-content {
+  padding-top: 200px;
+  // margin-top: 200px;
+  min-height: 100%;
+  height: auto;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: transparent !important;
+  border-radius: 0;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.tmodal img{
+  height: 50px;
+}
+
