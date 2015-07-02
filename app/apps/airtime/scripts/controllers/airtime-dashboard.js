@@ -28,7 +28,6 @@ angular
 
     $scope.getProvider = function () {
       if ($scope.airtimeFormData.network === 'MTN') {
-        // $scope.airtimeFormData.networkImgUrl = "apps/airtime/images/mtn.png";
         return 'MTN';
       }
       else if ($scope.airtimeFormData.network === 'TIGO') {
@@ -52,12 +51,12 @@ angular
     $scope.processAirtimeForm = function () {
       if ($scope.pricing) {
         var handler = StripeCheckout.configure({
-          key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+          key: STRIPE_KEY,
           image: '/icon-128.png',
           token: function(token) {
             var payment = {
               stripeToken: token.id,
-              transactionId: $scope.details.txnId,
+              transactionId: $scope.details.transactionId,
               type: 'AIRTIME'
             }
             Transaction.savePayment(payment).then(
@@ -70,7 +69,7 @@ angular
         handler.open({
           name: 'BeamPay',
           description: 'GHS' + $scope.airtimeFormData.airtimeAmountGhs + 'airtime credit on ' + $scope.getProvider(),
-          amount: $scope.airtimeFormData.airtimeAmountGhs
+          amount: $scope.airtimeFormData.chargeUsd * 100
         });
       }
 
