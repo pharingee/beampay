@@ -24,6 +24,6 @@
   "appPath": "app",
   "moduleName": "valueApp",
   "resolutions": {
-    "angular": "1.4.2-build.4075+sha.f15f8df"
+    "angular": "^1.4.2"
   }
 }

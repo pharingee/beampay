@@ -1,14 +1,13 @@
 .services {
   position: relative;
-  padding: 1.5rem 1.5rem 1.5rem 1rem;
   z-index: 10;
   transition: margin 200ms;
   min-height: 100%;
   max-width: 100%;
+  font-size: 16px;
 }
 @media (min-width: 481px) {
   .services {
-    /*margin-left: 2rem;*/
     z-index: 10;
   }
 }
@@ -26,6 +25,7 @@
   line-height: 30px;
   padding-top: 25px;
   padding-bottom: 10px;
+  font-size: 24px;
 }
 
 .services h5 {
@@ -33,6 +33,7 @@
   margin: 0 auto;
   line-height: 30px;
   padding-bottom: 15px;
+  font-size: 20px;
 }
 
 .service-card{
@@ -82,7 +83,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  font-size: 14px;
+  font-size: 16px;
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -102,7 +103,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  font-size: 14px;
+  font-size: 16px;
   display: block;
   left: 0;
   right: 0;
@@ -160,7 +161,7 @@
   top: 170px;
 }
 .service-card h6 {
-  font-size: 16px !important;
+  font-size: 18px !important;
   font-weight: 400 !important;
   line-height: 20px;
   padding-bottom: 5px;
@@ -179,6 +180,11 @@
 }
 .service-card .card__action-bar {
   left: 0;
+}
+.service-card .card__action-bar p {
+  color: black;
+  font-size: 14px;
+  padding-top: 5px;
 }
 .widget-icon{
   background: #30426a;

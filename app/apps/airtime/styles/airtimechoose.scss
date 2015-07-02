@@ -1,0 +1,45 @@
+
+.airtime label {
+  margin-bottom: 10px;
+  font-size: 16px !important;
+}
+
+.airtime .radio {
+  display: inline-block !important;
+}
+.airtime label > input{ /* HIDE RADIO */
+  display:none;
+}
+.airtime label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.airtime label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+  border:4px solid #6EAB3A;
+}
+
+.airtime h5 {
+  margin: 0 auto;
+  padding-bottom: 0px;
+  font-weight: 500;
+}
+
+.airtime-label{
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.airtime th{
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 500px;
+  padding: 10px;
+}
+
+.airtime td{
+  padding: 10px;
+  margin: 10px;
+}

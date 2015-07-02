@@ -11,6 +11,16 @@ angular
     $scope.settings.submit = function () {
       $scope.settings.errors = [];
 
+      var dateOfBirth = year+'-'+month+'-'+day;
+      $scope.settings.dateOfBirth = dateOfBirth;
+
+      var country = $scope.settings.country;
+      var phoneNumber = $scope.settings.phoneNumber;
+      var street = $scope.settings.street;
+      var city = $scope.settings.city;
+      var postCode = $scope.settings.postCode;
+      var preferredContactMethod = $scope.settings.preferredContactMethod;
+      console.log(dateOfBirth, country, phoneNumber);
       $scope.settings.dateOfBirth = $scope.settings.date.year + '-' + $scope.settings.date.month + '-' + $scope.settings.date.day;
 
       // Details Checks
