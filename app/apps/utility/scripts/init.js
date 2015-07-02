@@ -8,29 +8,35 @@ angular
     $stateProvider
       .state('app.utility', {
         url: '^/utility',
-        abstract:'true',
-        template: '<ui-view/>',
+        templateUrl: tempPrefix + 'layouts/utility.html'
       })
       .state('app.utility.choose', {
         url: '/choose',
         templateUrl: tempPrefix + 'choose.html',
         data: {
-          pageTitle: 'Pay for a Utility'
+          pageTitle: 'Choose Service'
         }
       })
-      .state('app.utility.rec', {
-        url: '/rec',
-        templateUrl: tempPrefix + 'rec.html',
+      .state('app.utility.recipient', {
+        url: '/recipient',
+        templateUrl: tempPrefix + 'recipient.html',
         data: {
           pageTitle: 'Recipient Details'
         }
       })
-      .state('app.utility.pay', {
-        url: '/pay',
-        templateUrl: tempPrefix + 'pay.html',
+      .state('app.utility.payment', {
+        url: '/payment',
+        templateUrl: tempPrefix + 'payment.html',
         data: {
           pageTitle: 'Confirm Payment'
         }
-      });
+      })
+      .state('app.utility.success', {
+        url: '/success',
+        templateUrl: tempPrefix + 'success.html',
+        data: {
+          pageTitle: 'Payment Successful'
+        }
+      })
+      ;
   });
-

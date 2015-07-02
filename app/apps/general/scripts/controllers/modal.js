@@ -2,7 +2,7 @@
 
 angular
   .module('app.general')
-  .controller('ModalCtrl', function ($scope, $modalInstance, Modal) {
+  .controller('ModalCtrl', function ($scope, $modalInstance, Modal, $state) {
 
     $scope.ok = function () {
       if ($scope.fromName && $scope.fromEmail && $scope.toName && $scope.toEmail) {
@@ -20,6 +20,7 @@ angular
 
     $scope.cancel = function () {
       $modalInstance.dismiss();
+      $state.transitionTo('app');
     };
 
   });

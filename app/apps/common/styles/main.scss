@@ -69,13 +69,11 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 @import "app/apps/airtime/styles/airtime";
 @import "app/apps/airtime/styles/airtimechoose";
 
+
 /*
 * Utilities
 */
-@import "app/apps/utility/styles/choose";
-@import "app/apps/utility/styles/pay";
-@import "app/apps/utility/styles/rec";
 
-
+//Modal on Payment Success
 @import "app/apps/television/styles/modal";
 

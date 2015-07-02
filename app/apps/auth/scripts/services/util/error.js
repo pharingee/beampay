@@ -6,8 +6,9 @@ angular
 
     var signup = function (data) {
       var errors = [];
-
-      if (data.password1 && data.password1[0] === '1') {
+      if (!data) {
+        errors.push('Unknown Error');
+      }else if (data.password1 && data.password1[0] === '1') {
         // Password must be at least 8 characters long, contain at least one numeric digit.
         errors.push('Weak Pass');
       } else if (data.email && data.email[0] === '4') {
@@ -63,7 +64,9 @@ angular
     var activate = function (data) {
       var errors = [];
 
-      if (data.detail === '6') {
+      if (!data) {
+        errors.push('Unknown Error');
+      } else if (data.detail === '6') {
         // Invalid activation key.
         errors.push('Invalid Activation Key');
       } else if (data.detail === '7') {
@@ -77,7 +80,9 @@ angular
     var activateResend = function (data) {
       var errors = [];
 
-      if (data.detail === '9') {
+      if (!data) {
+        errors.push('Unknown Error');
+      } else if (data.detail === '9') {
         // Email unknown
         errors.push('Email not registered');
       } else if (data.detail === '10') {
@@ -94,7 +99,9 @@ angular
     var changeEmail = function (data) {
       var errors = [];
 
-      if (data.detail === '0') {
+      if (!data) {
+        errors.push('Unknown Error');
+      } else if (data.detail === '0') {
         // Invalid Parameters
         errors.push('Invalid Parameters');
       } else if (data.detail === '4') {
@@ -111,7 +118,9 @@ angular
     var confirmEmail = function (data) {
       var errors = [];
 
-      if (data.detail === '0') {
+      if (!data) {
+        errors.push('Unknown Error');
+      } else if (data.detail === '0') {
         // Invalid Parameters
         errors.push('Invalid Parameters');
       }
@@ -130,7 +139,9 @@ angular
     var changePassword = function (data) {
       var errors = [];
 
-      if (data.oldPassword && data.oldPassword[0] === '16') {
+      if (!data) {
+        errors.push('Unknown Error');
+      } else if (data.oldPassword && data.oldPassword[0] === '16') {
         // Old Password is incorrect
         errors.push('Old Password is incorrect');
       } else if (data.password1 && data.password1[0] === '1') {
@@ -170,7 +181,9 @@ angular
     var forgot = function (data) {
       var errors = [];
 
-      if (data.detail === '9') {
+      if (!data) {
+        errors.push('Unknown Error');
+      } else if (data.detail === '9') {
         // Email unknown
         errors.push('Email unknown');
       } else if (data.detail === '11') {

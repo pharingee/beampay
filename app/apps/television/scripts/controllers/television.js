@@ -131,9 +131,9 @@ angular
               function() {
                 $scope.paymentSaveSuccess = true;
                 $modal.open({
-                  templateUrl: 'apps/television/views/televisionSuccessModal.html'
+                  templateUrl: 'apps/television/views/televisionSuccessModal.html',
+                  controller: 'ModalCtrl'
                 });
-                // $state.transitionTo('app.television.success');
               }, function () {
                 $scope.paymentSaveSuccess = false;
               });
@@ -153,12 +153,8 @@ angular
     $scope.open = function () {
       $modal.open({
         templateUrl: 'apps/television/views/televisionSuccessModal.html',
-        // controller: 'ModalCtrl'
+        controller: 'ModalCtrl'
       });
-    };
-
-    $scope.close = function () {
-      $modal.close();
     };
 
   });

@@ -44,7 +44,7 @@ angular.module('app.settings')
         deferred.reject(data);
       });
       return deferred.promise;
-    }
+    };
 
     return {
       saveName: function (firstName, lastName){

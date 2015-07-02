@@ -1,62 +1,66 @@
-<div class="container" ng-controller="UtilityChooseCtrl">
-  <div class="row">
-    <div class="col-sm-offset-3 col-sm-6 form">
-
-      <h4>Pay for utility bills</h4>
-      <h4>Settle electricity and water bills easily</h4>
-
-      <br>
-      <br>
-      <br>
-      <p>Pay for ECG Bills </p>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-
-      <div class="errors" role="alert" ng-show="utility.errors.length">
-        <ul>
-          <li ng-repeat="error in utility.errors">
-            {{ error }}
-          </li>
-        </ul>
-      </div>
-
-      <form>
-        <div class="form-group">
-
-          <label for="accountNumber">Account number and district code</label>
-          <input ng-model="utility.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123">
-        </div>
-        <div class="form-group">
-          <label for="creditAmount">How much would you like to pay?</label>
+<div class="container-fluid">
+  <div class="row" ng-show="pricing">
+    <div class="col-sm-6">
+      <form class="form" ng-submit="setDetails()">
+        <div class="text-center" ng-show="details.billType">
           <div>
-            <select class="amount form-control" ng-model="utility.creditAmount">
-              <option value="10">10 GHS</option>
-              <option value="20">20 GHS</option>
-              <option value="50">50 GHS</option>
-              <option value="100">100 GHS</option>
-              <option value="120">120 GHS</option>
-              <option value="150">150 GHS</option>
-              <option value="200">200 GHS</option>
-            </select>
+            <img ng-show="details.billType == 'ECG'" src="apps/utility/images/ecg-logo.jpg" alt="" class="service-image">
+            <img ng-show="details.billType == 'GWC'" src="apps/utility/images/gwc-logo.jpg" alt="" class="service-image">
+            <br><br>
           </div>
         </div>
 
+        <div class="form-group">
+          <label for="provider">Which service provider would you like to pay?</label>
+          <select ng-model="details.billType" name="provider" class="form-control">
+            <option value="">-- Select a provider --</option>
+            <option value="ECG">Electricity</option>
+            <option value="GWC">Water</option>
+          </select>
+        </div>
 
+        <div class="form-group">
+          <label for="accountNumber">Account number and district code</label>
+          <input ng-model="details.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123">
+        </div>
 
-        <span>BASE COST &emsp;&emsp;&emsp; SERVICE FEE &emsp;&emsp; TOTAL COST</span>
+        <div class="form-group">
+          <label for="amount">How much in GHS would you like to pay?</label>
+          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()">
+        </div>
 
-        <h3>{{ utility.creditAmount}} &ensp;+&ensp; {{serviceCharge}} &emsp;=&emsp; {{serviceCharge*1 + utility.creditAmount*1 || serviceCharge}}</h3>
+        <div class="row text-center" ng-show="details.serviceFee > 0">
+          <div class="col-xs-3">
+            <strong>Base Cost</strong><br>
+            $ {{ details.amountUsd }}
+          </div>
+          <div class="col-xs-1">
+            <strong>&nbsp;</strong><br>
+            +
+          </div>
+          <div class="col-xs-3">
+            <strong>Service Fee</strong><br>
+            $ {{ details.serviceFee }}
+          </div>
+          <div class="col-xs-1">
+            <strong>&nbsp;</strong><br>
+            =
+          </div>
+          <div class="col-xs-3">
+            <strong>Total Cost</strong><br>
+            $ {{ details.chargeUsd }}
+          </div>
+        </div>
+        <br><br>
 
-
-
-        <div class="submit">
-          <button type="submit" class="btn btn-default" ng-click="utility.submit()">NEXT</button>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-6">
+              <input type="submit" class="btn btn-success form-control">
+            </div>
+          </div>
         </div>
       </form>
-
     </div>
   </div>
 </div>

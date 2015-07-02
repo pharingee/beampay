@@ -383,6 +383,11 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.',
+          src: 'bower_components/fontawesome/fonts/*',
+          dest: '<%= yeoman.dist %>'
         }]
       }
     },
@@ -432,7 +437,7 @@ module.exports = function (grunt) {
       production: {
         constants: {
           name: 'production',
-          API_SERVER: 'http://localhost:8000/api/v1/',
+          API_SERVER: 'https://api.beampay.co/api/v1/',
           FACEBOOK_CLIENT_ID: 1562773807273610,
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
@@ -441,7 +446,7 @@ module.exports = function (grunt) {
       staging: {
         constants: {
           name: 'staging',
-          API_SERVER: 'http://beampay-dev.herokuapp.com/api/v1/',
+          API_SERVER: 'https://api-dev.beampay.co/api/v1/',
           FACEBOOK_CLIENT_ID: 1562773807273610,
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
