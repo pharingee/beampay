@@ -1,3 +1,29 @@
+
+.transaction-control label {
+  margin-bottom: 10px;
+  font-size: 16px !important;
+}
+
+.transaction-control .radio {
+  display: inline-block !important;
+}
+.transaction-control label > input{ /* HIDE RADIO */
+  display:none;
+}
+.transaction-control label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.transaction-control label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+  border:4px solid #6EAB3A;
+}
+
+.transaction-control h5 {
+  margin: 0 auto;
+  padding-bottom: 0px;
+  font-weight: 500;
+}
+
 .transaction-area{
   background-color: white;
   margin-top: 1em;
