@@ -451,7 +451,7 @@ module.exports = function (grunt) {
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
       }
-    },
+    }
   });
 
 
