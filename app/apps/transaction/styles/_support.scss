@@ -4,7 +4,6 @@
     padding-left: 50px;
     padding-top: 50px;
     padding-bottom: 50px;
-    // margin-top: 40px;
   }
 
   label {
@@ -40,7 +39,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 12px;
-  border-bottom: 0.5px solid #aaa;
+  border-bottom: 1px solid #aaa;
 }
 
 .widget-icon{
@@ -63,4 +62,27 @@
 .transaction-item p .lnr {
   line-height: 20px;
   font-size: 14px;
+}
+
+.transaction-item:hover {
+  cursor: pointer;
+}
+
+.transaction-item a {
+  text-decoration: none;
+  color: #333 !important;
+}
+
+.transaction-item a:hover{
+ 
+}
+
+.transaction-overlay{
+ font-size: 12px !important;
+ opacity: 0;
+}
+
+.transaction-overlay:hover{
+ opacity: 0.4;
+ background-color: #6EAB3A;
 }
