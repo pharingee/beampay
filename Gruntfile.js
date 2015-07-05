@@ -369,6 +369,8 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,txt}', // pngs are copied by imagemin already
             '.htaccess',
+            'icon-*.png',
+            'favicon.*',
             '**/{,*/}*.html', // all html files
             'apps/*/images/{,*/}*.{webp}', // Unminified images (webp only)
             'apps/*/styles/fonts/{,*/}*.{eot,ttf,woff}' // font except svg (they were copied by svgmin)

@@ -31,7 +31,6 @@ angular
       }
 
       if ($scope.details.accountNumber.toString().length < 8 || isNaN($scope.details.accountNumber)) {
-        return true;
         $scope.errors.push('The reference number has to be 8 digits long');
         return false;
       }

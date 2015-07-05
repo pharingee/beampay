@@ -2,7 +2,7 @@
 
 angular
   .module('app.airtime')
-  .controller('airtimeCtrl', function ($scope, Transaction) {
+  .controller('airtimeCtrl', function ($scope, Transaction, STRIPE_KEY) {
 
     var toCurr = function (amount) {
       return Math.ceil(amount * 100) / 100;
@@ -32,10 +32,10 @@ angular
       }
       else if ($scope.airtimeFormData.network === 'TIGO') {
         return 'TIGO';
-      } 
+      }
       else if ($scope.airtimeFormData.network === 'AIRTEL'){
         return 'AIRTEL';
-      } 
+      }
       else{
       return 'VODAFONE';
     }
@@ -58,7 +58,7 @@ angular
               stripeToken: token.id,
               transactionId: $scope.details.transactionId,
               type: 'AIRTIME'
-            }
+            };
             Transaction.savePayment(payment).then(
               function(response) {
                 console.log(response);

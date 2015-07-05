@@ -350,7 +350,7 @@
         </div>
         <div class="form-group">
           <label for="phoneNumber">Phone number</label>
-          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Enter phone number">
+          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Eg. +233265086508">
         </div>
         <div class="form-group">
           <label for="street">Street</label>
@@ -366,7 +366,7 @@
         </div>
         <div class="form-group">
           <label for="contactMethod">Preferred Contact Method</label>
-          <select name="preferredContactMethod" class="form-control">
+          <select name="preferredContactMethod" class="form-control" ng-model="settings.preferredContactMethod">
             <option value="PHON">Phone</option>
             <option value="MAIL">Email</option>
             <option value="SMS">SMS</option>

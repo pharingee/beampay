@@ -4,7 +4,9 @@ angular
   .module('app.settings')
   .controller('OnboardAddressCtrl', function ($scope, $state, Onboard, Persist) {
 
-    $scope.settings = {};
+    $scope.settings = {
+      date: {}
+    };
     $scope.settings.country = 'US';
     $scope.settings.firstName = Persist.getUser().firstName;
 
@@ -14,7 +16,7 @@ angular
       $scope.settings.dateOfBirth = $scope.settings.date.year + '-' + $scope.settings.date.month + '-' + $scope.settings.date.day;
 
       // Details Checks
-      if (!$scope.settings.dateOfBirth || !$scope.settings.country || !$scope.settings.phoneNumber) {
+      if (!$scope.settings.dateOfBirth || !$scope.settings.country || !$scope.settings.phoneNumber || !$scope.settings.street || !$scope.settings.city || !$scope.settings.postCode) {
         $scope.settings.errors.push('We need you to fill all the fields.');
         return;
       }
