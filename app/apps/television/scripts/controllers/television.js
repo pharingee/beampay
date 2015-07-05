@@ -2,7 +2,7 @@
 
 angular
   .module('app.television')
-  .controller('TelevisionCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
+  .controller('TelevisionCtrl', function ($scope, $state, Transaction, STRIPE_KEY, $modal) {
     if ($state.current.name !== 'app.television.choose') {
       $state.transitionTo('app.television.choose');
     }
@@ -130,7 +130,10 @@ angular
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
-                $state.transitionTo('app.television.success');
+                $modal.open({
+                  templateUrl: 'apps/television/views/televisionSuccessModal.html',
+                  controller: 'ModalCtrl'
+                });
               }, function () {
                 $scope.paymentSaveSuccess = false;
               });
@@ -145,6 +148,13 @@ angular
       }
 
       return false;
+    };
+
+    $scope.open = function () {
+      $modal.open({
+        templateUrl: 'apps/television/views/televisionSuccessModal.html',
+        controller: 'ModalCtrl'
+      });
     };
 
   });

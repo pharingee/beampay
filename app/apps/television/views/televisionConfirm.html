@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row airtime">
     <p>You're about to pay for</p>
+    <br><br>
     <div class="row">
       <div class="col-xs-4">
         <img ng-show="details.billType == 'DST'" src="apps/television/images/dstv-logo.png" alt="" style="height: 10em" class="service-image">
@@ -9,8 +10,10 @@
       <div class="col-xs-6">
         <h5>DESCRIPTION</h5>
         <p>GHS {{details.amountGhs}} billing on {{details.billType}}v for {{details.recipient.firstName}} {{details.recipient.lastName}}</p>
+        <br>
         <h5>FINAL BILL</h5>
         <p>$ {{details.chargeUsd}}</p>
+        <br>
 
         <div class="row">
           <div class="col-xs-6">

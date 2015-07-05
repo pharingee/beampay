@@ -53,7 +53,7 @@ angular
         var payment = {
           stripeToken: $scope.stripeToken.id,
           transactionId: $scope.details.transactionId,
-          type: 'BILL'
+          type: 'AIRTIME'
         };
         Transaction.savePayment(payment).then(
           function() {
@@ -92,7 +92,7 @@ angular
       if (validateRecipient()){
 
         $scope.paymentState = true;
-        Transaction.addBill($scope.details).then(function (response) {
+        Transaction.addAirtime($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.airtime.payment');
         }, function () {
@@ -102,10 +102,18 @@ angular
     };
 
     $scope.getProvider = function () {
-      if ($scope.details.provider === 'ECG') {
-        return 'Electricity';
+      if ($scope.airtimeFormData.network === 'MTN') {
+        return 'MTN';
       }
-      return 'Water';
+      else if ($scope.airtimeFormData.network === 'TIGO') {
+        return 'TIGO';
+      } 
+      else if ($scope.airtimeFormData.network === 'AIRTEL'){
+        return 'AIRTEL';
+      } 
+      else{
+      return 'VODAFONE';
+    }
     };
 
     $scope.confirm = function () {

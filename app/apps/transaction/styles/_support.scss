@@ -15,3 +15,74 @@
     border-radius: 2px;
   }
 }
+
+
+.transaction-control{
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 20px;
+    background-color: #ffffff;
+  }
+
+.transaction-control h5 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.transaction-list {
+  padding-top: 20px;
+}
+
+.transaction-item {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 12px;
+  border-bottom: 1px solid #aaa;
+}
+
+.widget-icon{
+  background: #6EAB3A;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.widget-icon .lnr {
+  line-height: 56px;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+
+}
+.transaction-item p .lnr {
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.transaction-item:hover {
+  cursor: pointer;
+}
+
+.transaction-item a {
+  text-decoration: none;
+  color: #333 !important;
+}
+
+.transaction-item a:hover{
+ 
+}
+
+.transaction-overlay{
+ font-size: 12px !important;
+ opacity: 0;
+}
+
+.transaction-overlay:hover{
+ opacity: 0.4;
+ background-color: #6EAB3A;
+}
