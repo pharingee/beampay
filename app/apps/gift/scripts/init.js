@@ -1,23 +1,23 @@
 'use strict';
 
 angular
-  .module('app.valet', [])
+  .module('app.gift', [])
   .config(function ($stateProvider) {
-    var tempPrefix = 'apps/valet/views/';
+    var tempPrefix = 'apps/gift/views/';
 
     $stateProvider
-      .state('app.valet', {
-        url: '^/valet',
-        templateUrl: tempPrefix + 'layouts/valet.html'
+      .state('app.gift', {
+        url: '^/gift',
+        templateUrl: tempPrefix + 'layouts/gift.html'
       })
-      .state('app.valet.details', {
+      .state('app.gift.details', {
         url: '/details',
         templateUrl: tempPrefix + 'details.html',
         data: {
-          pageTitle: 'Valet Details'
+          pageTitle: 'Gift Details'
         }
       })
-      .state('app.valet.recipient', {
+      .state('app.gift.recipient', {
         url: '/recipient',
         templateUrl: tempPrefix + 'recipient.html',
         data: {

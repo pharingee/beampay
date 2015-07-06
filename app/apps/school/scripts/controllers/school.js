@@ -9,6 +9,7 @@ angular
 
     $scope.details = {
       wardName: {},
+      recipient: {},
       preferredContactMethod: 'MAIL'
     };
 
@@ -39,11 +40,11 @@ angular
     };
 
     $scope.setMethod = function () {
-      $scope.requestState = true;
+      $scope.recipientState = true;
       $state.transitionTo('app.school.recipient');
     };
 
-    $scope.makePayment = function () {
+    $scope.makeTransaction = function () {
       $scope.details.wardName = $scope.details.wardName.firstName + ' ' + $scope.details.wardName.middleName + ' ' + $scope.details.wardName.lastName;
       Transaction.addSchool($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;

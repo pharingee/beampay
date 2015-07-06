@@ -10,6 +10,8 @@ angular
     'ngTouch',
     'ngAnimate',
     'ui.bootstrap',
+    'ui.bootstrap.datetimepicker',
+    'angularMoment',
     'angular-loading-bar',
     'app.config',
     'app.utils',
@@ -21,7 +23,9 @@ angular
     'app.television',
     'app.utility',
     'app.internet',
-    'app.school'
+    'app.school',
+    'app.valet',
+    'app.gift'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
