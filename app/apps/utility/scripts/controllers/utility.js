@@ -30,6 +30,11 @@ angular
         return false;
       }
 
+      if ($scope.details.accountNumber.length < 13) {
+        $scope.errors.push('Please enter a 13-digit account number');
+        return false;
+      }
+
       if(isNaN($scope.details.amountGhs) || parseInt($scope.details.amountGhs) < 50 || parseInt($scope.details.amountGhs > 5000)) {
         $scope.errors.push('Amount can only be more than GHS 50 and less than GHS 5000');
         return false;

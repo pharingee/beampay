@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row" ng-show="pricing">
-    <div class="col-sm-6">
+    <div class="col-lg-6">
       <form class="form" ng-submit="setDetails()">
       <div class="transaction-control">
         <div class="form-group">
@@ -21,12 +21,12 @@
 
         <div class="form-group">
           <label for="accountNumber">Account number and district code</label>
-          <input ng-model="details.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123">
+          <input ng-model="details.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123" required>
         </div>
 
         <div class="form-group">
           <label for="amount">How much in GHS would you like to pay?</label>
-          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()">
+          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="50" max="5000">
         </div>
 
         <div class="row text-center" ng-show="details.serviceFee > 0">
@@ -51,10 +51,9 @@
             $ {{ details.chargeUsd }}
           </div>
         </div>
-        <br><br>
         </div>
 
-        <div class="form-group">
+        <div class="form-group container-fluid">
           <div class="row">
             <div class="col-xs-6">
               <input type="submit" class="btn btn-success form-control">

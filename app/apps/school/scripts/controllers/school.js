@@ -2,7 +2,7 @@
 
 angular
   .module('app.school')
-  .controller('SchoolCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
+  .controller('SchoolCtrl', function ($scope, $state, Transaction) {
     if ($state.current.name !== 'app.school.details') {
       $state.transitionTo('app.school.details');
     }

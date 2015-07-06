@@ -9,6 +9,6 @@ angular
   	  .state('app.transaction', {
   	  	url: '^/transactions',
   	  	templateUrl: tempPrefix + 'layouts/transactions_header.html'
-  	  })
+  	  });
 
   });
