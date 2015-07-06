@@ -36,6 +36,7 @@
 }
 
 .transaction-item {
+  position: relative;
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 12px;
@@ -73,16 +74,26 @@
   color: #333 !important;
 }
 
-.transaction-item a:hover{
+// .transaction-item a:hover{
  
-}
+// }
 
-.transaction-overlay{
- font-size: 12px !important;
- opacity: 0;
-}
 
-.transaction-overlay:hover{
- opacity: 0.4;
- background-color: #6EAB3A;
-}
+// .transaction-item .transaction-overlay{
+//  display: none;
+// }
+
+// .transaction-item:hover .transaction-overlay{
+//   display:block;
+//   position:absolute;
+//   z-index:1;
+//   left:-1px;
+//   top:-1px;
+//   background-color: #6EAB3A;
+//   opacity: 0.4;
+// }
+
+// .transaction-overlay:hover{
+//  opacity: 0.4;
+//  background-color: #6EAB3A;
+// }
