@@ -105,7 +105,7 @@ angular
     };
 
     $scope.getProvider = function () {
-      if ($scope.details.provider === 'SRF') {
+      if ($scope.details.billType === 'SRF') {
         return 'Surfline';
       }
       return 'Vodafone';
