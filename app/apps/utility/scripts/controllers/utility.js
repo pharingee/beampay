@@ -2,7 +2,7 @@
 
 angular
   .module('app.utility')
-  .controller('UtilityCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
+  .controller('UtilityCtrl', function ($scope, $state, Transaction, $modal, STRIPE_KEY) {
     if ($state.current.name !== 'app.utility.choose') {
       $state.transitionTo('app.utility.choose');
     }
@@ -27,6 +27,11 @@ angular
 
       if ($scope.details.billType !== 'ECG' && $scope.details.billType !== 'GWC') {
         $scope.errors.push('Please select a Utility service provider');
+        return false;
+      }
+
+      if ($scope.details.accountNumber.length < 13) {
+        $scope.errors.push('Please enter a 13-digit account number');
         return false;
       }
 
@@ -59,7 +64,10 @@ angular
         Transaction.savePayment(payment).then(
           function() {
             $scope.paymentSaveSuccess = true;
-            $state.transitionTo('app.utility.success');
+            $modal.open({
+              templateUrl: 'apps/transaction/views/successModal.html',
+              controller: 'ModalCtrl'
+            });
           }, function () {
             $scope.paymentSaveSuccess = false;
           });
@@ -124,7 +132,10 @@ angular
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
-                $state.transitionTo('app.utility.success');
+                $modal.open({
+                  templateUrl: 'apps/transaction/views/successModal.html',
+                  controller: 'ModalCtrl'
+                });
               }, function () {
                 $scope.paymentSaveSuccess = false;
               });

@@ -186,23 +186,6 @@
   font-size: 14px;
   padding-top: 5px;
 }
-.widget-icon{
-  background: #30426a;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-  margin-right: 15px;
-}
-
-.widget-icon i {
-  line-height: 66px;
-  color: #fff;
-  font-size: 30px;
-  text-align: center;
-
-}
 
 .transaction-h4 {
   color: #7dc242;
@@ -211,4 +194,6 @@
 
 .service-image {
   height: 5em;
+  opacity: 0.8;
+  // transition: all 1s ease-in;
 }

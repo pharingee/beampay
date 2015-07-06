@@ -67,4 +67,12 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 
 // Airtime Top up
 @import "app/apps/airtime/styles/airtime";
-@import "app/apps/airtime/styles/airtimechoose";
+
+
+/*
+* Utilities
+*/
+
+//Modal on Payment Success
+@import "app/apps/television/styles/modal";
+

@@ -1,32 +1,32 @@
 <div class="container-fluid">
   <div class="row" ng-show="pricing">
-    <div class="col-sm-6">
+    <div class="col-lg-6">
       <form class="form" ng-submit="setDetails()">
-        <div class="text-center" ng-show="details.billType">
-          <div>
-            <img ng-show="details.billType == 'ECG'" src="apps/utility/images/ecg-logo.jpg" alt="" class="service-image">
-            <img ng-show="details.billType == 'GWC'" src="apps/utility/images/gwc-logo.jpg" alt="" class="service-image">
-            <br><br>
-          </div>
-        </div>
-
+      <div class="transaction-control">
         <div class="form-group">
-          <label for="provider">Which service provider would you like to pay?</label>
-          <select ng-model="details.billType" name="provider" class="form-control">
-            <option value="">-- Select a provider --</option>
-            <option value="ECG">Electricity</option>
-            <option value="GWC">Water</option>
-          </select>
-        </div>
+          Which service provider would you like to pay for?<br>
+            <div class="radio">
+                <label>
+                   <input type="radio" ng-model="details.billType" value="ECG" checked>
+                   <img src="apps/utility/images/ecg-logo.jpg" class="service-image">
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                   <input type="radio" ng-model="details.billType" value="GWC">
+                   <img src="apps/utility/images/gwc-logo.jpg" class="service-image">
+                </label>
+            </div>
+          </div>
 
         <div class="form-group">
           <label for="accountNumber">Account number and district code</label>
-          <input ng-model="details.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123">
+          <input ng-model="details.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123" required>
         </div>
 
         <div class="form-group">
           <label for="amount">How much in GHS would you like to pay?</label>
-          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()">
+          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="50" max="5000">
         </div>
 
         <div class="row text-center" ng-show="details.serviceFee > 0">
@@ -51,9 +51,9 @@
             $ {{ details.chargeUsd }}
           </div>
         </div>
-        <br><br>
+        </div>
 
-        <div class="form-group">
+        <div class="form-group container-fluid">
           <div class="row">
             <div class="col-xs-6">
               <input type="submit" class="btn btn-success form-control">

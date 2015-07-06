@@ -64,7 +64,7 @@ angular
         }
       })
       .state('resetPassword', {
-        url: urlPrefix + 'forgot/:key',
+        url: urlPrefix + 'forgot/:key/',
         templateUrl: tempPrefix + 'resetPassword.html',
         data: {
           pageTitle: 'Reset Password'

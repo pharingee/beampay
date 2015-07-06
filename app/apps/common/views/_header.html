@@ -20,16 +20,16 @@
             <span ng-if="currentUser.firstName || currentUser.lastName">BeamPay <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="sidebar-list">
-              <a href="#"><span class="sidebar-icon lnr lnr-gift"></span>Send Support</a>
+              <a ui-sref="app"><span class="sidebar-icon lnr lnr-gift"></span>Send Support</a>
             </li>
             <li class="sidebar-list">
-              <a href="#/"><span class="sidebar-icon lnr lnr-rocket"></span>Beam Valet </a>
+              <a ui-sref="app.valet.details"><span class="sidebar-icon lnr lnr-rocket"></span>Beam Valet </a>
             </li>
              <!-- <li class="sidebar-list">
               <a href="#/"><span class="sidebar-icon fa fa-table"></span>Address Book </a>
             </li> -->
              <li class="sidebar-list">
-              <a href="#"><span class="sidebar-icon lnr lnr-layers"></span>Transactions </a>
+              <a ui-sref="app.transaction"><span class="sidebar-icon lnr lnr-layers"></span>Transactions </a>
             </li>
           </ul>
         </li>
@@ -40,16 +40,16 @@
             <span ng-if="currentUser.firstName || currentUser.lastName">{{currentUser.firstName}} {{currentUser.lastName}}</span>
             <span ng-if="!currentUser.firstName && !currentUser.lastName">New User</span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="">My Profile</a></li>
+            <!-- <li><a href="">My Profile</a></li>
             <li><a href="">Settings</a></li>
-            <li role="separator" class="divider"></li>
+            <li role="separator" class="divider"></li> -->
             <li><a href="" ng-click="logout();">Sign out</a></li>
           </ul>
         </li>
         <li ng-if="!loggedin"><a href="" ng-click="signin()">Login</a></li>
         <li ng-if="!loggedin"><a href="" ng-click="signup()">Signup</a></li>
         <li ng-if="loggedin && logoutInProgress"><a>Signing out...</a></li>
-        <li><a href="#" >Support</a></li>
+        <li><a href="tel:+14158814216">+1 (415) 881-4216</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

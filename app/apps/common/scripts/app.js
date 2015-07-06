@@ -10,6 +10,8 @@ angular
     'ngTouch',
     'ngAnimate',
     'ui.bootstrap',
+    'ui.bootstrap.datetimepicker',
+    'angularMoment',
     'angular-loading-bar',
     'app.config',
     'app.utils',
@@ -21,7 +23,9 @@ angular
     'app.television',
     'app.utility',
     'app.internet',
-    'app.school'
+    'app.school',
+    'app.valet',
+    'app.gift'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -54,7 +58,7 @@ angular
       //Transition to login on protected pages without authentication
       var nonProtectedStates = [
         'signin', 'signup', 'activate', 'confirmEmail', 'forgot',
-        'signupComplete', 'landing', 'hiw', 'about'];
+        'signupComplete', 'landing', 'hiw', 'about', 'resetPassword'];
 
       var isProtectedState = true;
       for (var i = 0; i < nonProtectedStates.length; i++) {

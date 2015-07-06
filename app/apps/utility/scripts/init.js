@@ -31,12 +31,5 @@ angular
           pageTitle: 'Confirm Payment'
         }
       })
-      .state('app.utility.success', {
-        url: '/success',
-        templateUrl: tempPrefix + 'success.html',
-        data: {
-          pageTitle: 'Payment Successful'
-        }
-      })
       ;
   });

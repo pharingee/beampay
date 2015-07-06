@@ -2,10 +2,10 @@
 
 angular
   .module('app.television')
-  .controller('TelevisionCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
-    if ($state.current.name !== 'app.television.choose') {
-      $state.transitionTo('app.television.choose');
-    }
+  .controller('TelevisionCtrl', function ($scope, $state, Transaction, STRIPE_KEY, $modal) {
+    // if ($state.current.name !== 'app.television.choose') {
+    //   $state.transitionTo('app.television.choose');
+    // }
 
     $scope.details = {
       recipient: {},
@@ -31,7 +31,6 @@ angular
       }
 
       if ($scope.details.accountNumber.toString().length < 8 || isNaN($scope.details.accountNumber)) {
-        return true;
         $scope.errors.push('The reference number has to be 8 digits long');
         return false;
       }
@@ -65,7 +64,10 @@ angular
         Transaction.savePayment(payment).then(
           function() {
             $scope.paymentSaveSuccess = true;
-            $state.transitionTo('app.television.success');
+            $modal.open({
+              templateUrl: 'apps/transaction/views/successModal.html',
+              controller: 'ModalCtrl'
+            });
           }, function () {
             $scope.paymentSaveSuccess = false;
           });
@@ -130,7 +132,10 @@ angular
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
-                $state.transitionTo('app.television.success');
+                $modal.open({
+                  templateUrl: 'apps/transaction/views/successModal.html',
+                  controller: 'ModalCtrl'
+                });
               }, function () {
                 $scope.paymentSaveSuccess = false;
               });

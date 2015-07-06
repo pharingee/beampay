@@ -12,7 +12,7 @@ angular
       var pass = $scope.signIn.pass;
 
       // Client checks
-      if (!email || !pass) {
+      if (!$scope.signIn.email || !$scope.signIn.pass) {
         $scope.signIn.errors.push('All fields required');
         return;
       }

@@ -3,8 +3,8 @@
     <p>You're about to pay for</p>
     <div class="row">
       <div class="col-xs-4">
-        <img ng-show="details.billType == 'DST'" src="apps/television/images/dstv-logo.png" alt="" style="height: 10em">
-        <img ng-show="details.billType == 'GOT'" src="apps/television/images/gotv-logo.jpg" alt="" style="height: 10em">
+        <img ng-show="details.billType == 'DST'" src="apps/television/images/dstv-logo.png" alt="" style="height: 10em" class="service-image">
+        <img ng-show="details.billType == 'GOT'" src="apps/television/images/gotv-logo.jpg" alt="" style="height: 10em" class="service-image">
       </div>
       <div class="col-xs-6">
         <h5>DESCRIPTION</h5>
@@ -15,6 +15,7 @@
         <div class="row">
           <div class="col-xs-6">
             <button class="btn btn-success form-control" ng-click="confirm()">Pay</button>
+            <button class="btn btn-success form-control" ng-click="open()">PayModal</button>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
   <div class="row box">
     <div class="col-sm-offset-3 col-sm-6 form">
 
-      <h3>Hey there, {{settings.firstName}} !</h3>
+      <h3>Hey there, {{settings.firstName}}!</h3>
       <h5>We'll need the following information to get you set up</h5>
 
       <div class="errors" role="alert" ng-show="settings.errors.length">
@@ -350,7 +350,7 @@
         </div>
         <div class="form-group">
           <label for="phoneNumber">Phone number</label>
-          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Enter phone number">
+          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Eg. +233265086508">
         </div>
         <div class="form-group">
           <label for="street">Street</label>
@@ -366,7 +366,7 @@
         </div>
         <div class="form-group">
           <label for="contactMethod">Preferred Contact Method</label>
-          <select name="preferredContactMethod" class="form-control">
+          <select name="preferredContactMethod" class="form-control" ng-model="settings.preferredContactMethod">
             <option value="PHON">Phone</option>
             <option value="MAIL">Email</option>
             <option value="SMS">SMS</option>
