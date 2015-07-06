@@ -34,8 +34,8 @@ angular.module('app.transaction')
       return deferred.promise;
     };
 
-    var getReferral = function () {
-      var url = API_SERVER + 'referral/';
+    var serverGet = function (endPoint) {
+      var url = API_SERVER + endPoint;
       var deferred = $q.defer();
 
       $http.get(url).
@@ -47,6 +47,18 @@ angular.module('app.transaction')
         });
 
       return deferred.promise;
+    };
+
+    var getReferral = function () {
+      return serverGet('referral/');
+    };
+
+    var getTransactions = function () {
+      return serverGet('transaction/');
+    };
+
+    var getTransaction = function (trnasactionId) {
+      return serverGet('transaction/' + transactionId + '/');
     };
 
     var addAirtime = function (parameters) {
@@ -106,6 +118,12 @@ angular.module('app.transaction')
       },
       savePayment: function (parameters) {
         return savePayment(parameters);
+      },
+      getTransaction: function (transactionId) {
+        return getTransaction(transactionId);
+      },
+      getTransactions: function () {
+        return getTransactions();
       }
     };
 
