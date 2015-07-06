@@ -17,6 +17,22 @@ angular
     $scope.errors = [];
     $scope.paymentSaveSuccess = true;
 
+    var toCurr = function (amount) {
+      return Math.ceil(amount * 100) / 100;
+    };
+
+    Transaction.getPricing().then(function (response){
+      $scope.pricing = response;
+    }, function(){
+
+    });
+
+    $scope.calculatePricing = function () {
+      $scope.details.amountUsd = toCurr($scope.details.amountGhs / $scope.pricing.usdGhs);
+      $scope.details.serviceFee = toCurr(($scope.pricing.percentualFee * $scope.details.amountUsd) + $scope.pricing.fixedFee);
+      $scope.details.chargeUsd = toCurr($scope.details.amountUsd + $scope.details.serviceFee);
+    };
+
     $scope.setDetails = function () {
       $scope.contactState = true;
       $state.transitionTo('app.school.contact');

@@ -1,10 +1,10 @@
 'use strict';
 
 angular
-  .module('app.school')
-  .controller('SchoolCtrl', function ($scope, $state, Transaction) {
-    if ($state.current.name !== 'app.school.details') {
-      $state.transitionTo('app.school.details');
+  .module('app.valet')
+  .controller('ValetCtrl', function ($scope, $state, Transaction) {
+    if ($state.current.name !== 'app.valet.details') {
+      $state.transitionTo('app.valet.details');
     }
 
     $scope.details = {
@@ -19,19 +19,19 @@ angular
 
     $scope.setDetails = function () {
       $scope.contactState = true;
-      $state.transitionTo('app.school.contact');
+      $state.transitionTo('app.valet.contact');
     };
 
     $scope.setMethod = function () {
       $scope.requestState = true;
-      $state.transitionTo('app.school.request');
+      $state.transitionTo('app.valet.request');
     };
 
     $scope.makePayment = function () {
       $scope.details.wardName = $scope.details.wardName.firstName + ' ' + $scope.details.wardName.middleName + ' ' + $scope.details.wardName.lastName;
-      Transaction.addSchool($scope.details).then(function (response) {
+      Transaction.addvalet($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
-        $state.transitionTo('app.school.success');
+        $state.transitionTo('app.valet.success');
       }, function () {
 
       });

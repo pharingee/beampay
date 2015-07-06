@@ -2,7 +2,7 @@
 
 angular
   .module('app.internet')
-  .controller('InternetCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
+  .controller('InternetCtrl', function ($scope, $state, Transaction, $modal, STRIPE_KEY) {
     if ($state.current.name !== 'app.internet.choose') {
       $state.transitionTo('app.internet.choose');
     }
@@ -58,7 +58,10 @@ angular
         Transaction.savePayment(payment).then(
           function() {
             $scope.paymentSaveSuccess = true;
-            $state.transitionTo('app.internet.success');
+            $modal.open({
+              templateUrl: 'apps/transaction/views/successModal.html',
+              controller: 'ModalCtrl'
+            });
           }, function () {
             $scope.paymentSaveSuccess = false;
           });
@@ -123,7 +126,10 @@ angular
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
-                $state.transitionTo('app.internet.success');
+                $modal.open({
+                  templateUrl: 'apps/transaction/views/successModal.html',
+                  controller: 'ModalCtrl'
+                });
               }, function () {
                 $scope.paymentSaveSuccess = false;
               });
