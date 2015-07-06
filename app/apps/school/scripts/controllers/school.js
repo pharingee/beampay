@@ -2,7 +2,7 @@
 
 angular
   .module('app.school')
-  .controller('SchoolCtrl', function ($scope, $state, Transaction) {
+  .controller('SchoolCtrl', function ($scope, $state, $modal, Transaction) {
     if ($state.current.name !== 'app.school.details') {
       $state.transitionTo('app.school.details');
     }
@@ -40,14 +40,17 @@ angular
 
     $scope.setMethod = function () {
       $scope.requestState = true;
-      $state.transitionTo('app.school.request');
+      $state.transitionTo('app.school.recipient');
     };
 
     $scope.makePayment = function () {
       $scope.details.wardName = $scope.details.wardName.firstName + ' ' + $scope.details.wardName.middleName + ' ' + $scope.details.wardName.lastName;
       Transaction.addSchool($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
-        $state.transitionTo('app.school.success');
+        $modal.open({
+          templateUrl: 'apps/transaction/views/successModal.html',
+          controller: 'ModalCtrl'
+        });
       }, function () {
 
       });
