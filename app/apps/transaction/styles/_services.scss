@@ -1,21 +1,23 @@
-.services {
-  position: relative;
-  z-index: 10;
-  transition: margin 200ms;
-  min-height: 100%;
-  max-width: 100%;
-  font-size: 16px;
+.container-fluid{
+  padding-right: 0px !important;
+}
+
+.services { 
+  max-width: 100%; 
 }
 @media (min-width: 481px) {
   .services {
-    z-index: 10;
+    z-index: 10; 
+    margin-left: 0px !important;
+    margin-top: 5px !important;
+
   }
 }
 
 .service-wrapper{
-  padding: 40px;
-  background-color: #fff;
-
+  background-color: #fff; 
+  border-left: 6px solid #F8F8F8;
+  border-top: 6px solid #F8F8F8;
 }
 
 .services h4 {
@@ -41,21 +43,20 @@
   margin: 20px;
   background-color: #fff;
   position: relative;
-  border-radius: 2px;
-  height: 60%;
-  border: 1px solid #eee;
-  /*box-shadow:;*/
+  border-radius: 2px; 
+  border: 1px solid #EFEFEF;
+  height: 304px;
+  min-height: 304px;
 
 }
 
-.service-card:hover {
+.service-card:hover, .__active {
   cursor: pointer;
+  box-shadow: 0 2px 25px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+  transition: all linear 200ms;
 }
 .card__image {
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: absolute; 
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -63,20 +64,41 @@
   opacity: 0;
 }
 
+
+.__green{
+    background-color: #6EAB3A; 
+}
+
+.__blue{
+    background-color: #5180C1; 
+}
+
+.__yellow{
+    background-color: #D8D226; 
+}
+
+.__pink{
+    background-color: #F71885; 
+}
+
+.__gray{
+    background-color: #A0A0A0; 
+}
+
+.__purple{
+    background-color: #C234F7; 
+}
+
+
 .card__title {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   z-index: 100px;
-  color: #FFF;
-  position: absolute;
+  color: #FFF; 
   left: 0;
-  word-wrap: break-word;
-  /*white-space: nowrap;*/
-  /*text-overflow: ellipsis;*/
-  -webkit-transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
-          transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  word-wrap: break-word;  
 }
 .card__subtitle {
   -webkit-user-select: none;
@@ -94,9 +116,7 @@
   top: 45px;
   position: absolute;
   padding: 0 16px;
-  opacity: 0;
-  -webkit-transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
-          transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0; 
 }
 .card__text {
   -webkit-user-select: none;
@@ -113,11 +133,7 @@
   line-height: 1.6;
   position: absolute;
   color: #000;
-  overflow: hidden;
-  -webkit-transition: width 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
-          transition: width 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
-  -webkit-transition: delay 0.1s;
-          transition: delay 0.1s;
+  overflow: hidden; 
 }
 .card__action-bar {
   -webkit-user-select: none;
@@ -126,36 +142,17 @@
           user-select: none;
   position: absolute;
   bottom: 0;
-  top: auto;
-  left: 0;
-  right: 0;
-  padding: 8px;
-  /*border-top: 1px solid #E0E0E0;*/
-  box-sizing: border-box;
-  /*height: 52px;*/
-  -webkit-transition: left 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
-          transition: left 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  top: auto; 
+  padding: 8px;  
 }
-.card__button {
-  outline: none;
-  position: relative;
-  display: inline-block;
-  line-height: 52px;
-  padding: 0 16px;
-  color: #ff1744;
-}
-.service-card {
-  /*box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);*/
-  height: 304px;
-  min-height: 304px;
-}
+
 .service-card .card__image {
   border-radius: 1px 1px 0 0;
-  left: 0;
-  right: 0;
+  left: 0; 
   top: 0;
   opacity: 1;
   max-height: 220px;
+  border: 2px solid #FFF;
 }
 .service-card .card__title {
   top: 170px;
@@ -163,20 +160,23 @@
 .service-card h6 {
   font-size: 18px !important;
   font-weight: 400 !important;
-  line-height: 20px;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
+  line-height: 20px;  
+  position: absolute;
+  padding-left: 4.5em;
 }
 
-.service-card .lnr{
-  padding-left: 20px;
-  padding-right: 5px;
-  font-size: 20px;
-  font-weight: 500px;
+.service-card .lnr{ 
+  position: absolute;
+  left: 80px;
+  top: 60px;
+  color: #FFF;
+   font-size: 90px !important;
+  font-weight: 400 !important;
 }
 
 .service-card .card__text {
   top: 176px;
+  text-align: justify;
 }
 .service-card .card__action-bar {
   left: 0;
@@ -194,6 +194,5 @@
 
 .service-image {
   height: 5em;
-  opacity: 0.8;
-  // transition: all 1s ease-in;
+  // opacity: 0.8;
 }
