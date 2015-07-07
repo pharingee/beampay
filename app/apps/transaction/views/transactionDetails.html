@@ -4,54 +4,95 @@
 
     <div class="container-fluid" ng-if="transaction">
       <div class="transaction-list">
-        <div class="transaction-item">
-            <div class="widget-icon pull-left">
-              <span class="lnr lnr-rocket" ng-if="transactionType == 'valettransaction'"></span>
-              <span class="lnr lnr-heart" ng-if="transactionType == 'gift'"></span>
-              <span class="lnr lnr-highlight" ng-if="transactionType == 'schoolfeepayment'"></span>
-              <span class="lnr lnr-smartphone" ng-if="transactionType == 'airtimetopup'"></span>
-              <span class="lnr lnr-screen" ng-if="transactionType == 'billpayment' && (transaction.billType == 'DST' || transaction.billType == 'GOT')"></span>
-              <span class="lnr lnr-cloud-upload" ng-if="transactionType == 'billpayment' && (transaction.billType == 'VOB' || transaction.billType == 'SRF')"></span>
-              <span class="lnr lnr-calendar-full" ng-if="transactionType == 'billpayment' && (transaction.billType == 'ECG' || transaction.billType == 'GWC')"></span>
-            </div>
-            <h5>{{getDescription({transactionType: transactionType, data: transaction})}}</h5>
-            <div class="row">
-              <p class="col-md-2">
-                <span class="lnr lnr-cart"></span>
-                {{transaction.totalChargeUsd || 0.00 | currency}}
-              </p>
-              <p class="col-md-2">
-                <span class="lnr lnr-clock"></span>
-                <span am-time-ago="transaction.data.lastChanged" ></span>
-              </p>
-              <p class="col-md-2">
-                <span class="lnr lnr-envelope"></span>
-                4 new updates
-              </p>
-              <p class="col-md-2 text-center bg-warning" ng-if="transaction.state == 'INIT'">
-                PENDING
-              </p>
-              <p class="col-md-2 text-center bg-info" ng-if="transaction.state == 'INFO'">
-                GATHERING INFORMATION
-              </p>
-              <p class="col-md-2 text-center bg-info" ng-if="transaction.state == 'REDY'">
-                READY FOR PAYMENT
-              </p>
-              <p class="col-md-2 text-center bg-success" ng-if="transaction.state == 'PAID'">
-                PAID
-              </p>
-              <p class="col-md-2 text-center bg-success" ng-if="transaction.state == 'PROC'">
-                PROCESSED
-              </p>
-              <p class="col-md-2 text-center bg-danger" ng-if="transaction.state == 'CANC'">
-                CANCELLED
-              </p>
-              <p class="col-md-2 text-center bg-warning" ng-if="transaction.state == 'INVD'">
-                INVALID
-              </p>
-            </div>
+        <div class="transaction-item single">
+          <div class="widget-icon pull-left">
+            <span class="lnr lnr-rocket" ng-if="transactionType == 'valettransaction'"></span>
+            <span class="lnr lnr-heart" ng-if="transactionType == 'gift'"></span>
+            <span class="lnr lnr-highlight" ng-if="transactionType == 'schoolfeepayment'"></span>
+            <span class="lnr lnr-smartphone" ng-if="transactionType == 'airtimetopup'"></span>
+            <span class="lnr lnr-screen" ng-if="transactionType == 'billpayment' && (transaction.billType == 'DST' || transaction.billType == 'GOT')"></span>
+            <span class="lnr lnr-cloud-upload" ng-if="transactionType == 'billpayment' && (transaction.billType == 'VOB' || transaction.billType == 'SRF')"></span>
+            <span class="lnr lnr-calendar-full" ng-if="transactionType == 'billpayment' && (transaction.billType == 'ECG' || transaction.billType == 'GWC')"></span>
+          </div>
+          <h5>{{getDescription({transactionType: transactionType, data: transaction})}}</h5>
+          <div class="row">
+            <p class="col-md-2">
+              <span class="lnr lnr-cart"></span>
+              {{transaction.totalChargeUsd || 0.00 | currency}}
+            </p>
+            <p class="col-md-2">
+              <span class="lnr lnr-clock"></span>
+              <span am-time-ago="transaction.data.lastChanged" ></span>
+            </p>
+            <p class="col-md-2">
+              <span class="lnr lnr-envelope"></span>
+              4 new updates
+            </p>
+            <p class="col-md-2 text-center bg-warning" ng-if="transaction.state == 'INIT'">
+              PENDING
+            </p>
+            <p class="col-md-2 text-center bg-info" ng-if="transaction.state == 'INFO'">
+              GATHERING INFORMATION
+            </p>
+            <p class="col-md-2 text-center bg-info" ng-if="transaction.state == 'REDY'">
+              READY FOR PAYMENT
+            </p>
+            <p class="col-md-2 text-center bg-success" ng-if="transaction.state == 'PAID'">
+              PAID
+            </p>
+            <p class="col-md-2 text-center bg-success" ng-if="transaction.state == 'PROC'">
+              PROCESSED
+            </p>
+            <p class="col-md-2 text-center bg-danger" ng-if="transaction.state == 'CANC'">
+              CANCELLED
+            </p>
+            <p class="col-md-2 text-center bg-warning" ng-if="transaction.state == 'INVD'">
+              INVALID
+            </p>
+          </div>
         </div>
         <!-- </div> -->
+        <div class="row" ng-if="comments">
+          <div class="col-md-9">
+            <div class="transaction-comments">
+              <div ng-repeat="comment in transaction.comments | orderBy:'timestamp' track by $index">
+                <div class="comment-item" ng-if="comment.author == 'user'">
+                  <div class="row">
+                    <div class="col-xs-4 col-xs-offset-6 time">
+                      <span am-time-ago="comment.timestamp"></span>
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+                  <div class="row">
+                    <div class="col-xs-1 pull-left user">IN</div>
+                    <div class="col-xs-8 pull-left message">
+                      {{getComment(comment.comment)}}
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+                  <br>
+                </div>
+
+                <div class="comment-item" ng-if="comment.author != 'user'">
+                  <div class="row">
+                    <div class="col-xs-4 col-xs-offset-2 time">
+                      <span am-time-ago="comment.timestamp"></span>
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+                  <div class="row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8 message">
+                      {{getComment(comment.comment)}}
+                    </div>
+                    <div class="col-xs-2 user"><span class="lnr lnr-rocket"></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
