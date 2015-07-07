@@ -41,12 +41,8 @@ angular
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
-        Auth.persist(req.data.id, req.data.token);
-        if (!req.data.newUser){
-          $state.transitionTo('onboard.name');
-        }else{
-          $state.transitionTo('app');
-        }
+        Auth.persist(req.data.id, req.data.token, req.data.complete);
+        Auth.saveName(req.data.firstName, req.data.lastName);
       }, function (req) {
         $scope.signIn.errors = Error.signInFb(req.data);
       });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.transaction')
-  .service('TransactionUtil', function ($http, $q, API_SERVER, Persist){
+  .service('TransactionUtil', function (){
     var getFullName = function (shortName) {
       var fullName = '';
       switch (shortName) {
@@ -71,5 +71,5 @@ angular.module('app.transaction')
       getFullName: function (shortName) {
         return getFullName(shortName);
       }
-    }
+    };
   });

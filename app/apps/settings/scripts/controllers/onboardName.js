@@ -6,7 +6,13 @@ angular
 
     $scope.settings = {};
 
-    $scope.settings.submit = function () {
+    Onboard.getProfile().then(
+      function (response) {
+        $scope.settings = response;
+        $scope.settings.submit = submit;
+      }, function () {});
+
+    var submit = function () {
       $scope.settings.errors = [];
       var firstName = $scope.settings.firstName;
       var lastName = $scope.settings.lastName;

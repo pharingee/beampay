@@ -10,7 +10,21 @@ angular
     $scope.settings.country = 'US';
     $scope.settings.firstName = Persist.getUser().firstName;
 
-    $scope.settings.submit = function () {
+    Onboard.getProfile().then(
+      function (response) {
+        $scope.settings = response.profile;
+        $scope.settings.submit = submit;
+
+        var date = new Date($scope.settings.dateOfBirth);
+        $scope.settings.date = {
+          year: date.getFullYear().toString(),
+          month: (date.getMonth() + 1).toString(),
+          day: (date.getDate()).toString()
+        };
+
+      }, function () {});
+
+    var submit = function () {
       $scope.settings.errors = [];
 
       $scope.settings.dateOfBirth = $scope.settings.date.year + '-' + $scope.settings.date.month + '-' + $scope.settings.date.day;

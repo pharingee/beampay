@@ -28,6 +28,13 @@ angular
           pageTitle: 'Signin'
         }
       })
+      .state('facebookredirect', {
+        url: urlPrefix + 'facebook-redirect',
+        templateUrl: tempPrefix + 'facebookRedirect.html',
+        data: {
+          pageTitle: 'Loggin In'
+        }
+      })
       .state('activate', {
         url: urlPrefix + 'activate/:key/',
         templateUrl: tempPrefix + 'activate.html',
@@ -74,6 +81,7 @@ angular
     $httpProvider.interceptors.push('AuthInterceptor');
 
     $authProvider.baseUrl = API_SERVER;
+    $authProvider.loginRedirect = '/auth/facebook-redirect';
     $authProvider.facebook({
       clientId: FACEBOOK_CLIENT_ID,
       url: 'account/signin/facebook/'
