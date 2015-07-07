@@ -24,18 +24,11 @@ angular
           pageTitle: 'contact Details'
         }
       })
-      .state('app.school.request', {
-        url: '/request',
-        templateUrl: tempPrefix + 'request.html',
+      .state('app.school.recipient', {
+        url: '/recipient',
+        templateUrl: tempPrefix + 'recipient.html',
         data: {
           pageTitle: 'Confirm Request'
-        }
-      })
-      .state('app.school.success', {
-        url: '/success',
-        templateUrl: tempPrefix + 'success.html',
-        data: {
-          pageTitle: 'Request Successful'
         }
       })
       ;

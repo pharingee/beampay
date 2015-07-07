@@ -57,8 +57,8 @@ angular.module('app.transaction')
       return serverGet('transaction/');
     };
 
-    var getTransaction = function (trnasactionId) {
-      return serverGet('transaction/' + transactionId + '/');
+    var getTransaction = function (transactionId, transactionType) {
+      return serverGet('transaction/' + transactionId + '/?type=' + transactionType);
     };
 
     var addAirtime = function (parameters) {
@@ -119,8 +119,8 @@ angular.module('app.transaction')
       savePayment: function (parameters) {
         return savePayment(parameters);
       },
-      getTransaction: function (transactionId) {
-        return getTransaction(transactionId);
+      getTransaction: function (transactionId, transactionType) {
+        return getTransaction(transactionId, transactionType);
       },
       getTransactions: function () {
         return getTransactions();

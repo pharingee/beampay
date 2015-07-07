@@ -31,12 +31,5 @@ angular
           pageTitle: 'Confirm Payment'
         }
       })
-      .state('app.television.success', {
-        url: '/success',
-        templateUrl: tempPrefix + 'success.html',
-        data: {
-          pageTitle: 'Payment Successful'
-        }
-      })
       ;
   });

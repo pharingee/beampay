@@ -1,93 +1,65 @@
-<section class="transaction-control">
+<section class="transaction-control" ng-controller="TransactionCtrl">
 	<div class="container-fluid">
 		<strong><h5>Transactions and services so far</h5></strong>
 
 		<div class="container-fluid">
-		<div class="transaction-list">
-		<!-- <div class="transaction-overlay">
-		<div class="pull-right">
-			<span class="lnr lnr-eye"></span>
-			VIEW DETAILS
-		</div> -->
-		<div class="transaction-item">
-        <a ui-sref="#">
-			<div class="widget-icon pull-left">
-				<span class="lnr lnr-rocket"></span>
-			</div>
-			<h5>Buy a Honda 10KVA generator for family house</h5>
-			<div class="row">
-				<p class="col-md-2">
-				<span class="lnr lnr-cart"></span>
-				$14.00
-				</p>
-				<p class="col-md-2">
-				<span class="lnr lnr-clock"></span>
-				July 26, 2015 4:55pm
-				</p>
-				<p class="col-md-2">
-				<span class="lnr lnr-envelope"></span>
-				4 new updates
-				</p>
-				<p class="col-md-2 text-center bg-warning">
-				PENDING
-				</p>
-			</div>
-		</a>
-		</div>
-		<!-- </div> -->
-
-		<div class="transaction-item">
-        <a ui-sref="#">
-			<div class="widget-icon pull-left">
-				<span class="lnr lnr-heart"></span>
-			</div>
-			<h5>Bought a chocolate for Maa Kaley</h5>
-			<div class="row">
-				<p class="col-md-2">
-				<span class="lnr lnr-cart"></span>
-				$14.00
-				</p>
-				<p class="col-md-2">
-				<span class="lnr lnr-clock"></span>
-				July 26, 2015 4:55pm
-				</p>
-				<p class="col-md-2">
-				<span class="lnr lnr-envelope"></span>
-				4 new updates
-				</p>
-				<p class="col-md-2 text-center bg-success">
-				DONE
-				</p>
-			</div>
-		</a>
-		</div>
-
-		<div class="transaction-item">
-        <a ui-sref="#">
-			<div class="widget-icon pull-left">
-				<span class="lnr lnr-heart"></span>
-			</div>
-			<h5>Bought a chocolate for Maa Kaley</h5>
-			<div class="row">
-				<p class="col-md-2">
-				<span class="lnr lnr-cart"></span>
-				$14.00
-				</p>
-				<p class="col-md-2">
-				<span class="lnr lnr-clock"></span>
-				July 26, 2015 4:55pm
-				</p>
-				<p class="col-md-2">
-				<span class="lnr lnr-envelope"></span>
-				4 new updates
-				</p>
-				<p class="col-md-2 text-center bg-success">
-				DONE
-				</p>
-			</div>
-		</a>
-		</div>
-		</div>
-		</div>
-	</div>
+      <div class="transaction-list">
+        <!-- <div class="transaction-overlay">
+        <div class="pull-right">
+        	<span class="lnr lnr-eye"></span>
+        	VIEW DETAILS
+        </div> -->
+        <div class="transaction-item" ng-repeat="transaction in transactions track by $index">
+          <a ui-sref="app.transaction.details({transactionId: transaction.data.id, transactionType: transaction.transactionType})">
+            <div class="widget-icon pull-left">
+              <span class="lnr lnr-rocket" ng-if="transaction.transactionType == 'valettransaction'"></span>
+              <span class="lnr lnr-heart" ng-if="transaction.transactionType == 'gift'"></span>
+              <span class="lnr lnr-highlight" ng-if="transaction.transactionType == 'schoolfeepayment'"></span>
+              <span class="lnr lnr-smartphone" ng-if="transaction.transactionType == 'airtimetopup'"></span>
+              <span class="lnr lnr-screen" ng-if="transaction.transactionType == 'billpayment' && (transaction.data.billType == 'DST' || transaction.data.billType == 'GOT')"></span>
+              <span class="lnr lnr-cloud-upload" ng-if="transaction.transactionType == 'billpayment' && (transaction.data.billType == 'VOB' || transaction.data.billType == 'SRF')"></span>
+              <span class="lnr lnr-calendar-full" ng-if="transaction.transactionType == 'billpayment' && (transaction.data.billType == 'ECG' || transaction.data.billType == 'GWC')"></span>
+            </div>
+            <h5>{{getDescription(transaction)}}</h5>
+            <div class="row">
+              <p class="col-md-2">
+                <span class="lnr lnr-cart"></span>
+                {{transaction.data.totalChargeUsd || 0.00 | currency}}
+              </p>
+              <p class="col-md-2">
+                <span class="lnr lnr-clock"></span>
+                <span am-time-ago="transaction.data.lastChanged" ></span>
+              </p>
+              <p class="col-md-2">
+                <span class="lnr lnr-envelope"></span>
+                4 new updates
+              </p>
+              <p class="col-md-2 text-center bg-warning" ng-if="transaction.data.state == 'INIT'">
+                PENDING
+              </p>
+              <p class="col-md-2 text-center bg-info" ng-if="transaction.data.state == 'INFO'">
+                GATHERING INFORMATION
+              </p>
+              <p class="col-md-2 text-center bg-info" ng-if="transaction.data.state == 'REDY'">
+                READY FOR PAYMENT
+              </p>
+              <p class="col-md-2 text-center bg-success" ng-if="transaction.data.state == 'PAID'">
+                PAID
+              </p>
+              <p class="col-md-2 text-center bg-success" ng-if="transaction.data.state == 'PROC'">
+                PROCESSED
+              </p>
+              <p class="col-md-2 text-center bg-danger" ng-if="transaction.data.state == 'CANC'">
+                CANCELLED
+              </p>
+              <p class="col-md-2 text-center bg-warning" ng-if="transaction.data.state == 'INVD'">
+                INVALID
+              </p>
+            </div>
+          </a>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
 </section>

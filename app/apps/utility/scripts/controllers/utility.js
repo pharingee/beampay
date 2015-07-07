@@ -2,7 +2,7 @@
 
 angular
   .module('app.utility')
-  .controller('UtilityCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
+  .controller('UtilityCtrl', function ($scope, $state, Transaction, $modal, STRIPE_KEY) {
     if ($state.current.name !== 'app.utility.choose') {
       $state.transitionTo('app.utility.choose');
     }
@@ -64,7 +64,10 @@ angular
         Transaction.savePayment(payment).then(
           function() {
             $scope.paymentSaveSuccess = true;
-            $state.transitionTo('app.utility.success');
+            $modal.open({
+              templateUrl: 'apps/transaction/views/successModal.html',
+              controller: 'ModalCtrl'
+            });
           }, function () {
             $scope.paymentSaveSuccess = false;
           });
@@ -129,7 +132,10 @@ angular
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
-                $state.transitionTo('app.utility.success');
+                $modal.open({
+                  templateUrl: 'apps/transaction/views/successModal.html',
+                  controller: 'ModalCtrl'
+                });
               }, function () {
                 $scope.paymentSaveSuccess = false;
               });

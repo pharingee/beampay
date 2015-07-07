@@ -2,14 +2,13 @@
 
 angular
   .module('app.airtime')
-  .controller('AirtimeCtrl', function ($scope, $state, Transaction, STRIPE_KEY) {
+  .controller('AirtimeCtrl', function ($scope, $state, Transaction, $modal, STRIPE_KEY) {
     if ($state.current.name !== 'app.airtime.choose') {
       $state.transitionTo('app.airtime.choose');
     }
 
     $scope.details = {
       recipient: {},
-      accountNumber: '',
       preferredContactMethod: 'MAIL'
     };
     $scope.details.serviceFee = 0;
@@ -58,7 +57,10 @@ angular
         Transaction.savePayment(payment).then(
           function() {
             $scope.paymentSaveSuccess = true;
-            $state.transitionTo('app.airtime.success');
+            $modal.open({
+              templateUrl: 'apps/transaction/views/successModal.html',
+              controller: 'ModalCtrl'
+            });
           }, function () {
             $scope.paymentSaveSuccess = false;
           });
@@ -92,6 +94,7 @@ angular
       if (validateRecipient()){
 
         $scope.paymentState = true;
+        $scope.details.phoneNumber = $scope.details.recipient.phoneNumber;
         Transaction.addAirtime($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.airtime.payment');
@@ -102,15 +105,15 @@ angular
     };
 
     $scope.getProvider = function () {
-      if ($scope.airtimeFormData.network === 'MTN') {
+      if ($scope.details.network === 'MTN') {
         return 'MTN';
       }
-      else if ($scope.airtimeFormData.network === 'TIGO') {
+      else if ($scope.details.network === 'TIGO') {
         return 'TIGO';
-      } 
-      else if ($scope.airtimeFormData.network === 'AIRTEL'){
+      }
+      else if ($scope.details.network === 'AIRTEL'){
         return 'AIRTEL';
-      } 
+      }
       else{
       return 'VODAFONE';
     }
@@ -126,12 +129,15 @@ angular
             var payment = {
               stripeToken: token.id,
               transactionId: $scope.details.transactionId,
-              type: 'BILL'
+              type: 'AIRTIME'
             };
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
-                $state.transitionTo('app.airtime.success');
+                $modal.open({
+                  templateUrl: 'apps/transaction/views/successModal.html',
+                  controller: 'ModalCtrl'
+                });
               }, function () {
                 $scope.paymentSaveSuccess = false;
               });
