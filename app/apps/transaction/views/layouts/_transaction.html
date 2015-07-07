@@ -9,9 +9,10 @@
     <div class="col-sm-9 col-lg-10 ">
       <div class="row">
         <div class="col-xs-12">
+          <div class="container-fluid service-wrapper">
           <div ui-view="">
             <section class="services" ng-controller="HomeCtrl">
-              <div class="container-fluid service-wrapper">
+            
                 <h4>Hello {{currentUser.firstName}}!</h4>
                 <h5>Support a loved one by paying for one of the following options</h5>
 
@@ -90,11 +91,16 @@
               </div>
 
             </section>
+            
+
           </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-xs-12">
+          <div ng-include="'apps/transaction/views/partials/_footer.html'"></div>
+        </div>
+    </div>
   </div>
 </div>
 </div>
-<div ng-include="'apps/common/views/_footer.html'"></div>
