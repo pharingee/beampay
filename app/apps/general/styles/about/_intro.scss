@@ -1,32 +1,87 @@
+
 .about-intro {
   background-color: $green;
   color: $white;
+  font-family: 'bariol';
+  min-height: 90%;
 
+  .navbar-brand{
+    background-color: #7DC242;
+  }
+
+  .nav-link{
+    border-right: 1px solid #5FA622;
+    padding-left: 25px;
+   padding-right: 25px;
+  }
+
+.nav-link-nb{
+    padding-left: 25px;
+  }
+
+  ul{
+    list-style: none;
+  }
+  ul > li{
+    display: inline-block;
+  }
+
+  h1 > span.header-font{
+    font-family: 'freestyle-script';
+  }
+  
+
+  #heart{
+    margin-top: -40px;
+    margin-left: -40px;
+  } 
+  
   img {
-    height: 30px;
-    margin: 60px 0px 30px 0px;
-  }
+  
+    &#logo {
+      height: 30px;
+      margin: 100px 0 30px 0;
 
-  h1 {
-    padding: 50px 0px;
-    text-align: center;
-  }
+      @media screen and (max-width: $screen-xs-max) {
+        margin: 30px 0;
+      }
+    }
 
-  h4 {
-    font-weight: 400;
-    max-width: 650px;
-    margin: 0 auto;
-    line-height: 40px;
-    padding-bottom: 75px;
-    text-align: center;
-
-    @media screen and (max-width: $screen-xs-max) {
-      font-weight: 400;
+    &#hero {
+        margin-top: -60px;
+        margin-left: -100px;
     }
   }
 
-  @media screen and (max-width: $screen-xs-max) {
-    text-align: center;
+  .call-to-action{
+    padding-top: 150px;
+    padding-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 50px;
+    // padding-top: 200px;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .submit {
+
+    button {
+      // padding: 5px 40px 5px 40px;
+      background-color: #fe960b;
+      color: #FFFFFF;
+      border-color: #fe960b;
+      border-radius:5px;
+      // margin-top: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      -webkit-box-shadow: 0px 3px 0px #636a11;
+       -moz-box-shadow: 0px 3px 0px #636a11;
+        box-shadow: 0px 3px 0px #636a11;
+    }
   }
 
 }

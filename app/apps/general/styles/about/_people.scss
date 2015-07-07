@@ -3,6 +3,29 @@
     padding: 50px 10px;
   }
 
+  .content{
+    padding:40px 5px 20px 40px;
+
+    .lnr{
+      color:$green;
+      font-size: 25px;
+    }
+    span{
+      color: $gray-dark;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .details{
+      color:$gray-light;
+      font-weight: 400;
+      font-size: 20px;
+    }
+    .service-pt{
+      padding-bottom: 25px;
+      padding-top: 15px
+    }
+  }
+
   .team {
 
     @media screen and (max-width: $screen-xs-max) {
@@ -12,7 +35,8 @@
     img {
       @extend .img-rounded;
       padding-top: 15px;
-      width: 150px;
+      // width: 220px;
+      // width: 220px;
     }
 
     h2 {
@@ -25,8 +49,9 @@
       padding-top: 20px;
 
       .name {
+        padding-top: 10px;
         font-size: 1.5em;
-        font-weight: 300;
+        font-weight: 700;
 
         @media screen and (max-width: $screen-xs-max) {
           font-weight: 400;
@@ -57,9 +82,11 @@
       }
 
       .desc {
-        font-size: 0.9em;
         text-align: justify;
         text-justify: inter-word;
+        color:$gray-light;
+        font-weight: 400;
+        font-size: 16px;
 
         @media screen and (max-width: $screen-xs-max) {
           text-align: center;
@@ -68,4 +95,39 @@
 
     }
   }
+}
+
+.about-beam {
+  background-color: $white;
+  padding: 40px 10px;
+  // font-family: 'bariol';
+
+  // .container {
+  //   padding: 50px 10px;
+  // }
+
+  .content{
+    padding:40px 5px 20px 40px;
+
+    .lnr{
+      color:$green;
+      font-size: 25px;
+    }
+    span{
+      color: $gray-dark;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .details{
+      color:$gray-light;
+      font-weight: 400;
+      font-size: 20px;
+    }
+    .service-pt{
+      padding-bottom: 25px;
+      padding-top: 15px
+    }
+  }
+
+
 }
