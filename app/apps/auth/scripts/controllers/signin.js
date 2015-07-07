@@ -56,4 +56,8 @@ angular
       $state.transitionTo('forgot');
     };
 
+    $('.show-email').click(function () {
+      $('#sign-form').slideToggle();
+    });
+
   });

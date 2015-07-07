@@ -51,4 +51,8 @@ angular
       });
     };
 
+    $('.show-email').click(function () {
+      $('#sign-form').slideToggle();
+    });
+
   });
