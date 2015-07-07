@@ -8,14 +8,16 @@ angular
     var EMAIL_KEY = 'email';
     var FIRST_NAME_KEY = 'firstName';
     var LAST_NAME_KEY = 'lastName';
+    var COMPLETE_KEY = 'complete';
     // var AVATAR_URL_KEY = 'avatar_url';
 
     var PRICING_KEY = 'pricing';
 
     // USER
-    var saveUser = function (userId, token) {
+    var saveUser = function (userId, token, complete) {
       $cookieStore.put(USERID_KEY, userId);
       $cookieStore.put(TOKEN_KEY, token);
+      $cookieStore.put(COMPLETE_KEY, complete);
     };
 
     // USER
@@ -30,6 +32,7 @@ angular
       $cookieStore.remove(EMAIL_KEY);
       $cookieStore.remove(FIRST_NAME_KEY);
       $cookieStore.remove(LAST_NAME_KEY);
+      $cookieStore.remove(COMPLETE_KEY);
     };
 
     var getUser = function () {
@@ -37,13 +40,20 @@ angular
         userid: $cookieStore.get(USERID_KEY),
         token: $cookieStore.get(TOKEN_KEY),
         firstName: $cookieStore.get(FIRST_NAME_KEY),
-        lastName: $cookieStore.get(LAST_NAME_KEY)
+        lastName: $cookieStore.get(LAST_NAME_KEY),
+        complete: $cookieStore.get(COMPLETE_KEY)
       };
+    };
+
+    var completeUser = function () {
+      $cookieStore.put(COMPLETE_KEY, true);
+      return true;
     };
 
     // EMAIL
     var saveEmail = function (email) {
       $cookieStore.put(EMAIL_KEY, email);
+      return true;
     };
 
     var getEmail = function () {
@@ -60,8 +70,8 @@ angular
     };
 
     return {
-      saveUser: function (userId, token) {
-        return saveUser(userId, token);
+      saveUser: function (userId, token, complete) {
+        return saveUser(userId, token, complete);
       },
       saveUserName: function (firstName, lastName) {
         return saveUserName(firstName, lastName);
@@ -71,6 +81,9 @@ angular
       },
       deleteUser: function () {
         return deleteUser();
+      },
+      completeUser: function () {
+        return completeUser();
       },
 
       saveEmail: function (email) {

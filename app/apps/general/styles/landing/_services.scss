@@ -6,63 +6,49 @@
   .heading {
     text-align: center;
 
-    h1 {
+    h3 {
       color: $blue;
+      font-weight: bolder;
     }
 
-    h3 {
+    .details {
       color: $gray-light;
+      font-size: 20px;
     }
   }
+
+
+
 
   .service {
     padding-top: 50px;
 
-    .circle {
-      @include circle($blue);
+    a:hover{
+      background-color: transparent;
+      text-decoration: none;
+    }
 
-      img {
+    i.lnr{
+      font-size: 90px;
+      color: $blue;
 
-        &#school {
-          padding-top: 60px;
-          width: 100px;
-        }
-
-        &#medical {
-          padding-top: 55px;
-          width: 85px;
-        }
-
-        &#gifts {
-          padding-top: 60px;
-          width: 85px;
-        }
-
-        &#utility {
-          padding-top: 55px;
-          width: 65px;
-        }
-
-        &#phone {
-          padding-top: 55px;
-          width: 50px;
-        }
-
-        &#internet {
-          padding-top: 60px;
-          width: 80px;
-        }
-
+      .lnr-graduation-hat{
+        font-size: 100px;
+        padding-top: 60px;
+        width:100px;
       }
-
+      .lnr-sun{
+        font-size:30px !important;
+        // width:40px;
+      }
     }
 
     .text {
       text-align: center;
 
-      h3 {
+      h5 {
         color: $blue;
-        padding-top: 5px;
+        font-weight: bolder;
       }
 
       h4 {
@@ -75,6 +61,18 @@
         line-height: 30px;
       }
     }
+  }
+
+  .btn-lg{
+    color:#fff;
+    background-color: $blue;
+    border-color: #dedede;
+    border-width: 2px;
+  }
+
+  .btn-lg:hover{
+    color: $blue;
+    background-color: #fff;
   }
 
   .question {

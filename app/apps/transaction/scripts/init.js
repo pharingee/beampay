@@ -8,11 +8,11 @@ angular
   	$stateProvider
   	  .state('app.transaction', {
   	  	url: '^/transactions',
-  	  	templateUrl: tempPrefix + 'layouts/transactions_header.html'
+  	  	templateUrl: tempPrefix + 'layouts/transactions.html'
   	  })
       .state('app.transaction.list', {
         url: '/',
-        templateUrl: tempPrefix + 'layouts/transactions_list.html'
+        templateUrl: tempPrefix + 'transactionsList.html'
       })
       .state('app.transaction.details', {
         url: '/:transactionId/:transactionType',

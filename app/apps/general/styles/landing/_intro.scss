@@ -2,14 +2,60 @@
   background-color: $green;
   color: $white;
   font-family: 'bariol';
+  min-height: 90%;
 
-  .call-us {
-    background-color: $dark-green;
-    text-align: center;
-    max-width: 350px;
-    padding: 10px 25px;
-    font-size: 1.5em;
-    margin-left: 75px;
+  // .call-us {
+  //   background-color: $dark-green;
+  //   text-align: center;
+  //   max-width: 350px;
+  //   padding: 10px 25px;
+  //   font-size: 1.5em;
+  //   margin-left: 75px;
+  // }
+
+  .navbar-brand{
+    background-color: #7DC242;
+  }
+
+  .nav-link{
+    border-right: 1px solid #5FA622;
+    padding-left: 25px;
+   padding-right: 25px;
+  }
+
+  .navbar{
+    background-color: transparent;
+    z-index: 9;
+
+    a{
+      color: $white;
+    }
+
+    a:hover{
+      color: $green;
+      text-decoration: none;
+    }
+  }
+
+.nav-link-nb{
+    padding-left: 25px;
+  }
+
+  ul{
+    list-style: none;
+  }
+  ul > li{
+    display: inline-block;
+  }
+
+  h1 > span.header-font{
+    font-family: 'freestyle-script';
+  }
+
+
+  #heart{
+    margin-top: -40px;
+    margin-left: -40px;
   }
 
   img {
@@ -23,32 +69,45 @@
     }
 
     &#hero {
-      margin-top: 25px;
-      max-width: 450px;
+        margin-top: -60px;
+        margin-left: -100px;
     }
+  }
+
+  .call-to-action{
+    padding-top: 150px;
+    padding-bottom: 20px;
   }
 
   h1 {
     font-size: 50px;
-    padding-top: 25px;
+    // padding-top: 200px;
   }
 
   h3 {
-    max-width: 300px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    line-height: 30px;
+    margin-top: 0px;
   }
 
   .submit {
-    text-align: center;
 
     button {
-      @include black-button();
-      text-decoration: none;
-      display: inline-block;
-      margin-left: 25px;
-      float: left;
+      padding: 5px 40px 5px 40px;
+      background-color: #fe960b;
+      color: #FFFFFF;
+      border-color: #fe960b;
+      border-radius:5px;
+      margin-top: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      -webkit-box-shadow: 0px 3px 0px #636a11;
+       -moz-box-shadow: 0px 3px 0px #636a11;
+        box-shadow: 0px 3px 0px #636a11;
+    }
+
+    button:hover {
+      background-color: #ffffff;
+      color: #fe960b;
     }
   }
+
 }

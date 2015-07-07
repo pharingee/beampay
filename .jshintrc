@@ -20,6 +20,7 @@
   "globals": {
     "angular": false,
     "WOW": false,
-    "StripeCheckout": false
+    "StripeCheckout": false,
+    "$": false
   }
 }

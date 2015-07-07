@@ -4,13 +4,82 @@
   font-family: 'bariol';
 
   .heading {
-    text-align: center;
-    padding-top: 25px;
 
-    h1 {
-      color: $green;
+    /* padding:0px 0px 40px 40px; */
+    // padding-top: 25px;
+    text-align: center;
+
+    h3 {
+      width:250px;
+      padding: 10px 0;
+      border-bottom: 1px solid $green;
+      color:$gray-dark;
+    }
+    .details{
+      color:$gray-light;
+      padding-top: -10px;
+      font-size: 20px;
     }
   }
+
+  .content{
+    padding:20px 0px 20px 20px;
+
+    .lnr{
+      color:$green;
+      font-size: 25px;
+    }
+    span{
+      color: $gray-dark;
+      font-size: 20px;
+      font-weight: 400;
+    }
+    .details{
+      color:$gray-light;
+      font-size: 20px;
+    }
+    .service-pt{
+      padding-bottom: 25px;
+      padding-top: 15px
+    }
+  }
+
+  .submit-btn{
+    padding-bottom: 50px;
+  }
+
+  .submit {
+    // margin-left: -15px;
+
+    button {
+      padding: 5px 40px 5px 40px;
+      background-color: #6EAB3A;
+      color: #FFFFFF;
+      border-color: #6EAB3A;
+      border-radius:5px;
+      margin-top: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      -webkit-box-shadow: 0px 3px 0px #6B8258;
+      -moz-box-shadow: 0px 3px 0px #6B8258;
+      box-shadow: 0px 3px 0px #6B8258;
+    }
+
+    button:hover {
+      background-color: #FFFFFF;
+      color: #6EAB3A;
+    }
+  }
+.heading-two{
+    padding:0px 0px 20px 40px;
+    text-align: center;
+
+    h3 {
+      width:250px;
+      padding: 20px;
+      color:$gray-dark;
+    }
+}
 
   .list {
     padding-top: 25px;
@@ -34,27 +103,30 @@
   }
 
   .step {
-    padding-top: 50px;
+    padding-top: 15px;
+      font-weight: bolder;
 
     .circle {
       @include circle($green);
+      width:100px;
+      height:100px;
 
       img {
 
         &#shield {
-          padding-top: 45px;
+          padding-top: 20px;
           padding-left: 5px;
-          width: 100px;
+          width: 60px;
         }
 
         &#bolt {
-          padding-top: 45px;
-          width: 90px;
+          padding-top: 12px;
+          width: 60px;
         }
 
         &#moneyback {
-          padding-top: 50px;
-          width: 100px;
+          padding-top: 15px;
+          width: 70px;
         }
 
       }
@@ -66,6 +138,7 @@
 
       h3 {
         color: $green;
+        font-weight: bolder;
         padding-top: 5px;
       }
 
@@ -82,8 +155,7 @@
   }
 
   hr {
-    margin-top: 70px;
-    margin-bottom: 0px;
-    max-width: 750px;
+    // padding: 50px 0px;
   }
+
 }

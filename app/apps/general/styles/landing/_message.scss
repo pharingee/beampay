@@ -11,4 +11,19 @@
     width: 500px;
     margin: 0 auto;
   }
+
+  .submit{
+    padding-top: 20px;
+  }
+
+  .btn-lg{
+    background-color: #6177B5;
+    border-color: #dedede;
+    border-width: 2px;
+  }
+
+  .btn-lg:hover{
+    background-color: #ffffff;
+    color: #6177B5;
+  }
 }

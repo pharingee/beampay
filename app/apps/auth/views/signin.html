@@ -23,9 +23,17 @@
         </button>
       </div>
 
-      <hr>
+      <div class="row">
+        <div class="col-xs-5"><hr></div>
+        <div class="col-xs-2 auth-or text-center">OR</div>
+        <div class="col-xs-5"><hr></div>
+      </div>
 
-      <form autocomplete="off">
+      <div class="row text-center">
+        <a href="" class="show-email">Login with your email</a>
+      </div>
+
+      <form autocomplete="off" id="sign-form">
         <div class="form-group">
           <label for="email">Email</label>
           <input ng-model="signIn.email" type="email" class="form-control" placeholder="Enter email">

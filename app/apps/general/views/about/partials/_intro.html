@@ -1,9 +1,43 @@
-<div class="about-intro">
+<div class="about-intro" ng-controller="HeaderCtrl">
   <div class="container">
-    <a ui-sref="landing"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
-    <h1>About Beam Pay</h1>
-    <h4>
-      We're a small team based in Accra, Ghana.
-    </h4>
-  </div>
+    <div class="row">
+      <div class="navbar">
+        <a href="#!/home" class="navbar-brand">
+          <img src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent">
+        </a>
+        <ul class="nav navbar-right">
+          <li class="xs-hidden">
+              <div class="submit">
+                <button ng-if="!loggedin" type="submit" class="btn" ng-click="signup()">Sign up for Beam</button>
+              </div>
+              <div class="submit">
+                <button ng-if="loggedin" type="submit" class="btn" ng-click="dashboard()">Get Started Now!</button>
+              </div>
+          </li>
+          <li>
+            <h4 class="nav-link">
+              <a href="tel:+14158710438"><span class="lnr lnr-phone-handset"></span>&nbsp; +1 (415) 871 0438</a>
+            </h4>
+          </li>
+          <li>
+            <h4 class="nav-link">
+              <a ui-sref="signin">Login</a>
+            </h4>
+          </li>
+        </ul>
+      </div> <!-- .navbar -->
+    </div> <!-- .row -->
+
+    <div class="row">
+     <div class="col-sm-12 col-xs-12 text-center" style="padding-top:40px; padding-bottom:20px;">
+      <h1><span class="header-font">We love Ghana and know you do too!</span><span><img id="heart" src="apps/general/images/heart.png" alt="hearts"></span></h1>
+
+    </div>
+
+
+
+ </div><!-- top-fold row -->
+
 </div>
+</div>
+

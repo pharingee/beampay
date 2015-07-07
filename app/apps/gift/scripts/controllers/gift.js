@@ -21,7 +21,7 @@ angular
       $state.transitionTo('app.gift.recipient');
     };
 
-    $scope.beforeRender = function ($view, $dates, $leftDate, $upDate, $rightDate) {
+    $scope.beforeRender = function ($view, $dates) {
       var date = new Date();
 
       for (var i = 0; i < $dates.length; i++) {
@@ -29,7 +29,7 @@ angular
           $dates[i].selectable = false;
         }
       }
-    }
+    };
 
     $scope.makeTransaction = function () {
       Transaction.addGift($scope.details).then(function (response) {

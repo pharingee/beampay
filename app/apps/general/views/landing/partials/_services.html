@@ -1,83 +1,65 @@
 <div class="landing-services">
   <div class="container">
     <div class="row heading">
-      <h1>Provide for loved ones</h1>
-      <h3>What can you Beam to friends and family?</h3>
+      <h3 class="center-block text-uppercase">Provide for loved ones</h3>
+      <span class="details">
+        What can you Beam to friends and family?
+      </span>
+
     </div>
     <div class="row">
-      <div class="col-md-4 service">
-        <div class="circle">
-          <img id="school" src="apps/general/images/services/school.png" alt="School Service Image">
-        </div>
+      <div class="col-sm-4 service text-center" >
+        <a ui-sref="app.school.details" ng-click=""><i class="lnr lnr-graduation-hat"></i>
         <div class="text">
-          <h3>School fees</h3>
-          <h4>Pay directly for your ward's fees in a few clicks</h4>
+          <h5 class="text-uppercase">School fees</h5>
+          <h4>Pay directly for your<br> ward's fees in a few clicks</h4>
+          </a>
         </div>
       </div>
-      <div class="col-md-4 service">
-        <div class="circle">
-          <img id="medical" src="apps/general/images/services/medical.png" alt="Hospital Service Image">
-        </div>
+      <div class="col-sm-4 service text-center">
+        <a ui-sref="" ng-click=""><i class="lnr lnr-heart-pulse"></i>
         <div class="text">
-          <h3>Hospital bills</h3>
-          <h4>Cover the cost of life-saving treatment</h4>
+          <h5 class="text-uppercase">Hospital bills</h5>
+          <h4>Cover the cost of<br> life-saving treatment</h4></a>
         </div>
-      </div>
-      <div class="col-md-4 service">
-        <div class="circle">
-          <img id="gifts" src="apps/general/images/services/gifts.png" alt="Gifts Service Image">
         </div>
+              <div class="col-sm-4 service text-center">
+        <a ui-sref="app.gift.details" ng-click=""><i class="lnr lnr-gift"></i>
         <div class="text">
-          <h3>Gifts</h3>
-          <h4>Surprise someone special with cakes, flowers, and hampers</h4>
+          <h5 class="text-uppercase">Gifts</h5>
+           <h4>Surprise someone special<br> with cakes, flowers, and hampers</h4></a>
         </div>
       </div>
-      <div class="col-md-4 service">
-        <div class="circle">
-          <img id="utility" src="apps/general/images/services/utility.png" alt="Utility Service Image">
-        </div>
+      </div>
+      <div class="row">
+      <div class="col-sm-4 service text-center">
+        <a ui-sref="app.utility.details" ng-click=""><i class="lnr lnr-drop"></i><i class="lnr lnr-sun"></i>
         <div class="text">
-          <h3>Utility bills</h3>
-          <h4>Take care of monthly water and electricity bills</h4>
+          <h5 class="text-uppercase">Utility Bills</h5>
+         <h4>Take care of monthly<br> water and electricity bills</h4></a>
         </div>
       </div>
-      <div class="col-md-4 service">
-        <div class="circle">
-          <img id="phone" src="apps/general/images/services/phone.png" alt="Air-time Service Image">
-        </div>
+      <div class="col-sm-4 service text-center">
+        <a ui-sref="app.airtime.details" ng-click=""><i class="lnr lnr-smartphone"></i>
         <div class="text">
-          <h3>Air-time topups</h3>
-          <h4>Purchase credit on MTN, Vodafone, Airtel, and Tigo</h4>
+          <h5 class="text-uppercase">Airtime Topups</h5>
+          <h4>Purchase credit on MTN,<br> Vodafone, Airtel, and Tigo</h4></a>
         </div>
-      </div>
-      <div class="col-md-4 service">
-        <div class="circle">
-          <img id="internet" src="apps/general/images/services/internet.png" alt="Internet Service Image">
         </div>
+              <div class="col-sm-4 service text-center">
+        <a ui-sref="app.television.details" ng-click=""><i class="lnr lnr-laptop-phone"></i>
         <div class="text">
-          <h3>Internet and Cable TV</h3>
-          <h4>Pay for Surfline, Vodafone Broadband, DSTV, and GOtv</h4>
+          <h5 class="text-uppercase">Internet & Cable TV</h5>
+             <h4>Pay for Surfline, Vodafone<br> Broadband, DSTV, and GOtv</h4></a>
         </div>
       </div>
-      <div class="col-md-offset-1 col-md-4 question">
-        <div class="circle">
-          <h1>?</h1>
-        </div>
       </div>
-      <div class="col-md-6 more">
-        <h4 class="emphasis">Did we miss anything?</h4>
-        <h4>How would you prefer to support loved ones in Ghana?</h4>
-        <div class="box">
-          <h4>I'd like to support loved ones in Ghana by paying directly for:</h4>
-          <form name="form1" accept-charset="UTF-8" autocomplete="off" enctype="multipart/form-data" method="post" action="https://beamremit.wufoo.com/forms/z5r5enu0sxxcni/#public" target="_blank">
-            <input type="text" name="Field1" placeholder="eg. School Fees for Ghana International School" maxlength="255" required="">
-            <input type="hidden" name="idstamp" value="9/7ehv0VZ32lO7MfBQgqC/1lErU/RpIi+Wqa4gdIYt4=" />
-            <div class="text-right">
-              <input name="saveForm" type="submit" value="Let us know"/>
-            </div>
-          </form>
+      <div class="row text-center submit-btn">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="submit">
+            <button type="submit" class="btn btn-lg" ui-sref="app">Beam family & friends now</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

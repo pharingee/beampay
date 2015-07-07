@@ -5,8 +5,8 @@ angular
   .service('Auth', function ($cookieStore, $http, $q, Persist, API_SERVER) {
     API_SERVER += 'account/';
 
-    var persist = function (id, token) {
-      Persist.saveUser(id, token);
+    var persist = function (id, token, complete) {
+      Persist.saveUser(id, token, complete);
     };
 
     var saveName = function (firstName, lastName) {
@@ -42,7 +42,7 @@ angular
         'email': email,
         'password': pass
       }).success(function (data) {
-        persist(data.id, data.token);
+        persist(data.id, data.token, data.complete);
         if (data.complete) {
           saveName(data.firstName, data.lastName);
         }
@@ -73,8 +73,7 @@ angular
       var deferred = $q.defer();
 
       $http.get(url).success(function (data) {
-        console.log(data);
-        persist(data.id, data.token);
+        persist(data.id, data.token, false);
         deferred.resolve();
       }).error(function (data) {
         deferred.reject(data);
@@ -106,8 +105,8 @@ angular
     };
 
     return {
-      persist: function (id, token) {
-        return persist(id, token);
+      persist: function (id, token, complete) {
+        return persist(id, token, complete);
       },
       saveName: function (firstName, lastName) {
         return saveName(firstName, lastName);

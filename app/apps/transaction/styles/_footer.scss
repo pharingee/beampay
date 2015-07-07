@@ -1,0 +1,50 @@
+.dashboard-footer{
+	background-color: transparent;
+	min-height: 100%;
+	max-width: 100%;
+	padding: 20px;
+}
+.copyright{
+	padding-top: 40px;
+	color: #aaa;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.payment-cards{
+	display: block;
+	position: relative;
+}
+
+.payment-cards .small-text{
+	color: #aaa;
+	font-size: 12px;
+	font-weight: 500;
+}
+.payment-cards img{
+	height: 30px;
+}
+
+.help{
+  background: #6EAB3A;
+  color: #ffffff;
+  width: 95px;
+  height: 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px;
+
+}
+
+.help a{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.help .lnr {
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+  padding: 5px;
+}

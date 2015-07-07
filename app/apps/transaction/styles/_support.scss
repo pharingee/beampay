@@ -36,10 +36,11 @@
 }
 
 .transaction-item {
+  position: relative;
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 12px;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #dedede;
 }
 
 .widget-icon{
@@ -73,16 +74,46 @@
   color: #333 !important;
 }
 
-.transaction-item a:hover{
-
+.single{
+  border: 0;
 }
 
-.transaction-overlay{
-  font-size: 12px !important;
-  opacity: 0;
+.transaction-comments {
+  overflow-y: auto;
+  max-height: 400px;
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  margin: 0;
+  padding: 5px;
+  padding-left: 50px;
+  padding-bottom: 20px;
 }
 
-.transaction-overlay:hover{
-  opacity: 0.4;
-  background-color: #6EAB3A;
+.clear {
+  clear: both;
+}
+
+.comment-item .time{
+  color: #aaa;
+}
+
+.comment-item .user{
+  color: #444;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #BDD8A5;
+  padding-top: 6px;
+  padding-left: 9px;
+  padding-right: 10px;
+}
+
+.comment-item .message {
+  background-color: #E3F1D8;
+  margin-left: 3px;
+  margin-right: 3px;
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
 }

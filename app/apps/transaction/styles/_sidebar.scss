@@ -1,24 +1,27 @@
 .sidebar{
-  padding-left: 0;
+  padding-left: 0px;
+  padding-right: 0px; 
+  min-height:100vh; 
+  border-right: 1px solid #EFEFEF;
+  background-color: #FFF;
 }
 
-#sidebar-wrapper {
-  // padding-right: 1.5rem;
-  margin-right: 1.5rem;
+#sidebar-wrapper { 
   color: #000000;
-  z-index: 50;
-  background-color: #fff;
-  min-height: 100%;
-}
+  z-index: 50; 
+ }
 
 #sidebar-wrapper ul{
   list-style-type: none;
+  padding-left: 0px;
 }
 
 #sidebar-wrapper li {
-  font-size: 16px;
+  font-size: 17px;
+  color: #6a6a6a;
   line-height: 40px;
   font-weight: 400;
+  border-bottom: 1px solid #DEDEDE;
 }
 
 #sidebar-wrapper li a {
@@ -28,10 +31,9 @@
   text-align: left;
   padding: .75em  1.5em .75em 0;
   white-space: nowrap;
-  background: transparent;
-  /*margin: 0;*/
+  background: transparent; 
   outline: 0;
-  color: #aaa;
+  color: #6a6a6a;
 
 }
 
@@ -50,5 +52,5 @@
 }
 
 .lnr {
-  font-size: 20px;
+  font-size: 15px;
 }

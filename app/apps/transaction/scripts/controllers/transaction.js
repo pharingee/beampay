@@ -16,6 +16,14 @@ angular
     $scope.getDescription = function (transaction) {
       return TransactionUtil.getDescription(transaction);
     };
+
+    $scope.getComment = function (comment) {
+      if (comment === 'INIT') {
+        return TransactionUtil.getDescription({transactionType: $scope.transactionType, data:$scope.transaction});
+      } else {
+        return comment
+      }
+    }
   })
 
 
