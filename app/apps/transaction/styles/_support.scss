@@ -53,10 +53,11 @@
 .transaction-control{
     padding-right: 50px;
     padding-left: 50px;
-    padding-top: 50px;
+    // padding-top: 50px;
     padding-bottom: 50px;
     margin-top: 20px;
     background-color: $white;
+    font-size: 16px !important;
   }
 
 .transaction-control h5 {
