@@ -6,10 +6,14 @@
 
   text-align: center;
 
+  h2{
+    font-weight: 600;
+  }
+
   .common {
     margin-bottom: 50px;
 
-    h1 {
+    h2 {
       margin: 0 auto;
     }
   }
@@ -30,6 +34,8 @@
   a, input[type=submit] {
     @include black-button();
     text-decoration: none;
+    background-color: #7DC242;
+    border: 3px solid #fff;
     display: inline-block;
     margin-top: 25px;
     margin-bottom: 15px;
