@@ -26,8 +26,8 @@
 }
 
 .help{
-  background: #6EAB3A;
-  color: #ffffff;
+  background: $green;
+  color: $white;
   width: 95px;
   height: 40px;
   border-radius: 30px;
@@ -39,11 +39,11 @@
 
 .help a{
 	text-decoration: none;
-	color: #ffffff;
+	color: $white;
 }
 
 .help .lnr {
-  color: #fff;
+  color: $white;
   font-size: 22px;
   text-align: center;
   padding: 5px;

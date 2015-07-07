@@ -34,8 +34,8 @@
   a, input[type=submit] {
     @include black-button();
     text-decoration: none;
-    background-color: #7DC242;
-    border: 3px solid #fff;
+    background-color: $green;
+    border: 3px solid $white;
     display: inline-block;
     margin-top: 25px;
     margin-bottom: 15px;

@@ -1,14 +1,14 @@
 .sidebar{
   padding-left: 0px;
-  padding-right: 0px; 
-  min-height:100vh; 
-  border-right: 1px solid #EFEFEF;
+  padding-right: 0px;
+  min-height:100vh;
+  border-right: 1px solid $gray-extra-light;
   background-color: #FFF;
 }
 
-#sidebar-wrapper { 
+#sidebar-wrapper {
   color: #000000;
-  z-index: 50; 
+  z-index: 50;
  }
 
 #sidebar-wrapper ul{
@@ -18,10 +18,10 @@
 
 #sidebar-wrapper li {
   font-size: 17px;
-  color: #6a6a6a;
+  color: $gray-dark;
   line-height: 40px;
   font-weight: 400;
-  border-bottom: 1px solid #DEDEDE;
+  border-bottom: 1px solid $gray-extra-light;
 }
 
 #sidebar-wrapper li a {
@@ -31,15 +31,15 @@
   text-align: left;
   padding: .75em  1.5em .75em 0;
   white-space: nowrap;
-  background: transparent; 
+  background: transparent;
   outline: 0;
-  color: #6a6a6a;
+  color: $gray-dark;
 
 }
 
 #sidebar-wrapper a:hover, li:hover{
-  color: #6EAB3A;
-  background: #EEEEEE;
+  color: $green;
+  background: $dark-white;
 }
 .sidebar-icon {
   display: inline-block;

@@ -1,5 +1,5 @@
 #loading-bar .bar {
-  background-color: #fff;
+  background-color: $white;
   background-color: rgba(255, 255, 255, 0.8);
   height: 4px;
 }
@@ -9,14 +9,14 @@
   height: 20px;
 
   border:  solid 4px transparent;
-  border-top-color:  #fff;
-  border-left-color: #fff;
+  border-top-color:  $white;
+  border-left-color: $white;
   border-top-color:  rgba(255, 255, 255, 0.8);;
   border-left-color: rgba(255, 255, 255, 0.8);;
 }
 
 .navbar{
-  background-color: #7DC242;
+  background-color: $green;
   margin: 0;
   padding: 0;
   border-radius:0px;
@@ -24,7 +24,7 @@
 }
 
 .navbar-brand {
-  background-color: #6EAB3A;
+  background-color: $dark-green;
   height: 3.8em;
 }
 
@@ -42,7 +42,7 @@
 
 @media (max-width: 768px) {
   .navbar-default .navbar-nav > li > a{
-    color: #777777;
+    color: $gray-dark;
   }
 }
 
@@ -55,17 +55,17 @@
 
 
   .navbar-default .navbar-nav > li > a:hover{
-    color: #6EAB3A;
+    color: $dark-green;
     background-color: white;
   }
 
   .navbar-default .navbar-nav > li > a:focus{
-    color: #777777;
+    color: $gray-dark;
     background-color: white;
   }
 
   .navbar-default .navbar-nav > li.separator {
-    color: #777777;
+    color: $gray-dark;
     padding-top: 1.5em;
     padding-bottom: 1.9em;
   }
@@ -75,7 +75,7 @@
   .navbar-default .navbar-nav > .open > a:hover,
   .navbar-default .navbar-nav > .open > a:focus,
   .navbar-default .navbar-nav > .open > a:focus {
-    color: #6EAB3A;
+    color: $dark-green;
     background-color: white;
   }
 }

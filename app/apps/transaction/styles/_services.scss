@@ -2,12 +2,12 @@
   padding-right: 0px !important;
 }
 
-.services { 
-  max-width: 100%; 
+.services {
+  max-width: 100%;
 }
 @media (min-width: 481px) {
   .services {
-    z-index: 10; 
+    z-index: 10;
     margin-left: 0px !important;
     margin-top: 5px !important;
 
@@ -15,13 +15,13 @@
 }
 
 .service-wrapper{
-  background-color: #fff; 
-  border-left: 6px solid #F8F8F8;
-  border-top: 6px solid #F8F8F8;
+  background-color: $white;
+  border-left: 6px solid $dark-white;
+  border-top: 6px solid $dark-white;
 }
 
 .services h4 {
-  color: #6EAB3A;
+  color: $green;
   font-weight: 400;
   margin: 0 auto;
   line-height: 30px;
@@ -41,10 +41,10 @@
 .service-card{
   padding: 20px;
   margin: 20px;
-  background-color: #fff;
+  background-color: $white;
   position: relative;
-  border-radius: 2px; 
-  border: 1px solid #EFEFEF;
+  border-radius: 2px;
+  border: 1px solid $gray-extra-light;
   height: 304px;
   min-height: 304px;
 
@@ -55,8 +55,12 @@
   box-shadow: 0 2px 25px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
   transition: all linear 200ms;
 }
+
+.service-card a:hover{
+  text-decoration: none;
+}
 .card__image {
-  position: absolute; 
+  position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -66,27 +70,27 @@
 
 
 .__green{
-    background-color: #6EAB3A; 
+    background-color: $green;
 }
 
 .__blue{
-    background-color: #5180C1; 
+    background-color: $blue;
 }
 
 .__yellow{
-    background-color: #D8D226; 
+    background-color: $yellow;
 }
 
 .__pink{
-    background-color: #F71885; 
+    background-color: $pink;
 }
 
 .__gray{
-    background-color: #A0A0A0; 
+    background-color: $gray-light;
 }
 
 .__purple{
-    background-color: #C234F7; 
+    background-color: $purple;
 }
 
 
@@ -96,9 +100,10 @@
       -ms-user-select: none;
           user-select: none;
   z-index: 100px;
-  color: #FFF; 
+  color: #FFF;
   left: 0;
-  word-wrap: break-word;  
+  word-wrap: break-word;
+  font-weight: 900;
 }
 .card__subtitle {
   -webkit-user-select: none;
@@ -116,7 +121,7 @@
   top: 45px;
   position: absolute;
   padding: 0 16px;
-  opacity: 0; 
+  opacity: 0;
 }
 .card__text {
   -webkit-user-select: none;
@@ -133,7 +138,7 @@
   line-height: 1.6;
   position: absolute;
   color: #000;
-  overflow: hidden; 
+  overflow: hidden;
 }
 .card__action-bar {
   -webkit-user-select: none;
@@ -141,35 +146,36 @@
       -ms-user-select: none;
           user-select: none;
   position: absolute;
-  bottom: 0;
-  top: auto; 
-  padding: 8px;  
+  /*bottom: 0;*/
+  top: 220px;
+  padding: 10px;
 }
 
 .service-card .card__image {
   border-radius: 1px 1px 0 0;
-  left: 0; 
+  padding-top: 3em;
+  left: 0;
   top: 0;
   opacity: 1;
   max-height: 220px;
-  border: 2px solid #FFF;
+  border: 2px solid $white;
 }
 .service-card .card__title {
-  top: 170px;
+  top: 150px;
 }
 .service-card h6 {
   font-size: 18px !important;
   font-weight: 400 !important;
-  line-height: 20px;  
-  position: absolute;
-  padding-left: 4.5em;
+  line-height: 20px;
+  position: relative;
+  /*padding-left: 4.5em;*/
 }
 
-.service-card .lnr{ 
-  position: absolute;
-  left: 80px;
-  top: 60px;
-  color: #FFF;
+.service-card .lnr{
+  /*position: absolute;*/
+  /*left: 80px;*/
+  /*top: 60px;*/
+  color: $white;
    font-size: 90px !important;
   font-weight: 400 !important;
 }
@@ -182,17 +188,17 @@
   left: 0;
 }
 .service-card .card__action-bar p {
-  color: black;
-  font-size: 14px;
+  color: $gray;
+  font-size: 16px;
   padding-top: 5px;
 }
 
 .transaction-h4 {
-  color: #7dc242;
+  color: $green;
   margin-bottom: 15px;
 }
 
 .service-image {
-  height: 5em;
+  height: 4em;
   // opacity: 0.8;
 }
