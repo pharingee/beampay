@@ -103,6 +103,7 @@
   color: #FFF;
   left: 0;
   word-wrap: break-word;
+  font-weight: 900;
 }
 .card__subtitle {
   -webkit-user-select: none;
@@ -187,7 +188,7 @@
   left: 0;
 }
 .service-card .card__action-bar p {
-  color: $gray-light;
+  color: $gray;
   font-size: 16px;
   padding-top: 5px;
 }
