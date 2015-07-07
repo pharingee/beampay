@@ -23,6 +23,10 @@
   .service {
     padding-top: 50px;
 
+    a:hover{
+      background-color: transparent;
+      text-decoration: none;
+    }
 
     i.lnr{
       font-size: 90px;
@@ -34,7 +38,7 @@
         width:100px;
       }
       .lnr-sun{
-        font-size:30px !important; 
+        font-size:30px !important;
         // width:40px;
       }
     }
@@ -64,6 +68,11 @@
     background-color: $blue;
     border-color: #dedede;
     border-width: 2px;
+  }
+
+  .btn-lg:hover{
+    color: $blue;
+    background-color: #fff;
   }
 
   .question {

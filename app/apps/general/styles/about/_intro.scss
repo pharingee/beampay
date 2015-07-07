@@ -15,6 +15,20 @@
    padding-right: 25px;
   }
 
+  .navbar{
+    background-color: transparent;
+    z-index: 9;
+
+    a{
+      color: $white;
+    }
+
+    a:hover{
+      color: $green;
+      text-decoration: none;
+    }
+  }
+
 .nav-link-nb{
     padding-left: 25px;
   }
@@ -29,15 +43,15 @@
   h1 > span.header-font{
     font-family: 'freestyle-script';
   }
-  
+
 
   #heart{
     margin-top: -40px;
     margin-left: -40px;
-  } 
-  
+  }
+
   img {
-  
+
     &#logo {
       height: 30px;
       margin: 100px 0 30px 0;
@@ -81,6 +95,11 @@
       -webkit-box-shadow: 0px 3px 0px #636a11;
        -moz-box-shadow: 0px 3px 0px #636a11;
         box-shadow: 0px 3px 0px #636a11;
+    }
+
+    button:hover {
+      background-color: #ffffff;
+      color: #fe960b;
     }
   }
 

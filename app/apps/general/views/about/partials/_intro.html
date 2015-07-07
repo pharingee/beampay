@@ -6,22 +6,22 @@
           <img src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent">
         </a>
         <ul class="nav navbar-right">
-          <li class="nav-link xs-hidden">
-            <div class="submit">
-        		<button ng-if="!loggedin" type="submit" class="btn" ng-click="signup()">Sign up for Beam</button>
-      		</div>
-    			<div class="submit">
-    				<button ng-if="loggedin" type="submit" class="btn" ng-click="dashboard()">Get Started Now!</button>
-    			</div>
+          <li class="xs-hidden">
+              <div class="submit">
+                <button ng-if="!loggedin" type="submit" class="btn" ng-click="signup()">Sign up for Beam</button>
+              </div>
+              <div class="submit">
+                <button ng-if="loggedin" type="submit" class="btn" ng-click="dashboard()">Get Started Now!</button>
+              </div>
           </li>
           <li>
             <h4 class="nav-link">
-              <span class="lnr lnr-phone-handset"></span>&nbsp; +1 (415) 871 0438
+              <a href="tel:+14158710438"><span class="lnr lnr-phone-handset"></span>&nbsp; +1 (415) 871 0438</a>
             </h4>
           </li>
           <li>
-            <h4 class="nav-link-nb">
-              <span class="lnr lnr-lock"></span>&nbsp;Login
+            <h4 class="nav-link">
+              <a ui-sref="signin">Login</a>
             </h4>
           </li>
         </ul>
@@ -31,7 +31,7 @@
     <div class="row">
      <div class="col-sm-12 col-xs-12 text-center" style="padding-top:40px; padding-bottom:20px;">
       <h1><span class="header-font">We love Ghana and know you do too!</span><span><img id="heart" src="apps/general/images/heart.png" alt="hearts"></span></h1>
-      
+
     </div>
 
 
