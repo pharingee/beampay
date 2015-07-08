@@ -212,13 +212,13 @@
 }
 
 .page-header:before { 
-  top: 162px;
-  left: 90;
+  top: 15px;
+  left: 40px;
   bottom: 0;
   position: absolute;
   content: " ";
-  width: 65%;
+  width: 70%;
   height: 1px;
   background-color: #ccc;
-  z-order: 0;
+  z-order: 0; 
 }

@@ -16,11 +16,12 @@
   /* active buttons turn light green-blue*/
   a.active span{
     background: $green;
-    color: $green;
+    color: #FFF;
     font-weight: 600;
   }
 
   span{
+    color: #FFF;
     background: $gray-light;
     display: block;
     height: 30px;
