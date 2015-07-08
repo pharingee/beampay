@@ -17,13 +17,13 @@
   }
 
   .btn-lg{
-    background-color: #6177B5;
-    border-color: #dedede;
+    background-color: $dark-blue;
+    border-color: $gray-extra-light;
     border-width: 2px;
   }
 
   .btn-lg:hover{
-    background-color: #ffffff;
-    color: #6177B5;
+    background-color: $white;
+    color: $dark-blue;
   }
 }

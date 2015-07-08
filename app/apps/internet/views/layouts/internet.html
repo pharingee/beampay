@@ -1,15 +1,15 @@
 <section class="services">
   <div class="row" ng-controller="InternetCtrl">
-    <div class="container-fluid service-wrapper">
+    <div class="container-fluid">
       <h3 class="transaction-h4">Pay for Internet bills</h3>
       <h3>Settle Vodafone internet bills and purchase data bundles for Surfline</h3>
 
       <div class="page-header text-center">
         <div id="status-buttons" class="text-center" ng-hide="paymentComplete">
           <div class="row">
-            <div class="col-xs-4"><a ng-class="{active: chooseState}" ui-sref="app.internet.choose" class="col-xs-4"><span></span> Choose Service</a></div>
-            <div class="col-xs-4"><a href="" ng-class="{active: recipientState}" ng-click="setDetails()" class="col-xs-4"><span></span> Recipient Details</a></div>
-            <div class="col-xs-4"><a href="" ng-class="{active: paymentState}" ng-click="addRecipient()" class="col-xs-4"><span></span> Payment</a></div>
+            <div class="col-xs-4"><a ng-class="{active: chooseState}" ui-sref="app.internet.choose" class="col-xs-4"><span>1</span> Choose Service</a></div>
+            <div class="col-xs-4"><a href="" ng-class="{active: recipientState}" ng-click="setDetails()" class="col-xs-4"><span>2</span> Recipient Details</a></div>
+            <div class="col-xs-4"><a href="" ng-class="{active: paymentState}" ng-click="addRecipient()" class="col-xs-4"><span>3</span> Payment</a></div>
           </div>
         </div>
       </div>

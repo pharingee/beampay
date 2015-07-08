@@ -4,8 +4,12 @@ footer {
   padding: 40px 0px;
   font-family: 'bariol';
 
+
+  .col-md-2 {
+    width: 19.666667%;
+  }
+
   .section {
-    padding: 10px;
     font-size: 1.5em;
 
     img {
@@ -20,13 +24,20 @@ footer {
     }
 
     h4 {
-      max-width: 250px;
+      // max-width: 250px;
     }
 
     ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
+
+      li{
+        background-color: none;
+
+        &:hover{
+          background-color: transparent;
+        }
 
       a {
         color: $green;
@@ -36,6 +47,12 @@ footer {
           color: $white;
         }
       }
+    }
+    }
+  }
+  .copyright{
+    h4{
+      padding: 5px 0px 10px 0px;
     }
   }
 }

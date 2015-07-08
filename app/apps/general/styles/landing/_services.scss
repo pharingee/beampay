@@ -68,15 +68,15 @@
     }
 
   .btn-lg{
-    color:#fff;
+    color: $white;
     background-color: $blue;
-    border-color: #dedede;
+    border-color: $gray-extra-light;
     border-width: 2px;
   }
 
   .btn-lg:hover{
     color: $blue;
-    background-color: #fff;
+    background-color: $white;
   }
 
   .question {

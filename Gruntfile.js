@@ -440,7 +440,7 @@ module.exports = function (grunt) {
         constants: {
           name: 'production',
           API_SERVER: 'https://api.beampay.co/api/v1/',
-          FACEBOOK_CLIENT_ID: 1562773807273610,
+          FACEBOOK_CLIENT_ID: 1562424617308529,
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
       },
@@ -449,7 +449,7 @@ module.exports = function (grunt) {
         constants: {
           name: 'staging',
           API_SERVER: 'https://api-dev.beampay.co/api/v1/',
-          FACEBOOK_CLIENT_ID: 1562773807273610,
+          FACEBOOK_CLIENT_ID: 1598968723654118,
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
       }

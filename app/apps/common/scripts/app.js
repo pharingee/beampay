@@ -30,12 +30,11 @@ angular
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
-    var tempPrefix = 'apps/transaction/views/';
 
     $stateProvider
       .state('app', {
         url: '/',
-        templateUrl: tempPrefix + 'app.html',
+        templateUrl: 'apps/transaction/views/layouts/transaction.html',
         data: {
           pageTitle: 'Welcome'
         }
