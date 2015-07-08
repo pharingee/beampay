@@ -17,28 +17,19 @@
     background-color: $green;
   }
 
-  .nav-link{
-    border-right: 1px solid $dark-green;
-    padding-left: 25px;
+  li .nav-link{
+   padding-left: 25px;
    padding-right: 25px;
+   cursor: pointer;
   }
 
-  .navbar{
-    background-color: transparent;
-    z-index: 9;
-
-    a{
-      color: $white;
-    }
-
-    a:hover{
-      color: $green;
-      text-decoration: none;
-    }
+  .nv-lk:hover{
+    color: $white;
+    background-color: $green;
   }
 
-.nav-link-nb{
-    padding-left: 25px;
+  .bord{
+    border-right: 1px solid $dark-green;
   }
 
   ul{
@@ -69,7 +60,7 @@
     }
 
     &#hero {
-        margin-top: -60px;
+        margin-top: -30px;
         margin-left: -100px;
     }
   }
