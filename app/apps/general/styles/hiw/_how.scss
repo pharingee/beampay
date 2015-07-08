@@ -7,9 +7,9 @@
 
     h1 {
        font-size: 20px;
-  color: #6a6a6a;
-  text-transform: uppercase;
-  font-weight: bold;
+       color: #6a6a6a;
+       text-transform: uppercase;
+       font-weight: bold;
 
       @media screen and (max-width: $screen-xs-max) {
         padding: 10px;
@@ -19,8 +19,6 @@
       }
     
    
-      
-
     }
   }
    .test{
@@ -68,12 +66,38 @@
 
           p {
             padding-top: 0;
+
+            span.lnr-heart-pulse{
+              color:$green;
+             }
+
+            span.lnr-graduation-hat{
+              color:$green;
+            }
+               
+             span.lnr-gift{
+              color:$green;
+            }  
+
+            span.lnr-drop{
+              color:$green;
+            }
+
+            span.lnr-smartphone{
+              color:$green;
+            }
+           
+           span.lnr-laptop-phone{
+              color:$green;
+            }
           }
 
           img {
             height: 15px;
             padding-right: 20px;
           }
+
+
         }
       }
 
