@@ -17,28 +17,19 @@
     background-color: #7DC242;
   }
 
-  .nav-link{
-    border-right: 1px solid #5FA622;
+  li .nav-link{
     padding-left: 25px;
    padding-right: 25px;
+   cursor: pointer;
   }
 
-  .navbar{
-    background-color: transparent;
-    z-index: 9;
-
-    a{
-      color: $white;
-    }
-
-    a:hover{
-      color: $green;
-      text-decoration: none;
-    }
+  .nv-lk:hover{
+    color: $white;
+    background-color: $green;
   }
 
-.nav-link-nb{
-    padding-left: 25px;
+  .bord{
+    border-right: 1px solid $dark-green;
   }
 
   ul{
