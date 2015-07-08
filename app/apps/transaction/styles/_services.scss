@@ -145,8 +145,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  position: absolute;
-  /*bottom: 0;*/
+  position: absolute; 
   top: 220px;
   padding: 10px;
 }
@@ -167,14 +166,10 @@
   font-size: 18px !important;
   font-weight: 400 !important;
   line-height: 20px;
-  position: relative;
-  /*padding-left: 4.5em;*/
+  position: relative; 
 }
 
-.service-card .lnr{
-  /*position: absolute;*/
-  /*left: 80px;*/
-  /*top: 60px;*/
+.service-card .lnr{ 
   color: $white;
    font-size: 90px !important;
   font-weight: 400 !important;
@@ -199,6 +194,31 @@
 }
 
 .service-image {
-  height: 4em;
+  height: 3em;
   // opacity: 0.8;
+}
+
+.service-image:active{
+  transition: all linear 200ms;
+}
+
+
+/*Fix on the wizard*/
+.page-header{
+  border-bottom:0px !important;
+  display: table;
+  width: 100%;
+  position: relative;
+}
+
+.page-header:before { 
+  top: 15px;
+  left: 40px;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 70%;
+  height: 1px;
+  background-color: #ccc;
+  z-order: 0; 
 }
