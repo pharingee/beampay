@@ -17,14 +17,19 @@
     background-color: #7DC242;
   }
 
-  .nav-link{
-    border-right: 1px solid #5FA622;
+  li .nav-link{
     padding-left: 25px;
    padding-right: 25px;
+   cursor: pointer;
   }
 
-.nav-link-nb{
-    padding-left: 25px;
+  .nv-lk:hover{
+    color: #FFF;
+    background-color: #7DC242;
+  }
+
+.bord{
+    border-right: 1px solid #5FA622;
   }
 
   ul{
