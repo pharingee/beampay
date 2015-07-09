@@ -1,6 +1,3 @@
-.container-fluid{
-  padding-right: 0px !important;
-}
 
 .services {
   max-width: 100%;
@@ -220,5 +217,19 @@
   width: 70%;
   height: 1px;
   background-color: #ccc;
-  z-order: 0; 
+  z-index: 0; 
+}
+
+/*Mobile fixes */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+.service-wrapper{
+    .container-fluid {
+      padding-left: 20px !important;
+    }
+  }
+
 }

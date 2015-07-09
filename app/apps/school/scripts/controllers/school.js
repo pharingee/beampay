@@ -9,8 +9,7 @@ angular
 
     $scope.details = {
       wardName: {},
-      recipient: {},
-      preferredContactMethod: 'MAIL'
+      recipient: {}
     };
 
     $scope.details.serviceFee = 0;

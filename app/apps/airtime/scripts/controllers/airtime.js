@@ -8,8 +8,7 @@ angular
     }
 
     $scope.details = {
-      recipient: {},
-      preferredContactMethod: 'MAIL'
+      recipient: {}
     };
     $scope.details.serviceFee = 0;
     $scope.chooseState = true;
@@ -113,10 +112,10 @@ angular
       if ($scope.details.network === 'MTN') {
         return 'MTN';
       }
-      else if ($scope.details.network === 'TIGO') {
+      else if ($scope.details.network === 'TIG') {
         return 'TIGO';
       }
-      else if ($scope.details.network === 'AIRTEL'){
+      else if ($scope.details.network === 'AIR'){
         return 'AIRTEL';
       }
       else{

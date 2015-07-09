@@ -2,7 +2,7 @@
   <div class="row" ng-show="pricing">
     <div class="col-sm-6">
       <form class="form" ng-submit="setDetails()">
-        <div class="transaction-control">           
+        <div class="transaction-control">
 
         <div class="form-group">
           Select your recipient's network <br>
@@ -34,7 +34,7 @@
 
         <div class="form-group">
           <label for="amount">How much airtime in GHS would you like to buy?</label>
-          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()">
+          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="50" max="5000">
         </div>
 
         <div class="row text-center" ng-show="details.serviceFee > 0">
@@ -63,7 +63,7 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-xs-6">
+            <div>
               <input type="submit" class="btn btn-success form-control">
             </div>
           </div>
