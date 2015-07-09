@@ -113,7 +113,7 @@ angular
     };
 
     $scope.getProvider = function () {
-      if ($scope.details.provider === 'ECG') {
+      if ($scope.details.billType === 'ECG') {
         return 'Electricity';
       }
       return 'Water';
