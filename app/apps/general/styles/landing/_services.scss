@@ -28,6 +28,10 @@
       text-decoration: none;
     }
 
+    a:focus{
+      text-decoration: none;
+    }
+
     i.lnr{
       font-size: 90px;
       color: $blue;

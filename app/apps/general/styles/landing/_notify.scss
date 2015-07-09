@@ -6,14 +6,14 @@
 
   text-align: center;
 
-  h2{
+  h3{
     font-weight: 600;
   }
 
   .common {
     margin-bottom: 50px;
 
-    h2 {
+    h3 {
       margin: 0 auto;
     }
   }
@@ -46,8 +46,19 @@
     }
   }
 
+  .btn-default{
+    font-size: 1.4em;
+     padding: 5px 20px;
+     margin: 35px 30px;
+  }
+
+  .btn-default:hover{
+    border-color: #FFF !important;
+  }
+
   hr {
-    max-width: 750px;
+    max-width: 500px;
+    padding-top: 5px;
     border-color: $green - 10;
   }
 }
