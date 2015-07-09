@@ -5,24 +5,22 @@ var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var request = require('request');
-var enforce = require('express-sslify');
 var app = express();
 
 // Middlewear
-app.use(enforce.HTTPS(true));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(logger('dev'));
 
-/* Force HTTPS
+// Force HTTPS
 app.use(function(req, res, next) {
   var schema = req.headers['x-forwarded-proto'];
   if (schema === 'https') { return next();}
   res.redirect('https://' + req.headers.host + req.url);
 });
-*/
+
 
 // Dont cache
 app.use(function (req, res, next) {
