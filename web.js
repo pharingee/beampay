@@ -9,7 +9,7 @@ var enforce = require('express-sslify');
 var app = express();
 
 // Middlewear
-app.use(enforce.HTTPS());
+app.use(enforce.HTTPS(true));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
