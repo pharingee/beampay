@@ -2,7 +2,10 @@
 
 angular
   .module('app.auth')
-  .controller('ActivateResendCtrl', function ($scope, Auth, Error) {
+  .controller('ActivateResendCtrl', function ($state, $scope, Auth, Error, Persist) {
+    if (!Persist.getEmail()) {
+      $state.transitionTo('signin');
+    }
 
     $scope.activateResend = {};
     $scope.activateResend.submit = function () {
