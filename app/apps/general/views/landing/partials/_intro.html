@@ -7,19 +7,28 @@
         </a>
         <ul class="nav navbar-right">
           <li class="nv-lk">
-            <h4 class="nav-link bord">
-              About Beam
-            </h4>
+            <a ui-sref="about">
+              <h4 class="nav-link bord">
+                About Us
+              </h4>
+            </a>            
+          </li> 
+          <li class="nv-lk">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             <h4 class="nav-link bord">
+               <span class="lnr lnr-phone-handset"></span>&nbsp;+1 (415) 871 0438 <i class="fa fa-caret-down"></i></h4>
+             </a>
+             <ul class="dropdown-menu tel-nos">
+              <li><a href=""> <i class="fa fa-envelope-o"></i>&nbsp; +1 (415) 881 4216</a></li> 
+              <li><a href=""> <i class="fa fa-whatsapp"></i>&nbsp; +233-245 025 019</a></li>   
+            </ul> 
           </li>
           <li class="nv-lk">
-            <h4 class="nav-link bord">
-              <span class="lnr lnr-phone-handset"></span>&nbsp; +1 (415) 871 0438
-            </h4>
-          </li>
-          <li class="nv-lk">
-            <h4 class="nav-link">
-              <span class="lnr lnr-lock"></span>&nbsp;Login
-            </h4>
+          <a ui-sref="signin">
+              <h4 class="nav-link">
+                <span class="lnr lnr-lock"></span>&nbsp;Login
+              </h4>
+            </a>
           </li>
         </ul>
       </div> <!-- .navbar -->
@@ -27,10 +36,10 @@
 
     <div class="row">
      <div class="col-sm-6 col-xs-12 call-to-action">
-     <!-- <img id="heart" src="apps/general/images/heart.png" alt="hearts"> -->
-      <h1><span class="header-font">To Ghana, with love!</span><span><img id="heart" src="apps/general/images/heart.png" alt="hearts"></span></h1>
-      <h3>Send airtime, gifts & so much more for <br> family and friends back home - because you care</h3>
-      <div class="submit">
+       <!-- <img id="heart" src="apps/general/images/heart.png" alt="hearts"> -->
+       <h1><span class="header-font">To Ghana, with love!</span><span><img id="heart" src="apps/general/images/heart.png" alt="hearts"></span></h1>
+       <h3>Send airtime, gifts & so much more for <br> family and friends back home - because you care</h3>
+       <div class="submit">
         <button ng-if="!loggedin" type="submit" class="btn btn-lg" ng-click="signup()">SIGN UP FOR BEAM</button>
       </div>
       <div class="submit">
