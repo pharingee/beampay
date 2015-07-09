@@ -113,10 +113,10 @@ angular
       if ($scope.details.network === 'MTN') {
         return 'MTN';
       }
-      else if ($scope.details.network === 'TIGO') {
+      else if ($scope.details.network === 'TIG') {
         return 'TIGO';
       }
-      else if ($scope.details.network === 'AIRTEL'){
+      else if ($scope.details.network === 'AIR'){
         return 'AIRTEL';
       }
       else{
