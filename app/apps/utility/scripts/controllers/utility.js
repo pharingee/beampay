@@ -27,7 +27,7 @@ angular
         return false;
       }
 
-      if ($scope.details.accountNumber && $scope.details.accountNumber.length < 13) {
+      if ($scope.details.accountNumber && $scope.details.accountNumber.toString().length < 13) {
         $scope.errors.push('Please enter a 13-digit account number');
         return false;
       }
@@ -98,6 +98,14 @@ angular
       if (validateRecipient()){
 
         $scope.paymentState = true;
+        if (!$scope.details.accountNumber) {
+          delete $scope.details.accountNumber;
+        }
+
+        if (!$scope.details.recipient.email) {
+          delete $scope.details.recipient.email;
+        }
+
         Transaction.addBill($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.utility.payment');
@@ -113,7 +121,7 @@ angular
     };
 
     $scope.getProvider = function () {
-      if ($scope.details.provider === 'ECG') {
+      if ($scope.details.billType === 'ECG') {
         return 'Electricity';
       }
       return 'Water';

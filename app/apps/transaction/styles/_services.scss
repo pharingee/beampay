@@ -142,7 +142,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  position: absolute; 
+  position: absolute;
   top: 220px;
   padding: 10px;
 }
@@ -163,10 +163,10 @@
   font-size: 18px !important;
   font-weight: 400 !important;
   line-height: 20px;
-  position: relative; 
+  position: relative;
 }
 
-.service-card .lnr{ 
+.service-card .lnr{
   color: $white;
    font-size: 90px !important;
   font-weight: 400 !important;
@@ -191,7 +191,9 @@
 }
 
 .service-image {
-  height: 3em;
+  height: 4em;
+  padding: 5px;
+  border: 1px solid #aaa;
   // opacity: 0.8;
 }
 
@@ -208,7 +210,7 @@
   position: relative;
 }
 
-.page-header:before { 
+.page-header:before {
   top: 15px;
   left: 40px;
   bottom: 0;
@@ -217,12 +219,12 @@
   width: 70%;
   height: 1px;
   background-color: #ccc;
-  z-index: 0; 
+  z-index: 0;
 }
 
 /*Mobile fixes */
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
@@ -233,3 +235,5 @@
   }
 
 }
+
+
