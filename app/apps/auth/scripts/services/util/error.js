@@ -59,7 +59,7 @@ angular
 
     var signInFb = function () {
       var errors = [];
-      errors.push('Facebook Authentication failed. We will check our logs and get to it ASAP');
+      errors.push(unknownError);
       return errors;
     };
 
