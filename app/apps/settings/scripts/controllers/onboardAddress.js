@@ -14,6 +14,8 @@ angular
       function (response) {
         $scope.settings = response.profile;
         $scope.settings.submit = submit;
+        $scope.settings.firstName = response.firstName;
+        $scope.settings.lastName = response.lastName;
 
         var date = new Date($scope.settings.dateOfBirth);
         $scope.settings.date = {
