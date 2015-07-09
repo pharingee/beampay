@@ -9,7 +9,6 @@ angular
 
     $scope.details = {
       recipient: {},
-      accountNumber: '',
       preferredContactMethod: 'MAIL',
       reference: 'Payment June'
     };
@@ -30,7 +29,7 @@ angular
         return false;
       }
 
-      if ($scope.details.accountNumber.toString().length < 8 || isNaN($scope.details.accountNumber)) {
+      if ($scope.details.accountNumber && ($scope.details.accountNumber.toString().length < 8 || isNaN($scope.details.accountNumber))) {
         $scope.errors.push('The reference number has to be 8 digits long');
         return false;
       }
