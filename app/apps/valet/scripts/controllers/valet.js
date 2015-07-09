@@ -28,8 +28,13 @@ angular
           templateUrl: 'apps/transaction/views/successModal.html',
           controller: 'ModalCtrl'
         });
-      }, function () {
-
+      }, function (error) {
+        if (error.detail && error.detail == '2') {
+          $modal.open({
+            templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+            controller: 'ModalCtrl'
+          });
+        }
       });
     };
 
