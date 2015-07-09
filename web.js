@@ -5,9 +5,11 @@ var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var request = require('request');
+var enforce = require('express-sslify');
 var app = express();
 
 // Middlewear
+app.use(enforce.HTTPS());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
