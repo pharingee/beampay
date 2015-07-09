@@ -3,10 +3,7 @@
   padding: 30px 0px;
   font-family: 'bariol';
 
-  .heading {
-
-    /* padding:0px 0px 40px 40px; */
-    // padding-top: 25px;
+  .heading {  
     text-align: center;
 
     h3 {
@@ -70,15 +67,18 @@
       color: $dark-green;
     }
   }
-.heading-two{
-    padding:0px 0px 20px 40px;
-    text-align: center;
 
-    h3 {
-      width:250px;
-      padding: 20px;
+.heading-two{
+    padding:20px 0 20px 0; 
+
+    h3 { 
       color:$gray-dark;
     }
+}
+
+.__hori{ 
+  padding: 40px 0 30px 0;
+  border-bottom: 1px solid #7a96e7;
 }
 
   .list {

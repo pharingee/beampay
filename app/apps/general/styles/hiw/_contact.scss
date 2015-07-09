@@ -5,34 +5,25 @@
   font-family: 'bariol';
   text-align: center;
 
-  input[type=email] {
-    display: inline-block;
-    margin-top: 25px;
-    margin-right: 10px;
-    max-width: 250px;
-    font-size: 1.5em;
-    height: 43px;
-
-    @media screen and (max-width: $screen-xs-max) {
-      margin-right: 0px;
-    }
-  }
-
-  a, input[type=submit] {
-    @include black-button();
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    cursor: pointer;
-
-    @media screen and (max-width: $screen-xs-max) {
-      margin-top: 10px;
-    }
-  }
+  
 
   hr {
     max-width: 750px;
     border-color: $green - 10;
+  }
+  .submit{
+    button{
+     padding: 5px 40px 5px 40px;
+     background-color: #fe960b;
+     color: #FFFFFF;
+     border-color: #fe960b;
+     border-radius:5px;
+     margin-top: 10px;
+     font-size: 17px;
+     font-weight: bold;
+     -webkit-box-shadow: 0px 3px 0px #636a11;
+      -moz-box-shadow: 0px 3px 0px #636a11;
+       box-shadow: 0px 3px 0px #636a11;
+    }
   }
 }
