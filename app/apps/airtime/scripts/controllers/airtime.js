@@ -98,8 +98,13 @@ angular
         Transaction.addAirtime($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.airtime.payment');
-        }, function () {
-
+        }, function (error) {
+          if (error.detail && error.detail == '2') {
+            $modal.open({
+              templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+              controller: 'ModalCtrl'
+            });
+          }
         });
       }
     };
