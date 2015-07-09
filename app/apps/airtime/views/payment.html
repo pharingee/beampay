@@ -1,24 +1,24 @@
 <div class="container-fluid">
   <div class="row">
-    <p>You're about to pay for</p>
+    <h5>You're about to pay for</h5>
     <div class="row">
       <div class="col-xs-4">
-        <img ng-show="details.network == 'AIR'" src="apps/airtime/images/airtel.png" alt="" class="service-image">
-        <img ng-show="details.network == 'MTN'" src="apps/airtime/images/mtn.png" alt="" class="service-image">
-        <img ng-show="details.network == 'TIG'" src="apps/airtime/images/tigo.png" alt="" class="service-image">
-        <img ng-show="details.network == 'VOD'" src="apps/airtime/images/vodafone.png" alt="" class="service-image">
+        <img ng-show="details.network == 'AIR'" src="apps/airtime/images/airtel.png" alt="" class="final-service-image">
+        <img ng-show="details.network == 'MTN'" src="apps/airtime/images/mtn.png" alt="" class="final-service-image">
+        <img ng-show="details.network == 'TIG'" src="apps/airtime/images/tigo.png" alt="" class="final-service-image">
+        <img ng-show="details.network == 'VOD'" src="apps/airtime/images/vodafone.png" alt="" class="final-service-image">
       </div>
       <div class="col-xs-6">
         <h5>DESCRIPTION</h5>
-        <p>GHS {{details.amountGhs}} worth of {{getProvider()}} airtime to {{details.recipient.phoneNumber}}</p>
-        <h5>FINAL BILL</h5>
-        <p>$ {{details.chargeUsd}}</p>
-        <div class="row">
-          <div>
+        <p><strong>GHS {{details.amountGhs}}</strong> worth of <strong>{{getProvider()}}</strong> airtime to <strong>{{details.recipient.phoneNumber}}</strong></p>
+        <h5>FINAL BILL:</h5>
+        <p class="final-bill">$ {{details.chargeUsd}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+          <div class="service-button">
             <button class="btn btn-success form-control" ng-click="confirm()">Pay</button>
           </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

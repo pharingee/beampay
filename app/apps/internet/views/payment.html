@@ -3,21 +3,21 @@
     <p>You're about to pay for</p>
     <div class="row">
       <div class="col-xs-4">
-        <img ng-show="details.billType == 'SRF'" src="apps/internet/images/surfline-logo.png" alt="" class="service-image">
-        <img ng-show="details.billType == 'VOB'" src="apps/internet/images/vodafone-logo.png" alt="" class="service-image">
+        <img ng-show="details.billType == 'SRF'" src="apps/internet/images/surfline-logo.png" alt="" style="height:8em;" class="service-image">
+        <img ng-show="details.billType == 'VOB'" src="apps/internet/images/vodafone-logo.png" alt="" style="height:8em;" class="service-image">
       </div>
       <div class="col-xs-6">
         <h5>DESCRIPTION</h5>
         <p>GHS {{details.amountGhs}} {{getProvider()}} bill for {{details.recipient.firstName}} {{details.recipient.lastName}}</p>
         <h5>FINAL BILL</h5>
         <p>$ {{details.chargeUsd}}</p>
-
-        <div class="row">
-          <div>
-            <button class="btn btn-success form-control" ng-click="confirm()">Pay</button>
-          </div>
-        </div>
       </div>
+      
     </div>
+  </div>
+  <div class="row">
+      <div class="text-center" style="max-width:200px;">
+        <button class="btn btn-success form-control" ng-click="confirm()">Pay</button>
+      </div>
   </div>
 </div>
