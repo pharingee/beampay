@@ -12,7 +12,7 @@
 }
 .transaction-control label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
-  border:2px solid transparent;
+  // border:2px solid transparent;
 }
 .transaction-control label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
   border:4px solid #6EAB3A;
