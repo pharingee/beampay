@@ -15,11 +15,11 @@ app.use(bodyParser.urlencoded({
 app.use(logger('dev'));
 
 // Force HTTPS
-// app.use(function(req, res, next) {
-//   var schema = req.headers['x-forwarded-proto'];
-//   if (schema === 'https') { return next();}
-//   res.redirect('https://' + req.headers.host + req.url);
-// });
+app.use(function(req, res, next) {
+  var schema = req.headers['x-forwarded-proto'];
+  if (schema === 'https') { return next();}
+  res.redirect('https://' + req.headers.host + req.url);
+});
 
 
 // Dont cache
