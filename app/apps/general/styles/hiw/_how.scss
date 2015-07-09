@@ -1,50 +1,49 @@
 .hiw-how {
   font-family: 'bariol';
   padding: 40px 0;
+  background-color: #FFF;
 
   .heading {
     padding-bottom: 40px;
 
     h1 {
-      font-size: 3em;
-      color: $green;
+       font-size: 20px;
+       color: #6a6a6a;
+       text-transform: uppercase;
+       font-weight: bold;
 
       @media screen and (max-width: $screen-xs-max) {
         padding: 10px;
         text-align: center;
+
+
       }
+    
+   
     }
   }
+   .test{
+       p{
+           font-size:1.5em;
+           color: $gray-light;
+          
+       }
 
+   }
   .steps {
     .step {
       padding: 30px 0;
 
       .circle {
         @include circle($green);
+         border: 2px solid #7dc242;
+         border-radius: 50%;
+         width: 130px;
+         height: 130px;
+        margin: 0 auto;
+        text-align: center;
+        
 
-        img {
-          &#pointer {
-            padding-top: 50px;
-            width: 75px;
-          }
-
-          &#cc {
-            padding-top: 65px;
-            width: 100px;
-          }
-
-          &#deliver {
-            padding-top: 50px;
-            width: 100px;
-          }
-
-          &#receipt {
-            padding-top: 55px;
-            padding-right: 10px;
-            width: 85px;
-          }
-        }
       }
 
       .text {
@@ -68,12 +67,38 @@
 
           p {
             padding-top: 0;
+
+            span.lnr-heart-pulse{
+              color:$green;
+             }
+
+            span.lnr-graduation-hat{
+              color:$green;
+            }
+               
+             span.lnr-gift{
+              color:$green;
+            }  
+
+            span.lnr-drop{
+              color:$green;
+            }
+
+            span.lnr-smartphone{
+              color:$green;
+            }
+           
+           span.lnr-laptop-phone{
+              color:$green;
+            }
           }
 
           img {
             height: 15px;
             padding-right: 20px;
           }
+
+
         }
       }
 
