@@ -21,9 +21,9 @@ angular
       if (comment === 'INIT') {
         return TransactionUtil.getDescription({transactionType: $scope.transactionType, data:$scope.transaction});
       } else {
-        return comment
+        return comment;
       }
-    }
+    };
   })
 
 
