@@ -8,28 +8,44 @@
     background-color: $green;
   }
 
-  .nav-link{
+   li .nav-link{ 
+     padding-right: 25px;
+     cursor: pointer;
+   }
+
+   .nav .open > a, 
+   .nav .open > a:hover, 
+   .nav .open > a:focus {
+    background-color: $green; 
+  }
+  .nv-lk a{
+    color: $white;
+  }
+
+  .nv-lk a:hover, .nv-lk a:focus{
+   color: $white;
+   background-color: $green;
+ }
+
+.tel-nos{
+  min-width: 220px; 
+  overflow: hidden;
+  background-color: rgba(255,255,255,.2);
+  color: $green;
+  font-size: 1.2em;
+}
+
+.tel-nos li {
+ line-height: 20px;
+}
+
+.tel-nos li > a:hover {
+  background-color: none;
+}
+
+
+  .bord{
     border-right: 1px solid $dark-green;
-    padding-left: 25px;
-   padding-right: 25px;
-  }
-
-  .navbar{
-    background-color: transparent;
-    z-index: 9;
-
-    a{
-      color: $white;
-    }
-
-    a:hover{
-      color: $green;
-      text-decoration: none;
-    }
-  }
-
-  .nav-link-nb{
-    padding-left: 25px;
   }
 
   ul{
@@ -61,8 +77,8 @@
     }
 
     &#hero {
-        margin-top: -60px;
-        margin-left: -100px;
+      margin-top: -60px;
+      margin-left: -100px;
     }
   }
 
@@ -72,8 +88,7 @@
   }
 
   h1 {
-    font-size: 50px;
-    // padding-top: 200px;
+    font-size: 50px; 
   }
 
   h3 {
@@ -82,23 +97,21 @@
 
   .submit {
 
-    button {
-      // padding: 5px 40px 5px 40px;
+    button { 
       background-color: $orange;
       color: $white;
       border-color: $orange;
-      border-radius:5px;
-      // margin-top: 10px;
+      border-radius:5px; 
       font-size: 15px;
       font-weight: bold;
       -webkit-box-shadow: 0px 3px 0px $army-green;
-       -moz-box-shadow: 0px 3px 0px $army-green;
-        box-shadow: 0px 3px 0px $army-green;
+      -moz-box-shadow: 0px 3px 0px $army-green;
+      box-shadow: 0px 3px 0px $army-green;
     }
 
     button:hover {
-      background-color: $white;
       color: $orange;
+      background-color: $white;
     }
   }
 
