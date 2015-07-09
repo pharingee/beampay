@@ -2,11 +2,12 @@
 	<div class="container-fluid">
 
     <span ng-if="transactions == 0">
-    <strong><h5>No transactions so far</h5></strong>
+    <strong><h5>No transactions so far</h5></strong><br>
+    <strong><h5><a ui-sref="app">Make a transaction</a></h5></strong>
     </span>
 
 
-    <div ng-if="!transactions == 0">
+    <div ng-if="transactions > 0">
 		<strong><h5>Transactions and services so far</h5></strong>
 
 		<div class="container-fluid">
