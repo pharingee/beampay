@@ -4,10 +4,12 @@ angular
   .module('app.auth')
   .service('Error', function () {
 
+    var unknownError = 'Oops. Something went wrong! It doesn\'t appear to have affected your data, but our technical staff have been automatically notified and will be looking into this with the utmost urgency.'
+
     var signup = function (data) {
       var errors = [];
       if (!data) {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       }else if (data.password1 && data.password1[0] === '1') {
         // Password must be at least 8 characters long, contain at least one numeric digit.
         errors.push('Password must be at least 8 characters long, contain at least one numeric digit.');
@@ -24,7 +26,7 @@ angular
         // Privacy not accepted
         errors.push('Plese accept the Privacy Policy to continue');
       } else {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       }
 
       return errors;
@@ -65,7 +67,7 @@ angular
       var errors = [];
 
       if (!data) {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       } else if (data.detail === '6') {
         // Invalid activation key.
         errors.push('The actiivation link you used was invalid. Please check and try again');
@@ -81,7 +83,7 @@ angular
       var errors = [];
 
       if (!data) {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       } else if (data.detail === '9') {
         // Email unknown
         errors.push('Sorry, this email is not recognized. Are you trying to signup? Please click on the signup link on the header.');
@@ -100,7 +102,7 @@ angular
       var errors = [];
 
       if (!data) {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       } else if (data.detail === '0') {
         // Invalid Parameters
         errors.push('Please enter a valid email');
@@ -119,7 +121,7 @@ angular
       var errors = [];
 
       if (!data) {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       } else if (data.detail === '0') {
         // Invalid Parameters
         errors.push('Please enter a valid email');
@@ -131,7 +133,7 @@ angular
     var isPassword = function () {
       var errors = [];
 
-      errors.push('Unknown Error. We will check our logs and get to it ASAP');
+      errors.push(unknownError);
 
       return errors;
     };
@@ -140,7 +142,7 @@ angular
       var errors = [];
 
       if (!data) {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       } else if (data.oldPassword && data.oldPassword[0] === '16') {
         // Old Password is incorrect
         errors.push('Sorry, your old Password is incorrect');
@@ -182,7 +184,7 @@ angular
       var errors = [];
 
       if (!data) {
-        errors.push('Unknown Error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       } else if (data.detail === '9') {
         // Email unknown
         errors.push('Sorry, this email is not recognized. Are you trying to signup? Please click on the signup link on the header.');
@@ -209,7 +211,7 @@ angular
       } else if (data.detail == 2) {
         errors.push('Your profile is incomplete please update your details in your settings');
       } else {
-        errors.push('Unknown error. We will check our logs and get to it ASAP');
+        errors.push(unknownError);
       }
 
       return errors;
