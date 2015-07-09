@@ -1,5 +1,12 @@
 <section class="transaction-control" ng-controller="TransactionCtrl">
 	<div class="container-fluid">
+
+    <span ng-if="transactions == 0">
+    <strong><h5>No transactions so far</h5></strong>
+    </span>
+
+
+    <div ng-if="!transactions == 0">
 		<strong><h5>Transactions and services so far</h5></strong>
 
 		<div class="container-fluid">
@@ -60,6 +67,7 @@
         </div>
         <!-- </div> -->
       </div>
+    </div>
     </div>
   </div>
 </section>
