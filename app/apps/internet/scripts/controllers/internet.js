@@ -9,7 +9,6 @@ angular
 
     $scope.details = {
       recipient: {},
-      accountNumber: '',
       preferredContactMethod: 'MAIL'
     };
     $scope.details.serviceFee = 0;
