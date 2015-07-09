@@ -8,10 +8,7 @@ angular
     }
 
     $scope.details = {
-      recipient: {},
-      accountNumber: '',
-      preferredContactMethod: 'MAIL',
-      reference: 'Payment June'
+      recipient: {}
     };
     $scope.details.serviceFee = 0;
     $scope.chooseState = true;
@@ -30,7 +27,7 @@ angular
         return false;
       }
 
-      if ($scope.details.accountNumber.length < 13) {
+      if ($scope.details.accountNumber && $scope.details.accountNumber.length < 13) {
         $scope.errors.push('Please enter a 13-digit account number');
         return false;
       }

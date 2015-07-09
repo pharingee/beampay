@@ -8,8 +8,7 @@ angular
     }
 
     $scope.details = {
-      recipient: {},
-      preferredContactMethod: 'MAIL'
+      recipient: {}
     };
     $scope.details.serviceFee = 0;
     $scope.chooseState = true;
