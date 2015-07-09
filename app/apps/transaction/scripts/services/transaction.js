@@ -73,7 +73,6 @@ angular.module('app.transaction')
       var pricing = Persist.getPricing();
       parameters.exchangeRateId = pricing.exchangeRateId;
       parameters.serviceFeeId = pricing.serviceFeeId;
-      console.log(parameters);
       return serverCall('transaction/add/bill/', parameters);
     };
 
@@ -90,7 +89,6 @@ angular.module('app.transaction')
     };
 
     var savePayment = function (parameters) {
-      console.log(parameters);
       return serverCall('payment/stripe/', parameters);
     };
 

@@ -45,6 +45,14 @@ angular
 
     $scope.makeTransaction = function () {
       $scope.details.wardName = $scope.details.wardName.firstName + ' ' + $scope.details.wardName.middleName + ' ' + $scope.details.wardName.lastName;
+
+      if (!$scope.details.amountGhs) {
+        delete $scope.details.amountGhs;
+      }
+
+      if (!$scope.details.recipient.email) {
+        delete $scope.details.recipient.email;
+      }
       Transaction.addSchool($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
         $modal.open({

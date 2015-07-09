@@ -94,6 +94,11 @@ angular
 
         $scope.paymentState = true;
         $scope.details.phoneNumber = $scope.details.recipient.phoneNumber;
+
+        if (!$scope.details.recipient.email) {
+          delete $scope.details.recipient.email;
+        }
+
         Transaction.addAirtime($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.airtime.payment');

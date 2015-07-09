@@ -32,6 +32,18 @@ angular
     };
 
     $scope.makeTransaction = function () {
+      if (!$scope.details.deliveryAddress) {
+        delete $scope.details.deliveryAddress;
+      }
+
+      if (!$scope.details.deliveryDate) {
+        delete $scope.details.deliveryDate;
+      }
+
+      if (!$scope.details.recipient.email) {
+        delete $scope.details.recipient.email;
+      }
+
       Transaction.addGift($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
         $modal.open({

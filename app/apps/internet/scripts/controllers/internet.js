@@ -93,6 +93,14 @@ angular
       if (validateRecipient()){
 
         $scope.paymentState = true;
+        if (!$scope.details.accountNumber) {
+          delete $scope.details.accountNumber;
+        }
+
+        if (!$scope.details.recipient.email) {
+          delete $scope.details.recipient.email;
+        }
+
         Transaction.addBill($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.internet.payment');
