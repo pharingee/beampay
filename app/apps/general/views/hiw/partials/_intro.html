@@ -14,15 +14,22 @@
                 <button ng-if="loggedin" type="submit" class="btn" ng-click="dashboard()">Get Started Now!</button>
               </div>
           </li>
-          <li>
-            <h4 class="nav-link">
-              <a href="tel:+14158710438"><span class="lnr lnr-phone-handset"></span>&nbsp; +1 (415) 871 0438</a>
-            </h4>
+          <li class="nv-lk">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             <h4 class="nav-link bord">
+               <span class="lnr lnr-phone-handset"></span>&nbsp;+1 (415) 871 0438 <i class="fa fa-caret-down"></i></h4>
+             </a>
+             <ul class="dropdown-menu tel-nos">
+              <li><a href=""> <i class="fa fa-envelope-o"></i>&nbsp; +1 (415) 881 4216</a></li> 
+              <li><a href=""> <i class="fa fa-whatsapp"></i>&nbsp; +233-245 025 019</a></li>   
+            </ul> 
           </li>
-          <li>
-            <h4 class="nav-link">
-              <a ui-sref="signin">Login</a>
-            </h4>
+          <li class="nv-lk">
+          <a ui-sref="signin">
+              <h4 class="nav-link">
+                <span class="lnr lnr-lock"></span>&nbsp;Login
+              </h4>
+            </a>
           </li>
         </ul>
       </div> <!-- .navbar -->
