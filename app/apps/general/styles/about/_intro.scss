@@ -4,6 +4,22 @@
   font-family: 'bariol';
   min-height: 90%;
 
+
+  .navbar{
+    position:fixed;
+    z-index: 1030;
+    right: 0;
+    left: 0;
+    
+    .container{
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;   
+    }
+
+  }
+
   .navbar-brand{
     background-color: $green;
   }
