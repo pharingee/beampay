@@ -36,8 +36,8 @@ angular
         return false;
       }
 
-      if(isNaN($scope.details.amountGhs) || parseInt($scope.details.amountGhs) < 10 || parseInt($scope.details.amountGhs > 500)) {
-        $scope.errors.push('Amount can only be more than GHS 50 and less than GHS 5000');
+      if(isNaN($scope.details.amountGhs) || parseInt($scope.details.amountGhs) < 5 || parseInt($scope.details.amountGhs > 1000)) {
+        $scope.errors.push('Amount can only be more than GHS 5 and less than GHS 1000');
         return false;
       }
 
