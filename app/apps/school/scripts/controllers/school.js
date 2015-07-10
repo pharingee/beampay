@@ -56,7 +56,11 @@ angular
     };
 
     $scope.makeTransaction = function () {
-      $scope.details.wardName = $scope.details.wardName.firstName + ' ' + $scope.details.wardName.middleName + ' ' + $scope.details.wardName.lastName;
+      if ($scope.details.wardName.middleName) {
+        $scope.details.wardName = $scope.details.wardName.firstName + ' ' + $scope.details.wardName.middleName + ' ' + $scope.details.wardName.lastName;
+      } else {
+        $scope.details.wardName = $scope.details.wardName.firstName + ' ' + $scope.details.wardName.lastName;
+      }
 
       if (!$scope.details.amountGhs) {
         delete $scope.details.amountGhs;
