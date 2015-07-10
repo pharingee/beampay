@@ -10,4 +10,6 @@
 
 .constant('STRIPE_KEY', 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI')
 
+.constant('ROOT_URL', 'https://beampay.co/')
+
 ;

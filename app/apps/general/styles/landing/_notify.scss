@@ -35,7 +35,7 @@
     @include black-button();
     text-decoration: none;
     background-color: $green;
-    border: 3px solid $white;
+    border: 1px solid $white;
     display: inline-block;
     margin-top: 25px;
     margin-bottom: 15px;
@@ -50,10 +50,23 @@
     font-size: 1.4em;
      padding: 5px 20px;
      margin: 35px 30px;
+     color: $green;
+     background-color: $white;
   }
 
   .btn-default:hover{
-    border-color: #FFF !important;
+    border:1px solid #498812 !important;
+    color: $white;
+    background-color: $green;
+
+  }
+
+  .btn-default:active{
+     border-color: #FFF !important;
+  }
+
+  .btn-notify{
+     box-shadow: 0px 3px 0px #498812;
   }
 
   hr {
@@ -61,4 +74,5 @@
     padding-top: 5px;
     border-color: $green - 10;
   }
+
 }

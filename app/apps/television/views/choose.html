@@ -29,7 +29,7 @@
 
         <div class="form-group">
           <label for="amount">How much in GHS would you like to pay?</label>
-          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="50" max="5000">
+          <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="10" max="1000">
         </div>
         <div class="row text-center" ng-show="details.serviceFee > 0">
           <div class="col-md-3">
