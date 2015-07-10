@@ -4,7 +4,9 @@ angular
   .module('app.auth')
   .controller('SignupCtrl', function ($scope, $state, $auth, Auth, Error) {
 
-    $scope.signup = {};
+    $scope.signup = {
+      privacy: true
+    };
 
     $scope.signup.submit = function () {
       // Reset
@@ -15,8 +17,19 @@ angular
       var privacy = $scope.signup.privacy;
 
       // Client checks
-      if (!email || !pass1 || !pass2 || !privacy) {
-        $scope.signup.errors.push('All fields required');
+      if (!email) {
+        $scope.signup.errors.push('Email is required');
+        return;
+      }
+
+      if (!pass1) {
+        $scope.signup.errors.push('Password is required');
+        return;
+      }
+
+
+      if (!privacy) {
+        $scope.signup.errors.push('Please accept the Terms and Conditions');
         return;
       }
 

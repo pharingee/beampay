@@ -35,7 +35,7 @@ angular
         Onboard.setReferral($scope.settings.referralCode).then(function (){
           saveName();
         }, function (data) {
-          if (data.details && data.details == 1) {
+          if (data.details && data.details === '1') {
             saveName();
           }else{
             $scope.settings.errors = Error.setReferral(data);

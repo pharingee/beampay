@@ -15,6 +15,15 @@ angular
     $scope.errors = [];
     $scope.paymentSaveSuccess = true;
 
+    Transaction.getProfile().then(function (response) {
+      if (!response.profile.informationComplete) {
+        $modal.open({
+          templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+          controller: 'IncompleteModalCtrl'
+        });
+      }
+    }, function () {});
+
     var toCurr = function (amount) {
       return Math.ceil(amount * 100) / 100;
     };
@@ -111,10 +120,10 @@ angular
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.television.payment');
         }, function (error) {
-          if (error.detail && error.detail == '2') {
+          if (error.detail && error.detail === '2') {
             $modal.open({
               templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-              controller: 'ModalCtrl'
+              controller: 'IncompleteModalCtrl'
             });
           }
         });

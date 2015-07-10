@@ -13,6 +13,7 @@ angular
     'ui.bootstrap.datetimepicker',
     'angularMoment',
     'angular-loading-bar',
+    'angular-intro',
     'app.config',
     'app.utils',
     'app.general',

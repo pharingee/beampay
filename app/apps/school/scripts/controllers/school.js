@@ -21,6 +21,18 @@ angular
       return Math.ceil(amount * 100) / 100;
     };
 
+    Transaction.getProfile().then(function (response) {
+      $scope.details.preferredContactMethod = response.profile.preferredContactMethod;
+      $scope.details.preferredContactDetails = response.profile.preferredContactDetails;
+
+      if (!response.profile.informationComplete) {
+        $modal.open({
+          templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+          controller: 'IncompleteModalCtrl'
+        });
+      }
+    }, function () {});
+
     Transaction.getPricing().then(function (response){
       $scope.pricing = response;
     }, function(){
@@ -60,10 +72,10 @@ angular
           controller: 'ModalCtrl'
         });
       }, function (error) {
-        if (error.detail && error.detail == '2') {
+        if (error.detail && error.detail === '2') {
           $modal.open({
             templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-            controller: 'ModalCtrl'
+            controller: 'IncompleteModalCtrl'
           });
         }
       });
