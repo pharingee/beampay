@@ -6,6 +6,8 @@
 
 .constant('API_SERVER', 'http://localhost:8000/api/v1/')
 
+.constant('ROOT_URL', 'http://localhost:9000/')
+
 .constant('FACEBOOK_CLIENT_ID', 1562773807273610)
 
 .constant('STRIPE_KEY', 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI')
