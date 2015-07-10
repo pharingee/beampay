@@ -18,5 +18,15 @@ angular
         url: '/:transactionId/:transactionType',
         templateUrl: tempPrefix + 'transactionDetails.html'
       });
+  })
+  // .run(function ($state){
+  //   $('#incomplete-modal').on('hidden.bs.modal', function (e) {
+  //     $state.transactionTo('onboard.name');
+  //   });
 
-  });
+  //   $('#success-modal').on('hidden.bs.modal', function (e) {
+  //     console.log('suceess');
+  //     $state.transactionTo('app.transaction.list');
+  //   });
+  // })
+;
