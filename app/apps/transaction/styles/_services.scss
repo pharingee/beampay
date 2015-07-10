@@ -222,6 +222,30 @@
   z-index: 0; 
 }
 
+/*Transaction page fixes */
+.btn{
+  font-weight: 600;
+  font-size: 16px;
+}
+.service-button{
+max-width:200px;
+}
+
+.final-service-image{
+  height: 7.55em;
+  padding: 5px;
+  border: 1px solid #aaa;
+}
+
+.final-service-image:active{
+  transition: all linear 200ms;
+}
+
+.final-bill {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 /*Mobile fixes */
 @media only screen 
   and (min-device-width: 320px) 
