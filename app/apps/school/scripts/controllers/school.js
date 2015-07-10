@@ -56,7 +56,7 @@ angular
       Transaction.addSchool($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
         $modal.open({
-          templateUrl: 'apps/transaction/views/successModal.html',
+          templateUrl: 'apps/school/views/successModal.html',
           controller: 'ModalCtrl'
         });
       }, function (error) {

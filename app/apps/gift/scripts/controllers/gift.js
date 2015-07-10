@@ -8,7 +8,8 @@ angular
     }
 
     $scope.details = {
-      recipient: {}
+      recipient: {},
+      preferredContactMethod: 'WAP'
     };
 
     $scope.details.serviceFee = 0;
@@ -36,8 +37,8 @@ angular
         delete $scope.details.deliveryAddress;
       }
 
-      if (!$scope.details.deliveryDate) {
-        delete $scope.details.deliveryDate;
+      if (!$scope.details.deliveryTime) {
+        delete $scope.details.deliveryTime;
       }
 
       if (!$scope.details.recipient.email) {
@@ -47,7 +48,7 @@ angular
       Transaction.addGift($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
         $modal.open({
-          templateUrl: 'apps/transaction/views/successModal.html',
+          templateUrl: 'apps/gift/views/successModal.html',
           controller: 'ModalCtrl'
         });
       }, function (error) {
