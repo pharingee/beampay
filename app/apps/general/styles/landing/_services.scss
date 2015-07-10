@@ -66,6 +66,9 @@
       }
     }
   }
+  .service:hover{ 
+      background-color: rgba(122, 150, 231, 0.1);
+  }
 
    .submit-btn{
       padding-top: 50px;
@@ -73,14 +76,14 @@
 
   .btn-lg{
     color: $white;
-    background-color: $blue;
-    border-color: $gray-extra-light;
-    border-width: 2px;
+    background-color: $blue; 
+    box-shadow: 0px 3px 0px #4A67BB;
   }
 
   .btn-lg:hover{
     color: $blue;
     background-color: $white;
+    border:1px solid  #4A67BB;
   }
 
   .question {
