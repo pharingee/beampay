@@ -9,8 +9,9 @@
     <div class="col-sm-9 col-lg-10 service-wrapper input-block-level">
       <div ui-view="">
         <div class="services" ng-controller="HomeCtrl">
+          <!-- <div class="container-fluid"  ng-intro-method="Start" ng-intro-options="IntroOptions" ng-intro-autostart="true"> -->
           <div class="container-fluid">
-            <h4>Hello {{currentUser.firstName}}!</h4>
+            <h4 ng-click="Start()">Hello {{currentUser.firstName}}!</h4>
             <h5>How would you like to support a loved one in Ghana today?</h5>
 
             <div class="row">
@@ -26,7 +27,6 @@
                         Surprise someone special with cakes, flowers and hampers
                       </p>
                     </div>
-
                   </a>
                 </div><!--./service-card-->
 
