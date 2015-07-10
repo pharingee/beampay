@@ -3,11 +3,11 @@
 angular
   .module('app.transaction')
   .controller('TransactionDetailCtrl', function ($scope, $stateParams, Transaction, TransactionUtil) {
-    console.log($stateParams);
 
     if ($stateParams.transactionId && $stateParams.transactionType) {
       Transaction.getTransaction($stateParams.transactionId, $stateParams.transactionType).then(
         function (response) {
+          console.log(response);
           $scope.transaction = response;
           $scope.transactionType = $stateParams.transactionType;
         }, function () {});
@@ -33,6 +33,10 @@ angular
 
     $scope.getDescription = function (transaction) {
       return TransactionUtil.getDescription(transaction);
+    };
+
+    $scope.getType = function (transaction) {
+      return TransactionUtil.getType(transaction);
     };
 
     Transaction.getTransactions().then(

@@ -18,7 +18,7 @@
         	VIEW DETAILS
         </div> -->
         <div class="transaction-item" ng-repeat="transaction in transactions track by $index">
-          <a ui-sref="app.transaction.details({transactionId: transaction.data.id, transactionType: transaction.transactionType})">
+          <a ui-sref="app.transaction.details({transactionId: transaction.data.id, transactionType: getType(transaction)})">
             <div class="widget-icon pull-left">
               <span class="lnr lnr-rocket" ng-if="transaction.transactionType == 'valettransaction'"></span>
               <span class="lnr lnr-heart" ng-if="transaction.transactionType == 'gift'"></span>

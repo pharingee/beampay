@@ -1,16 +1,16 @@
 <div class="container-fluid">
   <div class="row">
-    <p><strong>You're about to pay for</strong></p>
+    <p class="bill-text">You're about to pay for</p>
     <div class="row">
       <div class="col-xs-4">
         <img ng-show="details.billType == 'SRF'" src="apps/internet/images/surfline-logo.png" alt="" class="final-service-image">
         <img ng-show="details.billType == 'VOB'" src="apps/internet/images/vodafone-logo.png" alt="" class="final-service-image">
       </div>
       <div class="col-xs-6">
-        <h5>DESCRIPTION</h5>
+        <div class="bill-heading">DESCRIPTION</div>
         <p>GHS {{details.amountGhs}} {{getProvider()}} bill for {{details.recipient.firstName}} {{details.recipient.lastName}}</p>
-        <h5>FINAL BILL</h5>
-        <p class="final-bill">$ {{details.chargeUsd}}</p>
+        <div class="bill-heading">FINAL BILL</div>
+        <p>$ {{details.chargeUsd}}</p>
       </div>
       
     </div>
