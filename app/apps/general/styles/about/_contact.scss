@@ -3,10 +3,10 @@
   color: $white;
 
   .container {
-    padding: 50px;
+    /*padding: 50px;*/
 
     .content{
-    padding:40px 5px 20px 40px;
+    padding:40px 0 20px 0 !important;
 
     .lnr{
       color:$green;
