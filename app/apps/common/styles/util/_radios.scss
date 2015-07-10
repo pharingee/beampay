@@ -1,4 +1,4 @@
-.radio label {
+.non-bill-form .radio label {
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -7,11 +7,11 @@
     font-size: 13px;
 }
 
-input[type=radio] {
+.non-bill-form input[type=radio] {
     display: none;
 }
 
-.radio label:before {
+.non-bill-form .radio label:before {
     content: "";
     display: inline-block;
 
@@ -26,11 +26,11 @@ input[type=radio] {
     box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
 }
 
-.radio label:before {
+.non-bill-form .radio label:before {
     border-radius: 8px;
 }
 
-input[type=radio]:checked + label:before {
+.non-bill-form input[type=radio]:checked + label:before {
     content: "\2022";
     color: $green;
     font-size: 25px;

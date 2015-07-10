@@ -48,7 +48,7 @@ angular
       Transaction.addGift($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
         $modal.open({
-          templateUrl: 'apps/transaction/views/successModal.html',
+          templateUrl: 'apps/gift/views/successModal.html',
           controller: 'ModalCtrl'
         });
       }, function (error) {
