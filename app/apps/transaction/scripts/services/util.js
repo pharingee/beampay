@@ -51,16 +51,30 @@ angular.module('app.transaction')
     };
 
     var getDescription = function (transaction) {
-      if (transaction.transactionType === 'billpayment') {
+      if (transaction.transactionType === 'billpayment' || transaction.transactionType === 'BILL') {
         return 'GHS ' + transaction.data.amountGhs + ' billing on ' + getFullName(transaction.data.billType) + ' for ' + transaction.data.recipient.firstName + ' ' + transaction.data.recipient.lastName;
-      } else if(transaction.transactionType === 'airtimetopup') {
+      } else if(transaction.transactionType === 'airtimetopup' || transaction.transactionType === 'AIRTIME') {
         return 'GHS ' + transaction.data.amountGhs + ' ' + getFullName(transaction.data.network) + ' airtime for ' + transaction.data.recipient.firstName + ' ' + transaction.data.recipient.lastName;
-      } else if(transaction.transactionType === 'schoolfeepayment') {
+      } else if(transaction.transactionType === 'schoolfeepayment' || transaction.transactionType === 'SCHOOL') {
         return transaction.data.wardName + ' fees to ' + transaction.data.school;
-      } else if(transaction.transactionType === 'valettransaction') {
+      } else if(transaction.transactionType === 'valettransaction' || transaction.transactionType === 'VALET') {
         return transaction.data.description;
-      } else if(transaction.transactionType === 'gift') {
+      } else if(transaction.transactionType === 'gift' || transaction.transactionType === 'GIFT') {
         return 'Send ' + getFullName(transaction.data.giftType) + ' to ' + transaction.data.recipient.firstName + ' ' + transaction.data.recipient.lastName;
+      }
+    };
+
+    var getType = function (transaction) {
+      if (transaction.transactionType === 'billpayment') {
+        return 'BILL';
+      } else if(transaction.transactionType === 'airtimetopup') {
+        return 'AIRTIME';
+      } else if(transaction.transactionType === 'schoolfeepayment') {
+        return 'SCHOOL';
+      } else if(transaction.transactionType === 'valettransaction') {
+        return 'VALET';
+      } else if(transaction.transactionType === 'gift') {
+        return 'GIFT';
       }
     };
 
@@ -70,6 +84,9 @@ angular.module('app.transaction')
       },
       getFullName: function (shortName) {
         return getFullName(shortName);
+      },
+      getType: function (transaction) {
+        return getType(transaction);
       }
     };
   });
