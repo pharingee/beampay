@@ -11,21 +11,40 @@
         <div class="form-group">
           <label for="contact">How should we keep you updated? </label><br>
 
-          <label class="checkbox-inline">
-            <input type="radio" ng-model="details.preferredContactMethod" value="PHON"> Phone
-          </label>
+          <div class="radio">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <input type="radio" ng-model="details.preferredContactMethod" value="WAP" id="contact-whatsapp">
+                  <label class="checkbox-inline" for="contact-whatsapp"> WhatsApp </label>
+                </div>
 
-          <label class="checkbox-inline">
-            <input type="radio" ng-model="details.preferredContactMethod" value="SMS"> SMS
-          </label>
+                <div class="col-sm-6 col-md-3">
+                  <input type="radio" ng-model="details.preferredContactMethod" value="PHON" id="contact-phone">
+                  <label class="checkbox-inline" for="contact-phone"> Phone </label>
+                </div>
 
-          <label class="checkbox-inline">
-            <input type="radio" ng-model="details.preferredContactMethod" value="WAP"> WhatsApp
-          </label>
+                <div class="col-sm-6 col-md-3">
+                  <input type="radio" ng-model="details.preferredContactMethod" value="SMS" id="contact-sms">
+                  <label class="checkbox-inline" for="contact-sms"> SMS </label>
+                </div>
 
-          <label class="checkbox-inline">
-            <input type="radio" ng-model="details.preferredContactMethod" value="MAIL"> Email
-          </label>
+                <div class="col-sm-6 col-md-3">
+                  <input type="radio" ng-model="details.preferredContactMethod" value="MAIL" id="contact-email">
+                  <label class="checkbox-inline" for="contact-email"> Email </label>
+                </div>
+              </div>
+              <br>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-2">
+              <label for="contact">Contact:</label>
+            </div>
+            <div class="col-xs-10">
+              <input type="text" class="form-control" placeholder="+233265086508" disabled id="contact">
+            </div>
+          </div>
+
         </div>
 
         <div class="form-group">
