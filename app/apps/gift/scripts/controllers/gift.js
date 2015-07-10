@@ -17,6 +17,18 @@ angular
     $scope.errors = [];
     $scope.paymentSaveSuccess = true;
 
+    Transaction.getProfile().then(function (response) {
+      $scope.details.preferredContactMethod = response.profile.preferredContactMethod;
+      $scope.details.preferredContactDetails = response.profile.preferredContactDetails;
+
+      if (!response.profile.informationComplete) {
+        $modal.open({
+          templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+          controller: 'IncompleteModalCtrl'
+        });
+      }
+    }, function () {});
+
     $scope.setDetails = function () {
       $scope.recipientState = true;
       $state.transitionTo('app.gift.recipient');
@@ -55,7 +67,7 @@ angular
         if (error.detail && error.detail == '2') {
           $modal.open({
             templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-            controller: 'ModalCtrl'
+            controller: 'IncompleteModalCtrl'
           });
         }
       });

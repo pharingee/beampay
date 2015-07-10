@@ -7,6 +7,18 @@ angular
       $state.transitionTo('app.valet.details');
     }
 
+    Transaction.getProfile().then(function (response) {
+      $scope.details.preferredContactMethod = response.profile.preferredContactMethod;
+      $scope.details.preferredContactDetails = response.profile.preferredContactDetails;
+
+      if (!response.profile.informationComplete) {
+        $modal.open({
+          templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+          controller: 'IncompleteModalCtrl'
+        });
+      }
+    }, function () {});
+
     $scope.details = {
       recipient: {},
       preferredContactMethod: 'WAP'
@@ -33,7 +45,7 @@ angular
         if (error.detail && error.detail == '2') {
           $modal.open({
             templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-            controller: 'ModalCtrl'
+            controller: 'IncompleteModalCtrl'
           });
         }
       });

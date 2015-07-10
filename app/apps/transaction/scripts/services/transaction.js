@@ -61,6 +61,10 @@ angular.module('app.transaction')
       return serverGet('transaction/' + transactionId + '/?type=' + transactionType);
     };
 
+    var getProfile = function () {
+      return serverGet('account/profile/');
+    }
+
     var addAirtime = function (parameters) {
       var pricing = Persist.getPricing();
       parameters.exchangeRateId = pricing.exchangeRateId;
@@ -122,6 +126,9 @@ angular.module('app.transaction')
       },
       getTransactions: function () {
         return getTransactions();
+      },
+      getProfile: function () {
+        return getProfile();
       }
     };
 
