@@ -1,21 +1,21 @@
 <div class="container-fluid">
   <div class="row">
-    <p>You're about to pay for</p>
+    <p class="bill-text">You're about to pay for</p>
     <div class="row">
       <div class="col-xs-4">
         <img ng-show="details.billType == 'DST'" src="apps/television/images/dstv-logo.png" alt="" class="final-service-image">
         <img ng-show="details.billType == 'GOT'" src="apps/television/images/gotv-logo.jpg" alt="" class="final-service-image">
       </div>
       <div class="col-xs-6">
-        <h5>DESCRIPTION</h5>
+        <div class="bill-heading">DESCRIPTION</div>
         <p>GHS {{details.amountGhs}} billing on {{details.billType}}v for {{details.recipient.firstName}} {{details.recipient.lastName}}</p>
-        <h5>FINAL BILL</h5>
+        <div class="bill-heading">FINAL BILL</div>
         <p>$ {{details.chargeUsd}}</p>
-
-        <div class="service-button">
-            <button class="btn btn-success form-control" ng-click="confirm()">Pay</button>
-        </div>
       </div>
+    </div>
+
+    <div class="service-button">
+      <button class="btn btn-success form-control" ng-click="confirm()">Pay</button>
     </div>
   </div>
 </div>

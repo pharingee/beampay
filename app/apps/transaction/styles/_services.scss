@@ -228,7 +228,8 @@
   font-size: 16px;
 }
 .service-button{
-max-width:200px;
+  margin-top: 20px;
+  max-width:200px;
 }
 
 .final-service-image{
@@ -241,11 +242,17 @@ max-width:200px;
   transition: all linear 200ms;
 }
 
-.final-bill {
+.bill-text {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 }
-
+.bill-heading{
+  font-weight: 600;
+  display: inline-block;
+  font-size: 14px;
+  text-align: left;
+  text-transform: uppercase;
+}
 /*Mobile fixes */
 @media only screen 
   and (min-device-width: 320px) 
