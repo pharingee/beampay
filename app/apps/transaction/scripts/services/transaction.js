@@ -63,7 +63,7 @@ angular.module('app.transaction')
 
     var getProfile = function () {
       return serverGet('account/profile/');
-    }
+    };
 
     var addAirtime = function (parameters) {
       var pricing = Persist.getPricing();

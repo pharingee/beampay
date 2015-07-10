@@ -16,7 +16,6 @@ angular
     $scope.paymentSaveSuccess = true;
 
     Transaction.getProfile().then(function (response) {
-      console.log(response);
       if (!response.profile.informationComplete) {
         $modal.open({
           templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
@@ -120,7 +119,8 @@ angular
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.utility.payment');
         }, function (error) {
-          if (error.detail && error.detail == '2') {
+          if (error.detail && error.detail === '2') {
+            console.log(error);
             $modal.open({
               templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
               controller: 'IncompleteModalCtrl'

@@ -7,7 +7,7 @@ angular
 
     $scope.IntroOptions = {
       steps: [{
-        element: document.querySelector("#intro-gift"),
+        element: document.querySelector('#intro-gift'),
         intro: 'Select a Gift to send'
       }],
       showStepNumbers: false,

@@ -120,7 +120,7 @@ angular
           $scope.details.transactionId = response.transactionId;
           $state.transitionTo('app.television.payment');
         }, function (error) {
-          if (error.detail && error.detail == '2') {
+          if (error.detail && error.detail === '2') {
             $modal.open({
               templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
               controller: 'IncompleteModalCtrl'

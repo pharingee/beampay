@@ -42,7 +42,7 @@ angular
           controller: 'ModalCtrl'
         });
       }, function (error) {
-        if (error.detail && error.detail == '2') {
+        if (error.detail && error.detail === '2') {
           $modal.open({
             templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
             controller: 'IncompleteModalCtrl'
