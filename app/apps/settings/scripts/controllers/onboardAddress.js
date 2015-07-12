@@ -19,14 +19,19 @@ angular
         $scope.settings.country = 'US';
 
         var date = new Date($scope.settings.dateOfBirth);
-        if (!response.dateOfBirth) {
-          date = new Date(1957, 2, 6);
-        }
         $scope.settings.date = {
           year: date.getFullYear().toString(),
           month: (date.getMonth() + 1).toString(),
           day: (date.getDate()).toString()
         };
+
+        if (!response.dateOfBirth) {
+          $scope.settings.date = {
+            year: '',
+            month: '',
+            day: ''
+          };
+        }
 
       }, function () {});
 

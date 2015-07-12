@@ -21,7 +21,8 @@ angular
 
     $scope.details = {
       recipient: {},
-      preferredContactMethod: 'WAP'
+      preferredContactMethod: 'WAP',
+      preferredContactDetails: ''
     };
 
     $scope.details.serviceFee = 0;
@@ -50,5 +51,9 @@ angular
         }
       });
     };
+
+    $scope.isPhoneContactMethod = function () {
+      return $scope.details.preferredContactMethod in ['SMS', 'WAP', 'PHON'];
+    }
 
   });
