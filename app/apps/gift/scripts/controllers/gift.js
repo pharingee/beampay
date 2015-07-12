@@ -9,7 +9,8 @@ angular
 
     $scope.details = {
       recipient: {},
-      preferredContactMethod: 'WAP'
+      preferredContactMethod: 'WAP',
+      preferredContactDetails: ''
     };
 
     $scope.details.serviceFee = 0;

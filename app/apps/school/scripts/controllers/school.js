@@ -9,7 +9,9 @@ angular
 
     $scope.details = {
       wardName: {},
-      recipient: {}
+      recipient: {},
+      preferredContactMethod: 'WAP',
+      preferredContactDetails: ''
     };
 
     $scope.details.serviceFee = 0;
@@ -69,6 +71,9 @@ angular
       if (!$scope.details.recipient.email) {
         delete $scope.details.recipient.email;
       }
+
+      console.log($scope.details);
+
       Transaction.addSchool($scope.details).then(function (response) {
         $scope.details.transactionId = response.transactionId;
         $modal.open({
