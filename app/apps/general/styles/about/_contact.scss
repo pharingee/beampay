@@ -3,13 +3,16 @@
   color: $white;
 
   .container {
-    /*padding: 50px;*/
+
+    .par-content{
+          padding:20px 0 20px 0 !important;
+    }
 
     .content{
-    padding:40px 0 20px 0 !important;
+      padding-bottom: 20px !important;
 
     .lnr{
-      color:$green;
+      color:#FFFFFF;
       font-size: 25px;
     }
     span{
@@ -19,6 +22,7 @@
     .details{
       font-weight: 400;
       font-size: 20px;
+      text-align: justify;
       a{
         text-decoration: none;
         color: $white;
