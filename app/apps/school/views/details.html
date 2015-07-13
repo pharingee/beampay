@@ -31,7 +31,7 @@
           <input ng-model="details.school" type="text" class="form-control" placeholder="Eg. University of Ghana" required>
         </div>
 
-        <div class="row text-center" ng-show="details.serviceFee > 0">
+        <div class="row text-center hidden" ng-show="details.serviceFee > 0">
           <div class="col-md-3">
             <strong>Base Cost</strong><br>
             $ {{ details.amountUsd }}
@@ -53,7 +53,7 @@
             $ {{ details.chargeUsd }}
           </div>
         </div>
-        <br><br>
+        <!-- <br><br> -->
 
         <div class="form-group">
           <div class="service-button">

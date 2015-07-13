@@ -18,7 +18,7 @@
         <div class="form-group">
           <label for="dateOfBirth">Date of birth</label>
           <div>
-            <select class="date form-control" ng-model="settings.date.day">
+            <select class="date form-control" ng-model="settings.date.day" required>
               <option value="">Day</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -52,7 +52,7 @@
               <option value="30">30</option>
               <option value="31">31</option>
           </select>
-          <select class="date form-control" ng-model="settings.date.month">
+          <select class="date form-control" ng-model="settings.date.month" required>
               <option value="">Month</option>
               <option value="1">January</option>
               <option value="2">February</option>
@@ -67,7 +67,7 @@
               <option value="11">November</option>
               <option value="12">December</option>
           </select>
-          <select class="date form-control" ng-model="settings.date.year">
+          <select class="date form-control" ng-model="settings.date.year" required>
               <option value="">Year</option>
               <option value="1996">1996</option>
               <option value="1995">1995</option>
@@ -141,7 +141,7 @@
         </div>
         <div class="form-group">
           <label for="country">Country of current residence</label>
-          <select ng-model="settings.country" class="form-control">
+          <select ng-model="settings.country" class="form-control" required>
               <option value="US">United States of America</option>
               <option value="AF">Afghanistan</option>
               <option value="AL">Albania</option>
@@ -350,19 +350,19 @@
         </div>
         <div class="form-group">
           <label for="phoneNumber">Phone number</label>
-          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Eg. +233265086508">
+          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Eg. +233265086508" required>
         </div>
         <div class="form-group">
           <label for="street">Street</label>
-          <input ng-model="settings.street" type="text" class="form-control" placeholder="Street">
+          <input ng-model="settings.street" type="text" class="form-control" placeholder="Street" required>
         </div>
         <div class="form-group">
           <label for="address">City</label>
-          <input ng-model="settings.city" type="text" class="form-control" placeholder="City">
+          <input ng-model="settings.city" type="text" class="form-control" placeholder="City" required>
         </div>
         <div class="form-group">
           <label for="address">Post code</label>
-          <input ng-model="settings.postCode" type="text" class="form-control" placeholder="Post code">
+          <input ng-model="settings.postCode" type="text" class="form-control" placeholder="Post code" required>
         </div>
         <div class="form-group">
           <label for="contactMethod">Preferred Contact Method</label>
