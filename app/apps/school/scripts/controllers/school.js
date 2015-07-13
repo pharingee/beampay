@@ -19,9 +19,9 @@ angular
     $scope.errors = [];
     $scope.paymentSaveSuccess = true;
 
-    var toCurr = function (amount) {
-      return Math.ceil(amount * 100) / 100;
-    };
+    // var toCurr = function (amount) {
+    //   return Math.ceil(amount * 100) / 100;
+    // };
 
     Transaction.getProfile().then(function (response) {
       $scope.details.preferredContactMethod = response.profile.preferredContactMethod;
@@ -35,26 +35,86 @@ angular
       }
     }, function () {});
 
-    Transaction.getPricing().then(function (response){
-      $scope.pricing = response;
-    }, function(){
+    // Transaction.getPricing().then(function (response){
+    //   $scope.pricing = response;
+    // }, function(){
 
-    });
+    // });
 
-    $scope.calculatePricing = function () {
-      $scope.details.amountUsd = toCurr($scope.details.amountGhs / $scope.pricing.usdGhs);
-      $scope.details.serviceFee = toCurr(($scope.pricing.percentualFee * $scope.details.amountUsd) + $scope.pricing.fixedFee);
-      $scope.details.chargeUsd = toCurr($scope.details.amountUsd + $scope.details.serviceFee);
+    // $scope.calculatePricing = function () {
+    //   $scope.details.amountUsd = toCurr($scope.details.amountGhs / $scope.pricing.usdGhs);
+    //   $scope.details.serviceFee = toCurr(($scope.pricing.percentualFee * $scope.details.amountUsd) + $scope.pricing.fixedFee);
+    //   $scope.details.chargeUsd = toCurr($scope.details.amountUsd + $scope.details.serviceFee);
+    // };
+
+    var validateDetails = function () {
+      $scope.errors = [];
+
+      if (!$scope.details.wardName.firstName || !$scope.details.wardName.lastName) {
+        $scope.errors.push('Please provide both the first and last name of your ward');
+        return false;
+      }
+
+      if (!$scope.details.school) {
+        $scope.errors.push('Please enter the name of your ward\'s Intsitution');
+        return false;
+      }
+
+      return true;
+    };
+
+    var validateMethod = function () {
+      $scope.errors = [];
+
+      if (!$scope.details.preferredContactDetails) {
+        switch ($scope.details.preferredContactMethod) {
+          case 'WAP':
+            $scope.errors.push('Please enter your WhatsApp number in the contact details field.');
+            break;
+          case 'PHON':
+            $scope.errors.push('Please enter your phone number in the contact details field.');
+            break;
+          case 'SMS':
+            $scope.errors.push('Please enter your SMS number in the contact details field.');
+            break;
+          case 'MAIL':
+            $scope.errors.push('Please enter your email in the contact details field.');
+            break;
+        }
+        return false;
+      }
+
+      return true;
+    };
+
+    var validateRecipient = function () {
+      $scope.errors = [];
+
+      if (!$scope.details.recipient.firstName || !$scope.details.recipient.lastName) {
+        $scope.errors.push('Please enter first and last name of the recipient');
+        return false;
+      }
+
+      if (!$scope.details.recipient.phoneNumber || $scope.details.recipient.phoneNumber.length < 10) {
+        $scope.errors.push('Please enter a valid phone number');
+        return false;
+      }
+
+      return true;
     };
 
     $scope.setDetails = function () {
-      $scope.contactState = true;
-      $state.transitionTo('app.school.contact');
+      if (validateDetails()) {
+        $scope.contactState = true;
+        $state.transitionTo('app.school.contact');
+      }
     };
 
     $scope.setMethod = function () {
-      $scope.recipientState = true;
-      $state.transitionTo('app.school.recipient');
+      if (validateMethod()) {
+        $scope.recipientState = true;
+        $state.transitionTo('app.school.recipient');
+      }
     };
 
     $scope.makeTransaction = function () {
@@ -72,22 +132,22 @@ angular
         delete $scope.details.recipient.email;
       }
 
-      console.log($scope.details);
-
-      Transaction.addSchool($scope.details).then(function (response) {
-        $scope.details.transactionId = response.transactionId;
-        $modal.open({
-          templateUrl: 'apps/school/views/successModal.html',
-          controller: 'ModalCtrl'
-        });
-      }, function (error) {
-        if (error.detail && error.detail === '2') {
+      if (validateRecipient()) {
+        Transaction.addSchool($scope.details).then(function (response) {
+          $scope.details.transactionId = response.transactionId;
           $modal.open({
-            templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-            controller: 'IncompleteModalCtrl'
+            templateUrl: 'apps/school/views/successModal.html',
+            controller: 'ModalCtrl'
           });
-        }
-      });
+        }, function (error) {
+          if (error.detail && error.detail === '2') {
+            $modal.open({
+              templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+              controller: 'IncompleteModalCtrl'
+            });
+          }
+        });
+      }
     };
 
   });

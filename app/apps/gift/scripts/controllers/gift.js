@@ -30,9 +30,63 @@ angular
       }
     }, function () {});
 
+    var validateDetails = function () {
+      $scope.errors = [];
+
+      if (!$scope.details.giftType) {
+        $scope.errors.push('Please select your gift type.');
+        return false;
+      }
+
+      if ($scope.details.giftType === 'MISC') {
+        if (!$scope.details.additionalInfo) {
+          $scope.errors.push('Please enter the type of gift you would want us to send.');
+          return false;
+        }
+      }
+
+      if (!$scope.details.preferredContactDetails) {
+        switch ($scope.details.preferredContactMethod) {
+          case 'WAP':
+            $scope.errors.push('Please enter your WhatsApp number in the contact details field.');
+            break;
+          case 'PHON':
+            $scope.errors.push('Please enter your phone number in the contact details field.');
+            break;
+          case 'SMS':
+            $scope.errors.push('Please enter your SMS number in the contact details field.');
+            break;
+          case 'MAIL':
+            $scope.errors.push('Please enter your email in the contact details field.');
+            break;
+        }
+        return false;
+      }
+
+      return true;
+    };
+
+    var validateRecipient = function () {
+      $scope.errors = [];
+
+      if (!$scope.details.recipient.firstName || !$scope.details.recipient.lastName) {
+        $scope.errors.push('Please enter first and last name of the recipient');
+        return false;
+      }
+
+      if (!$scope.details.recipient.phoneNumber || $scope.details.recipient.phoneNumber.length < 10) {
+        $scope.errors.push('Please enter a valid phone number');
+        return false;
+      }
+
+      return true;
+    };
+
     $scope.setDetails = function () {
-      $scope.recipientState = true;
-      $state.transitionTo('app.gift.recipient');
+      if (validateDetails()) {
+        $scope.recipientState = true;
+        $state.transitionTo('app.gift.recipient');
+      }
     };
 
     $scope.beforeRender = function ($view, $dates) {
@@ -58,20 +112,22 @@ angular
         delete $scope.details.recipient.email;
       }
 
-      Transaction.addGift($scope.details).then(function (response) {
-        $scope.details.transactionId = response.transactionId;
-        $modal.open({
-          templateUrl: 'apps/gift/views/successModal.html',
-          controller: 'ModalCtrl'
-        });
-      }, function (error) {
-        if (error.detail && error.detail === '2') {
+      if (validateRecipient()) {
+        Transaction.addGift($scope.details).then(function (response) {
+          $scope.details.transactionId = response.transactionId;
           $modal.open({
-            templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-            controller: 'IncompleteModalCtrl'
+            templateUrl: 'apps/gift/views/successModal.html',
+            controller: 'ModalCtrl'
           });
-        }
-      });
+        }, function (error) {
+          if (error.detail && error.detail === '2') {
+            $modal.open({
+              templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+              controller: 'IncompleteModalCtrl'
+            });
+          }
+        });
+      }
     };
 
   });

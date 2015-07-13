@@ -25,7 +25,7 @@ angular
           day: (date.getDate()).toString()
         };
 
-        if (!response.dateOfBirth) {
+        if (!response.profile.dateOfBirth) {
           $scope.settings.date = {
             year: '',
             month: '',
@@ -41,8 +41,33 @@ angular
       $scope.settings.dateOfBirth = $scope.settings.date.year + '-' + $scope.settings.date.month + '-' + $scope.settings.date.day;
 
       // Details Checks
-      if (!$scope.settings.dateOfBirth || !$scope.settings.country || !$scope.settings.phoneNumber || !$scope.settings.street || !$scope.settings.city || !$scope.settings.postCode) {
-        $scope.settings.errors.push('We need you to fill all the fields.');
+      if (!$scope.settings.dateOfBirth) {
+        $scope.settings.errors.push('Please provide a valid date of birth');
+        return;
+      }
+
+      if (!$scope.settings.country) {
+        $scope.settings.errors.push('Please select a country');
+        return;
+      }
+
+      if (!$scope.settings.phoneNumber) {
+        $scope.settings.errors.push('Please provide a valid phone number');
+        return;
+      }
+
+      if (!$scope.settings.street) {
+        $scope.settings.errors.push('Please provide your street name.');
+        return;
+      }
+
+      if (!$scope.settings.city) {
+        $scope.settings.errors.push('Please provide your city.');
+        return;
+      }
+
+      if (!$scope.settings.postCode) {
+        $scope.settings.errors.push('Please provide your Postcode');
         return;
       }
 

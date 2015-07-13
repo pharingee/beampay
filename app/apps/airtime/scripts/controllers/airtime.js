@@ -47,6 +47,16 @@ angular
     var validateRecipient = function () {
       $scope.errors = [];
 
+      if (!$scope.details.recipient.firstName || !$scope.details.recipient.lastName) {
+        $scope.errors.push('Please enter first and last name of the recipient');
+        return false;
+      }
+
+      if (!$scope.details.amountGhs) {
+        $scope.errors.push('Please enter the amount to pay in Ghana Cedis');
+        return false;
+      }
+
       if (!$scope.details.recipient.phoneNumber || $scope.details.recipient.phoneNumber.length < 10) {
         $scope.errors.push('Please enter a valid phone number');
         return false;
