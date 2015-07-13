@@ -20,7 +20,7 @@ angular
 
     $scope.cancel = function () {
       $modalInstance.dismiss();
-      $state.transitionTo('app');
+      $state.transitionTo('landing');
     };
 
   });

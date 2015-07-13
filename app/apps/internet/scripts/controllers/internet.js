@@ -77,7 +77,18 @@ angular
             $scope.paymentSaveSuccess = true;
             $modal.open({
               templateUrl: 'apps/transaction/views/successModal.html',
-              controller: 'ModalCtrl'
+              controller: 'SuccessModalCtrl',
+              resolve: {
+                referenceNumber: function () {
+                  return $scope.details.referenceNumber;
+                },
+                stateParams: function () {
+                  return {
+                    transactionId: $scope.details.transactionId,
+                    transactionType: 'BILL'
+                  };
+                }
+              }
             });
           }, function () {
             $scope.paymentSaveSuccess = false;
@@ -122,6 +133,7 @@ angular
 
         Transaction.addBill($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
+          $scope.details.referenceNumber = response.referenceNumber;
           $state.transitionTo('app.internet.payment');
         }, function (error) {
           if (error.detail && error.detail === '2') {
@@ -158,7 +170,18 @@ angular
                 $scope.paymentSaveSuccess = true;
                 $modal.open({
                   templateUrl: 'apps/transaction/views/successModal.html',
-                  controller: 'ModalCtrl'
+                  controller: 'SuccessModalCtrl',
+                  resolve: {
+                    referenceNumber: function () {
+                      return $scope.details.referenceNumber;
+                    },
+                    stateParams: function () {
+                      return {
+                        transactionId: $scope.details.transactionId,
+                        transactionType: 'BILL'
+                      };
+                    }
+                  }
                 });
               }, function () {
                 $scope.paymentSaveSuccess = false;

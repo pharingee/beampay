@@ -71,6 +71,24 @@ angular
         return;
       }
 
+      if (!$scope.settings.preferredContactDetails) {
+        switch ($scope.details.preferredContactMethod) {
+          case 'WAP':
+            $scope.errors.push('Please enter your WhatsApp number in the contact details field.');
+            break;
+          case 'PHON':
+            $scope.errors.push('Please enter your phone number in the contact details field.');
+            break;
+          case 'SMS':
+            $scope.errors.push('Please enter your SMS number in the contact details field.');
+            break;
+          case 'MAIL':
+            $scope.errors.push('Please enter your email in the contact details field.');
+            break;
+        }
+        return;
+      }
+
       Onboard.saveAddress($scope.settings).then(function(){
         $state.transitionTo('app');
       }, function(){

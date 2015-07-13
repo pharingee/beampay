@@ -115,9 +115,21 @@ angular
       if (validateRecipient()) {
         Transaction.addGift($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
+          $scope.details.referenceNumber = response.referenceNumber;
           $modal.open({
             templateUrl: 'apps/gift/views/successModal.html',
-            controller: 'ModalCtrl'
+            controller: 'SuccessModalCtrl',
+            resolve: {
+              referenceNumber: function () {
+                return $scope.details.referenceNumber;
+              },
+              stateParams: function () {
+                return {
+                  transactionId: $scope.details.transactionId,
+                  transactionType: 'GIFT'
+                };
+              }
+            }
           });
         }, function (error) {
           if (error.detail && error.detail === '2') {

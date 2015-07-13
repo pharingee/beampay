@@ -135,10 +135,22 @@ angular
       if (validateRecipient()) {
         Transaction.addSchool($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
+          $scope.details.referenceNumber = response.referenceNumber;
           $modal.open({
-            templateUrl: 'apps/school/views/successModal.html',
-            controller: 'ModalCtrl'
-          });
+              templateUrl: 'apps/school/views/successModal.html',
+              controller: 'SuccessModalCtrl',
+              resolve: {
+                referenceNumber: function () {
+                  return $scope.details.referenceNumber;
+                },
+                stateParams: function () {
+                  return {
+                    transactionId: $scope.details.transactionId,
+                    transactionType: 'SCHOOL'
+                  };
+                }
+              }
+            });
         }, function (error) {
           if (error.detail && error.detail === '2') {
             $modal.open({
