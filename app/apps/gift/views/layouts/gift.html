@@ -1,9 +1,7 @@
 <section class="services">
   <div class="row" ng-controller="GiftCtrl">
     <div class="container-fluid">
-      <h3 class="transaction-h4">Beam Gifts</h3>
-      <!-- <h3>Education changes not just the mind, but your ward's life</h3> -->
-
+      <h3 class="transaction-h4">Beam Gifts</h3> 
       <div class="page-header text-center">
         <div id="status-buttons" class="text-center" ng-hide="paymentComplete">
           <div class="row">
@@ -14,17 +12,51 @@
         </div>
       </div>
 
-      <div class="errors" role="alert" ng-show="errors.length">
-        <p>Error(s):</p>
-        <ul>
-          <li ng-repeat="error in errors">
-            {{ error }}
-          </li>
-        </ul>
+      <div class="row">
+        <div class="col-md-offset-6">
+          <div class="errors" role="alert" ng-show="errors.length">
+            <p>Error(s):</p>
+            <ul>
+              <li ng-repeat="error in errors">
+                {{ error }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>     
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-5 sla">
+            <div class="row sla-title">
+              <p>How Beam enables you to send gifts</p>
+            </div>
+            <hr>
+            <div class="row sla-layer">
+              <div class="col-sm-1">
+                <span class="lnr lnr-location"></span>
+              </div>
+              <div class="col-sm-11 text-justify">Send us some basic information about the gift you'd like to send</div>
+            </div>
+            <div class="row sla-layer">
+              <div class="col-sm-1">
+                <span class="lnr lnr-hourglass"></span>
+              </div>
+              <div class="col-sm-11 text-justify">We'll get in touch with you to iron out the details and payment</div>
+            </div> 
+            <div class="row sla-layer">
+              <div class="col-sm-1">
+                <span class="lnr lnr-gift"></span>
+              </div>
+              <div class="col-sm-11 text-justify">We deliver the gift at the requested time. Delivery is currently available in Accra &amp; Tema only.</div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div ui-view=""></div>
+          </div>
+        </div>
       </div>
-
-      <div ui-view=""></div>
-
     </div>
   </div>
 </section>
