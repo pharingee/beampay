@@ -11,12 +11,11 @@
       <a class="navbar-brand" ui-sref="app" ng-if="loggedin"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
       <a class="navbar-brand" ui-sref="landing" ng-if="!loggedin"><img id="logo" src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent"></a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
 
-        <li class="dropdown visible-xs" ng-if="loggedin && !logoutInProgress">
+       <!--  <li class="dropdown visible-xs" ng-if="loggedin && !logoutInProgress">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span ng-if="currentUser.firstName || currentUser.lastName">BeamPay <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -29,13 +28,12 @@
              <!-- <li class="sidebar-list">
               <a href="#/"><span class="sidebar-icon fa fa-table"></span>Address Book </a>
             </li> -->
-             <li class="sidebar-list">
+            <!-- <li class="sidebar-list">
               <a ui-sref="app.transaction"><span class="sidebar-icon lnr lnr-layers"></span>Transactions </a>
             </li>
           </ul>
-        </li>
-
-
+        </li> -->
+       
         <li class="dropdown" ng-if="loggedin && !logoutInProgress">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span ng-if="currentUser.firstName || currentUser.lastName">{{currentUser.firstName}} {{currentUser.lastName}}</span>
@@ -47,10 +45,24 @@
             <li><a href="" ng-click="logout();">Sign out</a></li>
           </ul>
         </li>
+          <li class="ddmenu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             <h5 class="nav-link bord"> 
+               <span class="fa fa-whatsapp"></span>&nbsp; +233-245 025 019 <i class="fa fa-caret-down"></i>
+              </h5>
+            </a>
+            <ul class="dropdown-menu tel-nos"> 
+               <li><a href=""> <i class="lnr lnr-phone-handset"></i>&nbsp; +1 (415) 871 0438 </a></li>
+               <li><a href="">SMS:&nbsp; +1 (415) 881 4216</a></li>
+            </ul> 
+         </li>
         <li ng-if="!loggedin"><a href="" ng-click="signin()">Login</a></li>
         <li ng-if="!loggedin"><a href="" ng-click="signup()">Signup</a></li>
         <li ng-if="loggedin && logoutInProgress"><a>Signing out...</a></li>
-        <li><a href="tel:+14158814216"> <span class="lnr lnr-phone-handset"></span>+1 (415) 881-4216</a></li>
+        <!-- <li><a href="tel:+14158814216"> <span class="lnr lnr-phone-handset"></span>+1 (415) 881-4216</a></li> -->
+
+
+   
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
