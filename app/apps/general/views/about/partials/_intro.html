@@ -7,7 +7,7 @@
           <img src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent">
         </a>
         <ul class="nav navbar-right">
-          <li class="xs-hidden">
+          <li class="n-hidden-xs">
             <div class="submit">
               <button ng-if="!loggedin" type="submit" class="btn" ng-click="signup()">Sign up for Beam</button>
             </div>
@@ -15,7 +15,7 @@
               <button ng-if="loggedin" type="submit" class="btn" ng-click="dashboard()">Get Started Now!</button>
             </div>
           </li> 
-          <li class="nv-lk">
+          <li class="nv-lk hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <h4 class="nav-link bord"> 
                <span class="fa fa-whatsapp"></span>&nbsp; +233-245 025 019 <i class="fa fa-caret-down"></i></h4>
@@ -25,7 +25,7 @@
               <li><a href="">SMS:&nbsp; +1 (415) 881 4216</a></li>
             </ul> 
           </li> 
-          <li class="nv-lk">
+          <li class="nv-lk hidden-xs">
             <a ui-sref="app">
               <h4 class="nav-link"> 
                 <span ng-if="loggedin" class="lnr lnr-lock"> {{currentUser.firstName}} {{currentUser.lastName}}</span>
@@ -40,8 +40,8 @@
 
     <div class="row">
      <div class="col-sm-12 col-xs-12 text-center" style="padding-top:40px; padding-bottom:20px;">
-      <h1><span class="header-font">ABOUT BEAM</span><span></span></h1>
-      <p>We love Ghana and know you do, too!</p>
+      <h2><span class="header-font">ABOUT BEAM</span><span></span></h2>
+      <h4>We love Ghana and know you do, too!</h4>
     </div>
 
 
