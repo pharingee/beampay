@@ -7,7 +7,6 @@ angular
     if ($stateParams.transactionId && $stateParams.transactionType) {
       Transaction.getTransaction($stateParams.transactionId, $stateParams.transactionType).then(
         function (response) {
-          console.log(response);
           $scope.transaction = response;
           $scope.transactionType = $stateParams.transactionType;
         }, function () {});
