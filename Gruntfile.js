@@ -441,7 +441,7 @@ module.exports = function (grunt) {
         constants: {
           name: 'production',
           API_SERVER: 'https://api.beampay.co/api/v1/',
-          ROOT_URL: 'https://dev.beampay.co/',
+          ROOT_URL: 'https://www.beampay.co/',
           FACEBOOK_CLIENT_ID: 1562424617308529,
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
         }
