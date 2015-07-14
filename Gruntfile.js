@@ -443,7 +443,7 @@ module.exports = function (grunt) {
           API_SERVER: 'https://api.beampay.co/api/v1/',
           ROOT_URL: 'https://www.beampay.co/',
           FACEBOOK_CLIENT_ID: 1562424617308529,
-          STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
+          STRIPE_KEY: 'pk_live_7A6fR5AipZB3OgEuLfiivAUw'
         }
       },
 
