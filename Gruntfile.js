@@ -453,7 +453,7 @@ module.exports = function (grunt) {
           API_SERVER: 'https://api-dev.beampay.co/api/v1/',
           FACEBOOK_CLIENT_ID: 1598968723654118,
           STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI',
-          ROOT_URL: 'https://beampay.co/'
+          ROOT_URL: 'https://dev.beampay.co/'
         }
       }
     }
