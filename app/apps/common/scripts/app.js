@@ -4,6 +4,8 @@ angular
   .module('app', [
     'angulartics',
     'angulartics.google.analytics',
+    'angulartics.mixpanel',
+    'angulartics.scroll',
     'ngCookies',
     'ngResource',
     // 'ngRoute',
