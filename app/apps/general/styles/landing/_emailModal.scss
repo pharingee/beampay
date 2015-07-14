@@ -1,3 +1,24 @@
+.center{
+   margin: auto;
+    width: 60%;
+    border:1px solid #7DC242;
+    padding: 10px;
+
+    @media only screen and (max-width: $screen-xs-max) {
+      width: 100%;
+    }
+}
+
+.modal-content{
+    padding-top: 0px !important; 
+}
+
+.btn-submit-email{
+  background-color: #7DC242;
+  color: #FFF;
+  font-size: 1.1em;
+}
+
 .landing-emailModal {
   background: $white;
   color: $green;
@@ -23,7 +44,7 @@
 
   .modal-body {
     label {
-      font-size: 1.5em;
+      font-size: 1.1em;
     }
 
     .well {
