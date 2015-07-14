@@ -53,16 +53,32 @@
     <div ui-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+      (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+      r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+      }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-43061338-9');
-       ga('send', 'pageview');
-       ga('require', 'linkid', 'linkid.js');
-       ga('require', 'displayfeatures');
+      var gaProp = null;
+
+      switch (window.location.hostname) {
+        case 'www.beampay.co':
+          gaProp = 'UA-65128864-1'; // production
+          break;
+        case 'beampay.co':
+          gaProp = 'UA-65128864-1'; // production
+          break;
+        case 'dev.beampay.co':
+          gaProp = 'UA-65128864-2'; // staging
+          break;
+        default:
+          gaProp = 'UA-00000000-1'; // development
+      };
+
+      ga('create', gaProp, window.location.hostname);
+      ga('send', 'pageview');
+      ga('require', 'linkid', 'linkid.js');
+      ga('require', 'displayfeatures');
     </script>
 
     <!-- stripe -->
