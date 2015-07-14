@@ -4,7 +4,7 @@ angular
   .module('app.auth')
   .service('Error', function () {
 
-    var unknownError = 'Oops. Something went wrong! It doesn\'t appear to have affected your data, but our technical staff have been automatically notified and will be looking into this with the utmost urgency.'
+    var unknownError = 'Oops! Something seems to have gone wrong.'
 
     var signup = function (data) {
       var errors = [];
@@ -59,7 +59,7 @@ angular
 
     var signInFb = function () {
       var errors = [];
-      errors.push(unknownError);
+      errors.push('Oops! Something seems to have gone wrong with your signup. No worries, you can still signup using your Email');
       return errors;
     };
 
