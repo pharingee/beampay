@@ -443,7 +443,7 @@ module.exports = function (grunt) {
           API_SERVER: 'https://api.beampay.co/api/v1/',
           ROOT_URL: 'https://www.beampay.co/',
           FACEBOOK_CLIENT_ID: 1562424617308529,
-          STRIPE_KEY: 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI'
+          STRIPE_KEY: 'pk_live_7A6fR5AipZB3OgEuLfiivAUw'
         }
       },
 
@@ -492,6 +492,24 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'ngconstant:staging',
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+  grunt.registerTask('release', [
+    'ngconstant:production',
     'clean:dist',
     'wiredep',
     'useminPrepare',
