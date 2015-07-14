@@ -11,28 +11,28 @@
               <h4 class="nav-link hidden-sm hidden-md hidden-lg nav-abt">
                 About Us
               </h4>
-            </a>            
+            </a>
           </li>
           <li class="nv-lk hidden-xs">
             <a ui-sref="about">
               <h4 class="nav-link bord">
                 About Us
               </h4>
-            </a>            
-          </li> 
+            </a>
+          </li>
           <li class="nv-lk hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-             <h4 class="nav-link bord"> 
+             <h4 class="nav-link bord">
                <span class="fa fa-whatsapp"></span>&nbsp; +233-245 025 019 <i class="fa fa-caret-down"></i></h4>
              </a>
-             <ul class="dropdown-menu tel-nos"> 
-               <li><a href=""> <i class="lnr lnr-phone-handset"></i>&nbsp; +1 (415) 871 0438 </a></li>   
+             <ul class="dropdown-menu tel-nos">
+               <li><a href=""> <i class="lnr lnr-phone-handset"></i>&nbsp; +1 (415) 871 0438 </a></li>
                <li><a href="">SMS:&nbsp; +1 (415) 881 4216</a></li>
-             </ul> 
+             </ul>
            </li>
            <li class="nv-lk hidden-xs">
             <a ui-sref="app">
-              <h4 class="nav-link"> 
+              <h4 class="nav-link">
                 <span ng-if="loggedin" class="lnr lnr-lock"> {{currentUser.firstName}} {{currentUser.lastName}}</span>
                 <span ng-if="!loggedin" class="lnr lnr-lock"> Login</span>
               </h4>
@@ -48,18 +48,18 @@
                 <li>
                   <a ui-sref="about">
                     <h4>About Us</h4>
-                  </a> 
+                  </a>
                 </li>
                 <li>
-                  <h4> 
+                  <h4>
                     <span ng-if="loggedin"> {{currentUser.firstName}} {{currentUser.lastName}}</span>
                     <span ng-if="!loggedin"> Login</span>
                   </h4>
                 </li>
                 <li>
-                  <h4> 
+                  <h4>
                   +233-245 025 019</h4>
-                 </li> 
+                 </li>
                </ul>
              </li>
            </ul>
@@ -68,11 +68,11 @@
      </div> <!-- .row -->
 
      <div class="row">
-       <div class="col-sm-6 col-xs-12 call-to-action"> 
+       <div class="col-sm-6 col-xs-12 call-to-action">
          <h1><span class="header-font">To Ghana, with love!</span><span></span></h1>
          <h3>Send airtime, gifts & so much more for <br> family and friends back home - because you care</h3>
          <div class="submit">
-          <button ng-if="!loggedin" type="submit" class="btn btn-lg" ng-click="signup()">SIGN UP FOR BEAM</button>
+          <button ng-if="!loggedin" type="submit" class="btn btn-lg" analytics-on="click" analytics-event="Landing SignUp" ng-click="signup()">SIGN UP FOR BEAM</button>
         </div>
         <div class="submit">
           <button ng-if="loggedin" type="submit" class="btn btn-lg" ng-click="dashboard()">GET STARTED NOW!</button>
