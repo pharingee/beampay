@@ -2,6 +2,8 @@
 
 angular
   .module('app', [
+    'angulartics',
+    'angulartics.google.analytics',
     'ngCookies',
     'ngResource',
     // 'ngRoute',
