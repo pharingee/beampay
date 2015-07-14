@@ -508,6 +508,24 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+  grunt.registerTask('release', [
+    'ngconstant:production',
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
   grunt.registerTask('default', [
     'newer:jshint',
     'build'
