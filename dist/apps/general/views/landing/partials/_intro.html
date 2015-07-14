@@ -8,19 +8,19 @@
                 <li>
                   <a ui-sref="about">
                     <h4>About Us</h4>
-                  </a> 
+                  </a>
                 </li>
                 <li>
-                  <h4> 
+                  <h4>
                     <span ng-if="loggedin"> {{currentUser.firstName}} {{currentUser.lastName}}</span>
                     <span ng-if="!loggedin"> Login</span>
                   </h4>
                 </li>
                 <li>
-                  <h4> 
+                  <h4>
                   +233-245 025 019</h4>
-                 </li> 
+                 </li>
                </ul>
              </li>
            </ul>
-         </ul> --> </ul></div> <!-- .navbar --> </div> <!-- .row --> <div class="row"> <div class="col-sm-6 col-xs-12 call-to-action"> <h1><span class="header-font">To Ghana, with love!</span><span></span></h1> <h3>Send airtime, gifts & so much more for <br> family and friends back home - because you care</h3> <div class="submit"> <button ng-if="!loggedin" type="submit" class="btn btn-lg" ng-click="signup()">SIGN UP FOR BEAM</button> </div> <div class="submit"> <button ng-if="loggedin" type="submit" class="btn btn-lg" ng-click="dashboard()">GET STARTED NOW!</button> </div> </div> <div class="col-sm-6 hidden-xs"> <img id="hero" class="img img-responsive" src="apps/general/images/hero.43901b66.png" alt="Hero Family Image"> </div> </div><!-- top-fold row --> </div> </div>
+         </ul> --> </ul></div> <!-- .navbar --> </div> <!-- .row --> <div class="row"> <div class="col-sm-6 col-xs-12 call-to-action"> <h1><span class="header-font">To Ghana, with love!</span><span></span></h1> <h3>Send airtime, gifts & so much more for <br> family and friends back home - because you care</h3> <div class="submit"> <button ng-if="!loggedin" type="submit" class="btn btn-lg" analytics-on="click" analytics-event="Landing SignUp" ng-click="signup()">SIGN UP FOR BEAM</button> </div> <div class="submit"> <button ng-if="loggedin" type="submit" class="btn btn-lg" ng-click="dashboard()">GET STARTED NOW!</button> </div> </div> <div class="col-sm-6 hidden-xs"> <img id="hero" class="img img-responsive" src="apps/general/images/hero.43901b66.png" alt="Hero Family Image"> </div> </div><!-- top-fold row --> </div> </div>
