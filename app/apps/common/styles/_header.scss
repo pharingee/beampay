@@ -89,6 +89,9 @@
     margin-bottom: 0px;
   }
 }
+.navbar-nav .navbar-right > li.ddmenu.open > ul.dropdown-menu.tel-nos{
+  cursor:default;
+}
 
 .navbar-nav > .navbar-right > li.ddmenu > a {
   // padding-top: 0px;

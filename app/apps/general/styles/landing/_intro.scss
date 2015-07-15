@@ -30,6 +30,7 @@
   }
   .nv-lk a{
     color: $white;
+    cursor:default;
   }
 
   .nv-lk a:hover, .nv-lk a:focus{
@@ -52,6 +53,8 @@
 
 .tel-nos li > a:hover {
   background-color: none;
+
+
 }
 
 
