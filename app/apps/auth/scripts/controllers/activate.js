@@ -11,6 +11,7 @@ angular
           $state.transitionTo('onboard.name');
         }, function (data) {
           $scope.activate.errors = Error.activate(data);
+          $scope.activate.errorData = data;
         });
     } else {
       $state.transitionTo('landing');
