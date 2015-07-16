@@ -7,18 +7,18 @@ angular
     var tempPrefix = 'apps/auth/views/';
 
     $stateProvider
-      .state('signup', {
-        url: urlPrefix + 'signup',
-        templateUrl: tempPrefix + 'signup.html',
-        data: {
-          pageTitle: 'Signup'
-        }
-      })
       .state('signupComplete', {
         url: urlPrefix + 'signup/complete',
         templateUrl: tempPrefix + 'signupComplete.html',
         data: {
           pageTitle: 'Signup Complete'
+        }
+      })
+      .state('signup', {
+        url: urlPrefix + 'signup/?next',
+        templateUrl: tempPrefix + 'signup.html',
+        data: {
+          pageTitle: 'Signup'
         }
       })
       .state('signin', {

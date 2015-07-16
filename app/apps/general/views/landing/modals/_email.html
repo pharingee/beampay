@@ -4,7 +4,7 @@
     <button type="button" class="close hidden-xs" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
   </div>
   <div class="modal-body">
-    <form>
+    <form class="form">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
@@ -48,13 +48,12 @@
     </div>
   </div>
 </div>
-
-</form>
-</div>
 <div class="modal-footer">
   <p class="err" ng-show="err">Unknown Error: {{err}}</p>
   <button class="btn" id="cancel" ng-click="cancel()">Cancel</button>
   <button class="btn btn-success btn-submit-email" ng-show="!loading" ng-click="ok()">Send Email</button>
   <button class="btn btn-success" ng-show="loading" disabled>Sending...</button>
 </div>
+</form>
+</div> 
 </div>

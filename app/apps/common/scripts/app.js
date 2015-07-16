@@ -72,7 +72,7 @@ angular
       }
 
       if (isProtectedState && !Auth.isLoggedIn()) {
-        $state.transitionTo('signin', {next: $state.current.name});
+        $state.transitionTo('signup', {next: $state.current.name});
       }
 
       // Scroll to top on all new pages

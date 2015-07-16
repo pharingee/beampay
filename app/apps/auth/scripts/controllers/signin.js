@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('SignInCtrl', function ($scope, $state, $stateParams, $window, $auth, Auth, Error) {
+  .controller('SignInCtrl', function ($scope, $state, $stateParams, $window, $auth, $location, Auth, Error) {
 
     $scope.signIn = {};
     $scope.signIn.submit = function () {
@@ -43,6 +43,11 @@ angular
       }).then(function (req) {
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
+        if ($stateParams.next) {
+          $location.path($state.href($stateParams.next).slice(2));
+        } else {
+          $location.path($state.href('app').slice(2));
+        }
       }, function (req) {
         $scope.signIn.errors = Error.signInFb(req.data);
       });

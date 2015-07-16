@@ -31,7 +31,7 @@
 
   <div class="form-group">
     <label for="amount">How much airtime in GHS would you like to buy?</label>
-    <input type="number" class="form-control" placeholder="Eg. 350 GHS" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="5" max="1000">
+    <input type="number" class="form-control" placeholder="Eg. 350" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="5" max="1000">
   </div>
 
   <div class="row text-center" ng-show="details.amountGhs > 0">
