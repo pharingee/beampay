@@ -89,8 +89,9 @@
     margin-bottom: 0px;
   }
 }
-.navbar-nav .navbar-right > li.ddmenu.open > ul.dropdown-menu.tel-nos{
-  cursor:default;
+.dropdown-menu > li > a:hover{
+    cursor:default;
+    background-color: #fff;
 }
 
 .navbar-nav > .navbar-right > li.ddmenu > a {
