@@ -43,8 +43,8 @@ angular
       Auth.signup(email, pass1, pass2, privacy)
         .then(function () {
           $state.transitionTo('signupComplete');
-        }, function (data) {
-          $scope.signup.errors = Error.signup(data);
+        }, function (response) {
+          $scope.signup.errors = Error.signup(response.data);
         });
     };
 

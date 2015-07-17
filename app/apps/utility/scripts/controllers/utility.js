@@ -141,7 +141,7 @@ angular
           $scope.details.referenceNumber = response.referenceNumber;
           $state.transitionTo('app.utility.payment');
         }, function (error) {
-          if (error.detail && error.detail === '2') {
+          if (error.data.detail && error.data.detail === '2') {
             console.log(error);
             $modal.open({
               templateUrl: 'apps/transaction/views/incompleteProfileModal.html',

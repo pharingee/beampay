@@ -31,8 +31,8 @@ angular
           } else {
             $state.transitionTo('onboard.name');
           }
-        }, function (data) {
-          $scope.signIn.errors = Error.signIn(data);
+        }, function (response) {
+          $scope.signIn.errors = Error.signIn(response.data);
         });
     };
 

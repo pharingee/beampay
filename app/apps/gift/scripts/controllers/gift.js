@@ -132,7 +132,7 @@ angular
             }
           });
         }, function (error) {
-          if (error.detail && error.detail === '2') {
+          if (error.data.detail && error.data.detail === '2') {
             $modal.open({
               templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
               controller: 'IncompleteModalCtrl'

@@ -21,6 +21,7 @@
     "angular": false,
     "WOW": false,
     "StripeCheckout": false,
-    "$": false
+    "$": false,
+    "Raven": false
   }
 }

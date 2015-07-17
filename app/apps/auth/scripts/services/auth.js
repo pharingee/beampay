@@ -26,8 +26,8 @@ angular
       }).success(function () {
         Persist.saveEmail(email);
         deferred.resolve();
-      }).error(function (data) {
-        deferred.reject(data);
+      }).error(function (data, status) {
+        deferred.reject({data: data, status: status});
       });
 
       return deferred.promise;
@@ -47,8 +47,8 @@ angular
           saveName(data.firstName, data.lastName);
         }
         deferred.resolve(data.complete);
-      }).error(function (data) {
-        deferred.reject(data);
+      }).error(function (data, status) {
+        deferred.reject({data: data, status: status});
       });
 
       return deferred.promise;

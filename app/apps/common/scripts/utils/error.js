@@ -4,7 +4,7 @@ angular
   .module('app.utils')
   .service('Error', function () {
 
-    var unknownError = 'Oops! Something seems to have gone wrong.'
+    var unknownError = 'Oops! Something seems to have gone wrong.';
 
     var signup = function (data) {
       var errors = [];
@@ -202,7 +202,7 @@ angular
     var transaction = function (data, status) {
       var errors = [];
 
-      if (status == 451) {
+      if (status === 451) {
         errors.push('Your country is not supported. We\'ll let you know when we support it');
       } else if (data.detail === '0') {
         errors.push('Some of the information you provided is incorrect. Please check and try again.');
@@ -264,7 +264,7 @@ angular
         return forgot(data);
       },
       transaction: function (data, status) {
-        return transaction(data);
+        return transaction(data, status);
       },
       setReferral: function (data) {
         return setReferral(data);
