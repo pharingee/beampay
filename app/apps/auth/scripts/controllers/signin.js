@@ -31,8 +31,8 @@ angular
           } else {
             $state.transitionTo('onboard.name');
           }
-        }, function (data) {
-          $scope.signIn.errors = Error.signIn(data);
+        }, function (response) {
+          $scope.signIn.errors = Error.signIn(response.data);
         });
     };
 
@@ -43,11 +43,17 @@ angular
       }).then(function (req) {
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
-        if ($stateParams.next) {
-          $location.path($state.href($stateParams.next).slice(2));
+
+        if (!req.data.complete) {
+          $location.path($state.href('onboard.name').slice(2));
         } else {
-          $location.path($state.href('app').slice(2));
+          if ($stateParams.next) {
+            $location.path($state.href($stateParams.next).slice(2));
+          } else {
+            $location.path($state.href('app').slice(2));
+          }
         }
+
       }, function (req) {
         $scope.signIn.errors = Error.signInFb(req.data);
       });

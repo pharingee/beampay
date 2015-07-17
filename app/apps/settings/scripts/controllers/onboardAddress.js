@@ -5,7 +5,9 @@ angular
   .controller('OnboardAddressCtrl', function ($scope, $state, Onboard, Persist) {
 
     $scope.settings = {
-      date: {}
+      date: {},
+      preferredContactMethod: 'WAP',
+      preferredContactDetails: ''
     };
     $scope.settings.country = 'US';
     $scope.settings.firstName = Persist.getUser().firstName;
@@ -17,6 +19,7 @@ angular
         $scope.settings.firstName = response.firstName;
         $scope.settings.lastName = response.lastName;
         $scope.settings.country = 'US';
+        console.log(response.profile);
 
         var date = new Date($scope.settings.dateOfBirth);
         $scope.settings.date = {
@@ -95,22 +98,22 @@ angular
         $scope.settings.errors.push('This page has errors');
       });
 
-      $scope.$watch('settings.preferredContactMethod', function (newValue) {
+    };
+
+    $scope.$watch('settings.preferredContactMethod', function (newValue) {
       if (newValue === 'SMS') {
-        $('#contact').attr('placeholder', 'Please enter your SMS no. Eg: +233265086508');
-        $('#contact').attr('type', 'text');
+        $('#contactDetails').attr('placeholder', 'Please enter your SMS no. e.g.: +233265086508');
+        $('#contactDetails').attr('type', 'text');
       } else if (newValue === 'WAP') {
-        $('#contact').attr('placeholder', 'Please enter your WhatsApp no. Eg: +233265086508');
-        $('#contact').attr('type', 'text');
+        $('#contactDetails').attr('placeholder', 'Please enter your WhatsApp no. e.g.: +233265086508');
+        $('#contactDetails').attr('type', 'text');
       } else if (newValue === 'PHON') {
-        $('#contact').attr('placeholder', 'Please enter your phone no. Eg: +233265086508');
-        $('#contact').attr('type', 'text');
+        $('#contactDetails').attr('placeholder', 'Please enter your phone no. e.g.: +233265086508');
+        $('#contactDetails').attr('type', 'text');
       } if (newValue === 'MAIL') {
-        $('#contact').attr('placeholder', 'Please enter your email Eg: email@domain.com');
-        $('#contact').attr('type', 'email');
+        $('#contactDetails').attr('placeholder', 'Please enter your email e.g.: email@domain.com');
+        $('#contactDetails').attr('type', 'email');
       }
     });
-
-    };
 
   });

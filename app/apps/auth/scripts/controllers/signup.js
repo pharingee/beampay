@@ -43,8 +43,8 @@ angular
       Auth.signup(email, pass1, pass2, privacy)
         .then(function () {
           $state.transitionTo('signupComplete');
-        }, function (data) {
-          $scope.signup.errors = Error.signup(data);
+        }, function (response) {
+          $scope.signup.errors = Error.signup(response.data);
         });
     };
 
@@ -55,11 +55,17 @@ angular
       }).then(function (req) {
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
-        if ($stateParams.next) {
-          $location.path($state.href($stateParams.next).slice(2));
+
+        if (!req.data.complete) {
+          $location.path($state.href('onboard.name').slice(2));
         } else {
-          $location.path($state.href('app').slice(2));
+          if ($stateParams.next) {
+            $location.path($state.href($stateParams.next).slice(2));
+          } else {
+            $location.path($state.href('app').slice(2));
+          }
         }
+
       }, function (req) {
         $scope.signup.errors = Error.signInFb(req.data);
       });
