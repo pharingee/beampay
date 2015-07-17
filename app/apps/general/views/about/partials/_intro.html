@@ -28,8 +28,11 @@
           <li class="nv-lk hidden-xs">
             <a ui-sref="app">
               <h4 class="nav-link"> 
-                <span ng-if="loggedin" class="lnr lnr-lock"> {{currentUser.firstName}} {{currentUser.lastName}}</span>
-                <span ng-if="!loggedin" class="lnr lnr-lock"> Login</span>
+                <span ng-if="loggedin"><i class="lnr lnr-lock"></i> {{currentUser.firstName}} {{currentUser.lastName}}</span>
+
+                <span ng-if="!loggedin"><i class="lnr lnr-lock"></i> Login</span> 
+
+                <!-- <span ng-if="!loggedin" class="lnr lnr-lock"> Login</span> -->
               </h4>
             </a>
           </li>
