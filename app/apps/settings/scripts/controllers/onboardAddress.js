@@ -2,11 +2,16 @@
 
 angular
   .module('app.settings')
-  .controller('OnboardAddressCtrl', function ($scope, $state, Onboard, Persist) {
+  .controller('OnboardAddressCtrl', function ($scope, $state, Onboard, Persist, SettingsUtil) {
+
+    $scope.whatsAppMethod = 'WAP';
+    $scope.smsMethod = 'SMS';
+    $scope.phoneMethod = 'PHON';
+    $scope.emailMethod = 'MAIL';
 
     $scope.settings = {
       date: {},
-      preferredContactMethod: 'WAP',
+      preferredContactMethod: $scope.whatsAppMethod,
       preferredContactDetails: ''
     };
     $scope.settings.country = 'US';
@@ -101,19 +106,7 @@ angular
     };
 
     $scope.$watch('settings.preferredContactMethod', function (newValue) {
-      if (newValue === 'SMS') {
-        $('#contactDetails').attr('placeholder', 'Please enter your SMS no. e.g.: +233265086508');
-        $('#contactDetails').attr('type', 'text');
-      } else if (newValue === 'WAP') {
-        $('#contactDetails').attr('placeholder', 'Please enter your WhatsApp no. e.g.: +233265086508');
-        $('#contactDetails').attr('type', 'text');
-      } else if (newValue === 'PHON') {
-        $('#contactDetails').attr('placeholder', 'Please enter your phone no. e.g.: +233265086508');
-        $('#contactDetails').attr('type', 'text');
-      } if (newValue === 'MAIL') {
-        $('#contactDetails').attr('placeholder', 'Please enter your email e.g.: email@domain.com');
-        $('#contactDetails').attr('type', 'email');
-      }
+      SettingsUtil.changePrefContactDetails(newValue);
     });
 
   });

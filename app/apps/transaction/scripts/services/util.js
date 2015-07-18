@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.transaction')
-  .service('TransactionUtil', function (){
+  .service('TransactionUtil', function ($q, STRIPE_KEY, $modal){
     var getFullName = function (shortName) {
       var fullName = '';
       switch (shortName) {
@@ -64,6 +64,18 @@ angular.module('app.transaction')
       }
     };
 
+    var validateRecipient = function (details) {
+      if (!details.recipient.firstName || !details.recipient.lastName) {
+        return 'Please enter first and last name of the recipient';
+      }
+
+      if (!details.recipient.phoneNumber || details.recipient.phoneNumber.length < 10) {
+        return 'Please enter a valid phone number';
+      }
+
+      return false;
+    };
+
     var getType = function (transaction) {
       if (transaction.transactionType === 'billpayment') {
         return 'BILL';
@@ -78,6 +90,63 @@ angular.module('app.transaction')
       }
     };
 
+    var makePayment = function (description, amount) {
+      var deferred = $q.defer();
+
+      var handler = StripeCheckout.configure({
+        key: STRIPE_KEY,
+        image: '/icon-128.png',
+        token: function(token) {
+          deferred.resolve(token);
+        }
+      });
+
+      handler.open({
+        name: 'BeamPay',
+        description: description,
+        amount: amount,
+        closed: function () {
+          deferred.reject();
+        }
+      });
+
+      return deferred.promise;
+    };
+
+    var successModal = function (referenceNumber, transactionId, transactionType) {
+      $modal.open({
+        templateUrl: 'apps/transaction/views/successModal.html',
+        controller: 'SuccessModalCtrl',
+        resolve: {
+          referenceNumber: function () {
+            return referenceNumber;
+          },
+          stateParams: function () {
+            return {
+              transactionId: transactionId,
+              transactionType: transactionType
+            };
+          }
+        }
+      });
+    };
+
+    var toCurr = function (amount) {
+      return Math.ceil(amount * 100) / 100;
+    };
+
+    var calculatePricing = function (amountGhs, pricing) {
+      var amountUsd = toCurr(amountGhs / pricing.usdGhs);
+      var serviceFee = toCurr((pricing.percentualFee * amountUsd) + pricing.fixedFee);
+      var chargeUsd = toCurr(amountUsd + serviceFee);
+
+      return {
+        amountUsd: amountUsd,
+        serviceFee: serviceFee,
+        chargeUsd: chargeUsd
+      };
+    };
+
     return {
       getDescription: function (transaction) {
         return getDescription(transaction);
@@ -87,6 +156,21 @@ angular.module('app.transaction')
       },
       getType: function (transaction) {
         return getType(transaction);
+      },
+
+      validateRecipient: function (errors) {
+        return validateRecipient(errors);
+      },
+
+      makePayment: function () {
+        return makePayment();
+      },
+      successModal: function (referenceNumber, transactionId, transactionType) {
+        return successModal(referenceNumber, transactionId, transactionType);
+      },
+
+      calculatePricing: function (amountGhs, pricing) {
+        return calculatePricing(amountGhs, pricing);
       }
     };
   });

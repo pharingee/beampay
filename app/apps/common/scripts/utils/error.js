@@ -2,9 +2,41 @@
 
 angular
   .module('app.utils')
-  .service('Error', function () {
+  .service('Error', function ($modal) {
 
     var unknownError = 'Oops! Something seems to have gone wrong.';
+    var unsupportedCountry = 'Your country is not supported. We\'ll let you know when we support it';
+
+    var appRedirectModal = function (message) {
+      $modal.open({
+        templateUrl: 'apps/common/views/modals/appRedirectModal.html',
+        controller: 'AppRedirectModalCtrl',
+        resolve: {
+          message: function () {
+            return message;
+          }
+        }
+      });
+    };
+
+    var dismissModal = function (message) {
+      $modal.open({
+        templateUrl: 'apps/common/views/modals/appRedirectModal.html',
+        controller: 'DismissModalCtrl',
+        resolve: {
+          message: function () {
+            return message;
+          }
+        }
+      });
+    };
+
+    var incompleteModal = function () {
+      $modal.open({
+        templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
+        controller: 'IncompleteModalCtrl'
+      });
+    };
 
     var signup = function (data) {
       var errors = [];
@@ -152,7 +184,7 @@ angular
       } else if (data.nonFieldErrors && data.nonFieldErrors[0] === '2') {
         // Passwords don't match
         errors.push('Passwords don\'t match');
-      } else if (data.detail === '20') {
+      } else if (data.detail && data.detail === '20') {
         // Passwords don't match
         errors.push('Passwords not set');
       }
@@ -163,7 +195,7 @@ angular
     var setPassword = function (data) {
       var errors = [];
 
-      if (data.detail === '0') {
+      if (data.detail && data.detail === '0') {
         // Invalid Parameters
         errors.push('Invalid Parameters');
       } else if (data.password1 && data.password1[0] === '1') {
@@ -172,7 +204,7 @@ angular
       } else if (data.nonFieldErrors && data.nonFieldErrors[0] === '2') {
         // Passwords don't match
         errors.push('The two passwords do not match');
-      } else if (data.detail === '21') {
+      } else if (data.detail && data.detail === '21') {
         // Passwords don't match
         errors.push('A password has already been set. If you cannot remember please logout and send a reset password to your email.');
       }
@@ -185,13 +217,13 @@ angular
 
       if (!data) {
         errors.push(unknownError);
-      } else if (data.detail === '9') {
+      } else if (data.detail && data.detail === '9') {
         // Email unknown
         errors.push('Sorry, this email is not recognized. Are you trying to signup? Please click on the signup link on the header.');
-      } else if (data.detail === '11') {
+      } else if (data.detail && data.detail === '11') {
         // User Account disabled
         errors.push('Sorry your account is disabled');
-      } else if (data.detail === '12') {
+      } else if (data.detail && data.detail === '12') {
         // User Account not activated yet
         errors.push('An activation link has been sent to your email. Please check and activate your account');
       }
@@ -203,18 +235,49 @@ angular
       var errors = [];
 
       if (status === 451) {
-        errors.push('Your country is not supported. We\'ll let you know when we support it');
-      } else if (data.detail === '0') {
+        appRedirectModal(unsupportedCountry);
+        errors.push(unsupportedCountry);
+      } else if (data.detail && data.detail === '0') {
         errors.push('Some of the information you provided is incorrect. Please check and try again.');
-      } else if (data.detail === '1') {
+      } else if (data.detail && data.detail === '1') {
+        appRedirectModal('The international exchange rate has changed. Please choose your service again.');
         errors.push('The international exchange rate has changed. Please choose your service again.');
-      } else if (data.detail === '2') {
+      } else if (data.detail && data.detail === '2') {
+        incompleteModal();
         errors.push('Your profile is incomplete please update your details in your settings');
       } else {
+        appRedirectModal(unknownError);
         errors.push(unknownError);
       }
 
       return errors;
+    };
+
+    var pricing = function (data, status) {
+      var errors = [];
+
+      if (status === 404) {
+        appRedirectModal('Oops, something went wrong. While we work on it, please check your internet connection to make sure you\'re connected. Thank you');
+        errors.push('Oops, something went wrong. While we work on it, please check your internet connection to make sure you\'re connected. Thank you');
+      } else {
+        appRedirectModal(unknownError);
+        errors.push(unknownError);
+      }
+    };
+
+    var payment = function (data, status) {
+      var errors = [];
+
+      if (!data && status > 299) {
+        appRedirectModal(unknownError);
+        errors.push(unknownError);
+      } else if (data.detail === '0') {
+        appRedirectModal(unknownError);
+        errors.push(unknownError);
+      } else if (data.detail === '2') {
+        dismissModal(data.message);
+        errors.push(data.message);
+      }
     };
 
     var setReferral = function (data) {
@@ -266,8 +329,17 @@ angular
       transaction: function (data, status) {
         return transaction(data, status);
       },
+      payment: function (data, status) {
+        return payment(data, status);
+      },
+      pricing: function (data, status) {
+        return pricing(data, status);
+      },
       setReferral: function (data) {
         return setReferral(data);
+      },
+      incompleteModal: function () {
+        return incompleteModal();
       }
     };
   });

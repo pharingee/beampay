@@ -27,8 +27,8 @@ angular.module('app.transaction')
           Persist.savePricing(response);
           deferred.resolve(response);
         }).
-        error(function (data){
-          deferred.reject(data);
+        error(function (data, status){
+          deferred.reject({data: data, status: status});
         });
 
       return deferred.promise;

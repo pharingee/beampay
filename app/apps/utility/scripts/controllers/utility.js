@@ -2,36 +2,15 @@
 
 angular
   .module('app.utility')
-  .controller('UtilityCtrl', function ($scope, $state, Transaction, $modal, STRIPE_KEY) {
+  .controller('UtilityCtrl', function ($scope, $state, Transaction, TransactionUtil, Error) {
     if ($state.current.name !== 'app.utility.choose') {
       $state.transitionTo('app.utility.choose');
     }
 
-    $scope.details = {
-      recipient: {}
-    };
-    $scope.details.serviceFee = 0;
-    $scope.chooseState = true;
-    $scope.errors = [];
-    $scope.paymentSaveSuccess = true;
-
-    Transaction.getProfile().then(function (response) {
-      if (!response.profile.informationComplete) {
-        $modal.open({
-          templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-          controller: 'IncompleteModalCtrl'
-        });
-      }
-    }, function () {});
-
-    var toCurr = function (amount) {
-      return Math.ceil(amount * 100) / 100;
-    };
-
     var validateDetails = function () {
       $scope.errors = [];
 
-      if ($scope.details.billType !== 'ECG' && $scope.details.billType !== 'GWC') {
+      if ($scope.details.billType !== $scope.electricityProvider && $scope.details.billType !== $scope.waterProvider) {
         $scope.errors.push('Please select a Utility service provider');
         return false;
       }
@@ -54,67 +33,59 @@ angular
       return true;
     };
 
-    var validateRecipient = function () {
-      $scope.errors = [];
-
-      if (!$scope.details.recipient.firstName || !$scope.details.recipient.lastName) {
-        $scope.errors.push('Please enter first and last name of the recipient');
-        return false;
-      }
-
-      if (!$scope.details.recipient.phoneNumber || $scope.details.recipient.phoneNumber.length < 10) {
-        $scope.errors.push('Please enter a valid phone number');
-        return false;
-      }
-
-      return true;
+    $scope.details = {
+      recipient: {}
     };
+    $scope.details.serviceFee = 0;
+    $scope.chooseState = true;
+    $scope.errors = [];
+    $scope.paymentSaveSuccess = true;
+    $scope.transactionType = 'BILL';
 
-    $scope.reSavePayment = function () {
-      if (!$scope.paymentSaveSuccess) {
-        var payment = {
-          stripeToken: $scope.stripeToken.id,
-          transactionId: $scope.details.transactionId,
-          type: 'BILL'
-        };
-        Transaction.savePayment(payment).then(
-          function() {
-            $scope.paymentSaveSuccess = true;
-            $modal.open({
-              templateUrl: 'apps/transaction/views/successModal.html',
-              controller: 'SuccessModalCtrl',
-              resolve: {
-                referenceNumber: function () {
-                  return $scope.details.referenceNumber;
-                },
-                stateParams: function () {
-                  return {
-                    transactionId: $scope.details.transactionId,
-                    transactionType: 'BILL'
-                  };
-                }
-              }
-            });
-          }, function () {
-            $scope.paymentSaveSuccess = false;
-          });
+    $scope.electricityProvider = 'ECG';
+    $scope.waterProvider = 'GCW';
+
+    Transaction.getProfile().then(function (response) {
+      if (!response.profile.informationComplete) {
+        Error.incompleteModal();
+      } else {
+        $scope.email = response.email;
       }
-    };
+    }, function () {});
 
     Transaction.getPricing().then(function (response){
       $scope.pricing = response;
-    }, function(){
-
+    }, function(error){
+      $scope.errors = Error.pricing(error.data, error.status);
     });
 
     Transaction.getReferral().then(function (response){
       $scope.referral = response;
     }, function(){});
 
+    $scope.reSavePayment = function () {
+      if (!$scope.paymentSaveSuccess) {
+        var payment = {
+          stripeToken: $scope.paymentToken.id,
+          transactionId: $scope.details.transactionId,
+          type: $scope.transactionType
+        };
+        Transaction.savePayment(payment).then(
+          function() {
+            $scope.paymentSaveSuccess = true;
+            TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
+          }, function (error) {
+            $scope.paymentSaveSuccess = false;
+            $scope.errors = Error.payment(error.data, error.status);
+          });
+      }
+    };
+
     $scope.calculatePricing = function () {
-      $scope.details.amountUsd = toCurr($scope.details.amountGhs / $scope.pricing.usdGhs);
-      $scope.details.serviceFee = toCurr(($scope.pricing.percentualFee * $scope.details.amountUsd) + $scope.pricing.fixedFee);
-      $scope.details.chargeUsd = toCurr($scope.details.amountUsd + $scope.details.serviceFee);
+      var results = TransactionUtil.calculatePricing($scope.details.amountGhs, $scope.pricing);
+      $scope.details.amountUsd = results.amountUsd;
+      $scope.details.serviceFee = results.serviceFee;
+      $scope.details.chargeUsd = results.chargeUsd;
     };
 
     $scope.setDetails = function () {
@@ -125,8 +96,9 @@ angular
     };
 
     $scope.addRecipient = function () {
-      if (validateRecipient()){
-
+      $scope.errors = [];
+      var error = TransactionUtil.validateRecipient($scope.details);
+      if (!error){
         $scope.paymentState = true;
         if (!$scope.details.accountNumber) {
           delete $scope.details.accountNumber;
@@ -141,19 +113,15 @@ angular
           $scope.details.referenceNumber = response.referenceNumber;
           $state.transitionTo('app.utility.payment');
         }, function (error) {
-          if (error.data.detail && error.data.detail === '2') {
-            console.log(error);
-            $modal.open({
-              templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-              controller: 'IncompleteModalCtrl'
-            });
-          }
+          $scope.errors = Error.transaction(error.data, error.status);
         });
+      } else {
+        $scope.errors.push(error);
       }
     };
 
     $scope.getProvider = function () {
-      if ($scope.details.billType === 'ECG') {
+      if ($scope.details.billType === $scope.electricityProvider) {
         return 'Electricity';
       }
       return 'Water';
@@ -161,48 +129,30 @@ angular
 
     $scope.confirm = function () {
       if ($scope.pricing) {
-        var handler = StripeCheckout.configure({
-          key: STRIPE_KEY,
-          image: '/icon-128.png',
-          token: function(token) {
-            $scope.stripeToken = token;
+        var description = 'GHS ' + $scope.details.amountGhs + ' on ' + $scope.getProvider();
+        var amount = $scope.details.chargeUsd * 100;
+        TransactionUtil.makePayment(description, amount).then(
+          function (token){
             var payment = {
               stripeToken: token.id,
               transactionId: $scope.details.transactionId,
-              type: 'BILL'
+              type: $scope.transactionType
             };
+
+            $scope.paymentToken = token;
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
-                $modal.open({
-                  templateUrl: 'apps/transaction/views/successModal.html',
-                  controller: 'SuccessModalCtrl',
-                  resolve: {
-                    referenceNumber: function () {
-                      return $scope.details.referenceNumber;
-                    },
-                    stateParams: function () {
-                      return {
-                        transactionId: $scope.details.transactionId,
-                        transactionType: 'BILL'
-                      };
-                    }
-                  }
-                });
-              }, function () {
+                TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
+              }, function (error) {
                 $scope.paymentSaveSuccess = false;
+                $scope.errors = Error.payment(error.data, error.status);
               });
-          }
-        });
-
-        handler.open({
-          name: 'BeamPay',
-          description: 'GHS ' + $scope.details.amountGhs + ' on ' + $scope.getProvider(),
-          amount: $scope.details.chargeUsd * 100
-        });
+          },
+          function () {
+            console.log('Error');
+          });
       }
-
-      return false;
     };
 
   });
