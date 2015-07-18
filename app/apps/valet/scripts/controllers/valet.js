@@ -2,33 +2,10 @@
 
 angular
   .module('app.valet')
-  .controller('ValetCtrl', function ($scope, $state, $modal, Transaction) {
+  .controller('ValetCtrl', function ($scope, $state, Transaction, TransactionUtil, Error, SettingsUtil) {
     if ($state.current.name !== 'app.valet.details') {
       $state.transitionTo('app.valet.details');
     }
-
-    Transaction.getProfile().then(function (response) {
-      $scope.details.preferredContactMethod = response.profile.preferredContactMethod;
-      $scope.details.preferredContactDetails = response.profile.preferredContactDetails;
-
-      if (!response.profile.informationComplete) {
-        $modal.open({
-          templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-          controller: 'IncompleteModalCtrl'
-        });
-      }
-    }, function () {});
-
-    $scope.details = {
-      recipient: {},
-      preferredContactMethod: 'WAP',
-      preferredContactDetails: ''
-    };
-
-    $scope.details.serviceFee = 0;
-    $scope.detailsState = true;
-    $scope.errors = [];
-    $scope.paymentSaveSuccess = true;
 
     var validateDetails = function () {
       $scope.errors = [];
@@ -40,16 +17,16 @@ angular
 
       if (!$scope.details.preferredContactDetails) {
         switch ($scope.details.preferredContactMethod) {
-          case 'WAP':
+          case $scope.whatsAppMethod:
             $scope.errors.push('Please enter your WhatsApp number in the contact details field.');
             break;
-          case 'PHON':
+          case $scope.phoneMethod:
             $scope.errors.push('Please enter your phone number in the contact details field.');
             break;
-          case 'SMS':
+          case $scope.smsMethod:
             $scope.errors.push('Please enter your SMS number in the contact details field.');
             break;
-          case 'MAIL':
+          case $scope.emailMethod:
             $scope.errors.push('Please enter your email in the contact details field.');
             break;
         }
@@ -59,21 +36,31 @@ angular
       return true;
     };
 
-    var validateRecipient = function () {
-      $scope.errors = [];
+    $scope.whatsAppMethod = 'WAP';
+    $scope.smsMethod = 'SMS';
+    $scope.phoneMethod = 'PHON';
+    $scope.emailMethod = 'MAIL';
 
-      if (!$scope.details.recipient.firstName || !$scope.details.recipient.lastName) {
-        $scope.errors.push('Please enter first and last name of the recipient');
-        return false;
-      }
-
-      if (!$scope.details.recipient.phoneNumber || $scope.details.recipient.phoneNumber.length < 10) {
-        $scope.errors.push('Please enter a valid phone number');
-        return false;
-      }
-
-      return true;
+    $scope.details = {
+      recipient: {},
+      preferredContactMethod: $scope.whatsAppMethod,
+      preferredContactDetails: ''
     };
+
+    $scope.details.serviceFee = 0;
+    $scope.detailsState = true;
+    $scope.errors = [];
+    $scope.paymentSaveSuccess = true;
+    $scope.transactionType = 'VALET';
+
+    Transaction.getProfile().then(function (response) {
+      $scope.details.preferredContactMethod = response.profile.preferredContactMethod;
+      $scope.details.preferredContactDetails = response.profile.preferredContactDetails;
+
+      if (!response.profile.informationComplete) {
+        Error.incompleteModal();
+      }
+    }, function () {});
 
     $scope.setDetails = function () {
       if (validateDetails()) {
@@ -83,53 +70,21 @@ angular
     };
 
     $scope.makeTransaction = function () {
-      if (validateRecipient()) {
+      var error = TransactionUtil.validateRecipient($scope.details);
+      if (!error){
         Transaction.addValet($scope.details).then(function (response) {
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
-          $modal.open({
-            templateUrl: 'apps/valet/views/successModal.html',
-            controller: 'SuccessModalCtrl',
-            resolve: {
-              referenceNumber: function () {
-                return $scope.details.referenceNumber;
-              },
-              stateParams: function () {
-                return {
-                  transactionId: $scope.details.transactionId,
-                  transactionType: 'VALET'
-                };
-              }
-            }
-          });
+          TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
         }, function (error) {
-          if (error.data.detail && error.data.detail === '2') {
-            $modal.open({
-              templateUrl: 'apps/transaction/views/incompleteProfileModal.html',
-              controller: 'IncompleteModalCtrl'
-            });
-          }
+          $scope.errors = Error.transaction(error.data, error.status);
         });
+      } else {
+        $scope.errors.push(error);
       }
-    };
-
-    $scope.isPhoneContactMethod = function () {
-      return $scope.details.preferredContactMethod in ['SMS', 'WAP', 'PHON'];
     };
 
     $scope.$watch('details.preferredContactMethod', function (newValue) {
-      if (newValue === 'SMS') {
-        $('#contact').attr('placeholder', 'Please enter your SMS no. e.g.: +233265086508');
-        $('#contact').attr('type', 'text');
-      } else if (newValue === 'WAP') {
-        $('#contact').attr('placeholder', 'Please enter your WhatsApp no. e.g.: +233265086508');
-        $('#contact').attr('type', 'text');
-      } else if (newValue === 'PHON') {
-        $('#contact').attr('placeholder', 'Please enter your phone no. e.g.: +233265086508');
-        $('#contact').attr('type', 'text');
-      } if (newValue === 'MAIL') {
-        $('#contact').attr('placeholder', 'Please enter your email e.g.: email@domain.com');
-        $('#contact').attr('type', 'email');
-      }
+      SettingsUtil.changePrefContactDetails(newValue);
     });
   });
