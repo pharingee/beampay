@@ -4,6 +4,10 @@ angular
   .module('app.auth')
   .controller('SignInCtrl', function ($scope, $state, $stateParams, $window, $auth, $location, Auth, Error) {
 
+    if (Auth.isLoggedIn()) {
+      $state.transitionTo('app');
+    }
+
     $scope.signIn = {};
     $scope.signIn.submit = function () {
       // Reset

@@ -21,7 +21,7 @@ angular
 
     var dismissModal = function (message) {
       $modal.open({
-        templateUrl: 'apps/common/views/modals/appRedirectModal.html',
+        templateUrl: 'apps/common/views/modals/dismissModal.html',
         controller: 'DismissModalCtrl',
         resolve: {
           message: function () {
@@ -267,8 +267,9 @@ angular
 
     var payment = function (data, status) {
       var errors = [];
+      console.log(data, status);
 
-      if (!data && status > 299) {
+      if (!data) {
         appRedirectModal(unknownError);
         errors.push(unknownError);
       } else if (data.detail === '0') {
@@ -277,6 +278,9 @@ angular
       } else if (data.detail === '2') {
         dismissModal(data.message);
         errors.push(data.message);
+      } else if (status > 299) {
+        appRedirectModal(unknownError);
+        errors.push(unknownError);
       }
     };
 
