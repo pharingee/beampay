@@ -15,6 +15,7 @@ angular
     'ngAnimate',
     'ui.bootstrap',
     'ui.bootstrap.datetimepicker',
+    'angular-ladda',
     'angularMoment',
     'angular-loading-bar',
     'angular-intro',
@@ -33,7 +34,7 @@ angular
     'app.gift'
   ])
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, laddaProvider) {
     $locationProvider.hashPrefix('!');
 
     $stateProvider
@@ -46,6 +47,10 @@ angular
       });
 
     $urlRouterProvider.otherwise('/home');
+
+    laddaProvider.setOption({
+      style: 'zoom-out'
+    });
   })
 
   .run(function ($rootScope, $anchorScroll, Auth, $state) {

@@ -91,6 +91,7 @@ angular
       $scope.errors = [];
       var error = TransactionUtil.validateRecipient($scope.details);
       if (!error){
+        $scope.laddaAddTxn = true;
         $scope.paymentState = true;
         $scope.details.phoneNumber = $scope.details.recipient.phoneNumber;
 
@@ -99,10 +100,12 @@ angular
         }
 
         Transaction.addAirtime($scope.details).then(function (response) {
+          $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
           $state.transitionTo('app.airtime.payment');
         }, function (error) {
+          $scope.laddaAddTxn = false;
           $scope.errors = Error.transaction(error.data, error.status);
         });
       } else {
