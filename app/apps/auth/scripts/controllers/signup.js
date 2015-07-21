@@ -4,6 +4,10 @@ angular
   .module('app.auth')
   .controller('SignupCtrl', function ($scope, $state, $stateParams, $auth, $location, Auth, Error) {
 
+    if (Auth.isLoggedIn()) {
+      $state.transitionTo('app');
+    }
+
     $scope.stateParams = $stateParams;
     $scope.signup = {
       privacy: true
