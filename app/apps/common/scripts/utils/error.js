@@ -276,7 +276,7 @@ angular
         appRedirectModal(unknownError);
         errors.push(unknownError);
       } else if (data.detail === '2') {
-        dismissModal(data.message);
+        dismissModal('Sorry, your credit card was rejected. The reason is: ' + data.message + '. Please reach out to hello@beampay.co for assistance');
         errors.push(data.message);
       } else if (status > 299) {
         appRedirectModal(unknownError);
