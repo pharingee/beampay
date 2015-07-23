@@ -7,6 +7,10 @@ angular
       $state.transitionTo('signin');
     }
 
+    $scope.user = {
+      email: Persist.getEmail()
+    };
+
     $scope.activateResend = {};
     $scope.activateResend.submit = function () {
       Auth.activateResend()
