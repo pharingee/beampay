@@ -25,16 +25,20 @@ angular
 
       var saveName = function () {
         Onboard.saveName(firstName, lastName).then(function(){
+            $scope.laddaOnboard = false;
             $state.transitionTo('onboard.address');
           }, function (){
+            $scope.laddaOnboard = false;
             $scope.settings.errors.push('Some of the information you provided is invalid. Please check and try again.');
           });
       };
 
+      $scope.laddaOnboard = true;
       if ($scope.settings.referralCode) {
         Onboard.setReferral($scope.settings.referralCode).then(function (){
           saveName();
         }, function (data) {
+          $scope.laddaOnboard = false;
           if (data.details && data.details === '1') {
             saveName();
           }else{
