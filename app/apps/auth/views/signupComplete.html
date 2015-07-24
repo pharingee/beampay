@@ -10,13 +10,14 @@
 
       <hr>
 
-      <p>Didn't receive the email?</p>
+      <h3>Didn't receive the email?</h3>
 
       <div class="submit">
         <button class="btn btn-default" ng-click="activateResend.submit()" ng-hide="activateResend.success" data-style="zoom-in">Click here to resend the email</button>
       </div>
       <br>
-      <p>Or go back to <a ui-sref="signup">sign up</a>.</p>
+      <p ng-show="activateResend.success || activateResend.errors">Is this email address correct? <br>
+      <a>{{user.email}}</a> <br> If not, please go back to <a ui-sref="signup">sign up</a>.</p>
     </div>
   </div>
 </div>

@@ -13,10 +13,13 @@ angular
 
     $scope.activateResend = {};
     $scope.activateResend.submit = function () {
+      $scope.laddaActivate = true;
       Auth.activateResend()
         .then(function () {
           $scope.activateResend.success = true;
+          $scope.laddaActivate = false;
         }, function (data) {
+          $scope.laddaActivate = false;
           $scope.activateResend.errors = Error.activateResend(data);
         });
     };
