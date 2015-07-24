@@ -55,23 +55,23 @@ angular
       $scope.referral = response;
     }, function(){});
 
-    $scope.reSavePayment = function () {
-      if (!$scope.paymentSaveSuccess) {
-        var payment = {
-          stripeToken: $scope.paymentToken.id,
-          transactionId: $scope.details.transactionId,
-          type: $scope.transactionType
-        };
-        Transaction.savePayment(payment).then(
-          function() {
-            $scope.paymentSaveSuccess = true;
-            TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
-          }, function (error) {
-            $scope.paymentSaveSuccess = false;
-            $scope.errors = Error.payment(error.data, error.status);
-          });
-      }
-    };
+    // $scope.reSavePayment = function () {
+    //   if (!$scope.paymentSaveSuccess) {
+    //     var payment = {
+    //       stripeToken: $scope.paymentToken.id,
+    //       transactionId: $scope.details.transactionId,
+    //       type: $scope.transactionType
+    //     };
+    //     Transaction.savePayment(payment).then(
+    //       function() {
+    //         $scope.paymentSaveSuccess = true;
+    //         TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
+    //       }, function (error) {
+    //         $scope.paymentSaveSuccess = false;
+    //         $scope.errors = Error.payment(error.data, error.status);
+    //       });
+    //   }
+    // };
 
     $scope.calculatePricing = function () {
       var results = TransactionUtil.calculatePricing($scope.details.amountGhs, $scope.pricing);
@@ -91,6 +91,7 @@ angular
       $scope.errors = [];
       var error = TransactionUtil.validateRecipient($scope.details);
       if (!error){
+        $scope.laddaAddTxn = true;
         $scope.paymentState = true;
         $scope.details.phoneNumber = $scope.details.recipient.phoneNumber;
 
@@ -99,10 +100,12 @@ angular
         }
 
         Transaction.addAirtime($scope.details).then(function (response) {
+          $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
           $state.transitionTo('app.airtime.payment');
         }, function (error) {
+          $scope.laddaAddTxn = false;
           $scope.errors = Error.transaction(error.data, error.status);
         });
       } else {
@@ -127,6 +130,7 @@ angular
 
     $scope.confirm = function () {
       if ($scope.pricing) {
+        $scope.laddaPay = true;
         var description = 'GHS ' + $scope.details.amountGhs + ' worth of ' + $scope.getProvider() + ' airtime';
         var amount = $scope.details.chargeUsd * 100;
         TransactionUtil.makePayment(description, amount).then(
@@ -141,13 +145,16 @@ angular
             Transaction.savePayment(payment).then(
               function() {
                 $scope.paymentSaveSuccess = true;
+                $scope.laddaPay = false;
                 TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
               }, function (error) {
                 $scope.paymentSaveSuccess = false;
+                $scope.laddaPay = false;
                 $scope.errors = Error.payment(error.data, error.status);
               });
           },
           function () {
+            $scope.laddaPay = false;
             console.log('Error');
           });
       }

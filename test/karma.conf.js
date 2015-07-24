@@ -60,6 +60,9 @@ module.exports = function(config) {
       'bower_components/angulartics/src/angulartics-intercom.js',
       'bower_components/angulartics/src/angulartics-inspectlet.js',
       'bower_components/angulartics/src/angulartics-newrelic-insights.js',
+      'bower_components/spin.js/spin.js',
+      'bower_components/ladda/dist/ladda.min.js',
+      'bower_components/angular-ladda/dist/angular-ladda.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

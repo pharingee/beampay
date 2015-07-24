@@ -22,8 +22,10 @@ angular
       }
 
       // Server Request
+      $scope.laddaLogin = true;
       Auth.signIn(email, pass)
         .then(function (isComplete) {
+          $scope.laddaLogin = false;
           if (isComplete){
             var next = $stateParams.next;
 
@@ -36,15 +38,18 @@ angular
             $state.transitionTo('onboard.name');
           }
         }, function (response) {
+          $scope.laddaLogin = false;
           $scope.signIn.errors = Error.signIn(response.data);
         });
     };
 
 
     $scope.signIn.fb = function() {
+      $scope.laddaLogin = true;
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
+        $scope.laddaLogin = false;
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
 
@@ -59,6 +64,7 @@ angular
         }
 
       }, function (req) {
+        $scope.laddaLogin = false;
         $scope.signIn.errors = Error.signInFb(req.data);
       });
     };

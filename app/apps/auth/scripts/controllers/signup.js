@@ -44,19 +44,24 @@ angular
       }
 
       // Server Request
+      $scope.laddaSignup = true;
       Auth.signup(email, pass1, pass2, privacy)
         .then(function () {
+          $scope.laddaSignup = false;
           $state.transitionTo('signupComplete');
         }, function (response) {
+          $scope.laddaSignup = false;
           $scope.signup.errors = Error.signup(response.data);
         });
     };
 
 
     $scope.signup.fb = function() {
+      $scope.laddaSignup = true;
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
+        $scope.laddaSignup = false;
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
 
@@ -71,6 +76,7 @@ angular
         }
 
       }, function (req) {
+        $scope.laddaSignup = false;
         $scope.signup.errors = Error.signInFb(req.data);
       });
     };

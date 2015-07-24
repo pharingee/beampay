@@ -30,13 +30,15 @@ angular
           $scope.resetPassword.errors.push('Passwords don\'t match');
           return;
         }
-
+        $scope.laddaPass = true;
         // Server Request
         Settings.resetPassword(key, pass1, pass2)
           .then(function () {
             $scope.resetPassword.success = true;
+            $scope.laddaPass = false;
           }, function (data) {
             $scope.resetPassword.errors = Error.resetPassword(data);
+            $scope.laddaPass = false;
           });
         };
     } else {
