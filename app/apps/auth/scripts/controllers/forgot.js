@@ -15,13 +15,15 @@ angular
         $scope.forgot.errors.push('Email required');
         return;
       }
-
+      $scope.laddaForgot = true;
       // Server Request
       Settings.requestResetPassword(email)
         .then(function () {
           $scope.forgot.email = email;
           $scope.forgot.success = true;
+          $scope.laddaForgot = false;
         }, function (data) {
+          $scope.laddaForgot = false;
           $scope.forgot.errors = Error.forgot(data);
         });
     };
