@@ -97,9 +97,12 @@ angular
         return;
       }
 
+      $scope.laddaOnboard = true;
       Onboard.saveAddress($scope.settings).then(function(){
+        $scope.laddaOnboard = false;
         $state.transitionTo('app');
       }, function(){
+        $scope.laddaOnboard = false;
         $scope.settings.errors.push('This page has errors');
       });
 

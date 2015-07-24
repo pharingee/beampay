@@ -54,6 +54,11 @@
      background-color: $white;
   }
 
+  .subscribe .btn-default{
+    margin-top: 27px;
+    margin-left: 0;
+  }
+
   .btn-default:hover{
     border:1px solid #498812 !important;
     color: $white;
