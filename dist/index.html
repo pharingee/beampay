@@ -42,4 +42,58 @@
 
       ga('create', gaProp, window.location.hostname);
       ga('require', 'linkid', 'linkid.js');
-      ga('require', 'displayfeatures');</script> <!-- stripe --> <script src="https://checkout.stripe.com/checkout.js"></script> <script src="scripts/vendor.4a734ed5.js"></script> <script src="scripts/scripts.758df8d2.js"></script>  
+      ga('require', 'displayfeatures');</script> <!-- stripe --> <script src="https://checkout.stripe.com/checkout.js"></script> <script src="scripts/vendor.96a88c6c.js"></script> <script>var ravenKey = null;
+
+      switch (window.location.hostname) {
+        case 'www.beampay.co':
+          ravenKey = 'https://6213fd96cdd24aa7a85305f8ad4c64cd@app.getsentry.com/49110'; // production
+          break;
+        case 'beampay.co':
+          ravenKey = 'https://6213fd96cdd24aa7a85305f8ad4c64cd@app.getsentry.com/49110'; // production
+          break;
+        case 'dev.beampay.co':
+          ravenKey = 'https://7ffea1786fdc475c969649897b64f98a@app.getsentry.com/48435'; // staging
+          break;
+        default:
+          ravenKey = 'UA-00000000-1'; // development
+      };
+      Raven.config(ravenKey, {
+        logger: 'javascript',
+        ignoreErrors: [
+          // Random plugins/extensions
+          'top.GLOBALS',
+          // See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error. html
+          'originalCreateNotification',
+          'canvas.contentDocument',
+          'MyApp_RemoveAllHighlights',
+          'http://tt.epicplay.com',
+          'Can\'t find variable: ZiteReader',
+          'jigsaw is not defined',
+          'ComboSearch is not defined',
+          'http://loading.retry.widdit.com/',
+          'atomicFindClose',
+          // Facebook borked
+          'fb_xd_fragment',
+          // ISP "optimizing" proxy - `Cache-Control: no-transform` seems to reduce this. (thanks @acdha)
+          // See http://stackoverflow.com/questions/4113268/how-to-stop-javascript-injection-from-vodafone-proxy
+          'bmi_SafeAddOnload',
+          'EBCallBackMessageReceived',
+          // See http://toolbar.conduit.com/Developer/HtmlAndGadget/Methods/JSInjection.aspx
+          'conduitPage'
+        ],
+        ignoreUrls: [
+          // Facebook flakiness
+          /graph\.facebook\.com/i,
+          // Facebook blocked
+          /connect\.facebook\.net\/en_US\/all\.js/i,
+          // Woopra flakiness
+          /eatdifferent\.com\.woopra-ns\.com/i,
+          /static\.woopra\.com\/js\/woopra\.js/i,
+          // Chrome extensions
+          /extensions\//i,
+          /^chrome:\/\//i,
+          // Other plugins
+          /webappstoolbarba\.texthelp\.com\//i,
+          /metrics\.itunes\.apple\.com\.edgesuite\.net\//i
+        ]
+      }).install();</script> <script src="scripts/scripts.15fe0bc4.js"></script>  
