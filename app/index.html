@@ -153,11 +153,27 @@
     <script src="bower_components/spin.js/spin.js"></script>
     <script src="bower_components/ladda/dist/ladda.min.js"></script>
     <script src="bower_components/angular-ladda/dist/angular-ladda.min.js"></script>
+    <script src="bower_components/raven-js/dist/raven.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <script>
-      Raven.config('https://7ffea1786fdc475c969649897b64f98a@app.getsentry.com/48435', {
+      var ravenKey = null;
+
+      switch (window.location.hostname) {
+        case 'www.beampay.co':
+          ravenKey = 'https://6213fd96cdd24aa7a85305f8ad4c64cd@app.getsentry.com/49110'; // production
+          break;
+        case 'beampay.co':
+          ravenKey = 'https://6213fd96cdd24aa7a85305f8ad4c64cd@app.getsentry.com/49110'; // production
+          break;
+        case 'dev.beampay.co':
+          ravenKey = 'https://7ffea1786fdc475c969649897b64f98a@app.getsentry.com/48435'; // staging
+          break;
+        default:
+          ravenKey = 'UA-00000000-1'; // development
+      };
+      Raven.config(ravenKey, {
         logger: 'javascript',
         ignoreErrors: [
           // Random plugins/extensions
