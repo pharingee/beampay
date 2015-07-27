@@ -2,11 +2,11 @@
 
 angular
   .module('app.utils')
-  .config(function ($provide, $window) {
+  .config(function ($provide) {
     $provide.decorator('$exceptionHandler', ['$delegate', function ($delegate) {
       return function (exception, clause) {
         $delegate(exception, clause);
-        if ($window.Raven) {
+        if (Raven) {
           Raven.captureException(exception.clause);
         }
       };
