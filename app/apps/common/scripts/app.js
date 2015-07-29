@@ -20,6 +20,7 @@ angular
     'angular-loading-bar',
     'angular-intro',
     'app.config',
+    'app.constants',
     'app.utils',
     'app.general',
     'app.auth',
