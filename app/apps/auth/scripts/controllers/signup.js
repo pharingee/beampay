@@ -13,9 +13,17 @@ angular
       privacy: true
     };
 
+    // $scope.errors = {
+    //   email : "Email is required"
+    //   pass : "Password is required"
+    //   passMatch : "Passwords don't match"
+    //   privacy : "Please accept the Terms and Conditions"
+    // }
+
     $scope.signup.submit = function () {
       // Reset
-      $scope.signup.errors = [];
+      // $scope.signup.errorss = [];
+      $scope.signup.errors = {};
       var email = $scope.signup.email;
       var pass1 = $scope.signup.pass1;
       var pass2 = $scope.signup.pass2;
@@ -23,23 +31,22 @@ angular
 
       // Client checks
       if (!email) {
-        $scope.signup.errors.push('Email is required');
+        $scope.signup.errors.email = "Email is required";
         return;
       }
 
       if (!pass1) {
-        $scope.signup.errors.push('Password is required');
+        $scope.signup.errors.pass = "Password is required";
         return;
       }
 
-
       if (!privacy) {
-        $scope.signup.errors.push('Please accept the Terms and Conditions');
+        $scope.signup.errors.privacy = "Please accept the Terms and Conditions"; 
         return;
       }
 
       if (pass1 !== pass2) {
-        $scope.signup.errors.push('Passwords don\'t match');
+        $scope.signup.errors.passMatch = "Passwords don't match";
         return;
       }
 

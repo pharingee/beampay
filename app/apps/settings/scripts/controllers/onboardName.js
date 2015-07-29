@@ -13,15 +13,26 @@ angular
       }, function () {});
 
     var submit = function () {
-      $scope.settings.errors = [];
+      $scope.settings.errors = {};
       var firstName = $scope.settings.firstName;
       var lastName = $scope.settings.lastName;
 
       // Client checks
-      if (!firstName || !lastName) {
-        $scope.settings.errors.push('We need you to provide your full name.');
+      // if (!firstName || !lastName) {
+      //   $scope.settings.errors.push('We need you to provide your full name.');
+      //   return;
+      // }
+
+      if (!firstName) {
+        $scope.settings.errors.firstName = 'First Name required';
         return;
       }
+
+      if (!lastName) {
+        $scope.settings.errors.lastName = 'Last Name required';
+        return;
+      }
+
 
       var saveName = function () {
         Onboard.saveName(firstName, lastName).then(function(){

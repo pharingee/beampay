@@ -7,12 +7,12 @@ angular
     $scope.changeEmail = {};
     $scope.changeEmail.submit = function () {
       // Reset
-      $scope.changeEmail.errors = [];
+      $scope.changeEmail.errors = {};
       var email = $scope.changeEmail.email;
 
       // Client checks
       if (!email) {
-        $scope.changeEmail.errors.push('Email required');
+        $scope.changeEmail.errors.email = 'Email required';
         return;
       }
 
