@@ -89,9 +89,18 @@ angular
       return errors;
     };
 
-    var signInFb = function () {
+    var signInFb = function (data) {
       var errors = [];
-      errors.push('Oops! Something seems to have gone wrong with your signup. No worries, you can still signup using your Email');
+      if (!data) {
+        errors.push('Oops! Something seems to have gone wrong with your signup. No worries, you can still signup using your Email');
+      } else if (data.detail && data.detail === '11') {
+        errors.push('Sorry. Your account has been disabled');
+      } else if (data.detail && data.detail === '18') {
+        errors.push('Oops! Your facebook account is not verified. Please verify your facebook account and try again. Or sign up using your email.');
+      } else if (data.detail && data.detail === '19') {
+        errors.push('Please accept Beam\'s facebook permission to use your email.');
+      }
+
       return errors;
     };
 
