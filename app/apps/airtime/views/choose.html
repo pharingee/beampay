@@ -3,6 +3,7 @@
 
   <div class="form-group">
     Select your recipient's network <br>
+    <p class="errors">{{errors.network}}</p>
       <div class="radio">
           <label>
              <input type="radio" ng-model="details.network" value="MTN" checked>
@@ -31,7 +32,16 @@
 
   <div class="form-group">
     <label for="amount">How much airtime in GHS would you like to buy?</label>
-    <input type="number" class="form-control" placeholder="Eg. 350" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="5" max="1000">
+    <select ng-model="details.amountGhs" ng-change="calculatePricing()" class="form-control">
+      <option value="1">GH&#8373; 1</option>
+      <option value="2">GH&#8373; 2</option>
+      <option value="5">GH&#8373; 5</option>
+      <option value="10">GH&#8373; 10</option>
+      <option value="15">GH&#8373; 15</option>
+      <option value="20">GH&#8373; 20</option>
+      <option value="30">GH&#8373; 30</option>
+      <option value="50">GH&#8373; 50</option>
+    </select>
   </div>
 
   <div class="row text-center" ng-show="details.amountGhs > 0">

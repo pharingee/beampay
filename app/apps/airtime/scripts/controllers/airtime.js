@@ -8,15 +8,10 @@ angular
     }
 
     var validateDetails = function () {
-      $scope.errors = [];
+      $scope.errors = {};
 
       if ($scope.details.network !== $scope.airtelProvider && $scope.details.network !== $scope.mtnProvider && $scope.details.network !== $scope.tigoProvider && $scope.details.network !== $scope.vodafoneProvider) {
-        $scope.errors.push('Please select an airtime provider');
-        return false;
-      }
-
-      if(isNaN($scope.details.amountGhs) || parseInt($scope.details.amountGhs) < 5 || parseInt($scope.details.amountGhs > 1000)) {
-        $scope.errors.push('Amount can only be more than GHS 5 and less than GHS 1000');
+        $scope.errors.network = 'Please select an airtime provider';
         return false;
       }
 
@@ -24,7 +19,8 @@ angular
     };
 
     $scope.details = {
-      recipient: {}
+      recipient: {},
+      amountGhs: '5'
     };
     $scope.details.serviceFee = 0;
     $scope.chooseState = true;
@@ -47,6 +43,7 @@ angular
 
     Transaction.getPricing().then(function (response){
       $scope.pricing = response;
+      $scope.calculatePricing();
     }, function(error){
       $scope.errors = Error.pricing(error.data, error.status);
     });
@@ -88,9 +85,9 @@ angular
     };
 
     $scope.addRecipient = function () {
-      $scope.errors = [];
-      var error = TransactionUtil.validateRecipient($scope.details);
-      if (!error){
+      $scope.errors = {};
+      $scope.errors = TransactionUtil.validateRecipient($scope.details);
+      if (!$scope.errors){
         $scope.laddaAddTxn = true;
         $scope.paymentState = true;
         $scope.details.phoneNumber = $scope.details.recipient.phoneNumber;
@@ -108,8 +105,6 @@ angular
           $scope.laddaAddTxn = false;
           $scope.errors = Error.transaction(error.data, error.status);
         });
-      } else {
-        $scope.errors.push(error);
       }
     };
 

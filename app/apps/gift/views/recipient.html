@@ -1,7 +1,7 @@
 <form class="form" ng-submit="makeTransaction()">
 
   <div class="form-group">
-    <label for="name">Name of recipient</label>
+    <label for="name">Name of recipient <span class="errors">{{errors.name}}</span></label>
     <div class="row">
       <div class="col-xs-6">
         <input type="text" class="form-control" placeholder="First Name" ng-model="details.recipient.firstName" required>
@@ -13,15 +13,15 @@
   </div>
 
   <div class="form-group">
-    <label for="contact">Recipient Contact Number </label>
+    <label for="contact">Recipient Contact Number <span class="errors">{{errors.phoneNumber}}</span></label>
     <input type="text" class="form-control" placeholder="Eg. +23327615596" ng-model="details.recipient.phoneNumber" required>
   </div>
 
   <div class="form-group">
-    <label for="email">Email address of recipient <span class="small text-muted">(optional)</span></label>
+    <label for="email">Email address of recipient <span class="small text-muted">(optional)</span> <span class="errors">{{errors.email}}</span></label>
     <input type="email" class="form-control" placeholder="Eg. friend@email.com" ng-model="details.recipient.email">
   </div>
-<span style="font-size:14px;">Please note that your bank might incur extra charges for payments from outside the U.S.</span>
+
   <div class="form-group">
       <div class="service-button">
         <button ladda="laddaAddTxn" type="submit" class="btn btn-success form-control">Submit</button>

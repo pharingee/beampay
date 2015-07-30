@@ -17,14 +17,7 @@
 
       <div class="row">
         <div class="col-md-offset-6">
-          <div class="errors" role="alert" ng-show="errors.length">
-            <p>Error(s):</p>
-            <ul>
-              <li ng-repeat="error in errors">
-                {{ error }}
-              </li>
-            </ul>
-          </div>
+          <p class="errors">{{errors.top}}</p>
 
           <!-- <div ng-hide="paymentSaveSuccess"> -->
           <div class="hidden">
