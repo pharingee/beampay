@@ -6,17 +6,20 @@
       <h5>We'll need the following information to get you set up. We have to ask you this to comply with international laws, but also to fulfill your orders on Beam.</h5>
 
       <h5><a ui-sref="app">I'll do this later</a></h5>
-      <div class="errors" role="alert" ng-show="settings.errors.length">
+      <span class="errors" role="alert">
+      {{settings.errors.top}}
+      </span>
+      <!-- <div class="errors" role="alert" ng-show="settings.errors.length">
         <ul>
           <li ng-repeat="error in settings.errors">
             {{ error }}
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <form class="form non-bill-form">
         <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
+          <label for="dateOfBirth">Date of birth</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.dateOfBirth}}</span>
           <div class="row">
             <div class="col-xs-4">
               <select class="col-xs-4 form-control" ng-model="settings.date.day" required>
@@ -148,7 +151,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="country">Country of current residence</label>
+          <label for="country">Country of current residence</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.country}}</span>
           <select ng-model="settings.country" class="form-control" required>
               <option value="US">United States of America</option>
               <option value="AF">Afghanistan</option>
@@ -357,19 +360,19 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="phoneNumber">Phone number</label>
+          <label for="phoneNumber">Phone number</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.phoneNumber}}</span>
           <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Eg. +233265086508" required>
         </div>
         <div class="form-group">
-          <label for="street">Street</label>
+          <label for="street">Street</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.street}}</span>
           <input ng-model="settings.street" type="text" class="form-control" placeholder="Street" required>
         </div>
         <div class="form-group">
-          <label for="address">City</label>
+          <label for="address">City</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.city}}</span>
           <input ng-model="settings.city" type="text" class="form-control" placeholder="City" required>
         </div>
         <div class="form-group">
-          <label for="address">Post code</label>
+          <label for="address">Post code</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.postCode}}</span>
           <input ng-model="settings.postCode" type="text" class="form-control" placeholder="Post code" required>
         </div>
         <div class="form-group">
@@ -400,6 +403,10 @@
           </div>
 
           <div class="row">
+          <div class="col-xs-2"></div>
+          <div class="col-xs-10">
+           <span class="errors">{{settings.errors.preferredContactMethod}}</span>
+          </div>
             <div class="col-xs-2">
               <label for="contact">Contact:</label>
             </div>
