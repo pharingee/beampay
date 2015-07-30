@@ -39,13 +39,13 @@
  }
 
  .navbar-toggle {
-    margin-top: 15px;
-    border: 1px solid rgba(255, 255, 255, 1);
- }
+  margin-top: 15px;
+  border: 1px solid rgba(255, 255, 255, 1);
+}
 
- .icon-bar {
-    border: 1px solid #FFF;
- }
+.icon-bar {
+  border: 1px solid #FFF;
+}
 
 
 
@@ -108,6 +108,16 @@ img {
 .call-to-action{
   padding-top: 150px;
   padding-bottom: 20px;
+}
+
+.call-to-action-mob{
+  padding-top: 60px;
+  padding-bottom: 30px;
+
+  h1 > span.header-font{
+    font-family: 'freestyle-script';
+    /*font-size: 1.2em;*/
+  }
 }
 
 h1 {
