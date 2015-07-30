@@ -2,6 +2,7 @@
 
 angular
   .module('app', [
+    // Third Party libraries
     'angulartics',
     'angulartics.google.analytics',
     'angulartics.mixpanel',
@@ -19,9 +20,14 @@ angular
     'angularMoment',
     'angular-loading-bar',
     'angular-intro',
+
+    //Config modules
     'app.config',
     'app.constants',
+    'app.interceptors',
     'app.utils',
+
+    //App modules
     'app.general',
     'app.auth',
     'app.transaction',

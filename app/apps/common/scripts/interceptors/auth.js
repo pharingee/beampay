@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('app.auth')
+  .module('app.interceptors', [])
   .service('AuthInterceptor', function ($q, $location, Persist, API_SERVER) {
 
     var request = function (config) {
@@ -20,7 +20,12 @@ angular
       if (response.status === 401) {
         Persist.deleteUser();
         $location.path($location.path());
+      } else {
+        if (Raven) {
+          Raven.captureException(JSON.stringify(response));
+        }
       }
+
       return $q.reject(response);
     };
 

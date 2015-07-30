@@ -65,15 +65,16 @@ angular.module('app.transaction')
     };
 
     var validateRecipient = function (details) {
+      var errors = {};
       if (!details.recipient.firstName || !details.recipient.lastName) {
-        return 'Please enter first and last name of the recipient';
+        errors.name = 'Please enter first and last name of the recipient';
       }
 
       if (!details.recipient.phoneNumber || details.recipient.phoneNumber.length < 10) {
-        return 'Please enter a valid phone number';
+        errors.phoneNumber = 'Please enter a valid phone number';
       }
 
-      return false;
+      return errors;
     };
 
     var getType = function (transaction) {

@@ -8,26 +8,26 @@ angular
     }
 
     var validateDetails = function () {
-      $scope.errors = [];
+      $scope.errors = {};
 
       if (!$scope.details.description) {
-        $scope.errors.push('Please enter a description');
+        $scope.errors.description = 'Please enter a description';
         return false;
       }
 
       if (!$scope.details.preferredContactDetails) {
         switch ($scope.details.preferredContactMethod) {
           case $scope.whatsAppMethod:
-            $scope.errors.push('Please enter your WhatsApp number in the contact details field.');
+            $scope.errors.preferredContactMethod = 'Please enter your WhatsApp number in the contact details field.';
             break;
           case $scope.phoneMethod:
-            $scope.errors.push('Please enter your phone number in the contact details field.');
+            $scope.errors.preferredContactMethod = 'Please enter your phone number in the contact details field.';
             break;
           case $scope.smsMethod:
-            $scope.errors.push('Please enter your SMS number in the contact details field.');
+            $scope.errors.preferredContactMethod = 'Please enter your SMS number in the contact details field.';
             break;
           case $scope.emailMethod:
-            $scope.errors.push('Please enter your email in the contact details field.');
+            $scope.errors.preferredContactMethod = 'Please enter your email in the contact details field.';
             break;
         }
         return false;
@@ -70,8 +70,8 @@ angular
     };
 
     $scope.makeTransaction = function () {
-      var error = TransactionUtil.validateRecipient($scope.details);
-      if (!error){
+      $scope.errors = TransactionUtil.validateRecipient($scope.details);
+      if (!$scope.errors){
         $scope.laddaAddTxn = true;
         Transaction.addValet($scope.details).then(function (response) {
           $scope.laddaAddTxn = false;
@@ -82,8 +82,6 @@ angular
           $scope.laddaAddTxn = false;
           $scope.errors = Error.transaction(error.data, error.status);
         });
-      } else {
-        $scope.errors.push(error);
       }
     };
 
