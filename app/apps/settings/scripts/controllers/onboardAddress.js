@@ -44,54 +44,71 @@ angular
       }, function () {});
 
     var submit = function () {
-      $scope.settings.errors = [];
+      $scope.settings.errors = {};
 
       $scope.settings.dateOfBirth = $scope.settings.date.year + '-' + $scope.settings.date.month + '-' + $scope.settings.date.day;
 
       // Details Checks
-      if (!$scope.settings.dateOfBirth) {
-        $scope.settings.errors.push('Please provide a valid date of birth');
+
+      if (!$scope.settings.date.day) {
+        $scope.settings.errors.dateOfBirth = 'Please provide a day for date of birth';
         return;
       }
 
+      if (!$scope.settings.date.month) {
+        $scope.settings.errors.dateOfBirth = 'Please provide a month for date of birth';
+        return;
+      }
+
+      if (!$scope.settings.date.year) {
+        $scope.settings.errors.dateOfBirth = 'Please provide a year for date of birth';
+        return;
+      }
+
+
+      // if (!$scope.settings.dateOfBirth) {
+      //   $scope.settings.errors.dateOfBirth = 'Please provide a valid date of birth';
+      //   return;
+      // }
+
       if (!$scope.settings.country) {
-        $scope.settings.errors.push('Please select a country');
+        $scope.settings.errors.country = 'Please select a country';
         return;
       }
 
       if (!$scope.settings.phoneNumber) {
-        $scope.settings.errors.push('Please provide a valid phone number');
+        $scope.settings.errors.phoneNumber = 'Please provide a valid phone number';
         return;
       }
 
       if (!$scope.settings.street) {
-        $scope.settings.errors.push('Please provide your street name.');
+        $scope.settings.errors.street = 'Please provide your street name.';
         return;
       }
 
       if (!$scope.settings.city) {
-        $scope.settings.errors.push('Please provide your city.');
+        $scope.settings.errors.city = 'Please provide your city.';
         return;
       }
 
       if (!$scope.settings.postCode) {
-        $scope.settings.errors.push('Please provide your Postcode');
+        $scope.settings.errors.postCode = 'Please provide your Postcode';
         return;
       }
 
       if (!$scope.settings.preferredContactDetails) {
-        switch ($scope.details.preferredContactMethod) {
+        switch ($scope.settings.preferredContactMethod) {
           case 'WAP':
-            $scope.errors.push('Please enter your WhatsApp number in the contact details field.');
+            $scope.settings.errors.preferredContactMethod = 'Please enter your WhatsApp number in the contact details field.';
             break;
           case 'PHON':
-            $scope.errors.push('Please enter your phone number in the contact details field.');
+            $scope.settings.errors.preferredContactMethod = 'Please enter your phone number in the contact details field.';
             break;
           case 'SMS':
-            $scope.errors.push('Please enter your SMS number in the contact details field.');
+            $scope.settings.errors.preferredContactMethod = 'Please enter your SMS number in the contact details field.';
             break;
           case 'MAIL':
-            $scope.errors.push('Please enter your email in the contact details field.');
+            $scope.settings.errors.preferredContactMethod = 'Please enter your email in the contact details field.';
             break;
         }
         return;

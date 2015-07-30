@@ -11,13 +11,23 @@ angular
     $scope.signIn = {};
     $scope.signIn.submit = function () {
       // Reset
-      $scope.signIn.errors = [];
+      $scope.signIn.errors = {};
       var email = $scope.signIn.email;
       var pass = $scope.signIn.pass;
 
       // Client checks
-      if (!$scope.signIn.email || !$scope.signIn.pass) {
-        $scope.signIn.errors.push('All fields required');
+      // if (!$scope.signIn.email || !$scope.signIn.pass) {
+      //   $scope.signIn.errors.push('All fields required');
+      //   return;
+      // }
+
+      if (!email) {
+        $scope.signIn.errors.email = "Email is required";
+        return;
+      }
+
+      if (!pass) {
+        $scope.signIn.errors.pass = "Password is required";
         return;
       }
 

@@ -2,10 +2,7 @@
 
 angular
   .module('app.utils')
-  .service('Error', function ($modal) {
-
-    var unknownError = 'Oops! Something seems to have gone wrong.';
-    var unsupportedCountry = 'Your country is not supported. We\'ll let you know when we support it';
+  .service('Error', function ($modal, ErrorConstants) {
 
     var appRedirectModal = function (message) {
       $modal.open({
@@ -39,258 +36,267 @@ angular
     };
 
     var signup = function (data) {
-      var errors = [];
+      var errors = {};
       if (!data) {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       }else if (data.password1 && data.password1[0] === '1') {
         // Password must be at least 8 characters long, contain at least one numeric digit.
-        errors.push('Password must be at least 8 characters long, contain at least one numeric digit.');
+        errors.pass = ErrorConstants.weakPassword;
       } else if (data.email && data.email[0] === '4') {
         // This email is already in use.
-        errors.push('An account with this email has already been created. Please login if you are the owner of this email. Else enter another email.');
+        errors.email = ErrorConstants.emailInUse;
       } else if (data.email && data.email[0] === '5') {
         // This email not activated
-        errors.push('An activation link has been sent to your email. Please check and activate your account');
+        errors.top = ErrorConstants.unactivatedEmail;
       } else if (data.nonFieldErrors && data.nonFieldErrors[0] === '2') {
         // Password dont match
-        errors.push('The two passwords do not match');
+        errors.passMatch = ErrorConstants.unmatchingPasswords;
       } else if (data.acceptedPrivacyPolicy && data.acceptedPrivacyPolicy[0] === '3') {
         // Privacy not accepted
-        errors.push('Plese accept the Privacy Policy to continue');
+        errors.privacy = ErrorConstants.privacyUnaccepted;
       } else {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       }
 
       return errors;
     };
 
     var signIn = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (data.nonFieldErrors) {
         if (data.nonFieldErrors[0] === '11') {
           // User account is disabled.
-          errors.push('Sorry, your account has been disabled');
+          errors.top = ErrorConstants.disabledAccount;
         } else if (data.nonFieldErrors[0] === '13') {
           // Unable to login with provided credentials.
-          errors.push('Your email or password is incorrect. Please check and try again');
+          errors.top = ErrorConstants.invalidLoginCredentials;
         } else if (data.nonFieldErrors[0] === '0') {
           // Must include "email" and "password".
-          errors.push('Please enter both email and password');
+          errors.top = ErrorConstants.emailOrPassEmpty;
         } else if (data.nonFieldErrors[0] === '14') {
           // Login with admin account attempted
-          errors.push('Admin accounts not allowed');
+          errors.top = ErrorConstants.adimnLogin;
         } else if (data.nonFieldErrors[0] === '12') {
           // User account not activated yet.
-          errors.push('An activation link has been sent to your email. Please check and activate your account');
+          errors.top = ErrorConstants.unactivatedEmail;
         }
       }
 
       return errors;
     };
 
-    var signInFb = function () {
-      var errors = [];
-      errors.push('Oops! Something seems to have gone wrong with your signup. No worries, you can still signup using your Email');
+    var signInFb = function (data) {
+      var errors = {};
+      if (!data) {
+        errors.top = ErrorConstants.fbUnknownError;
+      } else if (data.detail && data.detail === '11') {
+        errors.top = ErrorConstants.disabledAccount;
+      } else if (data.detail && data.detail === '18') {
+        errors.top = ErrorConstants.unverifiedFbAccount;
+      } else if (data.detail && data.detail === '19') {
+        errors.top = ErrorConstants.fbPermissionRejected;
+      }
+
       return errors;
     };
 
     var activate = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (!data) {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail === '6') {
         // Invalid activation key.
-        errors.push('The actiivation link you used was invalid. Please check and try again');
+        errors.top = ErrorConstants.invalidActivationKey;
       } else if (data.detail === '7') {
         // Activation key is expired
-        errors.push('The activation link you used has expired. Please try signing up again');
+        errors.top = ErrorConstants.expiredActivationKey;
       }
 
       return errors;
     };
 
     var activateResend = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (!data) {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail === '9') {
         // Email unknown
-        errors.push('Sorry, this email is not recognized. Are you trying to signup? Please click on the signup link on the header.');
+        errors.top = ErrorConstants.unrecognizedEmail;
       } else if (data.detail === '10') {
         // Account already activated
-        errors.push('You account has already been activated. Please try loggin in instead');
+        errors.top = ErrorConstants.activatedEmail;
       } else if (data.detail === '11') {
         // User Account disabled
-        errors.push('Sorry, your account has been disabled');
+        errors.top = ErrorConstants.disabledAccount;
       }
 
       return errors;
     };
 
     var changeEmail = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (!data) {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail === '0') {
         // Invalid Parameters
-        errors.push('Please enter a valid email');
+        errors.email = ErrorConstants.invalidEmail;
       } else if (data.detail === '4') {
         // This email is already in use
-        errors.push('An account with this email has already been created. Please login if you are the owner of this email. Else enter another email.');
+        errors.email = ErrorConstants.emailInUse;
       } else if (data.detail === '15') {
         // Email has not been changed
-        errors.push('Your email has not been changed');
+        errors.top = ErrorConstants.unchangedEmail;
       }
 
       return errors;
     };
 
     var confirmEmail = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (!data) {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail === '0') {
         // Invalid Parameters
-        errors.push('Please enter a valid email');
+        errors.top = ErrorConstants.invalidEmail;
       }
 
       return errors;
     };
 
     var isPassword = function () {
-      var errors = [];
+      var errors = {};
 
-      errors.push(unknownError);
+      errors.top = ErrorConstants.unknownError;
 
       return errors;
     };
 
     var changePassword = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (!data) {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.oldPassword && data.oldPassword[0] === '16') {
         // Old Password is incorrect
-        errors.push('Sorry, your old Password is incorrect');
+        errors.oldPass = ErrorConstants.incorrectPassword;
       } else if (data.password1 && data.password1[0] === '1') {
         // Weak pass
-        errors.push('Password must be at least 8 characters long, contain at least one numeric digit.');
+        errors.newPass = ErrorConstants.weakPassword;
       } else if (data.nonFieldErrors && data.nonFieldErrors[0] === '2') {
         // Passwords don't match
-        errors.push('Passwords don\'t match');
+        errors.passMatch = ErrorConstants.unmatchingPasswords;
       } else if (data.detail && data.detail === '20') {
         // Passwords don't match
-        errors.push('Passwords not set');
+        errors.top = ErrorConstants.unsetPassword;
       }
 
       return errors;
     };
 
     var setPassword = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (data.detail && data.detail === '0') {
         // Invalid Parameters
-        errors.push('Invalid Parameters');
+        errors.top = ErrorConstants.invalidParameters;
       } else if (data.password1 && data.password1[0] === '1') {
         // Weak pass
-        errors.push('Weak pass');
+        errors.pass = ErrorConstants.weakPassword;
       } else if (data.nonFieldErrors && data.nonFieldErrors[0] === '2') {
         // Passwords don't match
-        errors.push('The two passwords do not match');
+        errors.passMatch = ErrorConstants.unmatchingPasswords;
       } else if (data.detail && data.detail === '21') {
         // Passwords don't match
-        errors.push('A password has already been set. If you cannot remember please logout and send a reset password to your email.');
+        errors.top = ErrorConstants.setPassword;
       }
 
       return errors;
     };
 
     var forgot = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (!data) {
-        errors.push(unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail && data.detail === '9') {
         // Email unknown
-        errors.push('Sorry, this email is not recognized. Are you trying to signup? Please click on the signup link on the header.');
+        errors.email = ErrorConstants.unrecognizedEmail;
       } else if (data.detail && data.detail === '11') {
         // User Account disabled
-        errors.push('Sorry your account is disabled');
+        errors.top = ErrorConstants.disabledAccount;
       } else if (data.detail && data.detail === '12') {
         // User Account not activated yet
-        errors.push('An activation link has been sent to your email. Please check and activate your account');
+        errors.top = ErrorConstants.unactivatedEmail;
       }
 
       return errors;
     };
 
     var transaction = function (data, status) {
-      var errors = [];
+      var errors = {};
 
       if (status === 451) {
-        appRedirectModal(unsupportedCountry);
-        errors.push(unsupportedCountry);
+        appRedirectModal(ErrorConstants.unsupportedCountry);
+        errors.top = ErrorConstants.unsupportedCountry;
       } else if (data.detail && data.detail === '0') {
-        errors.push('Some of the information you provided is incorrect. Please check and try again.');
+        errors.top = ErrorConstants.invalidParameters;
       } else if (data.detail && data.detail === '1') {
-        appRedirectModal('The international exchange rate has changed. Please choose your service again.');
-        errors.push('The international exchange rate has changed. Please choose your service again.');
+        appRedirectModal(ErrorConstants.exchangeRateChanged);
+        errors.top = ErrorConstants.exchangeRateChanged;
       } else if (data.detail && data.detail === '2') {
         incompleteModal();
-        errors.push('Your profile is incomplete please update your details in your settings');
+        errors.top = ErrorConstants.incompleteProfile;
       } else {
-        appRedirectModal(unknownError);
-        errors.push(unknownError);
+        appRedirectModal(ErrorConstants.unknownError);
+        errors.top = ErrorConstants.unknownError;
       }
 
       return errors;
     };
 
     var pricing = function (data, status) {
-      var errors = [];
+      var errors = {};
 
       if (status === 404) {
-        appRedirectModal('Oops, something went wrong. While we work on it, please check your internet connection to make sure you\'re connected. Thank you');
-        errors.push('Oops, something went wrong. While we work on it, please check your internet connection to make sure you\'re connected. Thank you');
+        appRedirectModal(ErrorConstants.unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else {
-        appRedirectModal(unknownError);
-        errors.push(unknownError);
+        appRedirectModal(ErrorConstants.unknownError);
+        errors.top = ErrorConstants.unknownError;
       }
     };
 
     var payment = function (data, status) {
-      var errors = [];
+      var errors = {};
       console.log(data, status);
 
       if (!data) {
-        appRedirectModal(unknownError);
-        errors.push(unknownError);
+        appRedirectModal(ErrorConstants.unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail === '0') {
-        appRedirectModal(unknownError);
-        errors.push(unknownError);
+        appRedirectModal(ErrorConstants.unknownError);
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail === '2') {
         dismissModal('Sorry, your credit card was rejected. The reason is: ' + data.message + '. Please reach out to hello@beampay.co for assistance');
-        errors.push(data.message);
+        errors.top = data.message;
       } else if (status > 299) {
-        appRedirectModal(unknownError);
-        errors.push(unknownError);
+        appRedirectModal(ErrorConstants.unknownError);
+        errors.top = ErrorConstants.unknownError;
       }
     };
 
     var setReferral = function (data) {
-      var errors = [];
+      var errors = {};
 
       if (data.detail === '0') {
-        errors.push('Some of the information you provided is incorrect. Please check and try again.');
+        errors.top = ErrorConstants.invalidParameters;
       }else if (data.detail === '2') {
-        errors.push('You have entered an invalid referral code. Please try again');
+        errors.top = ErrorConstants.invalidReferral;
       }
 
       return errors;

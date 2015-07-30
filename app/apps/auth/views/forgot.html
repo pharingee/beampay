@@ -5,17 +5,18 @@
   <div class="row box">
     <div class="col-sm-offset-3 col-sm-6 form">
       <h3>Reset Password</h3>
-      <div class="errors" role="alert" ng-show="forgot.errors.length">
+      <!-- <div class="errors" role="alert" ng-show="forgot.errors.length">
         <p>Error(s):</p>
         <ul>
           <li ng-repeat="error in forgot.errors">
             {{ error }}
           </li>
         </ul>
-      </div>
+      </div> -->
+
       <form>
         <div class="form-group">
-          <label for="email">Email address</label>
+          <label for="email">Email address</label>&nbsp;&nbsp;<span class="errors" role="alert">{{forgot.errors.email}}</span>
           <input ng-model="forgot.email" type="email" class="form-control" placeholder="Enter email">
         </div>
         <div class="submit">
