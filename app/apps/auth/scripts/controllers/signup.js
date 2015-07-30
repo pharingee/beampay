@@ -41,7 +41,7 @@ angular
       }
 
       if (!privacy) {
-        $scope.signup.errors.privacy = "Please accept the Terms and Conditions"; 
+        $scope.signup.errors.privacy = "Please accept the Terms and Conditions";
         return;
       }
 
@@ -64,11 +64,11 @@ angular
 
 
     $scope.signup.fb = function() {
-      $scope.laddaSignup = true;
+      $scope.laddaFbSignup = true;
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
-        $scope.laddaSignup = false;
+        $scope.laddaFbSignup = false;
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
 
@@ -83,7 +83,7 @@ angular
         }
 
       }, function (req) {
-        $scope.laddaSignup = false;
+        $scope.laddaFbSignup = false;
         $scope.signup.errors = Error.signInFb(req.data);
       });
     };

@@ -55,11 +55,11 @@ angular
 
 
     $scope.signIn.fb = function() {
-      $scope.laddaLogin = true;
+      $scope.laddaFbLogin = true;
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
-        $scope.laddaLogin = false;
+        $scope.laddaFbLogin = false;
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
 
@@ -74,7 +74,7 @@ angular
         }
 
       }, function (req) {
-        $scope.laddaLogin = false;
+        $scope.laddaFbLogin = false;
         $scope.signIn.errors = Error.signInFb(req.data);
       });
     };
