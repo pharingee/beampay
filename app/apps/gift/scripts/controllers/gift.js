@@ -100,7 +100,8 @@ angular
       }
 
       $scope.errors = TransactionUtil.validateRecipient($scope.details);
-      if (!$scope.errors){
+      console.log($scope.errors.length);
+      if ($.isEmptyObject($scope.errors)){
         $scope.laddaAddTxn = true;
         Transaction.addGift($scope.details).then(function (response) {
           $scope.laddaAddTxn = false;

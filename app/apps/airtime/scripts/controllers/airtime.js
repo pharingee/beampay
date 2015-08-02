@@ -87,7 +87,7 @@ angular
     $scope.addRecipient = function () {
       $scope.errors = {};
       $scope.errors = TransactionUtil.validateRecipient($scope.details);
-      if (!$scope.errors){
+      if ($.isEmptyObject($scope.errors)){
         $scope.laddaAddTxn = true;
         $scope.paymentState = true;
         $scope.details.phoneNumber = $scope.details.recipient.phoneNumber;

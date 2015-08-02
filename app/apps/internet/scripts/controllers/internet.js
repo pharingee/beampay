@@ -92,7 +92,7 @@ angular
 
     $scope.addRecipient = function () {
       $scope.errors = TransactionUtil.validateRecipient($scope.details);
-      if (!$scope.errors){
+      if ($.isEmptyObject($scope.errors)){
         $scope.paymentState = true;
         if (!$scope.details.accountNumber) {
           delete $scope.details.accountNumber;
