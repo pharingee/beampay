@@ -71,7 +71,7 @@ angular
 
     $scope.makeTransaction = function () {
       $scope.errors = TransactionUtil.validateRecipient($scope.details);
-      if (!$scope.errors){
+      if ($.isEmptyObject($scope.errors)){
         $scope.laddaAddTxn = true;
         Transaction.addValet($scope.details).then(function (response) {
           $scope.laddaAddTxn = false;

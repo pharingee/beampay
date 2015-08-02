@@ -117,7 +117,7 @@ angular
       }
 
       $scope.errors = TransactionUtil.validateRecipient($scope.details);
-      if (!$scope.errors){
+      if ($.isEmptyObject($scope.errors)){
         $scope.laddaAddTxn = true;
         Transaction.addSchool($scope.details).then(function (response) {
           $scope.laddaAddTxn = false;
