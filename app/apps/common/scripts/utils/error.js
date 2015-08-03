@@ -79,7 +79,7 @@ angular
           errors.top = ErrorConstants.adimnLogin;
         } else if (data.nonFieldErrors[0] === '12') {
           // User account not activated yet.
-          errors.top = ErrorConstants.unactivatedEmail;
+          errors.email = ErrorConstants.unactivatedEmail;
         }
       }
 
@@ -89,13 +89,13 @@ angular
     var signInFb = function (data) {
       var errors = {};
       if (!data) {
-        errors.top = ErrorConstants.fbUnknownError;
+        errors.fbTop = ErrorConstants.fbUnknownError;
       } else if (data.detail && data.detail === '11') {
-        errors.top = ErrorConstants.disabledAccount;
+        errors.fbTop = ErrorConstants.disabledAccount;
       } else if (data.detail && data.detail === '18') {
-        errors.top = ErrorConstants.unverifiedFbAccount;
+        errors.fbTop = ErrorConstants.unverifiedFbAccount;
       } else if (data.detail && data.detail === '19') {
-        errors.top = ErrorConstants.fbPermissionRejected;
+        errors.fbTop = ErrorConstants.fbPermissionRejected;
       }
 
       return errors;
