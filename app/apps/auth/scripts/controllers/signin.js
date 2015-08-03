@@ -22,12 +22,12 @@ angular
       // }
 
       if (!email) {
-        $scope.signIn.errors.email = "Email is required";
+        $scope.signIn.errors.email = 'Email is required';
         return;
       }
 
       if (!pass) {
-        $scope.signIn.errors.pass = "Password is required";
+        $scope.signIn.errors.pass = 'Password is required';
         return;
       }
 

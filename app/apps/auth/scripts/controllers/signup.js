@@ -31,22 +31,22 @@ angular
 
       // Client checks
       if (!email) {
-        $scope.signup.errors.email = "Email is required";
+        $scope.signup.errors.email = 'Email is required';
         return;
       }
 
       if (!pass1) {
-        $scope.signup.errors.pass = "Password is required";
+        $scope.signup.errors.pass = 'Password is required';
         return;
       }
 
       if (!privacy) {
-        $scope.signup.errors.privacy = "Please accept the Terms and Conditions";
+        $scope.signup.errors.privacy = 'Please accept the Terms and Conditions';
         return;
       }
 
       if (pass1 !== pass2) {
-        $scope.signup.errors.passMatch = "Passwords don't match";
+        $scope.signup.errors.passMatch = 'Passwords don\'t match';
         return;
       }
 
