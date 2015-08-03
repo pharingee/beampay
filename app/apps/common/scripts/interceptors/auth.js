@@ -22,8 +22,11 @@ angular
         $location.path($location.path());
       } else {
         if (Raven) {
-          var ravenResponse = JSON.parse(JSON.stringify(response));
+          var ravenResponse = {};
+          $.extend(ravenResponse, response)
           delete ravenResponse.headers.Authorization;
+          delete ravenResponse.config.headers.Authorization;
+          console.log(ravenResponse);
           Raven.captureException(JSON.stringify(ravenResponse));
         }
       }
