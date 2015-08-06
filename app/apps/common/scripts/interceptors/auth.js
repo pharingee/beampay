@@ -26,6 +26,8 @@ angular
           $.extend(ravenResponse, response)
           delete ravenResponse.headers.Authorization;
           delete ravenResponse.config.headers.Authorization;
+          delete ravenResponse.config.data.password;
+          delete ravenResponse.data.token;
           console.log(ravenResponse);
           Raven.captureException(JSON.stringify(ravenResponse));
         }
