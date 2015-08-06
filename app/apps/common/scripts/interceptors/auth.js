@@ -27,6 +27,8 @@ angular
           delete ravenResponse.headers.Authorization;
           delete ravenResponse.config.headers.Authorization;
           delete ravenResponse.config.data.password;
+          delete ravenResponse.config.data.password1;
+          delete ravenResponse.config.data.password2;
           delete ravenResponse.data.token;
           console.log(ravenResponse);
           Raven.captureException(JSON.stringify(ravenResponse));
