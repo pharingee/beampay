@@ -267,4 +267,17 @@
 
 }
 
+.panel{
+  border-radius: 0;
+}
 
+.services .accordion h4 {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  a.accordion-toggle:visited,
+  a.accordion-toggle:hover,
+  a.accordion-toggle:active {
+    text-decoration: none;
+  }
+}
