@@ -50,8 +50,168 @@
           </div>
         </div>
         <!-- </div> -->
+        <br><br>
+        <div class="accordion row">
+          <div class="col-md-9">
+            <accordion close-others="false">
+              <accordion-group heading="Details">
+                <div class="row text-center"  ng-if="transactionType == 'AIRTIME'">
+                  <div class="col-xs-4">
+                    <img src="apps/airtime/images/mtn.png" class="service-image" ng-if="transaction.network=='MTN'">
+                    <img src="apps/airtime/images/vodafone.png" class="service-image" ng-if="transaction.network=='VOD'">
+                    <img src="apps/airtime/images/tigo.png" class="service-image" ng-if="transaction.network=='TIG'">
+                    <img src="apps/airtime/images/airtel.png" class="service-image" ng-if="transaction.network=='AIR'">
+                  </div>
+                  <div class="col-xs-4">
+                    <strong>Reference Number:</strong> <br>
+                    {{transaction.referenceNumber}}
+                  </div>
+                  <div class="col-xs-4">
+                    <strong>Phone Number:</strong> <br>
+                    {{transaction.recipient.phoneNumber}}
+                  </div>
+                </div>
+                <div class="row text-center"  ng-if="transactionType == 'BILL'">
+                  <div class="col-xs-4">
+                    <img src="apps/internet/images/surfline-logo.png" class="service-image" ng-if="transaction.billType=='SRF'">
+                    <img src="apps/internet/images/vodafone-logo.png" class="service-image" ng-if="transaction.billType=='VOB'">
+                    <img src="apps/television/images/dstv-logo.png" class="service-image" ng-if="transaction.billType=='DST'">
+                    <img src="apps/television/images/gotv-logo.jpg" class="service-image" ng-if="transaction.billType=='GOT'">
+                    <img src="apps/utility/images/ecg-logo.jpg" class="service-image" ng-if="transaction.billType=='ECG'">
+                    <img src="apps/utility/images/gwc-logo.jpg" class="service-image"  ng-if="transaction.billType=='GWC'">
+                  </div>
+                  <div class="col-xs-4">
+                    <strong>Reference Number:</strong> <br>
+                    {{transaction.referenceNumber}}
+                  </div>
+                  <div class="col-xs-4" ng-if="transaction.accountNumber">
+                    <strong>Account Number:</strong> <br>
+                    {{transaction.accountNumber}}
+                  </div>
+                </div>
+                <div class="row" ng-if="transactionType == 'VALET'">
+                  <div class="row">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Reference Number:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.referenceNumber}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Description:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.description}}</div>
+                  </div>
+                </div>
+                <div class="row" ng-if="transactionType == 'SCHOOL'">
+                  <div class="row">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Reference Number:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.referenceNumber}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Ward Name:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.wardName}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Ward Institution:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.school}}</div>
+                  </div>
+                </div>
+                <div class="row" ng-if="transactionType == 'GIFT'">
+                  <div class="row">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Reference Number:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.referenceNumber}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Gift Type:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.giftType}}</div>
+                  </div>
+                  <div class="row" ng-if="transaction.additionalInfo">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Gift Type Details:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.additionalInfo}}</div>
+                  </div>
+                  <div class="row" ng-if="transaction.deliveryAddress">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Delivery Address:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.deliveryAddress}}</div>
+                  </div>
+                  <div class="row" ng-if="transaction.deliveryTime">
+                    <div class="col-xs-4 col-lg-3 text-right">
+                      <strong>Delivery Time:</strong>
+                    </div>
+                    <div class="col-xs-8 col-lg-9 text-left">{{transaction.deliveryTime}}</div>
+                  </div>
+
+                </div>
+              </accordion-group>
+              <accordion-group heading="Recipient">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="row">
+                      <div class="col-xs-3 col-lg-2 text-right">
+                        <strong>Name:</strong>
+                      </div>
+                      <div class="col-xs-9 col-lg-10 text-left">{{transaction.recipient.firstName}} {{transaction.recipient.lastName}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-3 col-lg-2 text-right">
+                        <strong>Phone:</strong>
+                      </div>
+                      <div class="col-xs-9 col-lg-10 text-left">{{transaction.recipient.phoneNumber}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-3 col-lg-2 text-right" ng-if="transaction.recipient.email">
+                        <strong>Email:</strong>
+                      </div>
+                      <div class="col-xs-9 col-lg-10 text-left">{{transaction.recipient.email}}</div>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Pricing">
+                <div class="row text-center">
+                  <div class="col-md-3">
+                    <strong>Base Cost</strong><br>
+                    $ {{transaction.amountUsd}}
+                  </div>
+                  <div class="col-md-1">
+                    <strong>&nbsp;</strong><br>
+                    +
+                  </div>
+                  <div class="col-md-3">
+                    <strong>Service Fee</strong><br>
+                    $ {{transaction.totalChargeUsd - transaction.amountUsd}}
+                  </div>
+                  <div class="col-md-1">
+                    <strong>&nbsp;</strong><br>
+                    =
+                  </div>
+                  <div class="col-md-3">
+                    <strong>Total Cost</strong><br>
+                    $ {{transaction.totalChargeUsd}}
+                  </div>
+                </div>
+              </accordion-group>
+            </accordion>
+          </div>
+        </div>
+
         <div class="row" ng-if="transaction.comments.length > 0">
           <div class="col-md-9">
+            <h4 class="text-center">Status Updates</h4>
             <div class="transaction-comments">
               <div ng-repeat="comment in transaction.comments | orderBy:'timestamp' track by $index">
                 <div class="comment-item" ng-if="comment.author == 'user'">
