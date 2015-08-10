@@ -41,7 +41,8 @@ angular
         token: $cookieStore.get(TOKEN_KEY),
         firstName: $cookieStore.get(FIRST_NAME_KEY),
         lastName: $cookieStore.get(LAST_NAME_KEY),
-        complete: $cookieStore.get(COMPLETE_KEY)
+        complete: $cookieStore.get(COMPLETE_KEY),
+        initials: $cookieStore.get(FIRST_NAME_KEY).substring(0, 1) + '.' + $cookieStore.get(LAST_NAME_KEY).substring(0, 1) + '.'
       };
     };
 

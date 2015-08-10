@@ -6,10 +6,10 @@ angular.module('app.transaction')
       var fullName = '';
       switch (shortName) {
         case 'DST':
-          fullName = 'DSTv';
+          fullName = 'DStv';
           break;
         case 'GOT':
-          fullName = 'GOTv';
+          fullName = 'GOtv';
           break;
         case 'ECG':
           fullName = 'Electricity';
@@ -170,6 +170,9 @@ angular.module('app.transaction')
         return successModal(referenceNumber, transactionId, transactionType);
       },
 
+      toCurr: function (amount) {
+        return toCurr(amount);
+      },
       calculatePricing: function (amountGhs, pricing) {
         return calculatePricing(amountGhs, pricing);
       }
