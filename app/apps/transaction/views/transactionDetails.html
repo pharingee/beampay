@@ -13,7 +13,7 @@
             <span class="lnr lnr-cloud-upload" ng-if="transactionType == 'BILL' && (transaction.billType == 'VOB' || transaction.billType == 'SRF')"></span>
             <span class="lnr lnr-calendar-full" ng-if="transactionType == 'BILL' && (transaction.billType == 'ECG' || transaction.billType == 'GWC')"></span>
           </div>
-          <h5>{{getDescription({transactionType: transactionType, data: transaction})}}</h5>
+          <h5>{{getDescription({transactionType: transactionType, data: transaction}) | truncate}}</h5>
           <div class="row">
             <p class="col-md-2">
               <span class="lnr lnr-cart"></span>
@@ -21,30 +21,30 @@
             </p>
             <p class="col-md-2">
               <span class="lnr lnr-clock"></span>
-              <span am-time-ago="transaction.data.lastChanged" ></span>
+              <span am-time-ago="transaction.lastChanged" ></span>
             </p>
             <p class="col-md-2">
               <span class="lnr lnr-envelope"></span> {{transaction.comments.length}} interactions
             </p>
-            <p class="col-md-2 text-center bg-warning" ng-if="transaction.state == 'INIT'">
+            <p class="col-md-2 text-center bg-warning transaction-state" ng-if="transaction.state == 'INIT'">
               PENDING
             </p>
-            <p class="col-md-2 text-center bg-info" ng-if="transaction.state == 'INFO'">
+            <p class="col-md-2 text-center bg-info transaction-state" ng-if="transaction.state == 'INFO'">
               GATHERING INFORMATION
             </p>
-            <p class="col-md-2 text-center bg-info" ng-if="transaction.state == 'REDY'">
+            <p class="col-md-2 text-center bg-info transaction-state" ng-if="transaction.state == 'REDY'">
               READY FOR PAYMENT
             </p>
-            <p class="col-md-2 text-center bg-success" ng-if="transaction.state == 'PAID'">
+            <p class="col-md-2 text-center bg-success transaction-state" ng-if="transaction.state == 'PAID'">
               PAID
             </p>
-            <p class="col-md-2 text-center bg-success" ng-if="transaction.state == 'PROC'">
-              PROCESSED
+            <p class="col-md-2 text-center bg-success transaction-state" ng-if="transaction.state == 'PROC'">
+              COMPLETED
             </p>
-            <p class="col-md-2 text-center bg-danger" ng-if="transaction.state == 'CANC'">
+            <p class="col-md-2 text-center bg-danger transaction-state" ng-if="transaction.state == 'CANC'">
               CANCELLED
             </p>
-            <p class="col-md-2 text-center bg-warning" ng-if="transaction.state == 'INVD'">
+            <p class="col-md-2 text-center bg-warning transaction-state" ng-if="transaction.state == 'INVD'">
               INVALID
             </p>
           </div>
@@ -54,7 +54,7 @@
         <div class="accordion row">
           <div class="col-md-9">
             <accordion close-others="false">
-              <accordion-group heading="Details">
+              <accordion-group heading="Details" is-open="true">
                 <div class="row text-center"  ng-if="transactionType == 'AIRTIME'">
                   <div class="col-xs-4">
                     <img src="apps/airtime/images/mtn.png" class="service-image" ng-if="transaction.network=='MTN'">
@@ -157,7 +157,7 @@
 
                 </div>
               </accordion-group>
-              <accordion-group heading="Recipient">
+              <accordion-group heading="Recipient" is-open="true">
                 <div class="row">
                   <div class="col-xs-12">
                     <div class="row">
@@ -181,11 +181,11 @@
                   </div>
                 </div>
               </accordion-group>
-              <accordion-group heading="Pricing">
+              <accordion-group heading="Pricing" is-open="true" ng-if="transaction.totalChargeUsd">
                 <div class="row text-center">
                   <div class="col-md-3">
                     <strong>Base Cost</strong><br>
-                    $ {{transaction.amountUsd}}
+                    {{ transaction.amountUsd | currency}}
                   </div>
                   <div class="col-md-1">
                     <strong>&nbsp;</strong><br>
@@ -193,7 +193,7 @@
                   </div>
                   <div class="col-md-3">
                     <strong>Service Fee</strong><br>
-                    $ {{transaction.totalChargeUsd - transaction.amountUsd}}
+                    {{transaction.totalChargeUsd - transaction.amountUsd | currency}}
                   </div>
                   <div class="col-md-1">
                     <strong>&nbsp;</strong><br>
@@ -201,7 +201,7 @@
                   </div>
                   <div class="col-md-3">
                     <strong>Total Cost</strong><br>
-                    $ {{transaction.totalChargeUsd}}
+                    {{transaction.totalChargeUsd | currency}}
                   </div>
                 </div>
               </accordion-group>
@@ -222,7 +222,7 @@
                   </div>
                   <div class="clear"></div>
                   <div class="row">
-                    <div class="col-xs-1 pull-left user">IN</div>
+                    <div class="col-xs-1 pull-left user">{{currentUser.initials}}</div>
                     <div class="col-xs-8 pull-left message">
                       {{getComment(comment.comment)}}
                     </div>
