@@ -18,6 +18,7 @@ body {
 
 .errors {
   padding-top: 15px;
+  color: $error_color;
   p, ul {
     color: $error_color;
   }

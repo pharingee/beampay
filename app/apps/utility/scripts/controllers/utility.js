@@ -8,25 +8,20 @@ angular
     }
 
     var validateDetails = function () {
-      $scope.errors = [];
+      $scope.errors = {};
 
       if ($scope.details.billType !== $scope.electricityProvider && $scope.details.billType !== $scope.waterProvider) {
-        $scope.errors.push('Please select a Utility service provider');
+        $scope.errors.billType = 'Please select a Utility service provider';
         return false;
       }
 
       if ($scope.details.accountNumber && $scope.details.accountNumber.toString().length < 13) {
-        $scope.errors.push('Please enter a 13-digit account number');
+        $scope.errors.accountNumber = 'Please enter a 13-digit account number';
         return false;
       }
 
       if (!$scope.details.amountGhs) {
-        $scope.errors.push('Please enter the amount to pay in Ghana Cedis');
-        return false;
-      }
-
-      if(isNaN($scope.details.amountGhs) || parseInt($scope.details.amountGhs) < 10 || parseInt($scope.details.amountGhs > 1000)) {
-        $scope.errors.push('Amount can only be more than GHS 10 and less than GHS 1000');
+        $scope.errors.amountGhs = 'Please enter the amount to pay in Ghana Cedis';
         return false;
       }
 
@@ -82,7 +77,7 @@ angular
     };
 
     $scope.calculatePricing = function () {
-      var results = TransactionUtil.calculatePricing($scope.details.amountGhs, $scope.pricing);
+      var results = TransactionUtil.calculateBillPricing($scope.details.amountGhs, $scope.pricing);
       $scope.details.amountUsd = results.amountUsd;
       $scope.details.serviceFee = results.serviceFee;
       $scope.details.chargeUsd = results.chargeUsd;
@@ -96,9 +91,8 @@ angular
     };
 
     $scope.addRecipient = function () {
-      $scope.errors = [];
-      var error = TransactionUtil.validateRecipient($scope.details);
-      if (!error){
+      $scope.errors = TransactionUtil.validateRecipient($scope.details);
+      if ($.isEmptyObject($scope.errors)){
         $scope.paymentState = true;
         if (!$scope.details.accountNumber) {
           delete $scope.details.accountNumber;
@@ -117,8 +111,6 @@ angular
           $scope.laddaAddTxn = false;
           $scope.errors = Error.transaction(error.data, error.status);
         });
-      } else {
-        $scope.errors.push(error);
       }
     };
 

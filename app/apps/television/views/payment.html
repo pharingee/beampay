@@ -2,18 +2,18 @@
   <div class="row">
     <p class="bill-text">You're about to pay for</p>
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-lg-4">
+      <div class="col-xs-12 col-sm-8 col-lg-6">
         <img ng-show="details.billType == 'DST'" src="apps/television/images/dstv-logo.png" alt="" class="final-service-image">
         <img ng-show="details.billType == 'GOT'" src="apps/television/images/gotv-logo.jpg" alt="" class="final-service-image">
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-6 col-sm-4 col-lg-6">
         <div class="bill-heading">DESCRIPTION</div>
         <p>GHS {{details.amountGhs}} billing on {{details.billType}}v for {{details.recipient.firstName}} {{details.recipient.lastName}}</p>
         <div class="bill-heading">FINAL BILL</div>
         <p>$ {{details.chargeUsd}}</p>
       </div>
     </div>
-    <span style="font-size:14px;">Please note that your bank might incur extra charges for payments from outside the U.S.</span>
+    <span style="font-size:14px;">Please note that you might incur a small charge from your bank for payments from outside the U.S.</span>
     <div class="service-button">
       <button ladda="laddaPay" class="btn btn-success form-control" ng-click="confirm()">Pay</button>
     </div>

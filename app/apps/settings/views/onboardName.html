@@ -6,21 +6,25 @@
       <h3> Hello, and welcome to Beam! </h3>
       <h5> What's your name? </h5>
 
-      <div class="errors" role="alert" ng-show="settings.errors.length">
+      <span class="errors" role="alert">
+     {{settings.errors.top}}
+     </span>
+
+      <!-- <div class="errors" role="alert" ng-show="settings.errors.length">
         <ul>
           <li ng-repeat="error in settings.errors">
             {{ error }}
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <form>
         <div class="form-group">
-          <label for="firstName">First name</label>
+          <label for="firstName">First name</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.firstName}}</span>
           <input ng-model="settings.firstName" type="text" class="form-control" placeholder="Enter first name">
         </div>
         <div class="form-group">
-          <label for="lastName">Last name</label>
+          <label for="lastName">Last name</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.lastName}}</span>
           <input ng-model="settings.lastName" type="text" class="form-control" placeholder="Enter last name">
         </div>
         <!-- <div class="form-group">

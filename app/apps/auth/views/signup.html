@@ -7,17 +7,20 @@
       <h3>Sign Up</h3>
       <h5>Start using Beam in seconds</h5>
 
-      <div class="errors" role="alert" ng-show="signup.errors.length">
+   <!--    <div class="errors" role="alert" ng-show="signup.errors.length">
         <p>Error(s):</p>
         <ul>
           <li ng-repeat="error in signup.errors">
             {{ error }}
           </li>
         </ul>
-      </div>
+      </div> -->
+      <span class="errors" role="alert">
+     {{signup.errors.fbTop}}
+     </span>
 
       <div class="facebook">
-        <button ladda="laddaSignup" ng-click="signup.fb()">
+        <button ladda="laddaFbSignup" ng-click="signup.fb()">
           <i class="fa fa-facebook"></i> Sign up with Facebook
         </button>
       </div>
@@ -32,17 +35,19 @@
         <a href="" class="show-email">Sign up with your email</a>
       </div>
 
+      <p class="errors" role="alert">{{signup.errors.top}}</p>
+
       <form id="sign-form">
         <div class="form-group">
-          <label for="email">Email address</label>
+          <label for="email">Email address</label>&nbsp;&nbsp;<span class="errors">{{signup.errors.email}}</span>
           <input ng-model="signup.email" type="email" class="form-control" placeholder="Enter email" required>
         </div>
         <div class="form-group">
-          <label for="pass1">Choose Password</label>
+          <label for="pass1">Choose Password</label>&nbsp;&nbsp;<span class="errors">{{signup.errors.pass}}{{signup.errors.passMatch}}</span>
           <input ng-model="signup.pass1" type="password" class="form-control" placeholder="Password" required>
         </div>
         <div class="form-group">
-          <label for="pass2">Confirm Password</label>
+          <label for="pass2">Confirm Password</label>&nbsp;&nbsp;<span class="errors">{{signup.errors.pass}}{{signup.errors.passMatch}}</span>
           <input ng-model="signup.pass2" type="password" class="form-control" placeholder="Password" required>
         </div>
         <!-- <div class="checkbox">

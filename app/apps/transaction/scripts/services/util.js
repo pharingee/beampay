@@ -6,10 +6,10 @@ angular.module('app.transaction')
       var fullName = '';
       switch (shortName) {
         case 'DST':
-          fullName = 'DSTv';
+          fullName = 'DStv';
           break;
         case 'GOT':
-          fullName = 'GOTv';
+          fullName = 'GOtv';
           break;
         case 'ECG':
           fullName = 'Electricity';
@@ -65,15 +65,16 @@ angular.module('app.transaction')
     };
 
     var validateRecipient = function (details) {
+      var errors = {};
       if (!details.recipient.firstName || !details.recipient.lastName) {
-        return 'Please enter first and last name of the recipient';
+        errors.name = 'Please enter first and last name of the recipient';
       }
 
       if (!details.recipient.phoneNumber || details.recipient.phoneNumber.length < 10) {
-        return 'Please enter a valid phone number';
+        errors.phoneNumber = 'Please enter a valid phone number';
       }
 
-      return false;
+      return errors;
     };
 
     var getType = function (transaction) {
@@ -135,9 +136,21 @@ angular.module('app.transaction')
       return Math.ceil(amount * 100) / 100;
     };
 
-    var calculatePricing = function (amountGhs, pricing) {
+    var calculateAirtimePricing = function (amountGhs, pricing) {
       var amountUsd = toCurr(amountGhs / pricing.usdGhs);
-      var serviceFee = toCurr((pricing.percentualFee * amountUsd) + pricing.fixedFee);
+      var serviceFee = toCurr((pricing.airtime.percentualFee * amountUsd) + pricing.airtime.fixedFee);
+      var chargeUsd = toCurr(amountUsd + serviceFee);
+
+      return {
+        amountUsd: amountUsd,
+        serviceFee: serviceFee,
+        chargeUsd: chargeUsd
+      };
+    };
+
+    var calculateBillPricing = function (amountGhs, pricing) {
+      var amountUsd = toCurr(amountGhs / pricing.usdGhs);
+      var serviceFee = toCurr((pricing.bill.percentualFee * amountUsd) + pricing.bill.fixedFee);
       var chargeUsd = toCurr(amountUsd + serviceFee);
 
       return {
@@ -169,8 +182,14 @@ angular.module('app.transaction')
         return successModal(referenceNumber, transactionId, transactionType);
       },
 
-      calculatePricing: function (amountGhs, pricing) {
-        return calculatePricing(amountGhs, pricing);
+      toCurr: function (amount) {
+        return toCurr(amount);
+      },
+      calculateAirtimePricing: function (amountGhs, pricing) {
+        return calculateAirtimePricing(amountGhs, pricing);
+      },
+      calculateBillPricing: function (amountGhs, pricing) {
+        return calculateBillPricing(amountGhs, pricing);
       }
     };
   });

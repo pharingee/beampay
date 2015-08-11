@@ -2,28 +2,54 @@
   <div class="transaction-control">
   <div class="form-group">
     Which service provider would you like to pay for?<br>
+    <p class="errors">{{errors.billType}}</p>
       <div class="radio">
           <label>
-             <input type="radio" ng-model="details.billType" value="SRF" checked>
+             <input type="radio" ng-model="details.billType" value="SRF" ng-change="changeBillType()">
              <img src="apps/internet/images/surfline-logo.png" class="service-image">
           </label>
       </div>
       <div class="radio">
           <label>
-             <input type="radio" ng-model="details.billType" value="VOB">
+             <input type="radio" ng-model="details.billType" value="VOB"  ng-change="changeBillType()">
              <img src="apps/internet/images/vodafone-logo.png" class="service-image">
           </label>
       </div>
     </div>
 
   <div class="form-group">
-    <label for="accountNumber">Account number <span class="small text-muted">(optional)</span></label>
-    <input ng-model="details.accountNumber" type="number" class="form-control" placeholder="Eg. 314491300123">
+    <label for="accountNumber">Account number <span class="small text-muted">(optional)</span> <span class="errors">{{errors.accountNumber}}</span></label>
+    <input ng-model="details.accountNumber" type="text" class="form-control" placeholder="Eg. 233213001234">
   </div>
 
   <div class="form-group">
     <label for="amount">How much in GHS would you like to pay?</label>
-    <input type="number" class="form-control" placeholder="Eg. 350" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="10" max="1000">
+    <div ng-if="!details.billType || details.billType === surflineProvider">
+      <select ng-model="details.amountGhs" ng-change="calculatePricing()" class="form-control">
+        <option value="9.90">GH&#8373; 9.90</option>
+        <option value="29">GH&#8373; 29</option>
+        <option value="25">GH&#8373; 25</option>
+        <option value="69">GH&#8373; 69</option>
+        <option value="75">GH&#8373; 75</option>
+        <option value="125">GH&#8373; 125</option>
+        <option value="129">GH&#8373; 129</option>
+        <option value="205">GH&#8373; 205</option>
+        <option value="239">GH&#8373; 239</option>
+        <option value="445">GH&#8373; 445</option>
+        <option value="499">GH&#8373; 499</option>
+      </select>
+    </div>
+
+    <div ng-if="details.billType === vodafoneProvider">
+      <select ng-model="details.amountGhs" ng-change="calculatePricing()" class="form-control">
+        <option value="50">GH&#8373; 50</option>
+        <option value="70">GH&#8373; 70</option>
+        <option value="100">GH&#8373; 100</option>
+        <option value="150">GH&#8373; 150</option>
+        <option value="200">GH&#8373; 200</option>
+        <option value="350">GH&#8373; 350</option>
+      </select>
+    </div>
   </div>
 
   <div class="row text-center" ng-show="details.amountGhs > 0">

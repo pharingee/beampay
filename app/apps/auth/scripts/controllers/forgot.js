@@ -7,12 +7,12 @@ angular
     $scope.forgot = {};
     $scope.forgot.submit = function () {
       // Reset
-      $scope.forgot.errors = [];
+      $scope.forgot.errors = {};
       var email = $scope.forgot.email;
 
       // Client checks
       if (!email) {
-        $scope.forgot.errors.push('Email required');
+        $scope.forgot.errors.email = 'Email required';
         return;
       }
       $scope.laddaForgot = true;

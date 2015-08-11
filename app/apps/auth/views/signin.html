@@ -6,19 +6,20 @@
 
       <h3>Login</h3>
 
-
-
-      <div class="errors" role="alert" ng-show="signIn.errors.length">
+     <span class="errors" role="alert">
+     {{signIn.errors.fbTop}}
+     </span>
+     <!--  <div class="errors" role="alert" ng-show="signIn.errors.length">
         <p>Error(s):</p>
         <ul>
           <li ng-repeat="error in signIn.errors">
             {{ error }}
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <div class="facebook">
-        <button ladda="laddaLogin" ng-click="signIn.fb()">
+        <button ladda="laddaFbLogin" ng-click="signIn.fb()">
           <i class="fa fa-facebook"></i> Login with Facebook
         </button>
       </div>
@@ -33,13 +34,15 @@
         <a href="" class="show-email">Login with your email</a>
       </div>
 
+      <p class="errors" role="alert">{{signIn.errors.top}}</p>
+
       <form autocomplete="off" id="sign-form">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">Email</label>&nbsp;&nbsp;<span class="errors">{{signIn.errors.email}}</span>
           <input ng-model="signIn.email" type="email" class="form-control" placeholder="Enter email">
         </div>
         <div class="form-group">
-          <label for="pass1">Password</label>
+          <label for="pass">Password</label>&nbsp;&nbsp;<span class="errors">{{signIn.errors.pass}}</span>
           <input ng-model="signIn.pass" type="password" class="form-control" placeholder="Password">
         </div>
         <div class="submit">

@@ -13,7 +13,7 @@
 		<div class="container-fluid">
     <div class="col-md-8">
       <div class="transaction-list">
-        
+
         <div class="transaction-item history" ng-repeat="transaction in transactions track by $index">
           <a ui-sref="app.transaction.details({transactionId: transaction.data.id, transactionType: getType(transaction)})">
             <div class="widget-icon pull-left">
@@ -25,7 +25,7 @@
               <span class="lnr lnr-cloud-upload" ng-if="transaction.transactionType == 'billpayment' && (transaction.data.billType == 'VOB' || transaction.data.billType == 'SRF')"></span>
               <span class="lnr lnr-calendar-full" ng-if="transaction.transactionType == 'billpayment' && (transaction.data.billType == 'ECG' || transaction.data.billType == 'GWC')"></span>
             </div>
-            <h5>{{getDescription(transaction)}}</h5>
+            <h5>{{getDescription(transaction) | truncate}}</h5>
             <div class="row">
               <p class="col-md-3">
                 <span class="lnr lnr-cart"></span>
@@ -39,33 +39,32 @@
                 <span class="lnr lnr-envelope"></span>
                 4 new updates
               </p> -->
-              <p class="col-md-3 bg-warning" ng-if="transaction.data.state == 'INIT'">
+              <p class="col-md-3 bg-warning transaction-state" ng-if="transaction.data.state == 'INIT'">
                 PENDING
               </p>
-              <p class="col-md-3 bg-info" ng-if="transaction.data.state == 'INFO'">
+              <p class="col-md-3 bg-info transaction-state" ng-if="transaction.data.state == 'INFO'">
                 GATHERING INFORMATION
               </p>
-              <p class="col-md-3 bg-info" ng-if="transaction.data.state == 'REDY'">
+              <p class="col-md-3 bg-info transaction-state" ng-if="transaction.data.state == 'REDY'">
                 READY FOR PAYMENT
               </p>
-              <p class="col-md-3 bg-success" ng-if="transaction.data.state == 'PAID'">
+              <p class="col-md-3 bg-success transaction-state" ng-if="transaction.data.state == 'PAID'">
                 PAID
               </p>
-              <p class="col-md-3 bg-success" ng-if="transaction.data.state == 'PROC'">
-                PROCESSED
+              <p class="col-md-3 bg-success transaction-state" ng-if="transaction.data.state == 'PROC'">
+                COMPLETED
               </p>
-              <p class="col-md-3 bg-danger" ng-if="transaction.data.state == 'CANC'">
+              <p class="col-md-3 bg-danger transaction-state" ng-if="transaction.data.state == 'CANC'">
                 CANCELLED
               </p>
-              <p class="col-md-3 bg-warning" ng-if="transaction.data.state == 'INVD'">
+              <p class="col-md-3 bg-warning transaction-state" ng-if="transaction.data.state == 'INVD'">
                 INVALID
               </p>
             </div>
 
             <div class="transaction-overlay">
               <div class="pull-right">
-                <span class="lnr lnr-eye"></span>
-                VIEW DETAILS
+                <p><span class="lnr lnr-eye"></span> VIEW DETAILS</p>
               </div>
             </div>
 

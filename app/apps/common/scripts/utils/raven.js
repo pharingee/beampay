@@ -7,7 +7,7 @@ angular
       return function (exception, clause) {
         $delegate(exception, clause);
         if (Raven) {
-          Raven.captureException(exception.clause);
+          Raven.captureException(exception);
         }
       };
     }]);

@@ -11,13 +11,23 @@ angular
     $scope.signIn = {};
     $scope.signIn.submit = function () {
       // Reset
-      $scope.signIn.errors = [];
+      $scope.signIn.errors = {};
       var email = $scope.signIn.email;
       var pass = $scope.signIn.pass;
 
       // Client checks
-      if (!$scope.signIn.email || !$scope.signIn.pass) {
-        $scope.signIn.errors.push('All fields required');
+      // if (!$scope.signIn.email || !$scope.signIn.pass) {
+      //   $scope.signIn.errors.push('All fields required');
+      //   return;
+      // }
+
+      if (!email) {
+        $scope.signIn.errors.email = 'Email is required';
+        return;
+      }
+
+      if (!pass) {
+        $scope.signIn.errors.pass = 'Password is required';
         return;
       }
 
@@ -45,11 +55,11 @@ angular
 
 
     $scope.signIn.fb = function() {
-      $scope.laddaLogin = true;
+      $scope.laddaFbLogin = true;
       $auth.authenticate('facebook', {
         'acceptedPrivacyPolicy': true
       }).then(function (req) {
-        $scope.laddaLogin = false;
+        $scope.laddaFbLogin = false;
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
 
@@ -64,7 +74,7 @@ angular
         }
 
       }, function (req) {
-        $scope.laddaLogin = false;
+        $scope.laddaFbLogin = false;
         $scope.signIn.errors = Error.signInFb(req.data);
       });
     };
