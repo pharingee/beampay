@@ -38,7 +38,7 @@ angular
     $scope.transactionType = 'BILL';
 
     $scope.electricityProvider = 'ECG';
-    $scope.waterProvider = 'GCW';
+    $scope.waterProvider = 'GWC';
 
     Transaction.getProfile().then(function (response) {
       if (!response.profile.informationComplete) {
