@@ -71,7 +71,7 @@ angular
     // };
 
     $scope.calculatePricing = function () {
-      var results = TransactionUtil.calculatePricing($scope.details.amountGhs, $scope.pricing);
+      var results = TransactionUtil.calculateAirtimePricing($scope.details.amountGhs, $scope.pricing);
       $scope.details.amountUsd = results.amountUsd;
       $scope.details.serviceFee = results.serviceFee;
       $scope.details.chargeUsd = results.chargeUsd;
