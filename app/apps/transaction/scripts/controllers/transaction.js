@@ -58,7 +58,7 @@ angular
     Transaction.getTransactions().then(
       function (response) {
         $scope.transactions = response;
-        console.log($scope.$broadcast('dataloaded'));
+        $scope.$broadcast('dataloaded');
       },
       function () {});
   });

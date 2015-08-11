@@ -148,7 +148,6 @@ angular
           },
           function () {
             $scope.laddaPay = false;
-            console.log('Error');
           });
       }
     };

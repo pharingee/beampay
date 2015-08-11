@@ -273,7 +273,6 @@ angular
 
     var payment = function (data, status) {
       var errors = {};
-      console.log(data, status);
 
       if (!data) {
         appRedirectModal(ErrorConstants.unknownError);
