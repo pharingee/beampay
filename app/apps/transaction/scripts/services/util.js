@@ -136,9 +136,21 @@ angular.module('app.transaction')
       return Math.ceil(amount * 100) / 100;
     };
 
-    var calculatePricing = function (amountGhs, pricing) {
+    var calculateAirtimePricing = function (amountGhs, pricing) {
       var amountUsd = toCurr(amountGhs / pricing.usdGhs);
-      var serviceFee = toCurr((pricing.percentualFee * amountUsd) + pricing.fixedFee);
+      var serviceFee = toCurr((pricing.airtime.percentualFee * amountUsd) + pricing.airtime.fixedFee);
+      var chargeUsd = toCurr(amountUsd + serviceFee);
+
+      return {
+        amountUsd: amountUsd,
+        serviceFee: serviceFee,
+        chargeUsd: chargeUsd
+      };
+    };
+
+    var calculateBillPricing = function (amountGhs, pricing) {
+      var amountUsd = toCurr(amountGhs / pricing.usdGhs);
+      var serviceFee = toCurr((pricing.bill.percentualFee * amountUsd) + pricing.bill.fixedFee);
       var chargeUsd = toCurr(amountUsd + serviceFee);
 
       return {
@@ -173,8 +185,11 @@ angular.module('app.transaction')
       toCurr: function (amount) {
         return toCurr(amount);
       },
-      calculatePricing: function (amountGhs, pricing) {
-        return calculatePricing(amountGhs, pricing);
+      calculateAirtimePricing: function (amountGhs, pricing) {
+        return calculateAirtimePricing(amountGhs, pricing);
+      },
+      calculateBillPricing: function (amountGhs, pricing) {
+        return calculateBillPricing(amountGhs, pricing);
       }
     };
   });
