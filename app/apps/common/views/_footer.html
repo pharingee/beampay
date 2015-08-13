@@ -1,12 +1,15 @@
 <footer>
   <div class="container">
-    <div class="row row-space">
-      <div class="col-md-3 section center-block">
+    <div class="row">
+      
+
+      <div class="col-sm-4 col-md-3 section">
         <img src="apps/common/images/logo/logo.png" alt="Beam Logo - White on Transparent">
         <h4>Care for loved ones in Ghana quickly and affordably.</h4>
       </div>
+      
 
-      <div class="col-md-3 section center-block" ng-controller="FooterCtrl">
+      <div class="col-sm-4 col-md-3 section foot-links" ng-controller="FooterCtrl">
         <h4>LINKS</h4>
         <ul>
           <li ng-show="landing"><a ui-sref="landing">Homepage</a></li>
@@ -15,24 +18,27 @@
           <li><a ui-sref="app.gift">Send Gifts Home to Ghana</a></li>
         </ul>
       </div>
-      <div class="col-md-6 section center-block">
+      <div class="col-sm-4 col-md-3 section contact-links">
         <h4>CONTACT US</h4>
         <ul>
           <li><i class="fa fa-whatsapp"></i>&nbsp; +233 (0)245 025 019</li>
           <li><i class="lnr lnr-phone-handset"></i>&nbsp;+1 (415) 871 0438 </li>
           <li>SMS:&nbsp;+1 (415) 881 4216</li>
         </ul>
+      </div>
+      <div class="col-sm-4 col-md-3 section">
         <ul>
           <li><i class="fa fa-envelope-o"></i>&nbsp;  hello@beampay.co</li>
           <li><i class="fa fa-skype"></i>&nbsp;
             fbenke0410</li>
-        </ul>
+          </ul>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="col-xs-12 copyright text-center">
+          <h6>Copyright &#169; 2015 Beam Pay. All rights reserved.</h6>
+        </div>
       </div>
 
-          <div class="row copyright">
-            <div class="col-xs-12 text-center">
-              <h6>Copyright &#169; 2015 Beam Pay. All rights reserved.</h6>
-            </div>
-          </div>
-        </div>
-      </footer>
+    </div>
+  </footer>
