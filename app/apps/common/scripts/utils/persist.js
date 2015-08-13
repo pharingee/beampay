@@ -9,6 +9,7 @@ angular
     var FIRST_NAME_KEY = 'firstName';
     var LAST_NAME_KEY = 'lastName';
     var COMPLETE_KEY = 'complete';
+    var REFERRAL_KEY = 'referralCode';
     // var AVATAR_URL_KEY = 'avatar_url';
 
     var PRICING_KEY = 'pricing';
@@ -46,12 +47,18 @@ angular
         firstName: $cookieStore.get(FIRST_NAME_KEY),
         lastName: $cookieStore.get(LAST_NAME_KEY),
         complete: $cookieStore.get(COMPLETE_KEY),
-        initials: initials
+        initials: initials,
+        referralCode: $cookieStore.get(REFERRAL_KEY)
       };
     };
 
     var completeUser = function () {
       $cookieStore.put(COMPLETE_KEY, true);
+      return true;
+    };
+
+    var setReferralCode = function(referralCode){
+      $cookieStore.put(REFERRAL_KEY, referralCode);
       return true;
     };
 
@@ -103,6 +110,10 @@ angular
       },
       getPricing: function () {
         return getPricing();
+      },
+
+      setReferralCode: function(referralCode){
+        return setReferralCode(referralCode);
       }
     };
   });

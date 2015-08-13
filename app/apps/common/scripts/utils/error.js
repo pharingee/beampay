@@ -293,9 +293,9 @@ angular
       var errors = {};
 
       if (data.detail === '0') {
-        errors.top = ErrorConstants.invalidParameters;
+        errors.referralCode = ErrorConstants.invalidParameters;
       }else if (data.detail === '2') {
-        errors.top = ErrorConstants.invalidReferral;
+        errors.referralCode = ErrorConstants.invalidReferral;
       }
 
       return errors;

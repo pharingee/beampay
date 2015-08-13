@@ -2,7 +2,7 @@
 
 angular
   .module('app.settings')
-  .controller('OnboardNameCtrl', function ($scope, $state, Onboard, Error) {
+  .controller('OnboardNameCtrl', function ($scope, $state, Onboard, Error, Referral) {
 
     $scope.settings = {};
 
@@ -46,11 +46,11 @@ angular
 
       $scope.laddaOnboard = true;
       if ($scope.settings.referralCode) {
-        Onboard.setReferral($scope.settings.referralCode).then(function (){
+        Referral.setReferral($scope.settings.referralCode).then(function (){
           saveName();
         }, function (data) {
           $scope.laddaOnboard = false;
-          if (data.details && data.details === '1') {
+          if (data.detail && data.detail === '1') {
             saveName();
           }else{
             $scope.settings.errors = Error.setReferral(data);
