@@ -44,7 +44,7 @@
 
 @mixin facebook-button(){
 
-  background-color: #36528f;
+  background-color: $fb-blue;
   color: $white;
 
   padding-top: 15px;
@@ -58,4 +58,36 @@
 .btn-success{
   background-color: $green;
   border-color: $green;
+}
+
+.btn-fb {
+  background-color: $fb-blue;
+  color: white;
+}
+
+.btn-fb:hover{
+  background-color: white;
+  color: $fb-blue;
+  border: 1px solid $fb-blue;
+}
+
+.btn-tw {
+  background-color: $tw-blue;
+  color: white;
+}
+
+.btn-tw:hover {
+  background-color: white;
+  color: $tw-blue;
+  border: 1px solid $tw-blue;
+}
+
+.btn-gm {
+  background-color: white;
+  color: $gm-red;
+  border: 1px solid $gm-red;
+}
+
+.btn-gm:hover {
+  border: 1px solid rgba(220, 0, 0, 0.7);
 }

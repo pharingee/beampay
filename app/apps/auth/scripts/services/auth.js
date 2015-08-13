@@ -13,18 +13,19 @@ angular
       Persist.saveUserName(firstName, lastName);
     };
 
-    var signup = function (email, pass1, pass2, privacy) {
+    var signup = function (user) {
       var url = API_SERVER + 'signup/';
       var deferred = $q.defer();
       Persist.deleteUser();
 
       $http.post(url, {
-        'email': email,
-        'password1': pass1,
-        'password2': pass2,
-        'acceptedPrivacyPolicy': privacy,
+        'email': user.email,
+        'password1': user.pass1,
+        'password2': user.pass2,
+        'acceptedPrivacyPolicy': user.privacy,
+        'referralCode': user.referralCode
       }).success(function () {
-        Persist.saveEmail(email);
+        Persist.saveEmail(user.email);
         deferred.resolve();
       }).error(function (data, status) {
         deferred.reject({data: data, status: status});
@@ -111,8 +112,8 @@ angular
       saveName: function (firstName, lastName) {
         return saveName(firstName, lastName);
       },
-      signup: function (email, pass1, pass2, privacy) {
-        return signup(email, pass1, pass2, privacy);
+      signup: function (user) {
+        return signup(user);
       },
       signIn: function (email, pass) {
         return signIn(email, pass);

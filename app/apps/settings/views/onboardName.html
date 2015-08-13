@@ -27,10 +27,10 @@
           <label for="lastName">Last name</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.lastName}}</span>
           <input ng-model="settings.lastName" type="text" class="form-control" placeholder="Enter last name">
         </div>
-        <!-- <div class="form-group">
-          <label for="lastName">Do you have a referral code? Enter it here.</label>
+        <div class="form-group">
+          <label for="lastName">Do you have a referral code? Enter it here.</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.referralCode}}</span>
           <input ng-model="settings.referralCode" type="text" class="form-control" placeholder="Enter referral code">
-        </div> -->
+        </div>
         <div class="submit">
           <button ladda="laddaOnboard" type="submit" class="btn btn-default" ng-click="settings.submit()">Next</button>
         </div>
