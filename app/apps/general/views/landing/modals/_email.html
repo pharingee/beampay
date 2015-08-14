@@ -3,7 +3,7 @@
     <h3 class="modal-title">Tell a friend about Beam</h3>
     <button type="button" class="close hidden-xs" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" stop-event="touchend">
     <form class="form">
       <div class="row">
         <div class="col-sm-6">
@@ -55,5 +55,5 @@
   <button class="btn btn-success" ng-show="loading" disabled>Sending...</button>
 </div>
 </form>
-</div> 
+</div>
 </div>
