@@ -139,6 +139,9 @@ angular.module('app.transaction')
     var calculateAirtimePricing = function (amountGhs, pricing) {
       var amountUsd = toCurr(amountGhs / pricing.usdGhs);
       var serviceFee = toCurr((pricing.airtime.percentualFee * amountUsd) + pricing.airtime.fixedFee);
+      if (pricing.freeTransactionNo > 0) {
+        serviceFee = 0;
+      }
       var chargeUsd = toCurr(amountUsd + serviceFee);
 
       return {
@@ -151,6 +154,9 @@ angular.module('app.transaction')
     var calculateBillPricing = function (amountGhs, pricing) {
       var amountUsd = toCurr(amountGhs / pricing.usdGhs);
       var serviceFee = toCurr((pricing.bill.percentualFee * amountUsd) + pricing.bill.fixedFee);
+      if (pricing.freeTransactionNo > 0) {
+        serviceFee = 0;
+      }
       var chargeUsd = toCurr(amountUsd + serviceFee);
 
       return {

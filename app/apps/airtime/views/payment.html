@@ -15,7 +15,7 @@
         <p>$ {{details.chargeUsd}}</p>
       </div>
     </div>
-    <span style="font-size:14px;">Please note that you might incur a small charge from your bank for payments from outside the U.S.</span>
+    <span style="font-size:14px;">Please note that you might incur a small charge from your bank for payments from outside the U.S.<br><span ng-if="pricing.freeTransactionNo > 0">*This transaction comes to you free of service charge due to the <a ui-sref="app.referrals">referral points</a> you have accumulated.</span></span>
     <div class="form-group">
           <div class="service-button">
             <button ladda="laddaPay" class="btn btn-success form-control" ng-click="confirm()">Pay</button>

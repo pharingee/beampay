@@ -39,7 +39,8 @@ angular
     'app.internet',
     'app.school',
     'app.valet',
-    'app.gift'
+    'app.gift',
+    'app.referrals'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, laddaProvider) {
