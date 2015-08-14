@@ -2,7 +2,7 @@
 
 angular
   .module('app.auth')
-  .controller('SignupCtrl', function ($scope, $state, $stateParams, $auth, $location, Auth, Error) {
+  .controller('SignupCtrl', function ($scope, $state, $stateParams, $auth, $location, Auth, Referral, Error) {
 
     if (Auth.isLoggedIn()) {
       $state.transitionTo('app');
@@ -12,6 +12,7 @@ angular
     $scope.signup = {
       privacy: true
     };
+    $scope.signup.referralCode = $stateParams.referralCode;
 
     // $scope.errors = {
     //   email : "Email is required"
@@ -52,7 +53,7 @@ angular
 
       // Server Request
       $scope.laddaSignup = true;
-      Auth.signup(email, pass1, pass2, privacy)
+      Auth.signup($scope.signup)
         .then(function () {
           $scope.laddaSignup = false;
           $state.transitionTo('signupComplete');
@@ -71,6 +72,10 @@ angular
         $scope.laddaFbSignup = false;
         Auth.persist(req.data.id, req.data.token, req.data.complete);
         Auth.saveName(req.data.firstName, req.data.lastName);
+
+        if ($stateParams.referralCode) {
+          Referral.setReferral($stateParams.referralCode);
+        }
 
         if (!req.data.complete) {
           $location.path($state.href('onboard.name').slice(2));

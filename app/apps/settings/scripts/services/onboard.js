@@ -33,20 +33,6 @@ angular.module('app.settings')
       return deferred.promise;
     };
 
-    var setReferral = function (referralCode) {
-      var url = API_SERVER + 'referral/add/';
-      var deferred = $q.defer();
-
-      $http.post(url, {code: referralCode}).
-      success(function(){
-        deferred.resolve();
-      }).
-      error(function (data){
-        deferred.reject(data);
-      });
-      return deferred.promise;
-    };
-
     var getProfile = function () {
       var url = API_SERVER + 'account/profile/';
       var deferred = $q.defer();
@@ -67,9 +53,6 @@ angular.module('app.settings')
       },
       saveAddress: function(address){
         return saveAddress(address);
-      },
-      setReferral: function (referralCode) {
-        return setReferral(referralCode);
       },
       getProfile: function () {
         return getProfile();

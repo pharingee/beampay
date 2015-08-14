@@ -16,11 +16,11 @@ app.use(bodyParser.urlencoded({
 app.use(logger('dev'));
 
 // Force HTTPS
-app.use(function(req, res, next) {
-  var schema = req.headers['x-forwarded-proto'];
-  if (schema === 'https') { return next();}
-  res.redirect('https://' + req.headers.host + req.url);
-});
+// app.use(function(req, res, next) {
+//   var schema = req.headers['x-forwarded-proto'];
+//   if (schema === 'https') { return next();}
+//   res.redirect('https://' + req.headers.host + req.url);
+// });
 
 
 // Dont cache
@@ -31,6 +31,11 @@ app.use(function (req, res, next) {
     'Pragma': 'no-cache'
   });
   next();
+});
+
+//Signup from Social Media
+app.get('/auth/signup', function (req, res) {
+  res.redirect('/#!' + req.url);
 });
 
 // Static Files Route for Angular App

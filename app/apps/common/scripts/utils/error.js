@@ -273,7 +273,6 @@ angular
 
     var payment = function (data, status) {
       var errors = {};
-      console.log(data, status);
 
       if (!data) {
         appRedirectModal(ErrorConstants.unknownError);
@@ -294,9 +293,9 @@ angular
       var errors = {};
 
       if (data.detail === '0') {
-        errors.top = ErrorConstants.invalidParameters;
+        errors.referralCode = ErrorConstants.invalidParameters;
       }else if (data.detail === '2') {
-        errors.top = ErrorConstants.invalidReferral;
+        errors.referralCode = ErrorConstants.invalidReferral;
       }
 
       return errors;

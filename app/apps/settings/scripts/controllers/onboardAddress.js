@@ -24,7 +24,6 @@ angular
         $scope.settings.firstName = response.firstName;
         $scope.settings.lastName = response.lastName;
         $scope.settings.country = 'US';
-        console.log(response.profile);
 
         var date = new Date($scope.settings.dateOfBirth);
         $scope.settings.date = {

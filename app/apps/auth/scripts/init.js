@@ -15,7 +15,7 @@ angular
         }
       })
       .state('signup', {
-        url: urlPrefix + 'signup/?next',
+        url: urlPrefix + 'signup/?next&referralCode',
         templateUrl: tempPrefix + 'signup.html',
         data: {
           pageTitle: 'Signup'

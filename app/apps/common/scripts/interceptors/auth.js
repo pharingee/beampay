@@ -24,12 +24,21 @@ angular
         if (Raven) {
           var ravenResponse = {};
           $.extend(ravenResponse, response);
-          delete ravenResponse.headers.Authorization;
-          delete ravenResponse.config.headers.Authorization;
-          delete ravenResponse.config.data.password;
-          delete ravenResponse.config.data.password1;
-          delete ravenResponse.config.data.password2;
-          delete ravenResponse.data.token;
+          try{
+            delete ravenResponse.config.data.password;
+            delete ravenResponse.config.data.password1;
+            delete ravenResponse.config.data.password2;
+          } catch(err) {}
+
+          try{
+            delete ravenResponse.headers.Authorization;
+            delete ravenResponse.data.token;
+          } catch(err) {}
+
+          try{
+            delete ravenResponse.config.headers.Authorization;
+          } catch(err) {}
+
           Raven.captureException(JSON.stringify(ravenResponse));
         }
       }

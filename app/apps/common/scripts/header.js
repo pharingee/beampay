@@ -2,7 +2,7 @@
 
 angular
   .module('app')
-  .controller('HeaderCtrl', function ($scope, $state, Auth, Persist) {
+  .controller('HeaderCtrl', function ($scope, $state, $modal, Auth, Persist) {
 
     if (Auth.isLoggedIn()) {
       $scope.loggedin = true;
@@ -35,5 +35,17 @@ angular
     };
 
     $scope.currentUser = Persist.getUser();
+
+    $scope.referralModal = function () {
+      $modal.open({
+        templateUrl: 'apps/settings/views/referralModal.html',
+        controller: 'ReferralModalCtrl',
+        resolve: {
+          referralCode: function () {
+            return $scope.referralCode;
+          }
+        }
+      });
+    };
 
   });
