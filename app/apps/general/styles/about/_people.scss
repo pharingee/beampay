@@ -1,73 +1,73 @@
 .about-beam {
   background-color: $white;
-  padding: 40px 10px; 
 
   .content{ 
     text-align: justify;
 
-     
-      .about-title{
-        color: $gray-dark;
-        font-size: 16px;
-        font-weight: 700;
-        padding:20px 0 20px 0;
-      }
 
-      .team-mate{
-        padding: 3px 3px 20px;
-        border: 1px solid #eee;
-        text-align: center;
-        margin: 15px 50px 15px 0;
-      }
-       
-      .details{
-        color:$gray-light;
-        font-weight: 400;
-        font-size: 20px;
-      }
-
-      .team-img{ 
-      }
-
-      .cft-img{ 
-        height: 245px;
-      }
-
-      .ivt-img{ 
-        height: 215px;
-      }
-
-      .pc-bord{
-        border: 1px solid #eee;
-        padding: 3px;
-      }
-
-      .padd-tb{
-        padding: 30px 0 30px 0;
-      }
-
-      .name{ 
-        color:$gray-dark; 
-        font-size: 1.2em;
-        font-weight: 600;
-      }
-
-      .write-up{
-        font-weight: 400;
-        font-size: 17px;
-        color:$gray-light; 
-        text-align: justify;
-      }
-
-      .team-sec, .investor-sec{
-        margin-bottom: 40px;
-      }
-
-      
+    .about-title{
+      color: $gray-dark;
+      font-size: 16px;
+      font-weight: 700;
+      padding:20px 0 20px 0;
     }
-    .inv{
-      padding:40px 5px 40px 40px;
+
+    .team-mate{
+      padding: 3px 3px 20px;
+      border: 1px solid #eee;
+      text-align: center;
+      margin: 15px 50px 15px 0;
+    }
+
+    .details{
+      color:$gray-light;
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    .team-img{ 
+    }
+
+    .cft-img{ 
+      height: 245px;
+    }
+
+    .ivt-img{ 
+      height: 215px;
+    }
+
+    .pc-bord{
+      border: 1px solid #eee;
+      padding: 3px;
+      margin-bottom: 1.5em;
+    }
+
+    .padd-tb{
+      padding: 30px 0 30px 0;
+    }
+
+    .name{ 
+      color:$gray-dark; 
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    .write-up{
+      font-weight: 400;
+      font-size: 17px;
+      color:$gray-light; 
+      text-align: justify;
+    }
+
+    .team-sec{
+      margin-bottom: 40px;
     }
 
 
   }
+  .inv{
+    padding:40px 5px 40px 40px;
+  }
+
+
+}

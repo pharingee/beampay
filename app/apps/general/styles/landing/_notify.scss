@@ -20,10 +20,10 @@
 
   input[type=email] {
     display: inline-block;
-    margin-top: 25px;
+    margin-top: 0px;
     margin-right: 10px;
-    max-width: 250px;
-    font-size: 1.5em;
+    min-width: 220px;
+    font-size: 1.1em;
     height: 43px;
 
     @media screen and (max-width: $screen-xs-max) {
@@ -47,9 +47,7 @@
   }
 
   .btn-default{
-    font-size: 1.4em;
-     padding: 5px 20px;
-     margin: 35px 30px;
+    font-size: 1.4em; 
      color: $green;
      background-color: $white;
   }
@@ -78,6 +76,10 @@
     max-width: 500px;
     padding-top: 5px;
     border-color: $green - 10;
+  }
+
+  .form-inline{
+    display: inline-block;
   }
 
 }
