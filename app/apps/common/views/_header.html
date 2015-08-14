@@ -33,7 +33,7 @@
             </li>
           </ul>
         </li> -->
-        <li ><a href="" ng-click="referralModal()">Ask a friend to join</a></li>
+        <li ng-if="loggedin && !logoutInProgress"><a href="" ng-click="referralModal()">Ask a friend to join</a></li>
         <li class="dropdown" ng-if="loggedin && !logoutInProgress">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span ng-if="currentUser.firstName || currentUser.lastName">{{currentUser.firstName}} {{currentUser.lastName}}</span>

@@ -48,6 +48,8 @@ angular
 
     Transaction.getReferral().then(function (response){
       $scope.referral = response;
+      $scope.pricing.freeTransactionNo = response.freeTransactionNo;
+      $scope.calculatePricing();
     }, function(){});
 
     // $scope.reSavePayment = function () {
@@ -81,6 +83,7 @@ angular
       } else {
         $scope.details.amountGhs = '125';
       }
+      $scope.calculatePricing();
     };
 
     $scope.setDetails = function () {

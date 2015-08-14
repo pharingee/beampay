@@ -53,6 +53,10 @@ angular.module('app.transaction')
       return serverGet('referral/');
     };
 
+    var getReferralStatus = function () {
+      return serverGet('referral/status/');
+    };
+
     var getTransactions = function () {
       return serverGet('transaction/');
     };
@@ -117,6 +121,9 @@ angular.module('app.transaction')
       },
       getReferral: function () {
         return getReferral();
+      },
+      getReferralStatus: function () {
+        return getReferralStatus();
       },
       savePayment: function (parameters) {
         return savePayment(parameters);
