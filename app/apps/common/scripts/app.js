@@ -25,6 +25,7 @@ angular
     'app.config',
     'app.constants',
     'app.interceptors',
+    'app.directives',
     'app.utils',
 
     //App modules
