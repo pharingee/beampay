@@ -8,8 +8,7 @@
 
     <div class="col-sm-9 col-lg-10 service-wrapper input-block-level">
       <div ui-view="">
-        <div class="services" ng-controller="HomeCtrl">
-          <!-- <div class="container-fluid"  ng-intro-method="Start" ng-intro-options="IntroOptions" ng-intro-autostart="true"> -->
+        <div class="services" ng-controller="HomeCtrl"> 
           <div class="container-fluid">
             <h4 ng-click="Start()">Hello {{currentUser.firstName}}!</h4>
             <h5>How would you like to support a loved one in Ghana today?</h5>
@@ -109,39 +108,28 @@
           </div><!--./container-fluid-->
         </div><!--./services-->
 
-      </div><!--.ui-view-->
-      <!-- </div> -->
-      <!-- </div> -->
+      </div><!--.ui-view--> 
       <!-- Dashboard Footer -->
       <div class="row">
-        <div class="copyright pull-left col-sm-4 col-md-4 col-xs-6">
-          BeamPay Inc    |    Copyright 2015
+        <div class="copyright col-xs-12 col-sm-4">
+          <p class="text-center">
+            BeamPay Inc &nbsp; | &nbsp; Copyright 2015
+          </p>
         </div>
-
-        <div class="payment-cards col-sm-4 col-md-4 col-xs-6">
-          <p class="small-text text-center">Payment options on Beam</p>
-          <div class="row">
-            <div class="col-md-3 col-xs-6">
-              <img src="apps/transaction/images/PEPSized_Mastercard.png">
-            </div>
-            <div class="col-md-3 col-xs-6">
-              <img src="apps/transaction/images/PEPSized_PayByCreditCard.png">
-            </div>
-            <div class="col-md-3 col-xs-6">
-              <img src="apps/transaction/images/PEPSized_PayPal.png">
-            </div>
-            <div class="col-md-3 col-xs-6">
-              <img src="apps/transaction/images/PEPSized_Visa.png">
-            </div>
+      <!-- </div>
+      <div class="row"> -->
+        <div class="payment-cards col-xs-12 col-sm-4">
+          <p class="small-text text-center">Payment options on Beam</p> 
+          <ul>
+            <li> <img src="apps/transaction/images/PEPSized_Mastercard.png"></li>
+            <li><img src="apps/transaction/images/PEPSized_PayByCreditCard.png"></li>
+            <li><img src="apps/transaction/images/PEPSized_PayPal.png"></li>
+            <li><img src="apps/transaction/images/PEPSized_Visa.png"></li>
+            </ul>
           </div>
-        </div>
+        </div><!-- End Dashboard Footer -->
+        <br>
 
-        <!-- <div class="help pull-right col-sm-4 col-md-4 hidden-xs">
-          <a href="#/"><span class="lnr lnr-question-circle"></span>Help</a>
-        </div> -->
-      </div><!-- End Dashboard Footer -->
-      <br>
-
-    </div>
-  </div><!--./row-->
-</div><!--./container-fluid-->
+      </div>
+    </div><!--./row-->
+  </div><!--./container-fluid-->
