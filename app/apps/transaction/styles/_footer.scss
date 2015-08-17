@@ -14,17 +14,17 @@
 .payment-cards{
 	display: block;
 	position: relative;
+
+	ul li{
+		list-style-type: none;
+		display: inline-block;
+	}
 }
 
 .payment-cards .small-text{
 	color: #aaa;
 	font-size: 12px;
 	font-weight: 500;
-}
-
-ul li{
-	list-style-type: none; 
-	display: inline-block; 
 }
 
 .payment-cards img{
