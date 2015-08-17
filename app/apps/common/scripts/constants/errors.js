@@ -31,5 +31,6 @@ angular
     exchangeRateChanged: 'The international exchange rate has changed. Please choose your service again.',
     incompleteProfile: 'Your profile is incomplete please update your details in your settings',
     invalidReferral: 'You have entered an invalid referral code. Please try again',
-    setPassword: 'A password has already been set. If you cannot remember please logout and send a reset password to your email.'
+    setPassword: 'A password has already been set. If you cannot remember please logout and send a reset password to your email.',
+    fbAccountExists: 'A Facebook account exists with this email. Please sign in with Facebook if this email belongs to you'
   });
