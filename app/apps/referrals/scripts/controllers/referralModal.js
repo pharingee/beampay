@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('app.settings')
+  .module('app.referrals')
   .controller('ReferralModalCtrl', function ($scope, $modalInstance, $state, referralCode, Referral, ROOT_URL, FACEBOOK_CLIENT_ID) {
 
     $scope.baseUrl = ROOT_URL;

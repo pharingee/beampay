@@ -38,7 +38,7 @@ angular
 
     $scope.referralModal = function () {
       $modal.open({
-        templateUrl: 'apps/settings/views/referralModal.html',
+        templateUrl: 'apps/referrals/views/referralModal.html',
         controller: 'ReferralModalCtrl',
         resolve: {
           referralCode: function () {
