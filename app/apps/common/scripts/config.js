@@ -2,14 +2,14 @@
 
  angular.module('app.config', [])
 
-.constant('name', 'production')
+.constant('name', 'staging')
 
-.constant('API_SERVER', 'https://api.beampay.co/api/v1/')
+.constant('API_SERVER', 'https://api-dev.beampay.co/api/v1/')
 
-.constant('ROOT_URL', 'https://www.beampay.co/')
+.constant('FACEBOOK_CLIENT_ID', 1598968723654118)
 
-.constant('FACEBOOK_CLIENT_ID', 1562424617308529)
+.constant('STRIPE_KEY', 'pk_test_zYX7SkWrbMZCszrPcoDPu4iI')
 
-.constant('STRIPE_KEY', 'pk_live_7A6fR5AipZB3OgEuLfiivAUw')
+.constant('ROOT_URL', 'https://dev.beampay.co/')
 
 ;
