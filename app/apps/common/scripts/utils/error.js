@@ -83,7 +83,6 @@ angular
         } else if (data.nonFieldErrors[0] === '22') {
           // User account not activated yet.
           errors.email = ErrorConstants.fbAccountExists;
-          errors.fbTop = ErrorConstants.fbAccountExists;
         }
       }
 
