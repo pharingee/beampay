@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.settings')
+angular.module('app.referrals')
   .service('Referral', function ($http, $q, API_SERVER, Persist){
 
     var getReferral = function () {

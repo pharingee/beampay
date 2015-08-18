@@ -49,14 +49,19 @@ angular
     }, function () {});
 
     Transaction.getPricing().then(function (response){
-      $scope.pricing = response;
+      if ($scope.referral) {
+        $scope.pricing.freeTransactionNo = $scope.referral.freeTransactionNo;
+      }
+      $scope.calculatePricing();
     }, function(error){
       $scope.errors = Error.pricing(error.data, error.status);
     });
 
     Transaction.getReferral().then(function (response){
       $scope.referral = response;
-      $scope.pricing.freeTransactionNo = response.freeTransactionNo;
+      if ($scope.pricing) {
+        $scope.pricing.freeTransactionNo = response.freeTransactionNo;
+      }
       $scope.calculatePricing();
     }, function(){});
 
