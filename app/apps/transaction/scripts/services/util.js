@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.transaction')
-  .service('TransactionUtil', function ($q, STRIPE_KEY, $modal){
+  .service('TransactionUtil', function ($q, STRIPE_KEY, $modal, Error){
     var getFullName = function (shortName) {
       var fullName = '';
       switch (shortName) {
@@ -166,6 +166,25 @@ angular.module('app.transaction')
       };
     };
 
+    var setupInstaPayTransaction = function (response) {
+      var scope = {};
+
+      if (!response.user.profile.informationComplete) {
+        Error.incompleteModal();
+      } else {
+        scope.email = response.user.email;
+      }
+
+      if (!response.pricing) {
+        scope.errors = Error.pricing({}, 404);
+      }
+
+      scope.pricing = response.pricing;
+      scope.pricing.freeTransactionNo = response.referral.freeTransactionNo;
+      scope.referral = response.referral;
+      return scope;
+    };
+
     return {
       getDescription: function (transaction) {
         return getDescription(transaction);
@@ -196,6 +215,9 @@ angular.module('app.transaction')
       },
       calculateBillPricing: function (amountGhs, pricing) {
         return calculateBillPricing(amountGhs, pricing);
+      },
+      setupInstaPayTransaction: function (response) {
+        return setupInstaPayTransaction(response);
       }
     };
   });

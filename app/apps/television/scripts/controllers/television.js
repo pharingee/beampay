@@ -40,55 +40,14 @@ angular
     $scope.dstvProvider = 'DST';
     $scope.gotvProvider = 'GOT';
 
-    Transaction.getProfile().then(function (response) {
-      if (!response.profile.informationComplete) {
-        Error.incompleteModal();
-      } else {
-        $scope.email = response.email;
-      }
-    }, function () {});
-
-    Transaction.getPricing().then(function (response){
-      $scope.pricing = response;
-      if ($scope.referral) {
-        $scope.pricing.freeTransactionNo = $scope.referral.freeTransactionNo;
-      }
-      $scope.calculatePricing();
-    }, function(error){
-      $scope.errors = Error.pricing(error.data, error.status);
-    });
-
-    Transaction.getReferral().then(function (response){
-      $scope.referral = response;
-      if ($scope.pricing) {
-        $scope.pricing.freeTransactionNo = response.freeTransactionNo;
-      }
-      $scope.calculatePricing();
-    }, function(){});
-
-    $scope.reSavePayment = function () {
-      if (!$scope.paymentSaveSuccess) {
-        var payment = {
-          stripeToken: $scope.paymentToken.id,
-          transactionId: $scope.details.transactionId,
-          type: $scope.transactionType
-        };
-        Transaction.savePayment(payment).then(
-          function() {
-            $scope.paymentSaveSuccess = true;
-            TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
-          }, function (error) {
-            $scope.paymentSaveSuccess = false;
-            $scope.errors = Error.payment(error.data, error.status);
-          });
-      }
-    };
+    Transaction.getTransactionSetup().then(
+      function (response){
+        $.extend($scope, TransactionUtil.setupInstaPayTransaction(response));
+        $scope.calculatePricing();
+      }, function(error){});
 
     $scope.calculatePricing = function () {
-      var results = TransactionUtil.calculateBillPricing($scope.details.amountGhs, $scope.pricing);
-      $scope.details.amountUsd = results.amountUsd;
-      $scope.details.serviceFee = results.serviceFee;
-      $scope.details.chargeUsd = results.chargeUsd;
+      $.extend($scope.details, TransactionUtil.calculateBillPricing($scope.details.amountGhs, $scope.pricing));
     };
 
     $scope.setDetails = function () {
@@ -125,10 +84,7 @@ angular
     };
 
     $scope.getProvider = function () {
-      if ($scope.details.billType === $scope.dstvProvider) {
-        return 'DSTV';
-      }
-      return 'GOTV';
+      return TransactionUtil.getFullName($scope.details.billType);
     };
 
     $scope.confirm = function () {
