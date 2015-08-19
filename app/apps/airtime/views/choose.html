@@ -66,15 +66,17 @@
       $ {{ details.chargeUsd }}
     </div>
   </div>
-  <div class="row" ng-if="pricing.freeTransactionNo > 0">
-    <p><small>*This transaction is free of any service charges.</small></p>
-  </div>
-  <br><br>
+  <br>
 
   <div class="form-group">
       <div class="service-button">
         <input type="submit" class="btn btn-success form-control">
       </div>
+  </div>
+  <div class="row" ng-if="pricing.freeTransactionNo > 0">
+    <div class="col-xs-12">
+      <p class="text-muted">*This transaction is free of any service charges.</p>
+    </div>
   </div>
   </div>
 </form>

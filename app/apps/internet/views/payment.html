@@ -14,8 +14,13 @@
       </div>
     </div>
   </div>
-  <span style="font-size:14px;">Please note that you might incur a small charge from your bank for payments from outside the U.S.<br><span ng-if="pricing.freeTransactionNo > 0">*This transaction is free of any service charges.</span></span>
+  <span style="font-size:14px;">Please note that you might incur a small charge from your bank for payments from outside the U.S.</span>
   <div class="service-button">
       <button ladda="laddaPay" class="btn btn-success form-control" ng-click="confirm()">Pay</button>
+  </div>
+  <div class="row" ng-if="pricing.freeTransactionNo > 0">
+    <div class="col-xs-12">
+      <p class="text-muted">*This transaction is free of any service charges.</p>
+    </div>
   </div>
 </div>
