@@ -74,19 +74,6 @@ angular
       }
     }, function () {});
 
-    // Transaction.getPricing().then(function (response){
-    //   $scope.pricing = response;
-    // }, function(error){
-    //   $scope.errors = Error.pricing(error.data, error.status);
-    // });
-
-    // $scope.calculatePricing = function () {
-    //   var results = TransactionUtil.calculatePricing($scope.details.amountGhs, $scope.pricing);
-    //   $scope.details.amountUsd = results.amountUsd;
-    //   $scope.details.serviceFee = results.serviceFee;
-    //   $scope.details.chargeUsd = results.chargeUsd;
-    // };
-
     $scope.setDetails = function () {
       if (validateDetails()) {
         $scope.contactState = true;

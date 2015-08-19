@@ -61,6 +61,10 @@ angular.module('app.transaction')
       return serverGet('transaction/');
     };
 
+    var getTransactionSetup = function () {
+      return serverGet('transaction/setup/');
+    }
+
     var getTransaction = function (transactionId, transactionType) {
       return serverGet('transaction/' + transactionId + '/?type=' + transactionType);
     };
@@ -136,6 +140,9 @@ angular.module('app.transaction')
       },
       getProfile: function () {
         return getProfile();
+      },
+      getTransactionSetup: function () {
+        return getTransactionSetup();
       }
     };
 
