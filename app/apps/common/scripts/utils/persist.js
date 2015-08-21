@@ -10,8 +10,7 @@ angular
     var LAST_NAME_KEY = 'lastName';
     var COMPLETE_KEY = 'complete';
     var REFERRAL_KEY = 'referralCode';
-    // var AVATAR_URL_KEY = 'avatar_url';
-
+    // var AVATAR_URL_KEY = 'avatar_url'
     var PRICING_KEY = 'pricing';
 
     // USER
@@ -34,6 +33,8 @@ angular
       $cookieStore.remove(FIRST_NAME_KEY);
       $cookieStore.remove(LAST_NAME_KEY);
       $cookieStore.remove(COMPLETE_KEY);
+      $cookieStore.remove(REFERRAL_KEY);
+      $cookieStore.remove(PRICING_KEY);
     };
 
     var getUser = function () {

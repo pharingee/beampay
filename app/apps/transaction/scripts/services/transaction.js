@@ -79,15 +79,16 @@ angular.module('app.transaction')
     var addAirtime = function (parameters) {
       var pricing = Persist.getPricing();
       parameters.exchangeRateId = pricing.exchangeRateId;
-      parameters.serviceFeeId = pricing.airtime.serviceFeeId;
+      parameters.serviceFeeId = pricing.airtime.id;
 
       return serverCall('transaction/add/airtime/', parameters);
     };
 
     var addBill = function (parameters) {
       var pricing = Persist.getPricing();
+      console.log(pricing);
       parameters.exchangeRateId = pricing.exchangeRateId;
-      parameters.serviceFeeId = pricing.bill.serviceFeeId;
+      parameters.serviceFeeId = pricing.bill.id;
       return serverCall('transaction/add/bill/', parameters);
     };
 
