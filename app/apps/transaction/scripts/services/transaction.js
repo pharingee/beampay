@@ -40,6 +40,9 @@ angular.module('app.transaction')
 
       $http.get(url).
         success(function(response){
+          if (response.pricing) {
+            Persist.savePricing(response.pricing);
+          }
           deferred.resolve(response);
         }).
         error(function (data) {
