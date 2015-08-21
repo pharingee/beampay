@@ -1,1 +1,65 @@
-<form class="form" ng-submit="setDetails()"> <div class="transaction-control"> <div class="form-group"> Which service provider would you like to pay for?<br> <p class="errors">{{errors.billType}}</p> <div class="radio"> <label> <input type="radio" ng-model="details.billType" value="ECG" checked> <img src="apps/utility/images/ecg-logo.15207d49.jpg" class="service-image"> </label> </div> <div class="radio"> <label> <input type="radio" ng-model="details.billType" value="GWC"> <img src="apps/utility/images/gwc-logo.ef205054.jpg" class="service-image"> </label> </div> </div> <div class="form-group"> <label for="accountNumber">Account number <span class="small text-muted">(optional)</span> <span class="errors">{{errors.accountNumber}}</span></label> <input ng-model="details.accountNumber" type="text" class="form-control" placeholder="Eg. 314491300123"> </div> <div class="form-group"> <label for="amount">How much in GHS would you like to pay? <span class="errors">{{errors.amountGhs}}</span></label> <input type="number" class="form-control" placeholder="Eg. 350" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="10" max="1000"> </div> <div class="row text-center" ng-show="details.amountGhs > 0"> <div class="col-md-3"> <strong>Base Cost</strong><br> $ {{ details.amountUsd }} </div> <div class="col-md-1"> <strong>&nbsp;</strong><br> + </div> <div class="col-md-3"> <strong>Service Fee</strong><br> $ {{ details.serviceFee }} </div> <div class="col-md-1"> <strong>&nbsp;</strong><br> = </div> <div class="col-md-3"> <strong>Total Cost</strong><br> $ {{ details.chargeUsd }} </div> </div> <br> <div class="form-group"> <div class="service-button"> <input type="submit" class="btn btn-success form-control"> </div> </div> <div class="row" ng-if="pricing.freeTransactionNo > 0"> <div class="col-xs-12"> <p class="text-muted">*This transaction is free of any service charges.</p> </div> </div> </div> </form>
+<form class="form" ng-submit="setDetails()">
+  <div class="transaction-control">
+    <div class="form-group">
+      Which service provider would you like to pay for?<br>
+      <p class="errors">{{errors.billType}}</p>
+        <div class="radio">
+            <label>
+               <input type="radio" ng-model="details.billType" value="ECG" checked>
+               <img src="apps/utility/images/ecg-logo.jpg" class="service-image">
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+               <input type="radio" ng-model="details.billType" value="GWC">
+               <img src="apps/utility/images/gwc-logo.jpg" class="service-image">
+            </label>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="accountNumber">Account number <span class="small text-muted">(optional)</span> <span class="errors">{{errors.accountNumber}}</span></label>
+      <input ng-model="details.accountNumber" type="text" class="form-control" placeholder="Eg. 314491300123">
+    </div>
+
+    <div class="form-group">
+      <label for="amount">How much in GHS would you like to pay? <span class="errors">{{errors.amountGhs}}</span></label>
+      <input type="number" class="form-control" placeholder="Eg. 350" ng-model="details.amountGhs" ng-change="calculatePricing()" required min="10" max="1000">
+    </div>
+
+    <div class="row text-center" ng-show="details.amountGhs > 0">
+      <div class="col-md-3">
+        <strong>Base Cost</strong><br>
+        $ {{ details.amountUsd }}
+      </div>
+      <div class="col-md-1">
+        <strong>&nbsp;</strong><br>
+        +
+      </div>
+      <div class="col-md-3">
+        <strong>Service Fee</strong><br>
+        $ {{ details.serviceFee }}
+      </div>
+      <div class="col-md-1">
+        <strong>&nbsp;</strong><br>
+        =
+      </div>
+      <div class="col-md-3">
+        <strong>Total Cost</strong><br>
+        $ {{ details.chargeUsd }}
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+      <div class="service-button">
+          <input type="submit" class="btn btn-success form-control">
+      </div>
+    </div>
+    <div class="row" ng-if="pricing.freeTransactionNo > 0">
+      <div class="col-xs-12">
+        <p class="text-muted">*This transaction is free of any service charges.</p>
+      </div>
+    </div>
+    </div>
+  </form>
