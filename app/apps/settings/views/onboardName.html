@@ -27,7 +27,7 @@
           <label for="lastName">Last name</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.lastName}}</span>
           <input ng-model="settings.lastName" type="text" class="form-control" placeholder="Enter last name">
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="!referredBy">
           <label for="lastName">Do you have a referral code? Enter it here.</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.referralCode}}</span>
           <input ng-model="settings.referralCode" type="text" class="form-control" placeholder="Enter referral code">
         </div>

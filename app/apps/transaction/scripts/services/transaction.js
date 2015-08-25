@@ -66,7 +66,7 @@ angular.module('app.transaction')
 
     var getTransactionSetup = function () {
       return serverGet('transaction/setup/');
-    }
+    };
 
     var getTransaction = function (transactionId, transactionType) {
       return serverGet('transaction/' + transactionId + '/?type=' + transactionType);

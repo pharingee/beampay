@@ -37,7 +37,7 @@ angular
       function (response){
         $.extend($scope, TransactionUtil.setupInstaPayTransaction(response));
         $scope.calculatePricing();
-      }, function(error){});
+      }, function(){});
 
     $scope.calculatePricing = function () {
       $.extend($scope.details, TransactionUtil.calculateAirtimePricing($scope.details.amountGhs, $scope.pricing));

@@ -214,7 +214,7 @@
             <h4 class="text-center">Status Updates</h4>
             <div class="transaction-comments">
               <div ng-repeat="comment in transaction.comments | orderBy:'timestamp' track by $index">
-                <div class="comment-item" ng-if="comment.author == 'user'">
+                <div class="comment-item" ng-if="comment.author == 'user' && comment.comment != 'PAID'">
                   <div class="row">
                     <div class="col-xs-4 col-xs-offset-6 time">
                       <span am-time-ago="comment.timestamp"></span>
@@ -231,7 +231,7 @@
                   <br>
                 </div>
 
-                <div class="comment-item" ng-if="comment.author != 'user'">
+                <div class="comment-item" ng-if="comment.author != 'user' || comment.comment == 'PAID'">
                   <div class="row">
                     <div class="col-xs-4 col-xs-offset-2 time">
                       <span am-time-ago="comment.timestamp"></span>

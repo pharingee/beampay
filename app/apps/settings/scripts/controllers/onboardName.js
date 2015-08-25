@@ -12,6 +12,13 @@ angular
         $scope.settings.submit = submit;
       }, function () {});
 
+    Referral.getReferral().then(
+      function (response) {
+        if (response.referredBy) {
+          $scope.referredBy = true;
+        }
+      }, function () {});
+
     var submit = function () {
       $scope.settings.errors = {};
       var firstName = $scope.settings.firstName;
