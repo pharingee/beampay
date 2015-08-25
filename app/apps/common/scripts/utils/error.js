@@ -16,17 +16,17 @@ angular
       });
     };
 
-    var dismissModal = function (message) {
-      $modal.open({
-        templateUrl: 'apps/common/views/modals/dismissModal.html',
-        controller: 'DismissModalCtrl',
-        resolve: {
-          message: function () {
-            return message;
-          }
-        }
-      });
-    };
+    // var dismissModal = function (message) {
+    //   $modal.open({
+    //     templateUrl: 'apps/common/views/modals/dismissModal.html',
+    //     controller: 'DismissModalCtrl',
+    //     resolve: {
+    //       message: function () {
+    //         return message;
+    //       }
+    //     }
+    //   });
+    // };
 
     var incompleteModal = function () {
       $modal.open({
@@ -304,6 +304,14 @@ angular
       return errors;
     };
 
+    var saveAddress = function (data) {
+      var errors = {};
+      if (!$.isEmptyObject(data)) {
+        errors.top = ErrorConstants.invalidParameters;
+      }
+      return errors;
+    };
+
     return {
       signup: function (data) {
         return signup(data);
@@ -352,6 +360,9 @@ angular
       },
       incompleteModal: function () {
         return incompleteModal();
+      },
+      saveAddress: function (data) {
+        return saveAddress(data);
       }
     };
   });

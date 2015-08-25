@@ -2,7 +2,7 @@
 
 angular
   .module('app.settings')
-  .controller('OnboardAddressCtrl', function ($scope, $state, Onboard, Persist, SettingsUtil) {
+  .controller('OnboardAddressCtrl', function ($scope, $state, Onboard, Persist, SettingsUtil, Error) {
 
     $scope.whatsAppMethod = 'WAP';
     $scope.smsMethod = 'SMS';
@@ -117,9 +117,9 @@ angular
       Onboard.saveAddress($scope.settings).then(function(){
         $scope.laddaOnboard = false;
         $state.transitionTo('app');
-      }, function(){
+      }, function(errors){
         $scope.laddaOnboard = false;
-        $scope.settings.errors.push('This page has errors');
+        $scope.settings.errors = Error.saveAddress(errors);
       });
 
     };
