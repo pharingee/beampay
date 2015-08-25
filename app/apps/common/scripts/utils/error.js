@@ -284,7 +284,7 @@ angular
         appRedirectModal(ErrorConstants.unknownError);
         errors.top = ErrorConstants.unknownError;
       } else if (data.detail === '2') {
-        dismissModal('Sorry, your credit card was rejected. The reason is: ' + data.message + '. Please reach out to hello@beampay.co for assistance');
+        appRedirectModal('Sorry, we could not process payment for this transaction. The reason is: \n\n' + data.message + '.\n\n Please reach out to hello@beampay.co for assistance');
         errors.top = data.message;
       } else if (status > 299) {
         appRedirectModal(ErrorConstants.unknownError);
