@@ -66,11 +66,12 @@ angular.module('app.transaction')
 
     var validateRecipient = function (details) {
       var errors = {};
+      var phoneReg = /^(\+[\d]{1,3})*[\d]{9,15}$/;
       if (!details.recipient.firstName || !details.recipient.lastName) {
         errors.name = 'Please enter first and last name of the recipient';
       }
 
-      if (!details.recipient.phoneNumber || details.recipient.phoneNumber.length < 10) {
+      if (!details.recipient.phoneNumber || !details.recipient.phoneNumber.match(phoneReg)) {
         errors.phoneNumber = 'Please enter a valid phone number';
       }
 
