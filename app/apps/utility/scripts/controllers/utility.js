@@ -73,6 +73,7 @@ angular
           $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
+          console.log($scope.details);
           $state.transitionTo('app.utility.payment');
         }, function (error) {
           $scope.laddaAddTxn = false;
