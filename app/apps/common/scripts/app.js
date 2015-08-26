@@ -89,10 +89,14 @@ angular
         $state.transitionTo('signup', {next: $state.current.name});
       }
 
-      mixpanel.track(toState.name, {
-        'page title' : document.title,
-        'url' : window.location.pathname
-      });
+      var nonTrackedStates = [];
+
+      if (!(toState.name in nonTrackedStates)){
+        mixpanel.track(toState.name, {
+          'page title' : document.title,
+          'url' : window.location.pathname
+        });
+      }
 
       // Scroll to top on all new pages
       $anchorScroll();
