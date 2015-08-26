@@ -77,7 +77,7 @@ angular
           $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
-          TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
+          TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType, 'apps/valet/views/successModal.html');
         }, function (error) {
           $scope.laddaAddTxn = false;
           $scope.errors = Error.transaction(error.data, error.status);

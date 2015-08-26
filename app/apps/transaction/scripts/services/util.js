@@ -66,13 +66,24 @@ angular.module('app.transaction')
 
     var validateRecipient = function (details) {
       var errors = {};
-      var phoneReg = /^(\+[\d]{1,3})*[\d]{9,15}$/;
+      var phoneReg = /^(\+[\d]{1,3})*[\d-\(\) ]{9,15}$/;
       if (!details.recipient.firstName || !details.recipient.lastName) {
         errors.name = 'Please enter first and last name of the recipient';
       }
 
       if (!details.recipient.phoneNumber || !details.recipient.phoneNumber.match(phoneReg)) {
         errors.phoneNumber = 'Please enter a valid phone number';
+        return errors;
+      }
+
+      var phoneDigits = details.recipient.phoneNumber.replace(/ /g, '').replace(/\([\d]*\)/g, '').replace(/-/g, '');
+
+      if (phoneDigits.length < 10 || phoneDigits.length > 15){
+        errors.phoneNumber = 'Please ensure phone number digits are at least 10 and at most 15';
+      }
+
+      if ($.isEmptyObject(errors)){
+        details.recipient.phoneNumber = phoneDigits;
       }
 
       return errors;
@@ -115,9 +126,13 @@ angular.module('app.transaction')
       return deferred.promise;
     };
 
-    var successModal = function (referenceNumber, transactionId, transactionType) {
+    var successModal = function (referenceNumber, transactionId, transactionType, templateUrl) {
+      if (!templateUrl) {
+        templateUrl = 'apps/transaction/views/successModal.html';
+      }
+
       $modal.open({
-        templateUrl: 'apps/transaction/views/successModal.html',
+        templateUrl: templateUrl,
         controller: 'SuccessModalCtrl',
         resolve: {
           referenceNumber: function () {
@@ -204,8 +219,8 @@ angular.module('app.transaction')
       makePayment: function () {
         return makePayment();
       },
-      successModal: function (referenceNumber, transactionId, transactionType) {
-        return successModal(referenceNumber, transactionId, transactionType);
+      successModal: function (referenceNumber, transactionId, transactionType, templateUrl) {
+        return successModal(referenceNumber, transactionId, transactionType, templateUrl);
       },
 
       toCurr: function (amount) {
