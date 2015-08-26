@@ -22,6 +22,7 @@
     "WOW": false,
     "StripeCheckout": false,
     "$": false,
-    "Raven": false
+    "Raven": false,
+    "mixpanel": false
   }
 }
