@@ -96,7 +96,7 @@ angular
               function() {
                 $scope.paymentSaveSuccess = true;
                 $scope.laddaPay = false;
-                TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType);
+                TransactionUtil.successModal($scope.details.referenceNumber, $scope.details.transactionId, $scope.transactionType, 'apps/airtime/views/successModal.html');
               }, function (error) {
                 $scope.paymentSaveSuccess = false;
                 $scope.laddaPay = false;
