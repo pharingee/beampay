@@ -89,7 +89,7 @@ angular
         $state.transitionTo('signup', {next: $state.current.name});
       }
 
-      mixpanel.track(toState, {
+      mixpanel.track(toState.name, {
         'page title' : document.title,
         'url' : window.location.pathname
       });
