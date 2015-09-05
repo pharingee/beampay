@@ -1,0 +1,28 @@
+.panel {
+  border: 0;
+  box-shadow: 0 0 0 white;
+}
+
+.panel-default{
+
+  .panel-heading {
+    background-color: transparent;
+
+    .panel-title {
+      color: black;
+      border-bottom: 1px solid $gray-extra-light;
+
+      a, a:hover, a:active, a:visited {
+        text-decoration:none;
+      }
+
+    }
+
+  }
+
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body,
+.panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: 0;
+}

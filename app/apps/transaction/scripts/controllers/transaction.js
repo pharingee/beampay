@@ -40,6 +40,12 @@ angular
         return comment;
       }
     };
+
+    $scope.status = {
+      details: true,
+      recipient: true,
+      pricing: true
+    }
   })
 
 

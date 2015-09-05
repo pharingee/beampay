@@ -54,7 +54,10 @@
         <div class="accordion row">
           <div class="col-md-9">
             <accordion close-others="false">
-              <accordion-group heading="Details" is-open="true">
+              <accordion-group is-open="status.details">
+                <accordion-heading>
+                  Details <i class="pull-right lnr" ng-class="{'lnr-chevron-down': !status.details, 'lnr-chevron-up': status.details}"></i>
+                </accordion-heading>
                 <div class="row text-center"  ng-if="transactionType == 'AIRTIME'">
                   <div class="col-xs-4">
                     <img src="apps/airtime/images/mtn.png" class="service-image" ng-if="transaction.network=='MTN'">
@@ -157,7 +160,10 @@
 
                 </div>
               </accordion-group>
-              <accordion-group heading="Recipient" is-open="true">
+              <accordion-group is-open="status.recipient">
+                <accordion-heading>
+                  Recipient <i class="pull-right lnr" ng-class="{'lnr-chevron-down': !status.recipient, 'lnr-chevron-up': status.recipient}"></i>
+                </accordion-heading>
                 <div class="row">
                   <div class="col-xs-12">
                     <div class="row">
@@ -181,7 +187,10 @@
                   </div>
                 </div>
               </accordion-group>
-              <accordion-group heading="Pricing" is-open="true" ng-if="transaction.totalChargeUsd">
+              <accordion-group is-open="status.pricing" ng-if="transaction.totalChargeUsd">
+                <accordion-heading>
+                  Pricing <i class="pull-right lnr" ng-class="{'lnr-chevron-down': !status.pricing, 'lnr-chevron-up': status.pricing}"></i>
+                </accordion-heading>
                 <div class="row text-center">
                   <div class="col-md-3">
                     <strong>Base Cost</strong><br>

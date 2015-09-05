@@ -23,13 +23,13 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 @import "util/general";
 @import "util/buttons";
 @import "util/radios";
+@import "util/panels";
 
 
 // Others
 @import "header";
 @import "footer";
 @import "box";
-@import "transaction";
 
 /*
 * General App
@@ -62,6 +62,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 // Landing
 
 // Services Dashboard
+@import "app/apps/transaction/styles/transaction";
 @import "app/apps/transaction/styles/sidebar";
 @import "app/apps/transaction/styles/services";
 @import "app/apps/transaction/styles/support";
