@@ -20,7 +20,6 @@ angular
     Referral.getReferral().then(
       function (response){
         $scope.referral = response;
-        console.log(response);
       },
       function (){});
   });

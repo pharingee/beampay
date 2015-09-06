@@ -45,7 +45,8 @@ angular
       details: true,
       recipient: true,
       pricing: true
-    }
+    };
+
   })
 
 
