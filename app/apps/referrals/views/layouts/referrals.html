@@ -1,8 +1,8 @@
 <section class="services">
   <div class="row" ng-controller="ReferralCtrl">
     <div class="container-fluid">
-      <h3 class="transaction-h4">My Referrals</h3>
-      <h5>Ask a friend to sign up and get referral credits to make transactions free of service charge</h5>
+      <h3 class="transaction-h4">Tell your friends about Beam</h3>
+      <h5>Give a friend the gift of a transaction free of service charge and get rewarded yourself.</h5>
 
       <br><br>
 
@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-sm-5 sla">
             <div class="row sla-title">
-              <p> How the Beam referral system works</p>
+              <p> How it works</p>
             </div>
             <hr>
             <div class="row sla-layer">
@@ -18,60 +18,30 @@
                 <span class="lnr lnr-bullhorn"></span>
               </div>
               <div class="col-sm-11 text-justify">
-                Invite 5 friends to signup up to Beam with your referral code and get one transaction free of service charge.
-                You can click on the code below to share on Facebook, Twitter or Mail. or send the code directly to your friends to sign up.
+                Invite a friend to Beam and give them the gift of a transaction free of service charge. If four of your friends signup to Beam, you are rewarded with a transaction free of service charge.
               </div>
             </div>
             <div class="row sla-layer">
               <div class="col-sm-1"></div>
-              <div class="col-sm-11 text-center"><h3><a href="" ng-click="referralModal()">{{referral.code}}</a></h3>
+              <div class="col-sm-11 text-center"><h3><a href="" ng-click="referralModal()">Invite your friends</a></h3>
               </div>
             </div>
           </div>
 
           <div class="col-sm-5 col-sm-offset-1 referrals">
-            <div class="referral-title">
-              Credits Gained
+            <div>
+              You have {{referral.freeTransactionNo}} transactions free of service charge
             </div>
-            <hr>
-            <div class="text-center">
-              {{referral.creditsGained}}
-            </div>
-            <br>
-            <div class="referral-title">
-              Credits Redeemed
-            </div>
-            <hr>
-            <div class="text-center">
-              {{referral.creditsRedeemed}}
-            </div>
-            <br>
-            <div class="referral-title">
-              Number of transactions left free of service charge
-            </div>
-            <hr>
-            <div class="text-center">
-              {{referral.freeTransactionNo}}
-            </div>
-            <div ng-if="referral.referredBy">
-              <br>
+            <div>
+              <br><br>
               <div class="referral-title">
-                Reffered By
-              </div>
-              <hr>
-              <div class="text-center">
-                {{referral.referredBy}}
-              </div>
-            </div>
-            <div ng-if="referral.referredTo.length > 0">
-              <br>
-              <div class="referral-title">
-                Reffered To
+                Friends that followed your invitation
               </div>
               <hr>
               <div class="text-center">
                 <p ng-repeat="refer in referral.referredTo">{{refer}}</p>
               </div>
+              <div class="referral-title text-center" ng-if="referral.referredTo.length == 0">No friends yet. <a href="" ng-click="referralModal()">Invite your friends</a></div>
             </div>
           </div>
 
