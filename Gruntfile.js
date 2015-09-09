@@ -456,14 +456,6 @@ module.exports = function (grunt) {
           ROOT_URL: 'https://dev.beampay.co/'
         }
       }
-    },
-
-    filerev_assets: {
-      dist: {
-        options: {
-          dest: '<%= yeoman.dist %>/assets.json',
-        }
-      }
     }
   });
 
@@ -511,7 +503,6 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'filerev',
-    'grunt-filerev-assets',
     'usemin',
     'htmlmin'
   ]);
