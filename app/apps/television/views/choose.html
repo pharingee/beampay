@@ -5,9 +5,9 @@
       Which service provider would you like to pay for?<br>
       <p class="errors">{{errors.billType}}</p>
         <div class="radio" ng-repeat="(provider, property) in providerProperties">
-            <label>
+            <label class="provider-logo">
                <input type="radio" ng-model="details.provider" value="{{provider}}" checked>
-               <img ng-src="{{property.logo}}" class="service-image">
+               <img class="service-image {{property.logoClass}}">
             </label>
         </div>
       </div>

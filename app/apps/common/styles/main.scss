@@ -74,4 +74,16 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 @import "app/apps/transaction/styles/sla";
 
 //Referrals
-@import "app/apps/referrals/styles/details"
+@import "app/apps/referrals/styles/details";
+
+//Airtime
+@import "app/apps/airtime/styles/providers";
+
+//Internet
+@import "app/apps/internet/styles/providers";
+
+//Cable
+@import "app/apps/television/styles/providers";
+
+//Utility
+@import "app/apps/utility/styles/providers";

@@ -3,7 +3,7 @@
     <p class="bill-text">You're about to pay for</p>
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-lg-4">
-        <img ng-repeat="(provider, property) in providerProperties" ng-show="details.provider == '{{provider}}'" ng-src="{{property.logo}}" alt="" class="final-service-image">
+        <img ng-repeat="(provider, property) in providerProperties" ng-show="details.provider == '{{provider}}'" alt="" class="final-service-image {{property.logoClass}}">
       </div>
       <div class="col-xs-6">
         <div class="bill-heading">DESCRIPTION</div>
