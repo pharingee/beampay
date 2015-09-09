@@ -4,6 +4,7 @@ angular
   .module('app.internet', [])
   .config(function ($stateProvider) {
     var tempPrefix = 'apps/internet/views/';
+    var transactionPrefix = 'apps/transaction/views/';
 
     $stateProvider
       .state('app.internet', {
@@ -19,7 +20,7 @@ angular
       })
       .state('app.internet.recipient', {
         url: '/recipient',
-        templateUrl: tempPrefix + 'recipient.html',
+        templateUrl: transactionPrefix + 'recipient.html',
         data: {
           pageTitle: 'Recipient Details'
         }

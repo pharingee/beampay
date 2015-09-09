@@ -10,8 +10,8 @@ angular
     var validateDetails = function () {
       $scope.errors = {};
 
-      if ($scope.details.network !== $scope.airtelProvider && $scope.details.network !== $scope.mtnProvider && $scope.details.network !== $scope.tigoProvider && $scope.details.network !== $scope.vodafoneProvider) {
-        $scope.errors.network = 'Please select an airtime provider';
+      if ($scope.details.provider !== $scope.airtelProvider && $scope.details.provider !== $scope.mtnProvider && $scope.details.provider !== $scope.tigoProvider && $scope.details.provider !== $scope.vodafoneProvider) {
+        $scope.errors.provider = 'Please select an airtime provider';
         return false;
       }
 
@@ -32,6 +32,20 @@ angular
     $scope.airtelProvider = 'AIR';
     $scope.tigoProvider = 'TIG';
     $scope.vodafoneProvider = 'VOD';
+
+    $scope.providerProperties = {};
+    $scope.providerProperties[$scope.mtnProvider] = {
+      logo: 'apps/airtime/images/mtn.png'
+    };
+    $scope.providerProperties[$scope.airtelProvider] = {
+      logo: 'apps/airtime/images/airtel.png'
+    };
+    $scope.providerProperties[$scope.tigoProvider] = {
+      logo: 'apps/airtime/images/tigo.png'
+    };
+    $scope.providerProperties[$scope.vodafoneProvider] = {
+      logo: 'apps/airtime/images/vodafone.png'
+    };
 
     Transaction.getTransactionSetup().then(
       function (response){
@@ -57,6 +71,7 @@ angular
         $scope.laddaAddTxn = true;
         $scope.paymentState = true;
         $scope.details.phoneNumber = $scope.details.recipient.phoneNumber;
+        $scope.details.network = $scope.details.provider;
 
         if (!$scope.details.recipient.email) {
           delete $scope.details.recipient.email;
@@ -66,6 +81,10 @@ angular
           $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
+          $scope.longDescription = TransactionUtil.getDescription({
+            transactionType: 'airtimetopup',
+            data: $scope.details
+          });
           $state.transitionTo('app.airtime.payment');
         }, function (error) {
           $scope.laddaAddTxn = false;
@@ -75,15 +94,15 @@ angular
     };
 
     $scope.getProvider = function () {
-      return TransactionUtil.getFullName($scope.details.network);
+      return TransactionUtil.getFullName($scope.details.provider);
     };
 
     $scope.confirm = function () {
       if ($scope.pricing) {
         $scope.laddaPay = true;
-        var description = 'GHS ' + $scope.details.amountGhs + ' worth of ' + $scope.getProvider() + ' airtime';
+        var description = 'GHS ' + $scope.details.amountGhs + ' ' + $scope.getProvider() + ' airtime (Ref. No.: ' + $scope.details.referenceNumber + ')';
         var amount = $scope.details.chargeUsd * 100;
-        TransactionUtil.makePayment(description, amount).then(
+        TransactionUtil.makePayment(description, amount, $scope.email).then(
           function (token){
             var payment = {
               stripeToken: token.id,

@@ -54,7 +54,7 @@ angular.module('app.transaction')
       if (transaction.transactionType === 'billpayment' || transaction.transactionType === 'BILL') {
         return 'GHS ' + transaction.data.amountGhs + ' billing on ' + getFullName(transaction.data.billType) + ' for ' + transaction.data.recipient.firstName + ' ' + transaction.data.recipient.lastName;
       } else if(transaction.transactionType === 'airtimetopup' || transaction.transactionType === 'AIRTIME') {
-        return 'GHS ' + transaction.data.amountGhs + ' ' + getFullName(transaction.data.network) + ' airtime for ' + transaction.data.recipient.firstName + ' ' + transaction.data.recipient.lastName;
+        return 'GHS ' + transaction.data.amountGhs + ' ' + getFullName(transaction.data.network) + ' airtime for ' + transaction.data.recipient.firstName + ' ' + transaction.data.recipient.lastName + ' (' + transaction.data.recipient.phoneNumber + ')';
       } else if(transaction.transactionType === 'schoolfeepayment' || transaction.transactionType === 'SCHOOL') {
         return transaction.data.wardName + ' fees to ' + transaction.data.school;
       } else if(transaction.transactionType === 'valettransaction' || transaction.transactionType === 'VALET') {
@@ -103,7 +103,7 @@ angular.module('app.transaction')
       }
     };
 
-    var makePayment = function (description, amount) {
+    var makePayment = function (description, amount, email) {
       var deferred = $q.defer();
 
       var handler = StripeCheckout.configure({
@@ -118,6 +118,7 @@ angular.module('app.transaction')
         name: 'BeamPay',
         description: description,
         amount: amount,
+        receipt_email: email,
         closed: function () {
           deferred.reject();
         }
@@ -216,8 +217,8 @@ angular.module('app.transaction')
         return validateRecipient(errors);
       },
 
-      makePayment: function () {
-        return makePayment();
+      makePayment: function (description, amount, email) {
+        return makePayment(description, amount, email);
       },
       successModal: function (referenceNumber, transactionId, transactionType, templateUrl) {
         return successModal(referenceNumber, transactionId, transactionType, templateUrl);

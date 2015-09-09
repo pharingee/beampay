@@ -4,6 +4,7 @@ angular
   .module('app.television', [])
   .config(function ($stateProvider) {
     var tempPrefix = 'apps/television/views/';
+    var transactionPrefix = 'apps/transaction/views/';
 
     $stateProvider
       .state('app.television', {
@@ -19,14 +20,14 @@ angular
       })
       .state('app.television.recipient', {
         url: '/recipient',
-        templateUrl: tempPrefix + 'recipient.html',
+        templateUrl: transactionPrefix + 'recipient.html',
         data: {
           pageTitle: 'Recipient Details'
         }
       })
       .state('app.television.payment', {
         url: '/payment',
-        templateUrl: tempPrefix + 'payment.html',
+        templateUrl: transactionPrefix + 'payment.html',
         data: {
           pageTitle: 'Confirm Payment'
         }

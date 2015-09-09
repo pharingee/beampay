@@ -3,14 +3,11 @@
     <p class="bill-text">You're about to pay for</p>
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-lg-4">
-        <img ng-show="details.network == 'AIR'" src="apps/airtime/images/airtel.png" alt="" class="final-service-image">
-        <img ng-show="details.network == 'MTN'" src="apps/airtime/images/mtn.png" alt="" class="final-service-image">
-        <img ng-show="details.network == 'TIG'" src="apps/airtime/images/tigo.png" alt="" class="final-service-image">
-        <img ng-show="details.network == 'VOD'" src="apps/airtime/images/vodafone.png" alt="" class="final-service-image">
+        <img ng-repeat="(provider, property) in providerProperties" ng-show="details.provider == '{{provider}}'" ng-src="{{property.logo}}" alt="" class="final-service-image">
       </div>
       <div class="col-xs-6">
         <div class="bill-heading">DESCRIPTION</div>
-        <p><strong>GHS {{details.amountGhs}}</strong> worth of <strong>{{getProvider()}}</strong> airtime to <strong>{{details.recipient.phoneNumber}}</strong></p>
+        <p><strong>{{longDescription}}</strong></p>
         <div class="bill-heading">FINAL BILL:</div>
         <p>$ {{details.chargeUsd}}</p>
       </div>

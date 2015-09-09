@@ -4,6 +4,7 @@ angular
   .module('app.airtime', [])
   .config(function ($stateProvider) {
     var tempPrefix = 'apps/airtime/views/';
+    var transactionPrefix = 'apps/transaction/views/';
 
     $stateProvider
       .state('app.airtime', {
@@ -19,14 +20,14 @@ angular
       })
       .state('app.airtime.recipient', {
         url: '/recipient',
-        templateUrl: tempPrefix + 'recipient.html',
+        templateUrl: transactionPrefix + 'recipient.html',
         data: {
           pageTitle: 'Recipient Details'
         }
       })
       .state('app.airtime.payment', {
         url: '/payment',
-        templateUrl: tempPrefix + 'payment.html',
+        templateUrl: transactionPrefix + 'payment.html',
         data: {
           pageTitle: 'Confirm Payment'
         }

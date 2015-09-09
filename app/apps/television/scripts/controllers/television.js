@@ -10,8 +10,8 @@ angular
     var validateDetails = function () {
       $scope.errors = {};
 
-      if ($scope.details.billType !== $scope.dstvProvider && $scope.details.billType !== $scope.gotvProvider) {
-        $scope.errors.billType = 'Please select a TV service provider';
+      if ($scope.details.provider !== $scope.dstvProvider && $scope.details.provider !== $scope.gotvProvider) {
+        $scope.errors.provider = 'Please select a TV service provider';
         return false;
       }
 
@@ -39,6 +39,14 @@ angular
 
     $scope.dstvProvider = 'DST';
     $scope.gotvProvider = 'GOT';
+
+    $scope.providerProperties = {};
+    $scope.providerProperties[$scope.dstvProvider] = {
+      logo: 'apps/television/images/dstv-logo.png'
+    };
+    $scope.providerProperties[$scope.gotvProvider] = {
+      logo: 'apps/television/images/gotv-logo.jpg'
+    };
 
     Transaction.getTransactionSetup().then(
       function (response){
@@ -71,10 +79,15 @@ angular
         }
 
         $scope.laddaAddTxn = true;
+        $scope.details.billType = $scope.details.provider;
         Transaction.addBill($scope.details).then(function (response) {
           $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
+          $scope.longDescription = TransactionUtil.getDescription({
+            transactionType: 'billpayment',
+            data: $scope.details
+          });
           $state.transitionTo('app.television.payment');
         }, function (error) {
           $scope.laddaAddTxn = false;
@@ -84,7 +97,7 @@ angular
     };
 
     $scope.getProvider = function () {
-      return TransactionUtil.getFullName($scope.details.billType);
+      return TransactionUtil.getFullName($scope.details.provider);
     };
 
     $scope.confirm = function () {

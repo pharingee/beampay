@@ -86,7 +86,6 @@ angular.module('app.transaction')
 
     var addBill = function (parameters) {
       var pricing = Persist.getPricing();
-      console.log(pricing);
       parameters.exchangeRateId = pricing.exchangeRateId;
       parameters.serviceFeeId = pricing.bill.id;
       return serverCall('transaction/add/bill/', parameters);

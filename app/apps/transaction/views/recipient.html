@@ -1,5 +1,4 @@
-<form class="form" ng-submit="makeTransaction()">
-
+<form class="form" ng-submit="addRecipient()">
   <div class="form-group">
     <label for="name">Name of recipient <span class="errors">{{errors.name}}</span></label>
     <div class="row">
@@ -14,7 +13,7 @@
 
   <div class="form-group">
     <label for="contact">Recipient Contact Number <span class="errors">{{errors.phoneNumber}}</span></label>
-    <input type="text" class="form-control" placeholder="Eg. +23327615596" ng-model="details.recipient.phoneNumber" required>
+    <input type="text" class="form-control" placeholder="Eg. +23327615596" ng-model="details.recipient.phoneNumber" required name="phone-number">
   </div>
 
   <div class="form-group">
@@ -23,8 +22,8 @@
   </div>
 
   <div class="form-group">
-    <div class="service-button">
-      <button ladda="laddaAddTxn" type="submit" class="btn btn-success form-control">Submit</button>
-    </div>
+      <div class="service-button">
+        <button ladda="laddaAddTxn" type="submit" class="btn btn-success form-control">Submit</button>
+      </div>
   </div>
 </form>

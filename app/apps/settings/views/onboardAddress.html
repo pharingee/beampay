@@ -2,16 +2,16 @@
 <div class="container" ng-controller="OnboardAddressCtrl">
   <div class="row box">
     <div class="col-md-offset-2 col-md-8 form">
-      <h3>Hi, {{settings.firstName}}!</h3>
+      <h3>Hi, {{details.firstName}}!</h3>
       <h5>We'll need the following information to get you set up. We have to ask you this to comply with international laws, but also to fulfill your orders on Beam.</h5>
 
       <h5><a ui-sref="app" analytics-on="click" analytics-event="Onboarding Skip">I'll do this later</a></h5>
       <span class="errors" role="alert">
-      {{settings.errors.top}}
+      {{errors.top}}
       </span>
-      <!-- <div class="errors" role="alert" ng-show="settings.errors.length">
+      <!-- <div class="errors" role="alert" ng-show="errors.length">
         <ul>
-          <li ng-repeat="error in settings.errors">
+          <li ng-repeat="error in errors">
             {{ error }}
           </li>
         </ul>
@@ -19,10 +19,10 @@
 
       <form class="form non-bill-form">
         <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.dateOfBirth}}</span>
+          <label for="dateOfBirth">Date of birth</label>&nbsp;&nbsp;<span class="errors">{{errors.dateOfBirth}}</span>
           <div class="row">
             <div class="col-xs-4">
-              <select class="col-xs-4 form-control" ng-model="settings.date.day" required>
+              <select class="col-xs-4 form-control" ng-model="details.date.day" required>
                 <option value="">Day</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="col-xs-4">
-              <select class="col-xs-4 form-control" ng-model="settings.date.month" required>
+              <select class="col-xs-4 form-control" ng-model="details.date.month" required>
                 <option value="">Month</option>
                 <option value="1">January</option>
                 <option value="2">February</option>
@@ -77,7 +77,7 @@
             </div>
 
             <div class="col-xs-4">
-              <select class="col-xs-4 form-control" ng-model="settings.date.year" required>
+              <select class="col-xs-4 form-control" ng-model="details.date.year" required>
                 <option value="">Year</option>
                 <option value="1996">1996</option>
                 <option value="1995">1995</option>
@@ -151,8 +151,8 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="country">Country of current residence</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.country}}</span>
-          <select ng-model="settings.country" class="form-control" required>
+          <label for="country">Country of current residence</label>&nbsp;&nbsp;<span class="errors">{{errors.country}}</span>
+          <select ng-model="details.country" class="form-control" required>
               <option value="US">United States of America</option>
               <option value="AF">Afghanistan</option>
               <option value="AL">Albania</option>
@@ -360,64 +360,24 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="phoneNumber">Phone number</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.phoneNumber}}</span>
-          <input ng-model="settings.phoneNumber" type="text" class="form-control" placeholder="Eg. +233265086508" required>
+          <label for="phoneNumber">Phone number</label>&nbsp;&nbsp;<span class="errors">{{errors.phoneNumber}}</span>
+          <input ng-model="details.phoneNumber" type="text" class="form-control" placeholder="Eg. +233265086508" required>
         </div>
         <div class="form-group">
-          <label for="street">Street</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.street}}</span>
-          <input ng-model="settings.street" type="text" class="form-control" placeholder="Street" required>
+          <label for="street">Street</label>&nbsp;&nbsp;<span class="errors">{{errors.street}}</span>
+          <input ng-model="details.street" type="text" class="form-control" placeholder="Street" required>
         </div>
         <div class="form-group">
-          <label for="address">City</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.city}}</span>
-          <input ng-model="settings.city" type="text" class="form-control" placeholder="City" required>
+          <label for="address">City</label>&nbsp;&nbsp;<span class="errors">{{errors.city}}</span>
+          <input ng-model="details.city" type="text" class="form-control" placeholder="City" required>
         </div>
         <div class="form-group">
-          <label for="address">Post code</label>&nbsp;&nbsp;<span class="errors">{{settings.errors.postCode}}</span>
-          <input ng-model="settings.postCode" type="text" class="form-control" placeholder="Post code" required>
+          <label for="address">Post code</label>&nbsp;&nbsp;<span class="errors">{{errors.postCode}}</span>
+          <input ng-model="details.postCode" type="text" class="form-control" placeholder="Post code" required>
         </div>
-        <div class="form-group">
-          <label for="contact">How should we keep you updated? </label>
-          <div class="radio">
-            <div class="row">
-              <div class="col-sm-6 col-md-3">
-                <input type="radio" ng-model="settings.preferredContactMethod" ng-value="whatsAppMethod" id="contact-whatsapp">
-                <label class="checkbox-inline" for="contact-whatsapp"> WhatsApp </label>
-              </div>
-
-              <div class="col-sm-6 col-md-3">
-                <input type="radio" ng-model="settings.preferredContactMethod" ng-value="phoneMethod" id="contact-phone">
-                <label class="checkbox-inline" for="contact-phone"> Phone Call </label>
-              </div>
-
-              <div class="col-sm-6 col-md-3">
-                <input type="radio" ng-model="settings.preferredContactMethod" ng-value="smsMethod" id="contact-sms">
-                <label class="checkbox-inline" for="contact-sms"> SMS </label>
-              </div>
-
-              <div class="col-sm-6 col-md-3">
-                <input type="radio" ng-model="settings.preferredContactMethod" ng-value="emailMethod" id="contact-email">
-                <label class="checkbox-inline" for="contact-email"> Email </label>
-              </div>
-            </div>
-            <br>
-          </div>
-
-          <div class="row">
-          <div class="col-xs-2"></div>
-          <div class="col-xs-10">
-           <span class="errors">{{settings.errors.preferredContactMethod}}</span>
-          </div>
-            <div class="col-xs-2">
-              <label for="contact">Contact:</label>
-            </div>
-            <div class="col-xs-10">
-              <input type="text" class="form-control" placeholder="Enter your contact details" id="contact" ng-model="settings.preferredContactDetails" required>
-            </div>
-          </div>
-
-        </div>
+        <div ng-include="'apps/settings/views/partials/_preferredContactMethod.html'"></div>
         <div class="submit">
-          <button ladda="laddaOnboard" type="submit" class="btn btn-default" ng-click="settings.submit()">Done</button>
+          <button ladda="laddaOnboard" type="submit" class="btn btn-default" ng-click="details.submit()">Done</button>
         </div>
       </form>
 

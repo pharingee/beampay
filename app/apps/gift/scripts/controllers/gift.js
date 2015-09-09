@@ -86,7 +86,7 @@ angular
       }
     };
 
-    $scope.makeTransaction = function () {
+    $scope.addRecipient = function () {
       if (!$scope.details.deliveryAddress) {
         delete $scope.details.deliveryAddress;
       }

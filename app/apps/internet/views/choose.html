@@ -3,17 +3,11 @@
   <div class="form-group">
     Which service provider would you like to pay for?<br>
     <p class="errors">{{errors.billType}}</p>
-      <div class="radio">
-          <label>
-             <input type="radio" ng-model="details.billType" value="SRF" ng-change="changeBillType()">
-             <img src="apps/internet/images/surfline-logo.png" class="service-image">
-          </label>
-      </div>
-      <div class="radio">
-          <label>
-             <input type="radio" ng-model="details.billType" value="VOB"  ng-change="changeBillType()">
-             <img src="apps/internet/images/vodafone-logo.png" class="service-image">
-          </label>
+      <div class="radio" ng-repeat="(provider, property) in providerProperties">
+        <label>
+           <input type="radio" ng-model="details.provider" value="{{provider}}" ng-change="changeBillType()">
+           <img ng-src="{{property.logo}}" class="service-image">
+        </label>
       </div>
     </div>
 
@@ -24,7 +18,7 @@
 
   <div class="form-group">
     <label for="amount">How much in GHS would you like to pay?</label>
-    <div ng-if="!details.billType || details.billType === surflineProvider">
+    <div ng-if="!details.provider || details.provider === surflineProvider">
       <select ng-model="details.amountGhs" ng-change="calculatePricing()" class="form-control">
         <option value="9.90">GH&#8373; 9.90</option>
         <option value="29">GH&#8373; 29</option>
@@ -40,7 +34,7 @@
       </select>
     </div>
 
-    <div ng-if="details.billType === vodafoneProvider">
+    <div ng-if="details.provider === vodafoneProvider">
       <select ng-model="details.amountGhs" ng-change="calculatePricing()" class="form-control">
         <option value="50">GH&#8373; 50</option>
         <option value="70">GH&#8373; 70</option>
