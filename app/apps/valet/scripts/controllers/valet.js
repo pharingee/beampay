@@ -69,7 +69,7 @@ angular
       }
     };
 
-    $scope.makeTransaction = function () {
+    $scope.addRecipient = function () {
       $scope.errors = TransactionUtil.validateRecipient($scope.details);
       if ($.isEmptyObject($scope.errors)){
         $scope.laddaAddTxn = true;

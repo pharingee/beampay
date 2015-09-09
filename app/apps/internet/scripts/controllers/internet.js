@@ -10,8 +10,8 @@ angular
     var validateDetails = function () {
       $scope.errors = {};
 
-      if ($scope.details.billType !== $scope.surflineProvider && $scope.details.billType !== $scope.vodafoneProvider) {
-        $scope.errors.billType = 'Please select an Internet service provider';
+      if ($scope.details.provider !== $scope.surflineProvider && $scope.details.provider !== $scope.vodafoneProvider) {
+        $scope.errors.provider = 'Please select an Internet service provider';
         return false;
       }
 
@@ -31,6 +31,14 @@ angular
     $scope.vodafoneProvider = 'VOB';
     $scope.surflineProvider = 'SRF';
 
+    $scope.providerProperties = {};
+    $scope.providerProperties[$scope.surflineProvider] = {
+      logo: 'apps/internet/images/surfline-logo.png'
+    };
+    $scope.providerProperties[$scope.vodafoneProvider] = {
+      logo: 'apps/internet/images/vodafone-logo.png'
+    };
+
     Transaction.getTransactionSetup().then(
       function (response){
         $.extend($scope, TransactionUtil.setupInstaPayTransaction(response));
@@ -42,7 +50,7 @@ angular
     };
 
     $scope.changeBillType = function () {
-      if ($scope.details.billType === $scope.vodafoneProvider) {
+      if ($scope.details.provider === $scope.vodafoneProvider) {
         $scope.details.amountGhs = '70';
       } else {
         $scope.details.amountGhs = '125';
@@ -70,10 +78,15 @@ angular
         }
 
         $scope.laddaAddTxn = true;
+        $scope.details.billType = $scope.details.provider;
         Transaction.addBill($scope.details).then(function (response) {
           $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
+          $scope.longDescription = TransactionUtil.getDescription({
+            transactionType: 'billpayment',
+            data: $scope.details
+          });
           $state.transitionTo('app.internet.payment');
         }, function (error) {
           $scope.laddaAddTxn = false;
@@ -83,7 +96,7 @@ angular
     };
 
     $scope.getProvider = function () {
-      return TransactionUtil.getFullName($scope.details.billType);
+      return TransactionUtil.getFullName($scope.details.provider);
     };
 
     $scope.confirm = function () {

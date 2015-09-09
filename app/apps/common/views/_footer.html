@@ -12,8 +12,9 @@
       <div class="col-sm-4 col-md-3 section foot-links" ng-controller="FooterCtrl">
         <h4>LINKS</h4>
         <ul>
-          <li ng-show="landing"><a ui-sref="landing">Homepage</a></li>
-          <li ng-show="about"><a ui-sref="about">The Company</a></li>
+          <li ng-hide="faqs"><a ui-sref="faqs">FAQs</a></li>
+          <li ng-hide="landing"><a ui-sref="landing">Homepage</a></li>
+          <li ng-hide="about"><a ui-sref="about">The Company</a></li>
           <li><a ui-sref="app.airtime">Transfer Airtime to Ghana</a></li>
           <li><a ui-sref="app.gift">Send Gifts Home to Ghana</a></li>
           <li><a href="https://medium.com/beam-blog" target="_blank">Blog</a></li>

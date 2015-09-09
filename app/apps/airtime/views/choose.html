@@ -1,31 +1,13 @@
-<form class="form" ng-submit="setDetails()">
+<form class="form" ng-submit="setDetails()" >
   <div class="transaction-control">
 
   <div class="form-group">
     Select your recipient's network <br>
     <p class="errors">{{errors.network}}</p>
-      <div class="radio">
+      <div class="radio" ng-repeat="(provider, property) in providerProperties">
           <label>
-             <input type="radio" ng-model="details.network" value="MTN" checked>
-             <img src="apps/airtime/images/mtn.png" class="service-image">
-          </label>
-      </div>
-      <div class="radio">
-          <label>
-             <input type="radio" ng-model="details.network" value="VOD">
-             <img src="apps/airtime/images/vodafone.png" class="service-image">
-          </label>
-      </div>
-      <div class="radio">
-          <label>
-             <input type="radio" ng-model="details.network" value="TIG">
-             <img src="apps/airtime/images/tigo.png" class="service-image">
-          </label>
-      </div>
-      <div class="radio">
-          <label>
-             <input type="radio" ng-model="details.network" value="AIR">
-             <img src="apps/airtime/images/airtel.png" class="service-image">
+             <input type="radio" ng-model="details.provider" value="{{provider}}" checked>
+             <img ng-src="{{property.logo}}" class="service-image">
           </label>
       </div>
     </div>

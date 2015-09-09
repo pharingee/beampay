@@ -3,16 +3,10 @@
     <div class="form-group">
       Which service provider would you like to pay for?<br>
       <p class="errors">{{errors.billType}}</p>
-        <div class="radio">
+        <div class="radio" ng-repeat="(provider, property) in providerProperties">
             <label>
-               <input type="radio" ng-model="details.billType" value="ECG" checked>
-               <img src="apps/utility/images/ecg-logo.jpg" class="service-image">
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-               <input type="radio" ng-model="details.billType" value="GWC">
-               <img src="apps/utility/images/gwc-logo.jpg" class="service-image">
+               <input type="radio" ng-model="details.provider" value="{{provider}}" checked>
+               <img ng-src="{{property.logo}}" class="service-image">
             </label>
         </div>
       </div>

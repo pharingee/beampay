@@ -10,8 +10,8 @@ angular
     var validateDetails = function () {
       $scope.errors = {};
 
-      if ($scope.details.billType !== $scope.electricityProvider && $scope.details.billType !== $scope.waterProvider) {
-        $scope.errors.billType = 'Please select a Utility service provider';
+      if ($scope.details.provider !== $scope.electricityProvider && $scope.details.provider !== $scope.waterProvider) {
+        $scope.errors.provider = 'Please select a Utility service provider';
         return false;
       }
 
@@ -39,6 +39,14 @@ angular
 
     $scope.electricityProvider = 'ECG';
     $scope.waterProvider = 'GWC';
+
+    $scope.providerProperties = {};
+    $scope.providerProperties[$scope.electricityProvider] = {
+      logo: 'apps/utility/images/ecg-logo.jpg'
+    };
+    $scope.providerProperties[$scope.waterProvider] = {
+      logo: 'apps/utility/images/gwc-logo.jpg'
+    };
 
     Transaction.getTransactionSetup().then(
       function (response){
@@ -69,11 +77,15 @@ angular
           delete $scope.details.recipient.email;
         }
         $scope.laddaAddTxn = true;
+        $scope.details.billType = $scope.details.provider;
         Transaction.addBill($scope.details).then(function (response) {
           $scope.laddaAddTxn = false;
           $scope.details.transactionId = response.transactionId;
           $scope.details.referenceNumber = response.referenceNumber;
-          console.log($scope.details);
+          $scope.longDescription = TransactionUtil.getDescription({
+            transactionType: 'billpayment',
+            data: $scope.details
+          });
           $state.transitionTo('app.utility.payment');
         }, function (error) {
           $scope.laddaAddTxn = false;
@@ -83,7 +95,7 @@ angular
     };
 
     $scope.getProvider = function () {
-      return TransactionUtil.getFullName($scope.details.billType);
+      return TransactionUtil.getFullName($scope.details.provider);
     };
 
     $scope.confirm = function () {

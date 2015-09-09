@@ -26,7 +26,7 @@ angular
       })
       .state('app.school.recipient', {
         url: '/recipient',
-        templateUrl: tempPrefix + 'recipient.html',
+        templateUrl: 'apps/transaction/views/recipient.html',
         data: {
           pageTitle: 'Confirm Request'
         }

@@ -26,5 +26,12 @@ angular
         data: {
           pageTitle: 'About BeamPay'
         }
+      })
+      .state('faqs', {
+        url: '/faqs',
+        templateUrl: tempPrefix + 'faqs/faqs.html',
+        data: {
+          pageTitle: 'Frequently Asked Questions'
+        }
       });
   });
