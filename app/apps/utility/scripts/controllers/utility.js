@@ -42,10 +42,10 @@ angular
 
     $scope.providerProperties = {};
     $scope.providerProperties[$scope.electricityProvider] = {
-      logo: 'app/apps/utility/images/ecg-logo.jpg'
+      logo: 'apps/utility/images/ecg-logo.jpg'
     };
     $scope.providerProperties[$scope.waterProvider] = {
-      logo: 'app/apps/utility/images/gwc-logo.jpg'
+      logo: 'apps/utility/images/gwc-logo.jpg'
     };
 
     Transaction.getTransactionSetup().then(
