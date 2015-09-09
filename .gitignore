@@ -5,3 +5,4 @@ bower_components
 dist
 npm-debug.log
 newrelic_agent.log
+.DS_Store

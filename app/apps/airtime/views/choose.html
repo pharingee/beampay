@@ -5,9 +5,9 @@
     Select your recipient's network <br>
     <p class="errors">{{errors.network}}</p>
       <div class="radio" ng-repeat="(provider, property) in providerProperties">
-          <label>
+          <label class="provider-logo">
              <input type="radio" ng-model="details.provider" value="{{provider}}" checked>
-             <img ng-src="{{property.logo}}" class="service-image">
+             <img class="service-image {{property.logoClass}}">
           </label>
       </div>
     </div>

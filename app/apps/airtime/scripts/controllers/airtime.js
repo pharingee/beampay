@@ -35,16 +35,16 @@ angular
 
     $scope.providerProperties = {};
     $scope.providerProperties[$scope.mtnProvider] = {
-      logo: 'apps/airtime/images/mtn.png'
+      logoClass: 'mtn-provider'
     };
     $scope.providerProperties[$scope.airtelProvider] = {
-      logo: 'apps/airtime/images/airtel.png'
+      logoClass: 'airtel-provider'
     };
     $scope.providerProperties[$scope.tigoProvider] = {
-      logo: 'apps/airtime/images/tigo.png'
+      logoClass: 'tigo-provider'
     };
     $scope.providerProperties[$scope.vodafoneProvider] = {
-      logo: 'apps/airtime/images/vodafone.png'
+      logoClass: 'vodafone-provider'
     };
 
     Transaction.getTransactionSetup().then(

@@ -33,10 +33,10 @@ angular
 
     $scope.providerProperties = {};
     $scope.providerProperties[$scope.surflineProvider] = {
-      logo: 'apps/internet/images/surfline-logo.png'
+      logoClass: 'surfline-provider'
     };
     $scope.providerProperties[$scope.vodafoneProvider] = {
-      logo: 'apps/internet/images/vodafone-logo.png'
+      logoClass: 'vodafone-bb-provider'
     };
 
     Transaction.getTransactionSetup().then(

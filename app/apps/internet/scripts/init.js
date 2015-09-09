@@ -27,7 +27,7 @@ angular
       })
       .state('app.internet.payment', {
         url: '/payment',
-        templateUrl: tempPrefix + 'payment.html',
+        templateUrl: transactionPrefix + 'payment.html',
         data: {
           pageTitle: 'Confirm Payment'
         }

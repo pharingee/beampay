@@ -42,10 +42,10 @@ angular
 
     $scope.providerProperties = {};
     $scope.providerProperties[$scope.dstvProvider] = {
-      logo: 'apps/television/images/dstv-logo.png'
+      logoClass: 'dstv-provider'
     };
     $scope.providerProperties[$scope.gotvProvider] = {
-      logo: 'apps/television/images/gotv-logo.jpg'
+      logoClass: 'gotv-provider'
     };
 
     Transaction.getTransactionSetup().then(
