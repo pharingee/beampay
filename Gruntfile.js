@@ -456,6 +456,14 @@ module.exports = function (grunt) {
           ROOT_URL: 'https://dev.beampay.co/'
         }
       }
+    },
+
+    filerev_assets: {
+      dist: {
+        options: {
+          dest: '<%= yeoman.dist %>/assets.json',
+        }
+      }
     }
   });
 
