@@ -511,6 +511,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'filerev',
+    'grunt-filerev-assets',
     'usemin',
     'htmlmin'
   ]);
