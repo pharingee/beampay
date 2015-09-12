@@ -76,7 +76,7 @@ angular
       //Transition to login on protected pages without authentication
       var nonProtectedStates = [
         'signin', 'signup', 'activate', 'confirmEmail', 'forgot',
-        'signupComplete', 'landing', 'hiw', 'about', 'resetPassword'];
+        'signupComplete', 'landing', 'hiw', 'about', 'resetPassword', 'faqs'];
 
       var isProtectedState = true;
       for (var i = 0; i < nonProtectedStates.length; i++) {
