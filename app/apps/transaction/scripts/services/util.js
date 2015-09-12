@@ -103,7 +103,7 @@ angular.module('app.transaction')
       }
     };
 
-    var makePayment = function (description, amount, email) {
+    var makePayment = function (description, amount) {
       var deferred = $q.defer();
 
       var handler = StripeCheckout.configure({
@@ -118,7 +118,6 @@ angular.module('app.transaction')
         name: 'BeamPay',
         description: description,
         amount: amount,
-        receipt_email: email,
         closed: function () {
           deferred.reject();
         }
@@ -217,8 +216,8 @@ angular.module('app.transaction')
         return validateRecipient(errors);
       },
 
-      makePayment: function (description, amount, email) {
-        return makePayment(description, amount, email);
+      makePayment: function (description, amount) {
+        return makePayment(description, amount);
       },
       successModal: function (referenceNumber, transactionId, transactionType, templateUrl) {
         return successModal(referenceNumber, transactionId, transactionType, templateUrl);

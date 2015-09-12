@@ -100,9 +100,9 @@ angular
     $scope.confirm = function () {
       if ($scope.pricing) {
         $scope.laddaPay = true;
-        var description = 'GHS ' + $scope.details.amountGhs + ' ' + $scope.getProvider() + ' airtime (Ref. No.: ' + $scope.details.referenceNumber + ')';
+        var description = 'GHS ' + $scope.details.amountGhs + ' of ' + $scope.getProvider() + ' airtime (Ref. No.: ' + $scope.details.referenceNumber + ')';
         var amount = $scope.details.chargeUsd * 100;
-        TransactionUtil.makePayment(description, amount, $scope.email).then(
+        TransactionUtil.makePayment(description, amount).then(
           function (token){
             var payment = {
               stripeToken: token.id,
