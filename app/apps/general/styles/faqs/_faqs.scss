@@ -1,5 +1,7 @@
 .faqs {
   background-color: white;
+  padding-top: 3em;
+  padding-bottom: 3em;
 
   .panel {
 
@@ -7,10 +9,33 @@
       border-bottom: 0;
     }
 
+    .panel-heading, .panel-collapse {
+      padding-left: 6em;
+      padding-right: 6em;
+    }
+
+    .panel-collapse {
+      background-color: rgba(125,194,66, 0.1);
+    }
   }
 
   .faq-answer {
-    // border-top: 1px solid $gray-extra-light;
+    font-size: 1.3em;
+
+    ul {
+      padding-right: 4em;
+      padding-left: 4em;
+    }
+  }
+
+  .faq-question {
+    font-size: 1.5em;
+    color: #7DC242;
+    font-weight: 300;
+  }
+
+  .call-to-action {
+    font-size: 1.3em;
   }
 
 }

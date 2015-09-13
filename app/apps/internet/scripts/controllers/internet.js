@@ -102,7 +102,7 @@ angular
     $scope.confirm = function () {
       if ($scope.pricing) {
         $scope.laddaPay = true;
-        var description = 'GHS ' + $scope.details.amountGhs + ' on ' + $scope.getProvider();
+        var description = 'GHS ' + $scope.details.amountGhs + ' of ' + $scope.getProvider() + ' (Ref. No.: ' + $scope.details.referenceNumber + ')';
         var amount = $scope.details.chargeUsd * 100;
         TransactionUtil.makePayment(description, amount).then(
           function (token){
