@@ -64,7 +64,7 @@ angular
     var signIn = function (data) {
       var errors = {};
 
-      if (data.nonFieldErrors) {
+      if (data && data.nonFieldErrors) {
         if (data.nonFieldErrors[0] === '11') {
           // User account is disabled.
           errors.top = ErrorConstants.disabledAccount;
@@ -84,6 +84,8 @@ angular
           // User account not activated yet.
           errors.email = ErrorConstants.fbAccountExists;
         }
+      } else {
+        errors.top = ErrorConstants.unknownError;
       }
 
       return errors;
@@ -204,7 +206,9 @@ angular
     var setPassword = function (data) {
       var errors = {};
 
-      if (data.detail && data.detail === '0') {
+      if (!data) {
+        errors.top = ErrorConstants.unknownError;
+      } else if (data.detail && data.detail === '0') {
         // Invalid Parameters
         errors.top = ErrorConstants.invalidParameters;
       } else if (data.password1 && data.password1[0] === '1') {
@@ -246,6 +250,8 @@ angular
       if (status === 451) {
         appRedirectModal(ErrorConstants.unsupportedCountry);
         errors.top = ErrorConstants.unsupportedCountry;
+      } else if (!data) {
+        errors.top = ErrorConstants.unknownError;
       } else if (data.detail && data.detail === '0') {
         errors.top = ErrorConstants.invalidParameters;
       } else if (data.detail && data.detail === '1') {
@@ -295,7 +301,9 @@ angular
     var setReferral = function (data) {
       var errors = {};
 
-      if (data.detail === '0') {
+      if (!data) {
+        errors.top = ErrorConstants.unknownError;
+      } ȩlse if (data.detail === '0') {
         errors.referralCode = ErrorConstants.invalidParameters;
       }else if (data.detail === '2') {
         errors.referralCode = ErrorConstants.invalidReferral;
