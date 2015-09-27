@@ -303,7 +303,7 @@ angular
 
       if (!data) {
         errors.top = ErrorConstants.unknownError;
-      } ȩlse if (data.detail === '0') {
+      } else if (data.detail === '0') {
         errors.referralCode = ErrorConstants.invalidParameters;
       }else if (data.detail === '2') {
         errors.referralCode = ErrorConstants.invalidReferral;
