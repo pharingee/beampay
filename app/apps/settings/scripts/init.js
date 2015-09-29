@@ -2,8 +2,9 @@
 
 angular
   .module('app.settings', [])
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $urlMatcherFactoryProvider) {
     var tempPrefix ='apps/settings/views/';
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('onboard', {

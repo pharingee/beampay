@@ -43,8 +43,9 @@ angular
     'app.referrals'
   ])
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, laddaProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, laddaProvider) {
     $locationProvider.hashPrefix('!');
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('app', {

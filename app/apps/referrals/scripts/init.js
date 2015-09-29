@@ -2,8 +2,9 @@
 
 angular
   .module('app.referrals', [])
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $urlMatcherFactoryProvider) {
     var tempPrefix = 'apps/referrals/views/';
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('app.referrals', {

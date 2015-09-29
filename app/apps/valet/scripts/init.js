@@ -2,8 +2,9 @@
 
 angular
   .module('app.valet', [])
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $urlMatcherFactoryProvider) {
     var tempPrefix = 'apps/valet/views/';
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('app.valet', {

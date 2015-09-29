@@ -2,9 +2,10 @@
 
 angular
   .module('app.auth', ['satellizer'])
-  .config(function ($stateProvider, $httpProvider, $authProvider, API_SERVER, FACEBOOK_CLIENT_ID) {
+  .config(function ($stateProvider, $urlMatcherFactoryProvider, $httpProvider, $authProvider, API_SERVER, FACEBOOK_CLIENT_ID) {
     var urlPrefix = '/auth/';
     var tempPrefix = 'apps/auth/views/';
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('signupComplete', {

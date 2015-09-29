@@ -2,8 +2,9 @@
 
 angular
   .module('app.general', [])
-  .config(function ($stateProvider) {
+  .config(function ($urlMatcherFactoryProvider, $stateProvider) {
     var tempPrefix = 'apps/general/views/';
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('landing', {
