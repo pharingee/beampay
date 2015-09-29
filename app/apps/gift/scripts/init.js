@@ -2,8 +2,9 @@
 
 angular
   .module('app.gift', [])
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $urlMatcherFactoryProvider) {
     var tempPrefix = 'apps/gift/views/';
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('app.gift', {

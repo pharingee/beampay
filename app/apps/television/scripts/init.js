@@ -2,9 +2,10 @@
 
 angular
   .module('app.television', [])
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $urlMatcherFactoryProvider) {
     var tempPrefix = 'apps/television/views/';
     var transactionPrefix = 'apps/transaction/views/';
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('app.television', {
